@@ -5,11 +5,12 @@ import { userService as remote } from './user.service.remote'
 
 function getEmptyUser() {
     return {
+        fullname: '',
         username: '', 
         password: '', 
-        fullname: '',
-        isAdmin: false,
-        score: 100,
+        imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+        mentions: []
+        // isAdmin: false,
     }
 }
 
