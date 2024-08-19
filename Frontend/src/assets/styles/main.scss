@@ -23,6 +23,9 @@
 @import "pages/TaskDetails";
 @import "pages/LoginSignup";
 
+@import "pages/Dashboard.scss";
+@import "pages/Kanban.scss";
+
 // Components
 @import "cmps/list";
 @import "cmps/preview";
@@ -36,3 +39,20 @@
 @import "cmps/ReviewPreview";
 @import "cmps/BoardList";
 @import "cmps/BoardPreview";
+
+@import "cmps/BoardTemplates";
+@import "cmps/Loader";
+
+// dynamic-cmps
+@import "cmps/dynamic-cmps/StatusPicker";
+@import "cmps/dynamic-cmps/MemberPicker";
+@import "cmps/dynamic-cmps/DatePicker";
+@import "cmps/dynamic-cmps/LabelPicker";
+@import "cmps/dynamic-cmps/PriorityPicker";
+
+// group
+@import "cmps/group/GroupList";
+@import "cmps/group/GroupPreview";
+// task
+@import "cmps/task/TaskList.scss";
+@import "cmps/task/TaskPreview.scss";

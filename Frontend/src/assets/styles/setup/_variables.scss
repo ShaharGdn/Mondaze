@@ -1,18 +1,38 @@
-// Colors
-$clr1: #ce2e6c;
-$clr2: #4f3a65;
-$clr3: #574f7d;
-$clr4: #95adbe;
-$clr5: #dff0ea;
-$clr6: #fff;
-$clr7: #222;
+// Status colors
+$clr-status-1: #fdab3d;
+$clr-status-2: #00c875;
+$clr-status-3: #df2f4a;
+$clr-status-4: #c4c4c4;
+$clr-status-5: #007eb5;
+$clr-status-6: #9d50dd;
 
-$gray1: #ddd;
-$gray2: #aaa;
-$gray3: #777;
-$gray4: #333;
+// Priority colors
+$clr-priority-1: #579bfc;
+$clr-priority-2: #5559df;
+$clr-priority-3: #401694;
+$clr-priority-4: #333333;
 
-// Breakpoints
+// General colors
+$clr-bg: #eceff8;
+$clr-menu-bg: #f7f9fd;
+$clr-text: #323338;
+$clr-header-line: #333333;
+
+// Buttons and Active States
+$clr-btn-blue: #0073ea;
+$clr-btn-blue-light: #cce5ff;
+$clr-btn-hover: rgba(103, 104, 121, 0.1); // 10% opacity
+$clr-btn-active-bg: #cce5ff;
+
+// Sidebar Icons
+$clr-sidebar-icon-inactive: #676879;
+$clr-sidebar-icon-active: #323338;
+
+// Workspace Specific colors
+$clr-workspace-name-icon-bg: #579bfc;
+$clr-workspace-text-blue: #0073ea;
+
+// Breakpoints - needs modifying
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;

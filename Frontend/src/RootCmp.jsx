@@ -18,6 +18,10 @@ import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 
+import { Dashboard } from './pages/Dashboard.jsx'
+import { Kanban } from './pages/Kanban.jsx'
+import { TaskDetails } from './pages/TaskDetails.jsx'
+
 export function RootCmp() {
     return (
         <div className="main-container">
@@ -38,6 +42,10 @@ export function RootCmp() {
                         <Route index element={<Login />} />
                         <Route path="signup" element={<Signup />} />
                     </Route>
+
+                    <Route path="board/:boardId/task/:taskId" element={<TaskDetails />} />
+                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="Kanban" element={<Kanban />} />
                 </Routes>
             </main>
             {/* <AppFooter /> */}
