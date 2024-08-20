@@ -1,6 +1,6 @@
 import { boardService } from '../../services/board'
 import { store } from '../store'
-import { ADD_GROUP, SET_BOARD } from '../reducers/selected-board.reducer'
+import { ADD_GROUP, REMOVE_GROUP, SET_BOARD } from '../reducers/selected-board.reducer'
 
 export async function loadBoard(boardId) {
     try {
@@ -23,6 +23,17 @@ export async function addGroup(boardId) {
     }
 }
 
+export async function removeGroup(boardId, groupId) {
+    try {
+        await boardService.removeGroup(boardId, groupId)
+        store.dispatch(getCmdRemoveGroup(groupId))
+        return groupId
+    } catch (err) {
+        console.log(`Cannot remove group (id: ${groupId}`, err)
+        throw err
+    }
+}
+
 // Command Creators:
 function getCmdSetBoard(board) {
     return {
@@ -34,5 +45,11 @@ function getCmdAddGroup(group) {
     return {
         type: ADD_GROUP,
         group
+    }
+}
+function getCmdRemoveGroup(groupId) {
+    return {
+        type: REMOVE_GROUP,
+        groupId
     }
 }

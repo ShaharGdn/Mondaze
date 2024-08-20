@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { addGroup, loadBoard } from '../store/actions/selected-board.actions'
+import { addGroup, loadBoard, removeGroup } from '../store/actions/selected-board.actions'
 import { BoardFilter } from '../cmps/BoardFilter'
 import { GroupList } from '../cmps/group/GroupList'
 import { boardService } from '../services/board'
@@ -30,7 +30,7 @@ export function BoardDetails() {
 
   async function onRemoveGroup(groupId) {
     try {
-      await boardService.removeGroup(boardId, groupId)
+      await removeGroup(boardId, groupId)
       showSuccessMsg(`Group removed (id: ${groupId})`)
     } catch (err) {
       showErrorMsg('Cannot remove group')
