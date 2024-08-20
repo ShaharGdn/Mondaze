@@ -127,7 +127,7 @@ async function addGroup(boardId) {
         const board = await getBoardById(boardId)
         const groupToAdd = {
             id: makeId(),
-            title: 'Group ' + (board.groups.length + 1),
+            title: 'New Group',
             archivedAt: null,
             pulses: [],
             style: {}
@@ -135,7 +135,6 @@ async function addGroup(boardId) {
 
         board.groups.push(groupToAdd)
         await storageService.put(STORAGE_KEY, board)
-
         return groupToAdd
         // return storageService.put(STORAGE_KEY, board)
     } catch (err) {
