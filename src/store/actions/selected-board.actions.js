@@ -1,6 +1,6 @@
 import { boardService } from '../../services/board'
 import { store } from '../store'
-import { ADD_GROUP, REMOVE_GROUP, SET_BOARD } from '../reducers/selected-board.reducer'
+import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UPDATE_GROUP } from '../reducers/selected-board.reducer'
 
 export async function loadBoard(boardId) {
     try {
@@ -34,6 +34,17 @@ export async function removeGroup(boardId, groupId) {
     }
 }
 
+export async function updateGroup(boardId, group) {
+    try {
+        const updatedGroup = await boardService.updateGroup(boardId, group)
+        store.dispatch(getCmdUpdateGroup(updatedGroup))
+        return updatedGroup
+    } catch (err) {
+        console.log(`Cannot update group (id: ${group.id}`, err)
+        throw err
+    }
+}
+
 // Command Creators:
 function getCmdSetBoard(board) {
     return {
@@ -51,5 +62,11 @@ function getCmdRemoveGroup(groupId) {
     return {
         type: REMOVE_GROUP,
         groupId
+    }
+}
+function getCmdUpdateGroup(group) {
+    return {
+        type: UPDATE_GROUP,
+        group
     }
 }
