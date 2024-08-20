@@ -4,38 +4,52 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { loadBoard, addBoardMsg } from '../store/actions/board.actions'
+import { loadBoard } from '../store/actions/selected-board.actions'
+import { BoardFilter } from '../cmps/BoardFilter'
+import { GroupList } from '../cmps/group/GroupList'
+import { boardService } from '../services/board'
 
 
 export function BoardDetails() {
 
-  const {boardId} = useParams()
+  const { boardId } = useParams()
   const board = useSelector(storeState => storeState.boardModule.board)
 
   useEffect(() => {
     loadBoard(boardId)
   }, [boardId])
 
-  async function onAddBoardMsg(boardId) {
+  async function onAddGroup() {
     try {
-        await addBoardMsg(boardId, 'bla bla ' + parseInt(Math.random()*10))
-        showSuccessMsg(`Board msg added`)
+      const addedGroup = await boardService.addGroup(boardId)
+      showSuccessMsg(`Group added (id: ${addedGroup.title})`)
     } catch (err) {
-        showErrorMsg('Cannot add board msg')
-    }        
-}
+      showErrorMsg('Cannot add group')
+    }
+  }
+
+  async function onRemoveGroup(groupId) {
+    try {
+      await boardService.removeGroup(boardId,groupId)
+      showSuccessMsg(`Group removed (id: ${groupId})`)
+    } catch (err) {
+      showErrorMsg('Cannot remove group')
+    }
+  }
 
   return (
     <section className="board-details">
-      <Link to="/board">Back to list</Link>
-      <h1>Board Details</h1>
+      <header className='board-header'></header>
+      {/* <BoardFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
+
       {board && <div>
-        <h3>{board.vendor}</h3>
-        <h4>${board.price}</h4>
-        <pre> {JSON.stringify(board, null, 2)} </pre>
+        <h1>{board.title}</h1>
+        <GroupList groups={board.groups} onRemoveGroup={onRemoveGroup}/>
+        <button onClick={onAddGroup}>Add new group</button>
+
+        {/* <pre> {JSON.stringify(board, null, 2)} </pre> */}
       </div>
       }
-      <button onClick={() => { onAddBoardMsg(board._id) }}>Add board msg</button>
 
     </section>
   )

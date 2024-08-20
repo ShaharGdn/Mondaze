@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { loadBoards, addBoard, updateBoard, removeBoard, addBoardMsg } from '../store/actions/board.actions'
+import { loadBoards, addBoard, updateBoard, removeBoard } from '../store/actions/board.actions'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { boardService } from '../services/board'
@@ -58,7 +58,7 @@ export function BoardIndex() {
                 <h2>Boards</h2>
                 {userService.getLoggedinUser() && <button onClick={onAddBoard}>Add a Board</button>}
             </header>
-            <BoardFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+            {/* <BoardFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
             <BoardList 
                 boards={boards}
                 onRemoveBoard={onRemoveBoard} 

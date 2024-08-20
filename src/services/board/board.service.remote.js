@@ -5,7 +5,6 @@ export const boardService = {
     getById,
     save,
     remove,
-    addBoardMsg
 }
 
 async function query(filterBy = { txt: '', person: ''}) { // needs modifying
@@ -27,9 +26,4 @@ async function save(board) {
         savedBoard = await httpService.post('board', board)
     }
     return savedBoard
-}
-
-async function addBoardMsg(boardId, txt) { // in task?
-    const savedMsg = await httpService.post(`board/${boardId}/msg`, {txt})
-    return savedMsg
 }

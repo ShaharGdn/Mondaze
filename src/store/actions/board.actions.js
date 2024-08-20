@@ -1,6 +1,6 @@
 import { boardService } from '../../services/board'
 import { store } from '../store'
-import { ADD_BOARD, REMOVE_BOARD, SET_BOARDS, SET_BOARD, UPDATE_BOARD, ADD_BOARD_MSG } from '../reducers/board.reducer'
+import { ADD_BOARD, REMOVE_BOARD, SET_BOARDS, UPDATE_BOARD, ADD_BOARD_MSG } from '../reducers/board.reducer'
 
 export async function loadBoards(filterBy) {
     try {
@@ -12,20 +12,9 @@ export async function loadBoards(filterBy) {
     }
 }
 
-export async function loadBoard(boardId) {
-    try {
-        const board = await boardService.getById(boardId)
-        store.dispatch(getCmdSetBoard(board))
-    } catch (err) {
-        console.log('Cannot load board', err)
-        throw err
-    }
-}
-
-
 export async function removeBoard(boardId) {
     try {
-        await boardService.remove(boardId)
+        await boardService.removeBoard(boardId)
         store.dispatch(getCmdRemoveBoard(boardId))
     } catch (err) {
         console.log('Cannot remove board', err)
@@ -55,28 +44,11 @@ export async function updateBoard(board) {
     }
 }
 
-export async function addBoardMsg(boardId, txt) {
-    try {
-        const msg = await boardService.addBoardMsg(boardId, txt)
-        store.dispatch(getCmdAddBoardMsg(msg))
-        return msg
-    } catch (err) {
-        console.log('Cannot add board msg', err)
-        throw err
-    }
-}
-
 // Command Creators:
 function getCmdSetBoards(boards) {
     return {
         type: SET_BOARDS,
         boards
-    }
-}
-function getCmdSetBoard(board) {
-    return {
-        type: SET_BOARD,
-        board
     }
 }
 function getCmdRemoveBoard(boardId) {
@@ -95,12 +67,6 @@ function getCmdUpdateBoard(board) {
     return {
         type: UPDATE_BOARD,
         board
-    }
-}
-function getCmdAddBoardMsg(msg) {
-    return {
-        type: ADD_BOARD_MSG,
-        msg
     }
 }
 
