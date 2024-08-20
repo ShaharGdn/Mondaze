@@ -192,7 +192,7 @@ async function updateGroup(boardId, groupToUpdate) {
 // }
 
 
-// ITEM/PULSE/TASK FUNCTIONS:
+// PULSE FUNCTIONS:
 
 async function getPulseById(boardId, groupId, pulseId) {
     try {

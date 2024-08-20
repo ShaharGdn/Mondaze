@@ -21,7 +21,7 @@
 @import "pages/BoardDetails";
 @import "pages/ReviewIndex";
 @import "pages/UserDetails";
-@import "pages/TaskDetails";
+@import "pages/PulseDetails";
 @import "pages/LoginSignup";
 
 @import "pages/Dashboard.scss";
@@ -48,6 +48,6 @@
 // group
 @import "cmps/group/GroupList";
 @import "cmps/group/GroupPreview";
-// task
-@import "cmps/task/TaskList.scss";
-@import "cmps/task/TaskPreview.scss";
+// pulse
+@import "cmps/pulse/PulseList.scss";
+@import "cmps/pulse/PulsePreview.scss";

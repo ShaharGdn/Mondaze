@@ -18,7 +18,7 @@ import { Signup } from './pages/Signup.jsx'
 
 import { Dashboard } from './pages/Dashboard.jsx'
 import { Kanban } from './pages/Kanban.jsx'
-import { TaskDetails } from './pages/TaskDetails.jsx'
+import { PulseDetails } from './pages/PulseDetails.jsx'
 
 export function RootCmp() {
     return (
@@ -40,7 +40,7 @@ export function RootCmp() {
                         <Route path="signup" element={<Signup />} />
                     </Route>
 
-                    <Route path="board/:boardId/task/:taskId" element={<TaskDetails />} />
+                    <Route path="board/:boardId/pulse/:pulseId" element={<PulseDetails />} />
                     <Route path="dashboard" element={<Dashboard />} />
                     <Route path="Kanban" element={<Kanban />} />
                 </Routes>
