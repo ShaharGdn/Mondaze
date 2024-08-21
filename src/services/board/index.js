@@ -2,11 +2,12 @@ const { DEV, VITE_LOCAL } = import.meta.env
 
 import { boardService as local } from './board.service.local'
 import { boardService as remote } from './board.service.remote'
+import { makeId } from '../util.service'
 import { store } from '../../store/store'
 
 const user = store.getState().userModule.user
 
-function getEmptyBoard() {
+function getEmptyBoard(type = 'Task') {
     return {
         title: 'New Board',
         isStarred: false,
@@ -15,9 +16,45 @@ function getEmptyBoard() {
         style: {},
         labels: [],
         members: [],
-        groups: [],
+        groups: [
+            {
+                title: 'Group Title',
+                archivedAt: null,
+                pulses: [
+                    {
+                        'id': makeId(),
+                        'title': type + ' 1'
+                    },
+                    {
+                        'id': makeId(),
+                        'title': type + ' 2'
+                    },
+                    {
+                        'id': makeId(),
+                        'title': type + ' 3'
+                    },
+                ],
+                style: {color: 'blue'}
+            },
+            {
+                title: 'Group Title',
+                archivedAt: null,
+                pulses: [
+                    {
+                        'id': makeId(),
+                        'title': type + ' 3'
+                    },
+                    {
+                        'id': makeId(),
+                        'title': type + ' 4'
+                    },
+                ],
+                style: {color: 'purple'}
+            },
+        ],
         activities: [],
-        cmpsOrder: [],
+        cmpsOrder: ['Person', 'Status', 'Date'],
+        type,
     }
 }
 

@@ -84,6 +84,7 @@ async function save(board) {
                 groups: board.groups,
                 activities: board.activities,
                 cmpsOrder: board.cmpsOrder,
+                type: board.type
             }
             savedBoard = await storageService.put(STORAGE_KEY, boardToSave)
         } else {
@@ -95,9 +96,10 @@ async function save(board) {
                 style: board.style,
                 labels: board.labels,
                 members: board.members,
-                groups: board.members,
+                groups: board.groups,
                 activities: board.activities,
                 cmpsOrder: board.cmpsOrder,
+                type: board.type
             }
             savedBoard = await storageService.post(STORAGE_KEY, boardToSave)
         }
@@ -172,25 +174,6 @@ async function updateGroup(boardId, groupToUpdate) {
     }
 }
 
-// another option:
-// async function updateGroup(boardId, groupToUpdate) {
-//     try {
-//         const board = await getBoardById(boardId)
-//         const idx = board.groups.findIndex(group => group.id === groupToUpdate.id)
-
-//         if (idx < 0) throw new Error(`update Group failed, cannot find group with id: ${groupToUpdate.id} in: ${boardId}`)
-//         board.groups.splice(idx, 1, groupToUpdate)
-
-//         await storageService.put(STORAGE_KEY, board)
-
-//         return groupToUpdate
-//     } catch (err) {
-//         console.log('err:', err)
-//         throw err
-//     }
-// }
-
-
 // PULSE FUNCTIONS:
 
 async function getPulseById(boardId, groupId, pulseId) {
@@ -205,14 +188,14 @@ async function getPulseById(boardId, groupId, pulseId) {
     }
 }
 
-async function addPulse(boardId, groupId, pulse) {
+async function addPulse(boardId, groupId) {
     try {
         const board = await getBoardById(boardId)
         const group = await getGroupById(boardId, groupId)
 
         const pulseToAdd = {
             id: makeId(),
-            title: 'Replace Name',
+            title: 'New' + board.type,
         }
 
         group.pulses.push(pulseToAdd)
