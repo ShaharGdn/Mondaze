@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { addGroup, loadBoard, removeGroup } from '../store/actions/selected-board.actions'
+import { addGroup, loadBoard, removeGroup, updateGroup } from '../store/actions/selected-board.actions'
 import { BoardFilter } from '../cmps/BoardFilter'
 import { GroupList } from '../cmps/group/GroupList'
 import { boardService } from '../services/board'
@@ -37,14 +37,23 @@ export function BoardDetails() {
     }
   }
 
+  async function onUpdateGroup(group) {
+    try {
+      const updatedGroup = await updateGroup(boardId, group)
+      showSuccessMsg(`Group updated (id: ${updatedGroup.id})`)
+    } catch (err) {
+      showErrorMsg('Cannot update group')
+    }
+  }
+
   return (
     <section className="board-details">
       <header className='board-header'></header>
       {/* <BoardFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
 
       {board && <div>
-        <h1>{board.title}</h1>
-        <GroupList groups={board.groups} onRemoveGroup={onRemoveGroup} />
+        <h2>{board.title}</h2>
+        <GroupList groups={board.groups} onRemoveGroup={onRemoveGroup} onUpdateGroup={onUpdateGroup} />
         <button onClick={onAddGroup}>Add new group</button>
 
         {/* <pre> {JSON.stringify(board, null, 2)} </pre> */}
