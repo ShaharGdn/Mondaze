@@ -2,13 +2,16 @@ const { DEV, VITE_LOCAL } = import.meta.env
 
 import { boardService as local } from './board.service.local'
 import { boardService as remote } from './board.service.remote'
+import { store } from '../../store/store'
+
+const user = store.getState().userModule.user
 
 function getEmptyBoard() {
     return {
-        title: '',
+        title: 'New Board',
         isStarred: false,
         archivedAt: null,
-        createdBy: {},
+        createdBy: user,
         style: {},
         labels: [],
         members: [],
