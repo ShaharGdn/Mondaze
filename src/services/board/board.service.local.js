@@ -16,7 +16,7 @@ export const boardService = {
 
     getPulseById,
     addPulse,
-    updatePulse
+    updatePulse,
 }
 window.cs = boardService
 
@@ -129,10 +129,12 @@ async function addGroup(boardId, position = 'start') {
         const board = await getBoardById(boardId)
         const groupToAdd = {
             id: makeId(),
+            boardId,
             title: 'New Group',
             archivedAt: null,
             pulses: [],
-            style: {}
+            style: {},
+            type: board.type,
         }
 
         if (position === 'start') {
@@ -192,14 +194,13 @@ async function getPulseById(boardId, groupId, pulseId) {
     }
 }
 
-async function addPulse(boardId, groupId) {
+async function addPulse(boardId, groupId, pulse) {
     try {
-        const board = await getBoardById(boardId)
         const group = await getGroupById(boardId, groupId)
 
         const pulseToAdd = {
             id: makeId(),
-            title: 'New' + board.type,
+            title: pulse.title || '',
         }
 
         group.pulses.push(pulseToAdd)

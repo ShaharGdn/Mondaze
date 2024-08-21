@@ -7,6 +7,81 @@ import { store } from '../../store/store'
 
 const user = store.getState().userModule.user
 
+// function getEmptyBoard(type = 'Task') {
+//     const boardId = makeId()
+
+//     const groups = [
+//         {
+//             id: makeId(),
+//             boardId,
+//             title: 'Group Title',
+//             archivedAt: null,
+//             pulses: [
+//                 {
+//                     id: makeId(),
+//                     boardId,
+//                     groupId: null,
+//                     title: type + ' 1'
+//                 },
+//                 {
+//                     id: makeId(),
+//                     boardId,
+//                     groupId: null,
+//                     title: type + ' 2'
+//                 },
+//                 {
+//                     id: makeId(),
+//                     boardId,
+//                     groupId: null,
+//                     title: type + ' 3'
+//                 },
+//             ],
+//             style: { color: 'blue' }
+//         },
+//         {
+//             id: makeId(),
+//             boardId,
+//             title: 'Group Title',
+//             archivedAt: null,
+//             pulses: [
+//                 {
+//                     id: makeId(),
+//                     boardId,
+//                     groupId: null,
+//                     title: type + ' 3'
+//                 },
+//                 {
+//                     id: makeId(),
+//                     boardId,
+//                     groupId: null,
+//                     title: type + ' 4'
+//                 },
+//             ],
+//             style: { color: 'purple' }
+//         },
+//     ]
+
+//     groups.forEach(group => {
+//         group.pulses.forEach(pulse => pulse.groupId = group.id)
+//     })
+
+//     return {
+//         id: boardId,
+//         title: 'New Board',
+//         isStarred: false,
+//         archivedAt: null,
+//         createdBy: user,
+//         style: {},
+//         labels: [],
+//         members: [],
+//         groups,
+//         activities: [],
+//         cmpsOrder: ['Person', 'Status', 'Date'],
+//         type,
+//     }
+// }
+
+
 function getEmptyBoard(type = 'Task') {
     return {
         title: 'New Board',
@@ -19,7 +94,9 @@ function getEmptyBoard(type = 'Task') {
         groups: [
             {
                 title: 'Group Title',
+                id: makeId(),
                 archivedAt: null,
+                type,
                 pulses: [
                     {
                         'id': makeId(),
@@ -34,11 +111,13 @@ function getEmptyBoard(type = 'Task') {
                         'title': type + ' 3'
                     },
                 ],
-                style: {color: 'blue'}
+                style: { color: 'blue' }
             },
             {
                 title: 'Group Title',
+                id: makeId(),
                 archivedAt: null,
+                type,
                 pulses: [
                     {
                         'id': makeId(),
@@ -49,7 +128,7 @@ function getEmptyBoard(type = 'Task') {
                         'title': type + ' 4'
                     },
                 ],
-                style: {color: 'purple'}
+                style: { color: 'purple' }
             },
         ],
         activities: [],
@@ -57,6 +136,7 @@ function getEmptyBoard(type = 'Task') {
         type,
     }
 }
+
 
 function getDefaultFilter() {
     return {

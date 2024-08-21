@@ -1,11 +1,13 @@
+import { useSelector } from "react-redux";
 import { GroupPreview } from "./GroupPreview";
 
 export function GroupList({ groups, onRemoveGroup }) {
+    const board = useSelector(storeState => storeState.selectedBoardModule.board)
 
     return (
         <section className="groups-container">
             <ul className="group-list">
-                {groups.map(group =>
+                {board.groups.map(group =>
                     <li className="group" key={group.id}>
                         <GroupPreview group={group} onRemoveGroup={onRemoveGroup} />
                         {/* <div className="actions">

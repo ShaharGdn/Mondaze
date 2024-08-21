@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router'
 import { HomePage } from './pages/HomePage'
 import { AboutUs } from './pages/AboutUs'
 import { BoardIndex } from './pages/BoardIndex.jsx'
-import { ReviewIndex } from './pages/ReviewIndex.jsx'
 import { ChatApp } from './pages/Chat.jsx'
 
 import { BoardDetails } from './pages/BoardDetails.jsx'
@@ -33,7 +32,6 @@ export function RootCmp() {
                     <Route path="board" element={<BoardIndex />} />
                     <Route path="board/:boardId" element={<BoardDetails />} />
                     <Route path="user/:id" element={<UserDetails />} />
-                    <Route path="review" element={<ReviewIndex />} />
                     <Route path="chat" element={<ChatApp />} />
                     <Route path="login" element={<LoginSignup />}>
                         <Route index element={<Login />} />
