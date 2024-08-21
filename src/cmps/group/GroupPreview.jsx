@@ -1,3 +1,5 @@
+import { PulseList } from "../pulse/PulseList"
+
 export function GroupPreview({ group, onRemoveGroup, onUpdateGroup }) {
 
     function onUpdate() {
@@ -13,6 +15,7 @@ export function GroupPreview({ group, onRemoveGroup, onUpdateGroup }) {
             <h2>{group.title}</h2>
             <button onClick={() => onRemoveGroup(group.id)}>Remove</button>
             <button onClick={onUpdate}>Update</button>
+            <PulseList />
 
         </section >
     )
