@@ -14,16 +14,15 @@ export function selectedBoardReducer(state = initialState, action) {
         // BOARD
         case SET_BOARD:
             return { ...state, board: action.board }
+            // GROUP
         case ADD_GROUP:
-            // const { group, position } = action
             const groups = [...state.board.groups]
             if (action.position === 'start') {
                 groups.unshift(action.group)
             } else {
                 groups.push(action.group)
             }
-            newState = { ...state, board: { ...state.board, groups } }
-            break
+            return { ...state, board: { ...state.board, groups } }
         case REMOVE_GROUP:
             return {
                 ...state,
@@ -40,41 +39,18 @@ export function selectedBoardReducer(state = initialState, action) {
                     groups: state.board.groups.map(group => group.id === action.group.id ? action.group : group)
                 }
             }
-            break
         case ADD_PULSE:
             const group = state.board.groups.find(group => group.id === action.groupId)
             const newGroup = {
                 ...group, pulses: [...group.pulses, action.pulse]
             }
-            newState = {
+            return {
                 ...state,
                 board: {
                     ...state.board,
                     groups: state.board.groups.map(group => group.id === newGroup.id ? newGroup : group)
                 }
             }
-            break
-        default:
+        default: return state
     }
-    return newState
 }
-
-// case ADD_GROUP:
-//     return { ...state, board: { ...state.board, groups: [...state.board.groups, action.group] } }
-
-
-// case ADD_PULSE:
-//     const { groupId, pulse: newPulse } = action
-
-//     const newGroups = state.board.groups.map(group => {
-//         if (group.id === groupId) {
-//             const updatedPulses = group.pulses.map(pulse =>
-//                 pulse.id === newPulse.id ? newPulse : pulse
-//             )
-//             return { ...group, pulses: updatedPulses }
-//         }
-//         return group
-//     })
-
-//     newState = { ...state, board: { ...state.board, groups: newGroups } }
-//     break

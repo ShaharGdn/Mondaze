@@ -54,10 +54,8 @@ export function BoardDetails() {
       {board && <div>
         <h1>{board.title}</h1>
         <button onClick={()=> onAddGroup('start')}>Add new group</button>
-        <GroupList groups={board.groups} onRemoveGroup={onRemoveGroup} />
+        <GroupList groups={board.groups} onUpdateGroup={onUpdateGroup} onRemoveGroup={onRemoveGroup} />
         <button onClick={()=> onAddGroup('end')}>Add new group</button>
-
-        {/* <pre> {JSON.stringify(board, null, 2)} </pre> */}
       </div>
       }
 

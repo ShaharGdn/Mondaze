@@ -1,5 +1,3 @@
-import { PulseList } from "../pulse/PulseList"
-
 import { useSelector } from "react-redux";
 import { addPulse, updateGroup } from "../../store/actions/selected-board.actions.js";
 import { PulseList } from "../pulse/PulseList.jsx";
@@ -30,6 +28,7 @@ export function GroupPreview({ group, onRemoveGroup, onUpdateGroup }) {
         <section className="group-preview">
             <h2>{group.title}</h2>
             <button onClick={() => onRemoveGroup(group.id)}>Remove group</button>
+            <button onClick={onUpdate}>Update group</button>
             <button onClick={onAddPulse}>Add {group.type}</button>
             <PulseList group={group} pulses={group.pulses} type={group.type} />
         </section >

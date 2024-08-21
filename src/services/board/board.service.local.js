@@ -188,7 +188,7 @@ async function getPulseById(boardId, groupId, pulseId) {
     }
 }
 
-async function addPulse(boardId, groupId, pulseTitle) {
+async function addPulse(boardId, groupId, pulse) {
     try {
         const group = await getGroupById(boardId, groupId)
 
