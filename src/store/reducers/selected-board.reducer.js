@@ -14,8 +14,14 @@ export function selectedBoardReducer(state = initialState, action) {
             newState = { ...state, board: action.board }
             break
         case ADD_GROUP:
-            newState = { ...state, board: { ...state.board, groups: [...state.board.groups, action.group] } }
-            // do we need here: (...state.board.groups || []) ?
+            const { group, position } = action
+            const groups = [...state.board.groups]
+            if (position === 'start') {
+                groups.unshift(group)
+            } else {
+                groups.push(group)
+            }
+            newState = { ...state, board: { ...state.board, groups } }
             break
         case REMOVE_GROUP:
             newState = {

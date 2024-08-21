@@ -12,10 +12,10 @@ export async function loadBoard(boardId) {
     }
 }
 
-export async function addGroup(boardId) {
+export async function addGroup(boardId, position) {
     try {
-        const addedGroup = await boardService.addGroup(boardId)
-        store.dispatch(getCmdAddGroup(addedGroup))
+        const addedGroup = await boardService.addGroup(boardId, position)
+        store.dispatch(getCmdAddGroup(addedGroup, position))
         return addedGroup
     } catch (err) {
         console.log('Cannot add group', err)
@@ -52,9 +52,10 @@ function getCmdSetBoard(board) {
         board
     }
 }
-function getCmdAddGroup(group) {
+function getCmdAddGroup(group, position) {
     return {
         type: ADD_GROUP,
+        position,
         group
     }
 }

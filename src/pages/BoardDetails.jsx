@@ -19,9 +19,9 @@ export function BoardDetails() {
     loadBoard(boardId) // shouldn't be await?
   }, [boardId])
 
-  async function onAddGroup() {
+  async function onAddGroup(position = 'start') {
     try {
-      await addGroup(boardId)
+      await addGroup(boardId, position)
       showSuccessMsg(`Group added`)
     } catch (err) {
       showErrorMsg('Cannot add group')
@@ -44,8 +44,9 @@ export function BoardDetails() {
 
       {board && <div>
         <h1>{board.title}</h1>
+        <button onClick={()=> onAddGroup('start')}>Add new group</button>
         <GroupList groups={board.groups} onRemoveGroup={onRemoveGroup} />
-        <button onClick={onAddGroup}>Add new group</button>
+        <button onClick={()=> onAddGroup('end')}>Add new group</button>
 
         {/* <pre> {JSON.stringify(board, null, 2)} </pre> */}
       </div>

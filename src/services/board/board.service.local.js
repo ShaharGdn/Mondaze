@@ -124,7 +124,7 @@ async function getGroupById(boardId, groupId) {
     }
 }
 
-async function addGroup(boardId) {
+async function addGroup(boardId, position = 'start') {
     try {
         const board = await getBoardById(boardId)
         const groupToAdd = {
@@ -135,12 +135,16 @@ async function addGroup(boardId) {
             style: {}
         }
 
-        board.groups.push(groupToAdd)
+        if (position === 'start') {
+            board.groups.unshift(groupToAdd)
+        } else {
+            board.groups.push(groupToAdd)
+        }
+
         await storageService.put(STORAGE_KEY, board)
         return groupToAdd
-        // return storageService.put(STORAGE_KEY, board)
     } catch (err) {
-        console.log('err couldnt add group:', err)
+        console.log('Error: could not add group:', err)
     }
 }
 
