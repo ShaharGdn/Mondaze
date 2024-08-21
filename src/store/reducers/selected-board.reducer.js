@@ -1,4 +1,5 @@
 export const SET_BOARD = 'SET_BOARD'
+
 export const ADD_GROUP = 'ADD_GROUP'
 export const REMOVE_GROUP = 'REMOVE_GROUP'
 export const UPDATE_GROUP = 'UPDATE_GROUP'
@@ -9,11 +10,10 @@ const initialState = {
 }
 
 export function selectedBoardReducer(state = initialState, action) {
-    var newState = state
     switch (action.type) {
+        // BOARD
         case SET_BOARD:
-            newState = { ...state, board: action.board }
-            break
+            return { ...state, board: action.board }
         case ADD_GROUP:
             // const { group, position } = action
             const groups = [...state.board.groups]
@@ -25,16 +25,15 @@ export function selectedBoardReducer(state = initialState, action) {
             newState = { ...state, board: { ...state.board, groups } }
             break
         case REMOVE_GROUP:
-            newState = {
+            return {
                 ...state,
                 board: {
                     ...state.board,
                     groups: state.board.groups.filter(group => group.id !== action.groupId)
                 }
             }
-            break
         case UPDATE_GROUP:
-            newState = {
+            return {
                 ...state,
                 board: {
                     ...state.board,

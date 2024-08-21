@@ -105,7 +105,7 @@ async function save(board) {
         }
         return savedBoard
     } catch (err) {
-        console.log('err couldnt save board:', err)
+        console.log('Could not save board:', err)
         throw err
     }
 }
@@ -114,13 +114,10 @@ async function save(board) {
 
 async function getGroupById(boardId, groupId) {
     try {
-
         const board = await getBoardById(boardId)
-        const group = board.groups.filter(group => group.id === groupId)
-
-        return group[0]
+        return board.groups.find(group => group.id === groupId)
     } catch (err) {
-        console.log('err couldnt get group:', err)
+        console.log('Could not get group:', err)
     }
 }
 
@@ -146,7 +143,7 @@ async function addGroup(boardId, position = 'start') {
         await storageService.put(STORAGE_KEY, board)
         return groupToAdd
     } catch (err) {
-        console.log('Error: could not add group:', err)
+        console.log('Could not add group:', err)
     }
 }
 
@@ -161,7 +158,7 @@ async function removeGroup(boardId, groupId) {
 
         return groupId
     } catch (err) {
-        console.log('err couldnt remove group:', err)
+        console.log('Could not remove group:', err)
     }
 }
 
@@ -175,7 +172,7 @@ async function updateGroup(boardId, groupToUpdate) {
 
         return groupToUpdate
     } catch (err) {
-        console.log('err:', err)
+        console.log('Could not update group:', err)
         throw err
     }
 }
@@ -185,16 +182,13 @@ async function updateGroup(boardId, groupToUpdate) {
 async function getPulseById(boardId, groupId, pulseId) {
     try {
         const group = await getGroupById(boardId, groupId)
-        const pulse = group.pulses.filter(pulse => pulse.id === pulseId)
-
-        return pulse[0]
-
+        return group.pulses.find(pulse => pulse.id === pulseId)
     } catch (err) {
-        console.log('err couldnt get pulse:', err)
+        console.log('Could not get pulse:', err)
     }
 }
 
-async function addPulse(boardId, groupId, pulse) {
+async function addPulse(boardId, groupId, pulseTitle) {
     try {
         const group = await getGroupById(boardId, groupId)
 
@@ -202,13 +196,12 @@ async function addPulse(boardId, groupId, pulse) {
             id: makeId(),
             title: pulse.title || '',
         }
-
         group.pulses.push(pulseToAdd)
-        updateGroup(boardId, group)
-        return pulseToAdd
 
+        await updateGroup(boardId, group)
+        return pulseToAdd
     } catch (err) {
-        console.log('err couldnt add the pulse:', err)
+        console.log('Could not add pulse:', err)
         throw err
     }
 }
@@ -229,10 +222,29 @@ async function updatePulse(boardId, groupId, pulseToUpdate) {
 
         return pulseToUpdate
     } catch (err) {
-        console.log('err couldnt update the pulse:', err)
+        console.log('Could not update the pulse:', err)
         throw err
     }
 }
+
+// another option not sure:
+// async function updatePulse(boardId, groupId, pulseToUpdate) {
+//     try {
+//         const board = await getBoardById(boardId)
+
+//         const groupIdx = board.groups.findIndex(group => group.id === groupId)
+//         if (groupIdx < 0) throw new Error(`Group with id ${groupId} not found in board ${boardId}`)
+
+//         const updatedPulses = board.groups[groupIdx].pulses.map(pulse => pulse.id === pulseToUpdate.id ? pulseToUpdate : pulse)
+//         const updatedGroup = { ...board.groups[groupIdx], pulses: updatedPulses }
+
+//         await updateGroup(boardId, updatedGroup)
+//         return pulseToUpdate
+//     } catch (err) {
+//         console.log('Could not update the pulse:', err)
+//         throw err
+//     }
+// }
 
 //TESTING:
 
