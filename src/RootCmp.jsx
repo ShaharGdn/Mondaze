@@ -18,11 +18,13 @@ import { Signup } from './pages/Signup.jsx'
 import { Dashboard } from './pages/Dashboard.jsx'
 import { Kanban } from './pages/Kanban.jsx'
 import { PulseDetails } from './pages/PulseDetails.jsx'
+import { SideBar } from './cmps/SideBar.jsx'
 
 export function RootCmp() {
     return (
         <div className="main-container">
             <AppHeader />
+            <SideBar />
             <UserMsg />
 
             <main>

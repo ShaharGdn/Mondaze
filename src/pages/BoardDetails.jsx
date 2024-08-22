@@ -47,7 +47,7 @@ export function BoardDetails() {
   }
 
   return (
-    <section className="board-details">
+    <section className="board-details main">
       <header className='board-header'></header>
       {/* <BoardFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
 
