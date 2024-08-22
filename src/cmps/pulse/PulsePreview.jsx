@@ -3,6 +3,8 @@ import { useState } from "react"
 export function PulsePreview({ pulse, onRemovePulse, onUpdatePulse, type }) {
     const [pulseToEdit, setPulseToEdit] = useState(pulse)
 
+    console.log('pulse:', pulse)
+
     async function handleChange() {
         try {
             const title = prompt('New title?')

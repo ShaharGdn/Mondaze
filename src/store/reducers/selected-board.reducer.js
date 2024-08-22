@@ -58,7 +58,7 @@ export function selectedBoardReducer(state = initialState, action) {
             var group = state.board.groups.find(group => group.id === action.groupId)
             var newPulses = group.pulses.map(pulse => pulse.id === action.pulseToUpdate.id ? action.pulseToUpdate : pulse)
             var newGroup = {
-                ...group, pulses: [...group.pulses, newPulses]
+                ...group, pulses: newPulses
             }
             return {
                 ...state,
