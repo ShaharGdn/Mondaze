@@ -52,7 +52,7 @@ export function BoardDetails() {
       {/* <BoardFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
 
       {board && <div>
-        <h1>{board.title}</h1>
+        {/* <h1>{board.title}</h1> */}
         <button onClick={()=> onAddGroup('start')}>Add new group</button>
         <GroupList groups={board.groups} onUpdateGroup={onUpdateGroup} onRemoveGroup={onRemoveGroup} />
         <button onClick={()=> onAddGroup('end')}>Add new group</button>

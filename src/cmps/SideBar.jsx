@@ -1,5 +1,8 @@
 import { GoHome } from "react-icons/go";
 import { GoStar } from "react-icons/go";
+import { GoPlus } from "react-icons/go";
+import { HiMagnifyingGlass } from "react-icons/hi2";
+
 
 
 export function SideBar() {
@@ -24,12 +27,16 @@ export function SideBar() {
                     <span className="ws-icon">M</span>
                     <div>My Workspace</div>
                 </div>
-                
-                <div>
-                    <input type="search" />
-                    <button>+</button>
-                </div>
 
+                <div className="search-add">
+                    <div className="search-container">
+                        <div><HiMagnifyingGlass /></div>
+                        <input id="txt" onChange={(ev) => handleChange(ev, 'filter')} autoFocus name="txt" type="text" placeholder="Search" />
+                    </div>
+                    <button className="add-board-btn">
+                        <i class="fa-regular fa-plus-large fa-lg"></i>
+                    </button>
+                </div>
             </nav>
         </article>
     )
