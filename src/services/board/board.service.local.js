@@ -9,6 +9,7 @@ export const boardService = {
     getBoardById,
     removeBoard,
     save,
+
     getGroupById,
     addGroup,
     updateGroup,
@@ -17,6 +18,7 @@ export const boardService = {
     getPulseById,
     addPulse,
     updatePulse,
+    removePulse,
 }
 window.cs = boardService
 
@@ -55,17 +57,6 @@ async function removeBoard(boardId) {
     // throw new Error('Nope')
     await storageService.remove(STORAGE_KEY, boardId)
 }
-
-// title: '',
-// isStarred: false,
-// archivedAt: null,
-// createdBy: {},
-// style: {},
-// labels: [],
-// members: [],
-// groups: [],
-// activities: [],
-// cmpsOrder: [],
 
 async function save(board) {
     try {
@@ -190,15 +181,19 @@ async function getPulseById(boardId, groupId, pulseId) {
 
 async function addPulse(boardId, groupId, pulse) {
     try {
-        const group = await getGroupById(boardId, groupId)
+        const board = await getBoardById(boardId)
+        const groupIdx = board.groups.findIndex(group => group.id === groupId)
+        if (groupIdx < 0) throw new Error(`Group with id ${groupId} not found in board ${boardId}`)
 
         const pulseToAdd = {
             id: makeId(),
             title: pulse.title || '',
         }
-        group.pulses.push(pulseToAdd)
 
-        await updateGroup(boardId, group)
+        board.groups[groupIdx].pulses.push(pulseToAdd)
+
+        await storageService.put(STORAGE_KEY, board)
+
         return pulseToAdd
     } catch (err) {
         console.log('Could not add pulse:', err)
@@ -227,24 +222,26 @@ async function updatePulse(boardId, groupId, pulseToUpdate) {
     }
 }
 
-// another option not sure:
-// async function updatePulse(boardId, groupId, pulseToUpdate) {
-//     try {
-//         const board = await getBoardById(boardId)
+async function removePulse(boardId, groupId, pulseId) {
+    console.log('pulseId:', pulseId)
+    try {
+        const board = await getBoardById(boardId)
 
-//         const groupIdx = board.groups.findIndex(group => group.id === groupId)
-//         if (groupIdx < 0) throw new Error(`Group with id ${groupId} not found in board ${boardId}`)
+        const groupIdx = board.groups.findIndex(group => group.id === groupId)
+        if (groupIdx < 0) throw new Error(`Group with id ${groupId} not found in board ${boardId}`)
 
-//         const updatedPulses = board.groups[groupIdx].pulses.map(pulse => pulse.id === pulseToUpdate.id ? pulseToUpdate : pulse)
-//         const updatedGroup = { ...board.groups[groupIdx], pulses: updatedPulses }
+        const pulseIdx = board.groups[groupIdx].pulses.findIndex(pulse => pulse.id === pulseId)
+        if (pulseIdx < 0) throw new Error(`Update pulse failed, cannot find pulse with id: ${pulseId} in group ${groupId}`)
 
-//         await updateGroup(boardId, updatedGroup)
-//         return pulseToUpdate
-//     } catch (err) {
-//         console.log('Could not update the pulse:', err)
-//         throw err
-//     }
-// }
+        board.groups[groupIdx].pulses.splice(pulseIdx, 1)
+
+        await storageService.put(STORAGE_KEY, board)
+    } catch (err) {
+        console.log('Could not update the pulse:', err)
+        throw err
+    }
+}
+
 
 //TESTING:
 
@@ -293,3 +290,15 @@ async function updatePulse(boardId, groupId, pulseToUpdate) {
 //     "title": "Replace shmoli"
 // })
 
+
+
+// title: '',
+// isStarred: false,
+// archivedAt: null,
+// createdBy: {},
+// style: {},
+// labels: [],
+// members: [],
+// groups: [],
+// activities: [],
+// cmpsOrder: [],

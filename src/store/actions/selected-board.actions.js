@@ -1,6 +1,6 @@
 import { boardService } from '../../services/board'
 import { store } from '../store'
-import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UPDATE_GROUP, ADD_PULSE } from '../reducers/selected-board.reducer'
+import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UPDATE_GROUP, ADD_PULSE, REMOVE_PULSE, UPDATE_PULSE } from '../reducers/selected-board.reducer'
 
 
 // Board
@@ -61,6 +61,26 @@ export async function addPulse(boardId, groupId, pulse) {
         throw err
     }
 }
+export async function updatePulse(boardId, groupId, pulse) {
+    try {
+        const updatedPulse = await boardService.updatePulse(boardId, groupId, pulse)
+        store.dispatch(getCmdUpdatePulse(groupId, pulse))
+        return updatedPulse
+    } catch (err) {
+        console.log('Cannot update pulse', err)
+        throw err
+    }
+}
+export async function removePulse(boardId, groupId, pulseId) {
+    try {
+        const removedPulse = await boardService.removePulse(boardId, groupId, pulseId)
+        store.dispatch(getCmdRemovePulse(groupId, pulseId))
+        return removedPulse
+    } catch (err) {
+        console.log('Cannot remove pulse', err)
+        throw err
+    }
+}
 
 
 // Command Creators:
@@ -97,15 +117,19 @@ function getCmdAddPulse(groupId, pulse) {
         pulse
     }
 }
-// function getCmdRemovePulse(groupId) {
-//     return {
-//         type: REMOVE_GROUP,
-//         groupId
-//     }
-// }
-// function getCmdUpdatePulse(group) {
-//     return {
-//         type: UPDATE_GROUP,
-//         group
-//     }
-// }
+
+function getCmdUpdatePulse(groupId, pulseToUpdate) {
+    return {
+        type: UPDATE_PULSE,
+        groupId,
+        pulseToUpdate
+    }
+}
+
+function getCmdRemovePulse(groupId, pulseId) {
+    return {
+        type: REMOVE_PULSE,
+        groupId,
+        pulseId
+    }
+}
