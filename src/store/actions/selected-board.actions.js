@@ -54,23 +54,25 @@ export async function updateGroup(boardId, group) {
 export async function addPulse(boardId, groupId, pulse) {
     try {
         const addedPulse = await boardService.addPulse(boardId, groupId, pulse)
-        store.dispatch(getCmdAddPulse(groupId, pulse))
+        store.dispatch(getCmdAddPulse(groupId, addedPulse))
         return addedPulse
     } catch (err) {
         console.log('Cannot add pulse', err)
         throw err
     }
 }
+
 export async function updatePulse(boardId, groupId, pulse) {
     try {
         const updatedPulse = await boardService.updatePulse(boardId, groupId, pulse)
-        store.dispatch(getCmdUpdatePulse(groupId, pulse))
+        store.dispatch(getCmdUpdatePulse(groupId, updatedPulse))
         return updatedPulse
     } catch (err) {
         console.log('Cannot update pulse', err)
         throw err
     }
 }
+
 export async function removePulse(boardId, groupId, pulseId) {
     try {
         const removedPulse = await boardService.removePulse(boardId, groupId, pulseId)

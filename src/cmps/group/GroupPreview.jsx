@@ -1,19 +1,31 @@
 import { useSelector } from "react-redux";
-import { addPulse, removePulse, updatePulse } from "../../store/actions/selected-board.actions.js";
+import { addPulse, removeGroup, removePulse, updateGroup, updatePulse } from "../../store/actions/selected-board.actions.js";
 import { PulseList } from "../pulse/PulseList.jsx";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.js";
-import { useEffect, useState } from "react";
 
-export function GroupPreview({ group, onRemoveGroup, onUpdateGroup }) {
-    const [stateGroup, setGroupInState] = useState(group)
+export function GroupPreview({ group }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
 
-    function onUpdate() {
+    async function onRemoveGroup() {
+        try {
+          await removeGroup(board._id, group.id)
+          showSuccessMsg(`Group removed (id: ${group.id})`)
+        } catch (err) {
+          showErrorMsg('Cannot remove group')
+        }
+      }
+
+    async function onUpdateGroup() {
         const newTitle = prompt('Title?')
         const titleColor = prompt('Title Color?')
 
-        const updatedGroup = { ...stateGroup, title: newTitle, style: { ...stateGroup.style, color: titleColor } }
-        onUpdateGroup(updatedGroup)
+        try {
+            const updatedGroup = { ...group, title: newTitle, style: { ...group.style, color: titleColor } }
+            await updateGroup(board._id, updatedGroup)
+            showSuccessMsg(`Group updated (id: ${updatedGroup.id})`)
+          } catch (err) {
+            showErrorMsg('Cannot update group')
+          }
     }
 
     async function onAddPulse() {
@@ -22,14 +34,7 @@ export function GroupPreview({ group, onRemoveGroup, onUpdateGroup }) {
             const pulse = {
                 title,
             }
-            const addedPulse = await addPulse(board._id, stateGroup.id, pulse)
-
-            const updatedGroup = {
-                ...stateGroup,
-                pulses: [...stateGroup.pulses, addedPulse],
-            }
-
-            setGroupInState(updatedGroup)
+            const addedPulse = await addPulse(board._id, group.id, pulse)
             showSuccessMsg('Pulse added')
 
         } catch (err) {
@@ -40,15 +45,7 @@ export function GroupPreview({ group, onRemoveGroup, onUpdateGroup }) {
 
     async function onUpdatePulse(pulseToUpdate) {
         try {
-            const updatedPulse = await updatePulse(board._id, stateGroup.id, pulseToUpdate)
-            const updatedPulses = stateGroup.pulses.filter(pulse => pulse.id === pulseToUpdate.id ? pulseToUpdate : pulse)
-
-            const updatedGroup = {
-                ...stateGroup,
-                pulses: updatedPulses,
-            }
-
-            setGroupInState(updatedGroup)
+            const updatedPulse = await updatePulse(board._id, group.id, pulseToUpdate)
             showSuccessMsg('Pulse updated successfully')
 
             return updatedPulse
@@ -60,15 +57,7 @@ export function GroupPreview({ group, onRemoveGroup, onUpdateGroup }) {
 
     async function onRemovePulse(pulseId) {
         try {
-            await removePulse(board._id, stateGroup.id, pulseId)
-            const updatedPulses = stateGroup.pulses.filter(pulse => pulse.id !== pulseId)
-
-            const updatedGroup = {
-                ...stateGroup,
-                pulses: updatedPulses,
-            }
-
-            setGroupInState(updatedGroup)
+            await removePulse(board._id, group.id, pulseId)
             showSuccessMsg('Pulse removed successfully')
         } catch (err) {
             console.log('err:', err)
@@ -76,14 +65,13 @@ export function GroupPreview({ group, onRemoveGroup, onUpdateGroup }) {
         }
     }
 
-
     return (
         <section className="group-preview">
             <h2>{group.title}</h2>
-            <button onClick={() => onRemoveGroup(stateGroup.id)}>Remove group</button>
-            <button onClick={onUpdate}>Update group</button>
-            <button onClick={onAddPulse}>Add {stateGroup.type}</button>
-            <PulseList pulses={stateGroup.pulses} type={stateGroup.type} onRemovePulse={onRemovePulse} onUpdatePulse={onUpdatePulse} />
+            <button onClick={() => onRemoveGroup(group.id)}>Remove group</button>
+            <button onClick={onUpdateGroup}>Update group</button>
+            <button onClick={onAddPulse}>Add {group.type}</button>
+            <PulseList pulses={group.pulses} type={group.type} onRemovePulse={onRemovePulse} onUpdatePulse={onUpdatePulse} />
         </section >
     )
 }
