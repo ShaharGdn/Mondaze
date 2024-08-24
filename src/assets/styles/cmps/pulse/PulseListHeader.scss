@@ -1,0 +1,25 @@
+.pulse-list-header {
+    display: flex;
+    height: $pulse-row-height;
+    @include border(block);
+    // margin-block-start: 8px;
+
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        @include border(right);
+
+        &.title-container {
+            min-width: 412px;
+
+            .pulse-list-title {
+                font-size: $txt-font-size;
+                line-height: 20px;
+            }
+        }
+    }
+
+}

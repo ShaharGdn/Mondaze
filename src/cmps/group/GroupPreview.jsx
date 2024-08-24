@@ -2,18 +2,20 @@ import { useSelector } from "react-redux";
 import { addPulse, removeGroup, removePulse, updateGroup, updatePulse } from "../../store/actions/selected-board.actions.js";
 import { PulseList } from "../pulse/PulseList.jsx";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.js";
+import { PulseListHeader } from "../pulse/PulseListHeader.jsx";
+import { GroupTitleHeader } from "./GroupTitleHeader.jsx";
 
 export function GroupPreview({ group }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
 
     async function onRemoveGroup() {
         try {
-          await removeGroup(board._id, group.id)
-          showSuccessMsg(`Group removed (id: ${group.id})`)
+            await removeGroup(board._id, group.id)
+            showSuccessMsg(`Group removed (id: ${group.id})`)
         } catch (err) {
-          showErrorMsg('Cannot remove group')
+            showErrorMsg('Cannot remove group')
         }
-      }
+    }
 
     async function onUpdateGroup() {
         const newTitle = prompt('Title?')
@@ -23,9 +25,9 @@ export function GroupPreview({ group }) {
             const updatedGroup = { ...group, title: newTitle, style: { ...group.style, color: titleColor } }
             await updateGroup(board._id, updatedGroup)
             showSuccessMsg(`Group updated (id: ${updatedGroup.id})`)
-          } catch (err) {
+        } catch (err) {
             showErrorMsg('Cannot update group')
-          }
+        }
     }
 
     async function onAddPulse() {
@@ -67,10 +69,11 @@ export function GroupPreview({ group }) {
 
     return (
         <section className="group-preview">
-            <h2>{group.title}</h2>
             <button onClick={() => onRemoveGroup(group.id)}>Remove group</button>
             <button onClick={onUpdateGroup}>Update group</button>
             <button onClick={onAddPulse}>Add {group.type}</button>
+            <GroupTitleHeader group={group} />
+            <PulseListHeader type={group.type} />
             <PulseList pulses={group.pulses} type={group.type} onRemovePulse={onRemovePulse} onUpdatePulse={onUpdatePulse} />
         </section >
     )

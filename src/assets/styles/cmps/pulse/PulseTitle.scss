@@ -1,0 +1,24 @@
+.pulse-title-message-container {
+
+    .pulse-title-container {
+        display: flex;
+        align-items: center;
+
+        padding: 0 0 0 30px;
+        @include border(right);
+        width: 346px;
+        height: 100%;
+
+        .pulse-title {
+            font-size: $txt-font-size;
+            color: $clr-txt;
+            line-height: 23px;
+        }
+    }
+
+    .pulse-messages-container {
+        width: 65px;
+        text-decoration: none;
+        text-align: center;
+    }
+}

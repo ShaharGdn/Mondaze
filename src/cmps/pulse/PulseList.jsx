@@ -7,7 +7,7 @@ export function PulseList({ pulses, onRemovePulse, onUpdatePulse, type }) {
             <ul className="pulse-list">
                 {pulses.map(pulse =>
                     <li className="pulse" key={pulse.id}>
-                        <PulsePreview pulse={pulse} type={type} onRemovePulse={onRemovePulse} onUpdatePulse={onUpdatePulse}/>
+                        <PulsePreview pulse={pulse} type={type} onRemovePulse={onRemovePulse} onUpdatePulse={onUpdatePulse} />
                     </li>)
                 }
             </ul>

@@ -1,0 +1,33 @@
+.group-title-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    height: $pulse-row-height;
+
+    left: -4px; // to middle it when group color stripe is added
+
+
+    .collapse-group-btn {
+        display: flex;
+        padding: 8px;
+        background-color: transparent;
+        font-size: 16px;
+        margin: 0;
+
+        // on collapse, add class and :
+        // transform-origin: center center;
+        // transform: rotate(90deg);
+        // transition: transform .2s;
+
+    }
+
+    .group-title {
+        margin: 0;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.1px;
+
+        padding: 0 4px;
+    }
+}

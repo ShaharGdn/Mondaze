@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { PulseSelector } from "./PulseSelector"
+import { PulseTitle } from "./PulseTitle"
 
 export function PulsePreview({ pulse, onRemovePulse, onUpdatePulse, type }) {
     const [pulseToEdit, setPulseToEdit] = useState(pulse)
@@ -23,10 +25,11 @@ export function PulsePreview({ pulse, onRemovePulse, onUpdatePulse, type }) {
     }
 
     return (
-        <section className="pulse-preview">
-            <h5>{pulseToEdit.title}</h5>
+        <ul className="pulse-preview">
+            <PulseSelector />
+            <PulseTitle pulse={pulse} />
             <button onClick={() => onRemovePulse(pulseToEdit.id)}>Remove {type}</button>
             <button onClick={handleChange}>Update {type}</button>
-        </section >
+        </ul >
     )
 }

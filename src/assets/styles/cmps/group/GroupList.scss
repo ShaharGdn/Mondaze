@@ -1,12 +1,21 @@
-.group-list {
-    padding-inline-start: 40px;
+.groups-container {
+    
+    .group-list {
+        padding-inline-start: 40px;
 
 
-    .group {
-        width: 100%;
-        min-height: 90px;
-        border-radius: 5px;      
-        border: 1px solid $clr-border;        
+
+        .group {
+            margin-block-end: 28px;
+
+            // width: 100%;
+            // min-height: 90px;
+            // border-radius: 5px;
+            // border: 1px solid $clr-border;
+
+        }
 
     }
+
+
 }

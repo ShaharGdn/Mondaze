@@ -1,0 +1,15 @@
+.pulse-preview {
+    display: flex;
+    // align-items: center;
+
+    height: $pulse-row-height;
+    @include border(bottom);
+
+    li {
+        display: flex;
+        align-items: center;
+
+        @include border(right);
+        // height: 100%;
+    }
+}
