@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 
 import { loadBoards, addBoard, updateBoard, removeBoard } from '../store/actions/board.actions'
 
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { boardService } from '../services/board'
-import { userService } from '../services/user'
 
 import { BoardList } from '../cmps/BoardList'
 import { BoardFilter } from '../cmps/BoardFilter'
-import { useNavigate } from 'react-router'
 
 export function BoardIndex() {
     const [ filterBy, setFilterBy ] = useState(boardService.getDefaultFilter())
@@ -17,7 +15,6 @@ export function BoardIndex() {
 
     const navigate = useNavigate()
 
-    console.log('boards:', boards)
     useEffect(() => {
         loadBoards(filterBy)
     }, [filterBy])

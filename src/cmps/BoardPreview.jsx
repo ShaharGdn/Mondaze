@@ -25,7 +25,7 @@ export function BoardPreview({ board, type }) {
 
             </div>
 
-            <div className="board-path Figtree-regular">
+            <div className="board-path">
                 <img className='wm-logo' src="../src/assets/img/wm_favicon.png" alt="Workspace Logo" />
                 <p>work management {'>'} My Workspace</p>
             </div>

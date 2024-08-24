@@ -1,10 +1,22 @@
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { BoardSideBarPreview } from "./BoardSideBarPreview";
+
 import { GoHome } from "react-icons/go";
 import { GoStar } from "react-icons/go";
+
 import { HiMagnifyingGlass } from "react-icons/hi2";
-import { useNavigate } from "react-router";
+import { loadBoards } from '../store/actions/board.actions'
 
 export function SideBar() {
+    const boards = useSelector(storeState => storeState.boardModule.boards)
+    const [filterBy, setFilterBy] = useState(boardService.getDefaultFilter())
     const navigate = useNavigate()
+
+    useEffect(() => {
+        loadBoards(filterBy)
+    }, [filterBy])
 
     return (
         <article className="side-bar-container open Figtree-regular">
@@ -37,6 +49,14 @@ export function SideBar() {
                         <i class="fa-regular fa-plus-large fa-lg"></i>
                     </button>
                 </div>
+
+                <ul className="board-list-side-bar">
+                    {boards.map(board =>
+                        <li key={board._id} className="board-side-bar-preview"  onClick={() => navigate(`/board/${board._id}`)}>
+                            <BoardSideBarPreview board={board} />
+                        </li>)
+                    }
+                </ul>
             </nav>
         </article>
     )
