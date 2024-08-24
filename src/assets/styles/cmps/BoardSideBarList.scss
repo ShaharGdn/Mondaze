@@ -1,0 +1,55 @@
+.board-list-side-bar {
+    .board-side-bar-preview-link {
+        margin-block-start: 0;
+        margin-inline-start: 0;
+        display: flex;
+        cursor: pointer;
+        margin: 0;
+        text-decoration: none;
+
+        .board-name {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            width: 100%;
+            cursor: pointer;
+            text-decoration: none;
+
+            .board-dots-actions {
+                display: none;
+                margin-inline-end: 1rem;
+                color: $clr-text;
+            }
+
+            .board-dots-actions.active {
+                color: inherit;
+            }
+
+            &:hover .board-dots-actions {
+                display: block;
+            }
+
+
+            .board-name-title {
+                display: flex;
+                align-items: baseline;
+                margin: 0;
+                margin-block-start: 0.5rem;
+
+
+                .board-icon {
+                    --icon-color: #676879;
+                    color: var(--icon-color);
+                    position: relative;
+                    top: rem(3px);
+                    margin: 0;
+                }
+
+                p {
+                    margin-inline-start: rem(5px);
+                    color: $clr-text;
+                }
+            }
+        }
+    }
+}

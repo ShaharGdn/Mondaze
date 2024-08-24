@@ -1,16 +1,21 @@
 .board-list-container {
     --margin-inline-start: 16px;
-    margin-inline-start: var( --margin-inline-start);
-    position: relative;
-    display: inline-block;
-    width: calc(100% - var(--margin-inline-start));
-    height: auto;
-    background-color: var(--secondary-background-color);
-    border-radius: rem(8px);
-    margin-top: rem(16px);
+    --margin-block-end: rem(30px);
     --application-border-color: #e6e9ef;
     --box-shadow-color: var(--application-border-color);
+
+    display: inline-block;
+    position: relative;
+    border-radius: rem(8px);
+    width: calc(100% - var(--margin-inline-start));
+    height: auto;
+    margin-inline-start: var(--margin-inline-start);
+    margin-block-end: var(--margin-block-end);
+    margin-top: rem(16px);
+    background-color: var(--secondary-background-color);
     box-shadow: 0px 3px 12px var(--box-shadow-color);
+    overflow: scroll;
+    scroll-behavior:smooth ;
 
     .recently-visited {
         display: flex;
@@ -31,8 +36,8 @@
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         width: 100%;
         grid-gap: 1.25rem;
-        padding: 1rem; 
-        padding-inline-start: 2.5rem; 
+        padding: 1rem;
+        padding-inline-start: 2.5rem;
         margin: 0;
     }
 }

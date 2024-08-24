@@ -22,8 +22,8 @@
     .ws-cmp {
         display: flex;
         align-items: center;
-        margin-block-end: rem(8px);
         cursor: pointer;
+        margin-block-end: rem(8px);
     }
 
     .border {
@@ -60,7 +60,6 @@
     .search-add {
         display: flex;
         align-items: flex-end;
-
 
         .search-container,
         .add-board-btn {

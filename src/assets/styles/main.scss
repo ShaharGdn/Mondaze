@@ -14,7 +14,6 @@
 
 // pages
 @import "RootCmp";
-
 @import "pages/AboutUs";
 @import "pages/HomePage";
 @import "pages/BoardIndex";
@@ -35,6 +34,7 @@
 @import "cmps/BoardFilter";
 @import "cmps/BoardList";
 @import "cmps/BoardPreview";
+@import "cmps/BoardSideBarList";
 
 @import "cmps/BoardTemplates";
 @import "cmps/Loader";
