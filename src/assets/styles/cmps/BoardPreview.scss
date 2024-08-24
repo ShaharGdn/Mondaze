@@ -28,13 +28,13 @@
 
         .board-name-title {
             display: flex;
-            align-items: baseline;
+            align-items: center;
 
             .board-icon {
                 --icon-color: #676879;
                 color: var(--icon-color);
                 position: relative;
-                top: rem(2px);
+                top: rem(4px);
             }
 
             p {

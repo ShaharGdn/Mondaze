@@ -26,18 +26,15 @@ export function SideBar() {
                     <GoHome size={20} />
                     <span>Home</span>
                 </div>
-                <div className="border"></div>
 
-                {/* <hr /> */}
+                <div className="border"></div>
 
                 <div className="favorites">
                     <GoStar size={20} />
                     <span>Favorites</span>
                 </div>
 
-                {/* <hr /> */}
                 <div className="border"></div>
-
 
                 <div className="ws-cmp Figtree-bold">
                     <span className="ws-icon">M</span>
@@ -50,22 +47,15 @@ export function SideBar() {
                         <input id="txt" onChange={(ev) => handleChange(ev, 'filter')} autoFocus name="txt" type="text" placeholder="Search" />
                     </div>
                     <button className="add-board-btn">
-                        <i class="fa-regular fa-plus-large fa-lg"></i>
+                        <i className="fa-regular fa-plus-large fa-lg"></i>
                     </button>
                 </div>
 
                 <ul className="board-list-side-bar">
                     {boards.map((board) => (
-                        <section
-                        // <NavLink
-                            key={board._id}
-                            className='board-side-bar-preview'
-                        // className={({ isActive }) => isActive ? 'board-side-bar-preview active' : 'board-side-bar-preview'}
-                        // to={`/board/${board._id}`}
-                        >
+                        <section key={board._id} className='board-side-bar-preview'>
                             <BoardSideBarPreview board={board} />
                         </section>
-                        // </NavLink>
                     ))}
                 </ul>
             </nav>
