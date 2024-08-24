@@ -1,13 +1,14 @@
 import { PulsePreview } from "./PulsePreview";
 
-export function PulseList({ pulses, onRemovePulse, onUpdatePulse, type }) {
-    return (
+export function PulseList({ group, onUpdatePulse }) {
 
+    return (
         <section className="pulses-container">
             <ul className="pulse-list">
-                {pulses.map(pulse =>
+                {group.pulses.map(pulse =>
                     <li className="pulse" key={pulse.id}>
-                        <PulsePreview pulse={pulse} type={type} onRemovePulse={onRemovePulse} onUpdatePulse={onUpdatePulse} />
+                        <PulsePreview pulse={pulse} group={group} onUpdatePulse={onUpdatePulse} />
+                        {/* <PulsePreview pulse={pulse} type={type} onRemovePulse={onRemovePulse} onUpdatePulse={onUpdatePulse} /> */}
                     </li>)
                 }
             </ul>

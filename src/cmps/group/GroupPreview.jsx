@@ -57,16 +57,6 @@ export function GroupPreview({ group }) {
         }
     }
 
-    async function onRemovePulse(pulseId) {
-        try {
-            await removePulse(board._id, group.id, pulseId)
-            showSuccessMsg('Pulse removed successfully')
-        } catch (err) {
-            console.log('err:', err)
-            showErrorMsg('Cannot remove pulse')
-        }
-    }
-
     return (
         <section className="group-preview">
             <button onClick={() => onRemoveGroup(group.id)}>Remove group</button>
@@ -74,7 +64,8 @@ export function GroupPreview({ group }) {
             <button onClick={onAddPulse}>Add {group.type}</button>
             <GroupTitleHeader group={group} />
             <PulseListHeader type={group.type} />
-            <PulseList pulses={group.pulses} type={group.type} onRemovePulse={onRemovePulse} onUpdatePulse={onUpdatePulse} />
+            <PulseList group={group} onUpdatePulse={onUpdatePulse} />
+            {/* <PulseList group={group} pulses={group.pulses} type={group.type} onRemovePulse={onRemovePulse} onUpdatePulse={onUpdatePulse} /> */}
         </section >
     )
 }
