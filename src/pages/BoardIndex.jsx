@@ -45,7 +45,7 @@ export function BoardIndex() {
                 <img src="src/assets/img/header_background.svg" alt="header-bg-party" />
             </header>
 
-            <main>
+            <main className="board-list-container main">
             <BoardList
                 boards={boards}/>
             </main>

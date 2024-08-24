@@ -4,9 +4,11 @@
     grid-template-columns: rem(270px) 1fr;
     background-color: $clr-bg;
     height: 100vh;
-    width: calc(100vw - calc(var(--margin-inline-start-main) + 3px));
+    // width: calc(100vw - calc(var(--margin-inline-start-main) + 3px));
+    width: 100vw;
     margin: 0;
-    overflow: auto;
+    overflow: hidden;
+
 
     >* {
         grid-column: 2;
