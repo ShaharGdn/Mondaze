@@ -3,7 +3,8 @@ import { IoIosArrowDown } from "react-icons/io";
 
 
 export function BoardList({ boards }) {
-    return <section className="board-list-container">
+    return <section className="">
+    {/* return <section className="board-list-container"> */}
         <div className="recently-visited Figtree-bold">
             <span className="arrow-down-icon">
                 <IoIosArrowDown />
