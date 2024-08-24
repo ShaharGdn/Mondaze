@@ -1,0 +1,113 @@
+.side-bar-container.open {
+    display: flex;
+    flex-direction: row;
+    grid-column: 1;
+    background: linear-gradient(135deg, white 5%, $clr-bg 100%);
+    border-radius: 0.5rem;
+    font-size: rem(14px);
+    height: 100vh;
+
+    * {
+        margin-inline-start: rem(8px);
+        margin-block-start: rem(4px);
+    }
+
+    nav {
+        width: 100%;
+        margin: 0;
+    }
+
+    .home-link,
+    .favorites,
+    .ws-cmp {
+        display: flex;
+        align-items: center;
+        margin-block-end: rem(8px);
+        cursor: pointer;
+    }
+
+    hr {
+        display: block;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+        border-style: inset;
+        border-width: 0.5px;
+        border-color: $clr-bg;
+    }
+
+    .ws-cmp {
+        font-size: rem(16px);
+
+        .ws-icon {
+            height: rem(20px);
+            width: rem(20px);
+            background-color: $clr-workspace-name-icon-bg;
+            color: white;
+            text-align: center;
+            font-size: rem(14px);
+            border-radius: 0.2rem;
+        }
+    }
+
+    .search-add {
+        display: flex;
+        align-items: flex-end;
+
+
+        .search-container,
+        .add-board-btn {
+            position: relative;
+        }
+
+        .search-container input {
+            padding: 0.6em 0.5em 0.6em 40px;
+            margin: 0;
+            min-height: rem(32px);
+            font-family: Figtree;
+            border-radius: 0.3rem;
+            border-width: 0.5px;
+            font-size: 1em;
+            appearance: textfield;
+            margin-inline-end: 0.5rem;
+        }
+
+        .search-container div {
+            position: absolute;
+            right: 80%;
+            top: 35%;
+            transform: translateY(-50%);
+            border: none;
+            background: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1em;
+        }
+
+        .search-container input:focus {
+            background-color: white;
+            border-width: 0.1px;
+            border-color: blue;
+            outline: none;
+            box-shadow: 0 0 0 0.5px rgb(21, 0, 255);
+        }
+
+        .add-board-btn {
+            display: flex;
+            align-items: center;
+            border-radius: 0.2rem;
+            padding: 0;
+            margin: 0;
+            min-width: rem(35px);
+            height: rem(35px);
+            background: $clr-btn-blue;
+            color: white;
+
+            * {
+                width: 100%;
+            }
+        }
+    }
+
+}

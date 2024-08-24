@@ -1,0 +1,39 @@
+.board-list-container {
+    --margin-inline-start: 16px;
+    margin-inline-start: var( --margin-inline-start);
+    position: relative;
+    display: inline-block;
+    width: calc(100% - var(--margin-inline-start));
+    height: auto;
+    background-color: var(--secondary-background-color);
+    border-radius: rem(8px);
+    margin-top: rem(16px);
+    --application-border-color: #e6e9ef;
+    --box-shadow-color: var(--application-border-color);
+    box-shadow: 0px 3px 12px var(--box-shadow-color);
+
+    .recently-visited {
+        display: flex;
+        align-items: baseline;
+        font-size: rem(16px);
+        padding-block-start: rem(20px);
+        padding-inline-start: rem(30px);
+
+        .arrow-down-icon {
+            cursor: pointer;
+            margin-inline-end: rem(8px);
+        }
+    }
+
+    .board-list {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        width: 100%;
+        grid-gap: 1.25rem;
+        padding: 1rem; 
+        padding-inline-start: 2.5rem; 
+        margin: 0;
+        // overflow-x: scroll; 
+    }
+}

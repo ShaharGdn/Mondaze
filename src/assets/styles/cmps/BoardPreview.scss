@@ -1,0 +1,62 @@
+.board-preview {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.2rem;
+    padding: rem(8px);
+    border: 1px solid;
+    --layout-border-color: #d0d4e4;
+    border-color: var(--layout-border-color);
+    cursor: pointer;
+
+    .board-preview-img-container {
+        display: flex;
+        margin-bottom: 8px;
+        background-color: #6c6cff;
+        border-radius: 4px;
+        justify-content: center;
+        min-height: 102px;
+        overflow: hidden;
+    }
+
+    .board-name-and-star {
+        font-weight: 700;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-block-end: rem(5px);
+
+        .board-name-title {
+            display: flex;
+            align-items: baseline;
+
+            .board-icon {
+                --icon-color: #676879;
+                color: var(--icon-color);
+                position: relative;
+                top: rem(2px);
+            }
+
+            p {
+                margin-inline-start: rem(5px);
+            }
+        }
+
+    }
+
+    .board-path {
+        display: flex;
+        align-items: center;
+        font-size: rem(14px);
+
+        .wm-logo {
+            width: rem(20px);
+            fill: none;
+        }
+
+        p {
+            margin-inline-start: rem(5px);
+        }
+
+    }
+}

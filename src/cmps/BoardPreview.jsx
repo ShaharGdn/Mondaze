@@ -1,13 +1,34 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { GoStar } from 'react-icons/go'
+import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa6";
+import { CiStar } from "react-icons/ci";
 
-export function BoardPreview({ board }) {
-    return <article className="preview">
-        <header>
-            <Link to={`/board/${board._id}`}>{board.vendor}</Link>
-        </header>
 
-        {/* <p>Speed: <span>{board.speed.toLocaleString()} Km/h</span></p> */}
-        {board.owner && <p>Owner: <span>{board.owner.fullname}</span></p>}
-        
-    </article>
+export function BoardPreview({ board, type }) {
+    const navigate = useNavigate()
+
+    return (
+        <article className="board-preview" onClick={() => navigate(`/board/${board._id}`)}>
+            <div className="board-preview-img-container">
+                <img src="src/assets/img/recent_board_prv.svg" alt="board-preview" />
+            </div>
+
+            <div className="board-name-and-star Figtree-bold">
+                <div className="board-name-title">
+                    <div className="board-icon">
+                        <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" class="board-icon" label="Expand list"><path d="M7.5 4.5H16C16.2761 4.5 16.5 4.72386 16.5 5V15C16.5 15.2761 16.2761 15.5 16 15.5H7.5L7.5 4.5ZM6 4.5H4C3.72386 4.5 3.5 4.72386 3.5 5V15C3.5 15.2761 3.72386 15.5 4 15.5H6L6 4.5ZM2 5C2 3.89543 2.89543 3 4 3H16C17.1046 3 18 3.89543 18 5V15C18 16.1046 17.1046 17 16 17H4C2.89543 17 2 16.1046 2 15V5Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <p>{board.title}</p>
+                </div>
+                {!board.isStarred && <FaStar color="#ffcb00" size={19}/> || <FaRegStar size={19}/>}
+
+            </div>
+
+            <div className="board-path Figtree-regular">
+                <img className='wm-logo' src="../src/assets/img/wm_favicon.png" alt="Workspace Logo" />
+                <p>work management {'>'} My Workspace</p>
+            </div>
+        </article>
+    )
 }

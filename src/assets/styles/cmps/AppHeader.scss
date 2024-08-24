@@ -1,0 +1,28 @@
+.app-header {
+    display: flex;
+    align-items: center;
+    background-color: $clr-bg;
+    color: $clr-text;
+    font-size: rem(16px);
+    height: rem(48px);
+
+    .proj-name {
+        margin-inline-start: rem(8px);
+    }
+
+    .wm-title {
+        margin-inline-start: rem(4px);
+    }
+
+    img {
+        fill: currentcolor;
+        width: rem(27px);
+        height: rem(27px);
+        margin-inline-start: rem(16px);
+    }
+
+    nav {
+        display: flex;
+
+    }
+}

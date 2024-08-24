@@ -28,11 +28,11 @@ export function BoardDetails() {
   }
 
   return (
-    <section className="board-details">
+    <section className="board-details main">
       <header className='board-header'></header>
 
       {board && <div>
-        <h1>{board.title}</h1>
+        {/* <h1>{board.title}</h1> */}
         <button onClick={()=> onAddGroup('start')}>Add new group</button>
         <GroupList groups={board.groups}/>
         <button onClick={()=> onAddGroup('end')}>Add new group</button>

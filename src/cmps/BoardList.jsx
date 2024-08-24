@@ -1,25 +1,19 @@
-import { userService } from '../services/user'
 import { BoardPreview } from './BoardPreview'
+import { IoIosArrowDown } from "react-icons/io";
 
-export function BoardList({ boards, onRemoveBoard, onUpdateBoard }) {
-    
-    function shouldShowActionBtns(board) {
-        const user = userService.getLoggedinUser()
-        
-        if (!user) return false
-        if (user.isAdmin) return true
-        return board.owner?._id === user._id
-    }
 
-    return <section>
-        <ul className="list">
+export function BoardList({ boards }) {
+    return <section className="board-list-container">
+        <div className="recently-visited Figtree-bold">
+            <span className="arrow-down-icon">
+                <IoIosArrowDown />
+            </span>
+            <h1>Recently visited</h1>
+        </div>
+        <ul className="board-list">
             {boards.map(board =>
                 <li key={board._id}>
-                    <BoardPreview board={board}/>
-                    {shouldShowActionBtns(board) && <div className="actions">
-                        <button onClick={() => onUpdateBoard(board)}>Edit</button>
-                        <button onClick={() => onRemoveBoard(board._id)}>x</button>
-                    </div>}
+                    <BoardPreview board={board} />
                 </li>)
             }
         </ul>
