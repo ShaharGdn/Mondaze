@@ -12,8 +12,8 @@ export function BoardList({ boards }) {
             <div className="recently-visited Figtree-bold">
                 <span className="arrow-down-icon" onClick={() => setIsListOpen(!isListOpen)}>
                     {isListOpen &&
-                        <IoIosArrowDown /> ||
-                        <IoIosArrowUp />
+                        <IoIosArrowUp /> ||
+                        <IoIosArrowDown />
                     }
                 </span>
                 <h1>Recently visited</h1>

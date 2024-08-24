@@ -33,16 +33,6 @@
         margin-inline-start: auto;
     }
 
-    // hr {
-    //     display: block;
-    //     margin-inline-start: auto;
-    //     margin-inline-end: auto;
-    //     border-style: inset;
-    //     border-style: solid;
-    //     border-width: 0.5px;
-    //     border-color: $clr-bg;
-    // }
-
     .ws-cmp {
         font-size: rem(16px);
 
@@ -117,6 +107,10 @@
                 margin: 0 auto;
             }
         }
+    }
+
+
+    .board-list-side-bar {
     }
 
 }

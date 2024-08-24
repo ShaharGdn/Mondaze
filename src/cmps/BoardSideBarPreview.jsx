@@ -2,10 +2,16 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { BsThreeDots } from "react-icons/bs";
 
 export function BoardSideBarPreview({ board, type }) {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
+
+    function click() {
+        console.log('hello:')
+
+    }
 
     return (
-        <NavLink className="board-side-bar-preview-link Figtree-regular">
+        <NavLink className={({ isActive }) => isActive ? 'board-side-bar-link Figtree-regular active' : 'board-side-bar-link Figtree-regular'}
+            onClick={click} to={`/board/${board._id}`}>
             <div className="board-name">
                 <div className="board-name-title">
                     <div className="board-icon">
@@ -13,7 +19,7 @@ export function BoardSideBarPreview({ board, type }) {
                     </div>
                     <p>{board.title}</p>
                 </div>
-                <BsThreeDots className="board-dots-actions" />
+                <BsThreeDots className="board-dots-actions" onClick={click} />
             </div>
         </NavLink>
     )

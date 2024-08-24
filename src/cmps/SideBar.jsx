@@ -8,6 +8,7 @@ import { GoStar } from "react-icons/go";
 
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { loadBoards } from '../store/actions/board.actions'
+import { NavLink } from "react-router-dom";
 
 export function SideBar() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
@@ -54,11 +55,18 @@ export function SideBar() {
                 </div>
 
                 <ul className="board-list-side-bar">
-                    {boards.map(board =>
-                        <li key={board._id} className="board-side-bar-preview"  onClick={() => navigate(`/board/${board._id}`)}>
+                    {boards.map((board) => (
+                        <section
+                        // <NavLink
+                            key={board._id}
+                            className='board-side-bar-preview'
+                        // className={({ isActive }) => isActive ? 'board-side-bar-preview active' : 'board-side-bar-preview'}
+                        // to={`/board/${board._id}`}
+                        >
                             <BoardSideBarPreview board={board} />
-                        </li>)
-                    }
+                        </section>
+                        // </NavLink>
+                    ))}
                 </ul>
             </nav>
         </article>
