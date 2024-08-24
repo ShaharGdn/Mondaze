@@ -1,12 +1,10 @@
-import { useState } from "react"
 import { PulseSelector } from "./PulseSelector"
 import { PulseTitle } from "./PulseTitle"
 import { showSuccessMsg } from "../../services/event-bus.service"
 import { useSelector } from "react-redux"
-import { removePulse } from "../../store/actions/selected-board.actions"
+import { removePulse, updatePulse } from "../../store/actions/selected-board.actions"
 
-export function PulsePreview({ group, pulse, onUpdatePulse }) {
-    // const [pulseToEdit, setPulseToEdit] = useState(pulse)
+export function PulsePreview({ group, pulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
 
     async function onRemovePulse() {
@@ -19,38 +17,25 @@ export function PulsePreview({ group, pulse, onUpdatePulse }) {
         }
     }
 
-    async function handleChange() {
+    async function onUpdatePulse() {
         try {
             const title = prompt('New title?')
-            const newPulse = { ...pulse, title }
+            const pulseToUpdate = { ...pulse, title }
 
-            await onUpdatePulse(newPulse)
+            await updatePulse(board._id, group.id, pulseToUpdate)
             showSuccessMsg('Pulse updated successfully')
         } catch (err) {
             console.log('err:', err)
             showErrorMsg('Cannot update pulse')
         }
     }
-    // async function handleChange() {
-    //     try {
-    //         const title = prompt('New title?')
-    //         const newPulse = {
-    //             ...pulseToEdit, title
-    //         }
-    //         const updatedPulse = await onUpdatePulse(newPulse)
-    //         setPulseToEdit(updatedPulse)
-    //     } catch (err) {
-    //         console.log('err:', err)
-    //     }
-    // }
 
     return (
         <ul className="pulse-preview">
             <PulseSelector />
             <PulseTitle pulse={pulse} />
             <button onClick={onRemovePulse}>Remove {group.type}</button>
-            {/* <button onClick={() => onRemovePulse(pulseToEdit.id)}>Remove {type}</button> */}
-            <button onClick={handleChange}>Update {group.type}</button>
+            <button onClick={onUpdatePulse}>Update {group.type}</button>
         </ul >
     )
 }

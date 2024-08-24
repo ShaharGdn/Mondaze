@@ -8,7 +8,6 @@ export function PulseList({ group, onUpdatePulse }) {
                 {group.pulses.map(pulse =>
                     <li className="pulse" key={pulse.id}>
                         <PulsePreview pulse={pulse} group={group} onUpdatePulse={onUpdatePulse} />
-                        {/* <PulsePreview pulse={pulse} type={type} onRemovePulse={onRemovePulse} onUpdatePulse={onUpdatePulse} /> */}
                     </li>)
                 }
             </ul>

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { addPulse, removeGroup, removePulse, updateGroup, updatePulse } from "../../store/actions/selected-board.actions.js";
+import { addPulse, removeGroup, updateGroup } from "../../store/actions/selected-board.actions.js";
 import { PulseList } from "../pulse/PulseList.jsx";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.js";
 import { PulseListHeader } from "../pulse/PulseListHeader.jsx";
@@ -36,24 +36,11 @@ export function GroupPreview({ group }) {
             const pulse = {
                 title,
             }
-            const addedPulse = await addPulse(board._id, group.id, pulse)
+            await addPulse(board._id, group.id, pulse)
             showSuccessMsg('Pulse added')
-
         } catch (err) {
             console.log('err:', err)
             showErrorMsg('Cannot add pulse')
-        }
-    }
-
-    async function onUpdatePulse(pulseToUpdate) {
-        try {
-            const updatedPulse = await updatePulse(board._id, group.id, pulseToUpdate)
-            showSuccessMsg('Pulse updated successfully')
-
-            return updatedPulse
-        } catch (err) {
-            console.log('err:', err)
-            showErrorMsg('Cannot update pulse')
         }
     }
 
@@ -64,8 +51,7 @@ export function GroupPreview({ group }) {
             <button onClick={onAddPulse}>Add {group.type}</button>
             <GroupTitleHeader group={group} />
             <PulseListHeader type={group.type} />
-            <PulseList group={group} onUpdatePulse={onUpdatePulse} />
-            {/* <PulseList group={group} pulses={group.pulses} type={group.type} onRemovePulse={onRemovePulse} onUpdatePulse={onUpdatePulse} /> */}
+            <PulseList group={group} />
         </section >
     )
 }
