@@ -13,15 +13,18 @@ export function SideBar() {
                     <GoHome size={20} />
                     <span>Home</span>
                 </div>
+                <div className="border"></div>
 
-                <hr />
+                {/* <hr /> */}
 
                 <div className="favorites">
                     <GoStar size={20} />
                     <span>Favorites</span>
                 </div>
 
-                <hr />
+                {/* <hr /> */}
+                <div className="border"></div>
+
 
                 <div className="ws-cmp Figtree-bold">
                     <span className="ws-icon">M</span>
