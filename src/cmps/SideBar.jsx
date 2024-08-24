@@ -1,15 +1,15 @@
 import { GoHome } from "react-icons/go";
 import { GoStar } from "react-icons/go";
-import { GoPlus } from "react-icons/go";
 import { HiMagnifyingGlass } from "react-icons/hi2";
-
-
+import { useNavigate } from "react-router";
 
 export function SideBar() {
+    const navigate = useNavigate()
+
     return (
         <article className="side-bar-container open Figtree-regular">
             <nav>
-                <div className="home-link">
+                <div className="home-link" onClick={() => navigate('/board')}>
                     <GoHome size={20} />
                     <span>Home</span>
                 </div>

@@ -9,60 +9,46 @@ import { userService } from '../services/user'
 
 import { BoardList } from '../cmps/BoardList'
 import { BoardFilter } from '../cmps/BoardFilter'
+import { useNavigate } from 'react-router'
 
 export function BoardIndex() {
-
     const [ filterBy, setFilterBy ] = useState(boardService.getDefaultFilter())
     const boards = useSelector(storeState => storeState.boardModule.boards)
 
+    const navigate = useNavigate()
+
+    console.log('boards:', boards)
     useEffect(() => {
         loadBoards(filterBy)
     }, [filterBy])
 
-    async function onRemoveBoard(boardId) {
-        try {
-            await removeBoard(boardId)
-            showSuccessMsg('Board removed')            
-        } catch (err) {
-            showErrorMsg('Cannot remove board')
-        }
-    }
+    // async function onUpdateBoard(board) {
+    //     const speed = +prompt('New speed?', board.speed)
+    //     if(speed === 0 || speed === board.speed) return
 
-    async function onAddBoard() {
-        const board = boardService.getEmptyBoard()
-        board.vendor = prompt('Vendor?')
-        try {
-            const savedBoard = await addBoard(board)
-            showSuccessMsg(`Board added (id: ${savedBoard._id})`)
-        } catch (err) {
-            showErrorMsg('Cannot add board')
-        }        
-    }
-
-    async function onUpdateBoard(board) {
-        const speed = +prompt('New speed?', board.speed)
-        if(speed === 0 || speed === board.speed) return
-
-        const boardToSave = { ...board, speed }
-        try {
-            const savedBoard = await updateBoard(boardToSave)
-            showSuccessMsg(`Board updated, new speed: ${savedBoard.speed}`)
-        } catch (err) {
-            showErrorMsg('Cannot update board')
-        }        
-    }
+    //     const boardToSave = { ...board, speed }
+    //     try {
+    //         const savedBoard = await updateBoard(boardToSave)
+    //         showSuccessMsg(`Board updated, new speed: ${savedBoard.speed}`)
+    //     } catch (err) {
+    //         showErrorMsg('Cannot update board')
+    //     }        
+    // }
 
     return (
-        <main className="board-index">
-            <header>
-                <h2>Boards</h2>
-                {userService.getLoggedinUser() && <button onClick={onAddBoard}>Add a Board</button>}
+        <section className="board-index main">
+            <header className='header-greeting'>
+                <div className="text-greeting">
+                    <h5 className='Figtree-regular'>Good evening `{ }`, Shahar! `{ }`</h5>
+                    <h6 className='Figtree-semi-bold'>Quickly access your recent boards, Inbox and workspaces</h6>
+                </div>
+                <img src="src/assets/img/header_background.svg" alt="header-bg-party" />
             </header>
-            {/* <BoardFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
-            <BoardList 
-                boards={boards}
-                onRemoveBoard={onRemoveBoard} 
-                onUpdateBoard={onUpdateBoard}/>
-        </main>
+
+            <main>
+            <BoardList
+                boards={boards}/>
+            </main>
+        </section >
     )
 }

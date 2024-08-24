@@ -1,15 +1,27 @@
 .board-index {
-    header {
+    .header-greeting {
         display: flex;
         align-items: center;
         justify-content: space-between;
-
-        padding-block: .3em;
+        padding: 0 rem(20px);
+        --application-border-color: #e6e9ef;
+        --box-shadow-color: var(--application-border-color);
+        box-shadow: 0px 3px 12px var(--box-shadow-color);
     }
 
-    h2 {
-        margin: 0;
-        font-size: 1.3em;
+    .header-greeting {
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        h5 {
+            font-size: rem(14px);
+        }
+
+        h6 {
+            font-size: rem(16px);
+        }
     }
 
     button {
