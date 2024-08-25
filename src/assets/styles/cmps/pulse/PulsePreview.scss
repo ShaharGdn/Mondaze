@@ -7,11 +7,6 @@
     @include border(bottom);
     // z-index: 0;
 
-    font-family: "Figtree", "Roboto", sans-serif;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
-
     &:hover {
         position: relative;
         background-color: $clr-pulse-hover;
