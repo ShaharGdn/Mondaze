@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { BsThreeDots } from 'react-icons/bs';
-import BoardIcon from './BoardIcon';
+import BoardIcon from './icons/BoardIcon';
 
 export function BoardSideBarPreview({ board, type }) {
     function getClassName({ isActive }) {

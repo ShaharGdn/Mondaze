@@ -19,7 +19,7 @@
 
             &.active {
                 background: $clr-btn-active-bg;
-                border-radius: 0.3rem;
+                border-radius: $border-radius-li;
 
                 .board-icon {
                     color: $clr-sidebar-icon-active !important;

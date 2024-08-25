@@ -1,0 +1,44 @@
+.pop-over-add-board {
+    .modal-select {
+        .add-items-list {
+            .icon {
+                color: $clr-sidebar-icon-inactive;
+                margin-inline-end: rem(10px);
+            }
+
+
+            li {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: rem(240px);
+                padding-inline-start: 0.7rem;
+                padding-block: 0.4rem;
+
+                .title-icon {
+                    display: flex;
+                    align-items: center;
+                }
+                span {
+                    font-size: rem(14px);
+                    color: $clr-text;
+                }
+
+                &:hover {
+                    background-color: $clr-menu-add-hover;
+                    border-radius: $border-radius-li;
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+
+        h5 {
+            color: #676879;
+            font-size: rem(14px);
+            padding-inline-start: 0.5rem;
+            margin-block-start: 0.5rem;
+        }
+    }
+}

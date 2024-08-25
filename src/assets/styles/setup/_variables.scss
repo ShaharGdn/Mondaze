@@ -20,12 +20,13 @@ $clr-header-line: #333333;
 $clr-border: #d0d4e4;
 $clr-table-bg: #ffffff;
 $clr-table-shadow: #c3c6d4;
-$clr-pulse-hover: rgb(245,246,248);
+$clr-pulse-hover: rgb(245, 246, 248);
 
 // Buttons and Active States
 $clr-btn-blue: #0073ea;
 $clr-btn-blue-light: #cce5ff;
 $clr-btn-hover: rgba(103, 104, 121, 0.1); // 10% opacity
+$clr-menu-add-hover: #F1F1F2; // 10% opacity
 $clr-btn-active-bg: #cce5ff;
 
 // Sidebar Icons
@@ -36,10 +37,15 @@ $clr-sidebar-icon-active: #323338;
 $clr-workspace-name-icon-bg: #579bfc;
 $clr-workspace-text-blue: #0073ea;
 
+
+// Borders
+$border-radius-li: 0.3rem;
+
+
 // Breakpoints - needs modifying
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
-$normal-breakpoint: 960px; 
+$normal-breakpoint: 960px;
 
 // Sizes
 $pulse-row-height: 36px;
