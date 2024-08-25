@@ -9,7 +9,7 @@ export function GroupTitleHeader({ group }) {
                 <IoIosArrowDown />
             </button>
             {/* </div> */}
-            <h3 className="group-title">{group.title}</h3>
+            <h4 className="group-title">{group.title}</h4>
         </section>
     )
 

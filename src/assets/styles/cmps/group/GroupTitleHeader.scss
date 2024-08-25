@@ -23,10 +23,19 @@
 
     .group-title {
         margin: 0;
+
+        font-family: "Poppins","Roboto", sans-serif;
         font-size: 18px;
         line-height: 24px;
+        font-weight: 500;
         letter-spacing: 0.1px;
 
+        //later
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
+
         padding: 0 2px;
+
     }
 }
