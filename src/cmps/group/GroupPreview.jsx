@@ -51,7 +51,7 @@ export function GroupPreview({ group }) {
             <button onClick={onAddPulse}>Add {group.type}</button>
 
             <GroupTitleHeader group={group} />
-            <PulseListHeader group={group} />
+            <PulseListHeader board={board} group={group} />
             <PulseList group={group} />
         </section >
     )

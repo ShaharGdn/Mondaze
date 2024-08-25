@@ -18,11 +18,21 @@
 
         &.title-container {
             min-width: 412px;
+        }
 
-            .pulse-list-title {
-                line-height: 20px;
-                color: $clr-text;
-            }
+        &.cmp-title-container {
+            width: 139px;
+            padding-inline: 10px 20px;
+        }
+
+        .pulse-list-title {
+            line-height: 20px;
+            color: $clr-text;
+
+            
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
         }
     }
 }
