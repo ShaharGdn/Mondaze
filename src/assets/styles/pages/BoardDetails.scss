@@ -1,0 +1,19 @@
+.board-details {
+    padding-inline-start: 40px;
+
+    .add-group-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+        padding: 4px 8px;
+        height: 32px;
+        border: 1px solid $clr-table-shadow;
+        border-radius: 4px;
+        color: $clr-text;
+        background-color: transparent;
+
+        @include fontFigtree();
+    }
+
+}

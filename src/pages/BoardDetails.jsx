@@ -33,9 +33,12 @@ export function BoardDetails() {
 
       {board && <div>
         {/* <h1>{board.title}</h1> */}
-        <button onClick={()=> onAddGroup('start')}>Add new group</button>
-        <GroupList groups={board.groups}/>
-        <button onClick={()=> onAddGroup('end')}>Add new group</button>
+        <button className='add-group-btn' onClick={() => onAddGroup('start')}>
+          <i className="fa-regular fa-plus fa-lg"></i>Add new group
+        </button>
+        <GroupList groups={board.groups} />
+        <button className='add-group-btn' onClick={() => onAddGroup('end')}>
+          <i className="fa-regular fa-plus fa-lg"></i>Add new group</button>
       </div>
       }
 

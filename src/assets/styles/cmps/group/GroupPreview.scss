@@ -1,7 +1,4 @@
 .group-preview {
-    
-    font-family: "Figtree", "Roboto", sans-serif;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
+
+    @include fontFigtree();
 }
