@@ -5,10 +5,10 @@ import { BoardSideBarPreview } from "./BoardSideBarPreview";
 
 import { GoHome } from "react-icons/go";
 import { GoStar } from "react-icons/go";
-
 import { HiMagnifyingGlass } from "react-icons/hi2";
+
 import { loadBoards } from '../store/actions/board.actions'
-import { NavLink } from "react-router-dom";
+import { AddModalSideBar } from "./modals/AddModalSideBar.jsx";
 
 export function SideBar() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
@@ -46,9 +46,10 @@ export function SideBar() {
                         <div><HiMagnifyingGlass /></div>
                         <input id="txt" onChange={(ev) => handleChange(ev, 'filter')} autoFocus name="txt" type="text" placeholder="Search" />
                     </div>
-                    <button className="add-board-btn">
+                    {/* <button className="add-board-btn">
                         <i className="fa-regular fa-plus-large fa-lg"></i>
-                    </button>
+                    </button> */}
+                    < AddModalSideBar />
                 </div>
 
                 <ul className="board-list-side-bar">
