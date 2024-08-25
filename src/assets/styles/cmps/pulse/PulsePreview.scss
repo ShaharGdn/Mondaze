@@ -1,15 +1,29 @@
 .pulse-preview {
+    position: relative;
     display: flex;
     // align-items: center;
-
+    background-color: $clr-table-bg;
     height: $pulse-row-height;
     @include border(bottom);
+    // z-index: 0;
+
+    &:hover {
+        position: relative;
+        background-color: $clr-pulse-hover;
+        box-shadow: 4px 3px 6px -3px $clr-table-shadow;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    .pulse-side-color {
+        @include colored-border();
+    }
 
     li {
         display: flex;
         align-items: center;
 
         @include border(right);
-        // height: 100%;
+        height: 100%;
     }
 }

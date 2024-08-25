@@ -1,9 +1,13 @@
 .pulse-list-header {
+    position: relative;
+
     display: flex;
     height: $pulse-row-height;
     @include border(block);
-    // margin-block-start: 8px;
 
+    .pulse-side-color {
+        @include colored-border(top);
+    }
 
     li {
         display: flex;

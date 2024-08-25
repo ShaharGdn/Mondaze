@@ -1,6 +1,5 @@
 import { IoIosArrowDown } from "react-icons/io";
 
-
 export function GroupTitleHeader({ group }) {
     return (
         <section className="group-title-header">

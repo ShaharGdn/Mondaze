@@ -32,7 +32,9 @@ export function PulsePreview({ group, pulse }) {
 
     return (
         <ul className="pulse-preview">
-            <PulseSelector />
+            <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
+
+            <PulseSelector group={group} />
             <PulseTitle pulse={pulse} />
             <button onClick={onRemovePulse}>Remove {group.type}</button>
             <button onClick={onUpdatePulse}>Update {group.type}</button>

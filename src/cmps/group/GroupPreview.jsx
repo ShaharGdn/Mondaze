@@ -49,8 +49,9 @@ export function GroupPreview({ group }) {
             <button onClick={() => onRemoveGroup(group.id)}>Remove group</button>
             <button onClick={onUpdateGroup}>Update group</button>
             <button onClick={onAddPulse}>Add {group.type}</button>
+
             <GroupTitleHeader group={group} />
-            <PulseListHeader type={group.type} />
+            <PulseListHeader group={group} />
             <PulseList group={group} />
         </section >
     )

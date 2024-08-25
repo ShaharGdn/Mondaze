@@ -1,3 +1,4 @@
+
 .pulse-select {
     display: flex;
     @include border(left);
@@ -5,7 +6,6 @@
     width: 33px;
 
     .pulse-checkbox {
-
         // font-size: 18px;
         margin: 0;
         scale: 1.28; // needs changing when switching checkbox

@@ -59,26 +59,47 @@
     }
 }
 
-@mixin border($type: right) {
-    @if $type ==right {
-        border-inline-end: 1px solid $clr-border;
-    }
+// Mixin for pulse colored side border
+@mixin colored-border($type: none) {
+    position: absolute;
+    top: -1px;
+    left: -6px;
+    // z-index: 200;
+    min-width: 6px;
+    height: 36px;
+    background-color: $clr-border;
+    border: none;
 
-    @else if $type ==left {
-        border-inline-start: 1px solid $clr-border;
-    }
-
-    @else if $type ==top {
-        border-block-start: 1px solid $clr-border;
+    @if $type ==top {
+        border-top-left-radius: 6px;
     }
 
     @else if $type ==bottom {
-        border-block-end: 1px solid $clr-border;
+        border-bottom-left-radius: 6px;
+    }
+}
+
+// Mixin for border by given data
+@mixin border($type: right, $width: 1px, $clr: $clr-border) {
+    @if $type ==right {
+        border-inline-end: $width solid $clr;
+    }
+
+    @else if $type ==left {
+        border-inline-start: $width solid $clr;
+    }
+
+    @else if $type ==top {
+        border-block-start: $width solid $clr;
+    }
+
+    @else if $type ==bottom {
+        border-block-end: $width solid $clr;
     }
 
     @else if $type ==block {
-        border-width: 1px 0;
+        border-width: $width 0;
         border-style: solid;
-        border-color: $clr-border;
+        border-color: $clr;
     }
 }
