@@ -1,10 +1,23 @@
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { BoardSideBarPreview } from "./BoardSideBarPreview";
+
 import { GoHome } from "react-icons/go";
 import { GoStar } from "react-icons/go";
+
 import { HiMagnifyingGlass } from "react-icons/hi2";
-import { useNavigate } from "react-router";
+import { loadBoards } from '../store/actions/board.actions'
+import { NavLink } from "react-router-dom";
 
 export function SideBar() {
+    const boards = useSelector(storeState => storeState.boardModule.boards)
+    const [filterBy, setFilterBy] = useState(boardService.getDefaultFilter())
     const navigate = useNavigate()
+
+    useEffect(() => {
+        loadBoards(filterBy)
+    }, [filterBy])
 
     return (
         <article className="side-bar-container open Figtree-regular">
@@ -13,18 +26,15 @@ export function SideBar() {
                     <GoHome size={20} />
                     <span>Home</span>
                 </div>
-                <div className="border"></div>
 
-                {/* <hr /> */}
+                <div className="border"></div>
 
                 <div className="favorites">
                     <GoStar size={20} />
                     <span>Favorites</span>
                 </div>
 
-                {/* <hr /> */}
                 <div className="border"></div>
-
 
                 <div className="ws-cmp Figtree-bold">
                     <span className="ws-icon">M</span>
@@ -37,9 +47,17 @@ export function SideBar() {
                         <input id="txt" onChange={(ev) => handleChange(ev, 'filter')} autoFocus name="txt" type="text" placeholder="Search" />
                     </div>
                     <button className="add-board-btn">
-                        <i class="fa-regular fa-plus-large fa-lg"></i>
+                        <i className="fa-regular fa-plus-large fa-lg"></i>
                     </button>
                 </div>
+
+                <ul className="board-list-side-bar">
+                    {boards.map((board) => (
+                        <section key={board._id} className='board-side-bar-preview'>
+                            <BoardSideBarPreview board={board} />
+                        </section>
+                    ))}
+                </ul>
             </nav>
         </article>
     )

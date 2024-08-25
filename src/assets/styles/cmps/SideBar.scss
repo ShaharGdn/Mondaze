@@ -22,8 +22,8 @@
     .ws-cmp {
         display: flex;
         align-items: center;
-        margin-block-end: rem(8px);
         cursor: pointer;
+        margin-block-end: rem(8px);
     }
 
     .border {
@@ -32,16 +32,6 @@
         height: 0.5px;
         margin-inline-start: auto;
     }
-
-    // hr {
-    //     display: block;
-    //     margin-inline-start: auto;
-    //     margin-inline-end: auto;
-    //     border-style: inset;
-    //     border-style: solid;
-    //     border-width: 0.5px;
-    //     border-color: $clr-bg;
-    // }
 
     .ws-cmp {
         font-size: rem(16px);
@@ -61,36 +51,35 @@
         display: flex;
         align-items: flex-end;
 
-
         .search-container,
         .add-board-btn {
             position: relative;
         }
 
         .search-container input {
-            padding: 0.6em 0.5em 0.6em 40px;
             margin: 0;
+            padding: 0.6em 0.5em 0.6em rem(40px);
+            margin-inline-end: 0.5rem;
             min-height: rem(32px);
-            font-family: Figtree;
             border-radius: 0.3rem;
             border-width: 0.5px;
+            border-color: lightgray;
+            font-family: 'Figtree';
             font-size: 1em;
-            appearance: textfield;
-            margin-inline-end: 0.5rem;
         }
 
         .search-container div {
             position: absolute;
+            padding: 1em;
             right: 80%;
             top: 35%;
             transform: translateY(-50%);
             border: none;
             background: none;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1em;
+            cursor: pointer;
         }
 
         .search-container input:focus {
@@ -119,5 +108,8 @@
             }
         }
     }
+
+
+    .board-list-side-bar {}
 
 }
