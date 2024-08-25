@@ -1,11 +1,10 @@
 .group-title-header {
     position: relative;
-
     display: flex;
     align-items: center;
     height: $pulse-row-height;
 
-    right: -4px; // to middle it when group color stripe is added
+    left: -2px; // to middle it when table color side border is added
 
 
     .collapse-group-btn {
@@ -28,6 +27,6 @@
         line-height: 24px;
         letter-spacing: 0.1px;
 
-        padding: 0 4px;
+        padding: 0 2px;
     }
 }
