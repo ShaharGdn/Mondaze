@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ICON_EMPTY_MESSAGES } from "../icons/svg-icons";
 
 export function PulseTitle({ pulse }) {
     return (
@@ -9,7 +10,11 @@ export function PulseTitle({ pulse }) {
 
             {/* later make this nested route that leads to PulseDetails */}
             {/* <div className="pulse-messages-container"> */}
-            <Link className="pulse-messages-container">@</Link>
+            <Link className="pulse-messages-container">
+                {/* <div> */}
+                    {ICON_EMPTY_MESSAGES}
+                {/* </div> */}
+            </Link>
             {/* </div> */}
         </li>
     )

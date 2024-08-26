@@ -1,5 +1,6 @@
 .pulse-title-message-container {
 
+
     .pulse-title-container {
         display: flex;
         align-items: center;
@@ -17,10 +18,10 @@
     }
 
     .pulse-messages-container {
+        display: flex;
+        justify-content: center;
+
         width: 65px;
-        text-decoration: none;
-        text-align: center;
-
-
+        color: $clr-sidebar-icon-inactive;
     }
 }
