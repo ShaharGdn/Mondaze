@@ -82,7 +82,7 @@ export function AddModalSideBar() {
                     </ul>
                 </Box>
             </Popover>
-            <AddBoardModal open={openModal} onClose={handleCloseModal} />
+            <AddBoardModal open={openModal} onClose={handleCloseModal}/>
         </>
     )
 }
