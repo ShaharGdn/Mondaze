@@ -6,7 +6,6 @@
                 margin-inline-end: rem(10px);
             }
 
-
             li {
                 display: flex;
                 align-items: center;
@@ -19,6 +18,7 @@
                     display: flex;
                     align-items: center;
                 }
+
                 span {
                     font-size: rem(14px);
                     color: $clr-text;
@@ -33,12 +33,108 @@
 
         }
 
-
         h5 {
             color: #676879;
             font-size: rem(14px);
             padding-inline-start: 0.5rem;
             margin-block-start: 0.5rem;
         }
+    }
+}
+
+.create-board-modal {
+    display: grid;
+    flex-direction: column;
+    width: 100%;
+
+    .border {
+        width: 100%;
+        height: 2px;
+        background-color: #c3c6d435;
+        margin: 1rem 0;
+    }
+
+    .modal-title {
+        align-self: flex-start;
+        font-size: rem(32px);
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .close-btn-board-modal {
+        grid-column: 1;
+        grid-row: 1;
+        height: max-content;
+        width: max-content;
+        justify-self: flex-end;
+        background: none;
+        font-size: 1.7rem;
+        z-index: 1;
+    }
+
+    .modal-description {
+        display: flex;
+        flex-direction: column;
+        grid-column: 1;
+        grid-row: 2;
+
+        span {
+            font-size: rem(14px);
+            margin-block-end: 0.5rem;
+        }
+
+        .board-name-input {
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid;
+            border-color: $clr-border-color;
+            font-size: 16px;
+            padding: 8px 16px;
+            outline: 0;
+            position: relative;
+        }
+    }
+
+    .radio-btns-select-type {
+        display: flex;
+        flex-direction: column;
+
+        p {
+            font-size: rem(17px);
+            margin-block-end: 0.5rem;
+        }
+
+        .modal-action-btns {
+            display: flex;
+            align-self: flex-end;
+            align-items: center;
+            margin-block-start: 1rem;
+
+
+            .cancel-btn {
+                background: none;
+                font-family: "Figtree";
+                font-weight: 200;
+                font-size: rem(16px);
+                padding: 0.7em;
+
+                &:hover {
+                    background-color: $clr-menu-add-hover;
+                    border-radius: $border-radius-li;
+                    cursor: pointer;
+                }
+            }
+
+            .create-board-btn {
+                font-family: "Figtree";
+                text-transform: none;
+                width: max-content;
+                font-weight: 100;
+                font-size: rem(16px);
+                background-color: $clr-btn-blue;
+            }
+        }
+
+
     }
 }

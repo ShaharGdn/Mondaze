@@ -223,7 +223,6 @@ async function updatePulse(boardId, groupId, pulseToUpdate) {
 }
 
 async function removePulse(boardId, groupId, pulseId) {
-    console.log('pulseId:', pulseId)
     try {
         const board = await getBoardById(boardId)
 
