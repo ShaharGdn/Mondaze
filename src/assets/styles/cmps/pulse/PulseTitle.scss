@@ -1,26 +1,68 @@
 .pulse-title-message-container {
 
-
     .pulse-title-container {
         display: flex;
-        align-items: center;
-
-        padding: 0 0 0 30px;
+        // align-items: center;
         @include border(right);
         width: 346px;
         height: 100%;
+        padding-inline-end: 8px;
 
-        .pulse-title {
+        .input-container {
+            display: flex;
+            align-items: center;
+            padding: 0 0 0 30px;
+            height: 100%;
+            width: 100%;
+            // border: 1px dashed transparent;
             font-size: $txt-font-size;
             color: $clr-text;
-            line-height: 23px;
+
+            .title-input,
+            .pulse-title {
+                // line-height: 25px;
+                line-height: 23px;
+
+                padding: 0 2px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+            }
+
+            .pulse-title {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+
+                &:hover {
+                    cursor: text;
+                    border-color: $clr-border-color;
+                }
+            }
+
+            .title-input {
+                width: 100%;
+
+                &:focus-visible {
+                    background-color: $clr-table-bg;
+                    border: 1px solid $clr-btn-blue;
+                    // max-height: 100%;
+                    outline: none;
+
+                    .pulse-preview ul {
+                        background-color: $clr-btn-active-bg;
+                    }
+                }
+
+                &:hover:not(:focus-visible) {
+                    background-color: $clr-border-color;
+                }
+            }
         }
     }
 
     .pulse-messages-container {
         display: flex;
         justify-content: center;
-
         width: 65px;
         color: $clr-sidebar-icon-inactive;
     }

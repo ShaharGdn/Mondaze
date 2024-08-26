@@ -17,11 +17,9 @@ export function PulsePreview({ group, pulse }) {
         }
     }
 
-    async function onUpdatePulse() {
+    async function onUpdatePulse(title) {
         try {
-            const title = prompt('New title?')
             const pulseToUpdate = { ...pulse, title }
-
             await updatePulse(board._id, group.id, pulseToUpdate)
             showSuccessMsg('Pulse updated successfully')
         } catch (err) {
@@ -33,11 +31,11 @@ export function PulsePreview({ group, pulse }) {
     return (
         <ul className="pulse-preview">
             <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
-
-            <PulseSelector group={group} />
-            <PulseTitle pulse={pulse} />
+            <div className="full-title-selector-container">
+                <PulseSelector group={group} />
+                <PulseTitle pulse={pulse} onUpdatePulse={onUpdatePulse} />
+            </div>
             <button onClick={onRemovePulse}>Remove {group.type}</button>
-            <button onClick={onUpdatePulse}>Update {group.type}</button>
         </ul >
     )
 }
