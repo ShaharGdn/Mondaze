@@ -12,7 +12,7 @@
         background-color: $clr-pulse-hover;
         box-shadow: 4px 3px 6px -3px $clr-table-shadow;
         cursor: pointer;
-        z-index: 100;
+        z-index: 10;
     }
 
     .pulse-side-color {
@@ -33,8 +33,9 @@
             outline: 1px solid $clr-btn-blue;
         }
     }
-
+    
     &:focus-within {
+        z-index: 20;
         background-color: $clr-btn-active-bg;
     }
 }
