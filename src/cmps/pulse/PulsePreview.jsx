@@ -42,6 +42,7 @@ export function PulsePreview({ group, pulse }) {
                     <DynamicCmp
                         cmp={cmp}
                         onUpdatePulse={onUpdatePulse}
+                        pulse={pulse}
                     />
                 </li>
             )}

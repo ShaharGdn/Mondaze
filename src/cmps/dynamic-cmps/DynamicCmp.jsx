@@ -1,19 +1,17 @@
-import { StatusPicker } from "./StatusPicker"
 import { MemberPicker } from "./MemberPicker"
 import { DatePicker } from "./DatePicker"
-// import { PriorityPicker } from "./PriorityPicker"
+import { LabelPicker } from "./LabelPicker"
 
-
-export function DynamicCmp({ cmp, info, onUpdatePulse }) {
+export function DynamicCmp({ cmp, onUpdatePulse, pulse }) {
     switch (cmp) {
         case 'StatusPicker':
-            return <StatusPicker info={info} onUpdatePulse={onUpdatePulse} />
+            return <LabelPicker onUpdatePulse={onUpdatePulse} pulse={pulse} type={'status'} />
+        case 'PriorityPicker':
+            return <LabelPicker onUpdatePulse={onUpdatePulse} pulse={pulse} type={'priority'} />
         case 'MemberPicker':
-            return <MemberPicker info={info} onUpdatePulse={onUpdatePulse} />
+            return <MemberPicker onUpdatePulse={onUpdatePulse} pulse={pulse} />
         case 'DatePicker':
-            return <DatePicker info={info} onUpdatePulse={onUpdatePulse} />
-        // case 'PriorityPicker':
-        // return <PriorityPicker info={info} onUpdatePulse={onUpdatePulse} />
+            return <DatePicker onUpdatePulse={onUpdatePulse} pulse={pulse} />
         default:
             return <p>UNKNOWN {cmp}</p>
     }

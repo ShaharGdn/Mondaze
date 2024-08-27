@@ -13,8 +13,74 @@ function getEmptyBoard(type = 'Task') {
         isStarred: false,
         archivedAt: null,
         createdBy: user,
+        folder: '',
         style: {},
-        labels: [],
+        status: [
+            {
+                id: 'woi5432',
+                title: 'Working on it',
+                color: '#fdab3d',
+                type: 'Default',
+            },
+            {
+                id: 'stk4530',
+                title: 'Stuck',
+                color: '#df2f4a',
+                type: 'Default',
+            },
+            {
+                id: 'dnn8390',
+                title: 'Done',
+                color: '#00c875',
+                type: 'Default',
+            },
+            {
+                id: 'dft3488',
+                title: 'New',
+                color: '#c4c4c4',
+                type: 'Lead',
+            },
+            {
+                id: 'inp9988',
+                title: 'In progress',
+                color: '#fdab3d',
+                type: 'Lead',
+            },
+            {
+                id: 'won1254',
+                title: 'Won',
+                color: '#00c875',
+                type: 'Lead',
+            },
+            {
+                id: 'lst7895',
+                title: 'Lost',
+                color: '#df2f4a',
+                type: 'Lead',
+            },
+        ],
+        priority: [
+            {
+                id: 'crt5664',
+                title: 'Critical',
+                color: '#333333'
+            },
+            {
+                id: 'hgh3899',
+                title: 'High',
+                color: '#401694'
+            },
+            {
+                id: 'mdm1126',
+                title: 'Medium',
+                color: '#5559df'
+            },
+            {
+                id: 'low7891',
+                title: 'Low',
+                color: '#579bfc'
+            },
+        ],
         members: [],
         groups: [
             {
@@ -25,18 +91,27 @@ function getEmptyBoard(type = 'Task') {
                 pulses: [
                     {
                         'id': makeId(),
-                        'title': type + ' 1'
+                        'title': type + ' 1',
+                        'status': 'woi5432',
+                        'priority': 'mdm1126',
+                        'dueDate': '2024-09-24',
                     },
                     {
                         'id': makeId(),
-                        'title': type + ' 2'
+                        'title': type + ' 2',
+                        'status': 'dnn8390',
+                        'priority': 'mdm1126',
+                        'dueDate': '2024-09-15',
                     },
                     {
                         'id': makeId(),
-                        'title': type + ' 3'
+                        'title': type + ' 3',
+                        'status': 'stk4530',
+                        'priority': 'hgh3899',
+                        'dueDate': '2024-09-10',
                     },
                 ],
-                style: { color: 'blue' }
+                style: { color: '#579bfc' }
             },
             {
                 title: 'Group Title',
@@ -46,19 +121,24 @@ function getEmptyBoard(type = 'Task') {
                 pulses: [
                     {
                         'id': makeId(),
-                        'title': type + ' 3'
+                        'title': type + ' 3',
+                        'status': 'dnn8390',
+                        'priority': 'hgh3899',
+                        'dueDate': '2024-10-05',
                     },
                     {
                         'id': makeId(),
-                        'title': type + ' 4'
+                        'title': type + ' 4',
+                        'status': 'stk4530',
+                        'priority': 'low7891',
+                        'dueDate': '2024-09-14',
                     },
                 ],
-                style: { color: 'purple' }
+                style: { color: '#a25ddc' }
             },
         ],
         activities: [],
-        // cmpsOrder: ['Person', 'Status', 'Date'],
-        cmpsOrder: ['MemberPicker', 'StatusPicker', 'DatePicker'],
+        cmpsOrder: ['MemberPicker', 'StatusPicker', 'PriorityPicker', 'DatePicker'],
         type,
     }
 }

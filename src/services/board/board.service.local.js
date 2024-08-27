@@ -66,6 +66,8 @@ async function save(board) {
             const boardToSave = {
                 _id: board._id,
                 title: board.title,
+                status: board.status,
+                priority: board.priority,
                 isStarred: board.isStarred,
                 archivedAt: board.archivedAt,
                 createdBy: board.createdBy,
@@ -81,6 +83,8 @@ async function save(board) {
         } else {
             const boardToSave = {
                 title: board.title,
+                status: board.status,
+                priority: board.priority,
                 isStarred: board.isStarred,
                 archivedAt: board.archivedAt,
                 createdBy: board.createdBy,
