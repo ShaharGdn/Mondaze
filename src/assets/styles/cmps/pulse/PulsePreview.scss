@@ -19,11 +19,22 @@
         @include colored-border();
     }
 
-    li {
+    .full-title-selector-container {
         display: flex;
-        align-items: center;
 
-        @include border(right);
-        height: 100%;
+        li {
+            display: flex;
+            align-items: center;
+            @include border(right);
+            height: 100%;
+        }
+
+        &:focus-within {
+            outline: 1px solid $clr-btn-blue;
+        }
+    }
+
+    &:focus-within {
+        background-color: $clr-btn-active-bg;
     }
 }

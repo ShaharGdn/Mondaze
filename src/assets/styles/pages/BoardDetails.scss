@@ -14,6 +14,10 @@
         background-color: transparent;
 
         @include fontFigtree();
+
+        &:hover {
+            background-color: $clr-btn-hover;
+        }
     }
 
 }
