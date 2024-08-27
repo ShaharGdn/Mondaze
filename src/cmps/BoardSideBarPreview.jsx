@@ -1,16 +1,20 @@
 import { NavLink } from 'react-router-dom'
 import { BsThreeDots } from 'react-icons/bs';
 import BoardIcon from './icons/BoardIcon';
-// import { Box, Popover } from '@mui/material';
 import { useState } from 'react';
 import { BoardActionsModal } from './modals/BoardActionsModal';
 
 export function BoardSideBarPreview({ board, type }) {
     const [anchorEl, setAnchorEl] = useState(null)
 
-    function getClassName({ isActive }) {
-        return isActive ? 'board-side-bar-link Figtree-regular active'
-            : 'board-side-bar-link Figtree-regular'
+    function getLinkClassName({ isActive }) {
+        return isActive ? `board-side-bar-link Figtree-regular active ${modalOpenClassName()}`
+            : `board-side-bar-link Figtree-regular ${modalOpenClassName()}`
+
+        function modalOpenClassName() {
+            const className = anchorEl ? 'modal-open' : ''
+            return className
+        }
     }
 
     function handleClick(event) {
@@ -19,16 +23,9 @@ export function BoardSideBarPreview({ board, type }) {
         setAnchorEl(event.currentTarget)
     }
 
-    // function handleClose() {
-    //     setAnchorEl(null)
-    // }
-
-    // const open = Boolean(anchorEl)
-    // const id = open ? 'simple-popover' : undefined
-
     return (
         <>
-            <NavLink className={getClassName} to={`/board/${board._id}`}>
+            <NavLink className={getLinkClassName} to={`/board/${board._id}`}>
                 <div className="board-name">
                     <div className="board-name-title">
                         <div className="board-icon">

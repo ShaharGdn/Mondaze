@@ -51,9 +51,9 @@ export function SideBar() {
 
                 <ul className="board-list-side-bar">
                     {boards.map((board) => (
-                        <section key={board._id} className='board-side-bar-preview'>
+                        <li key={board._id} className='board-side-bar-preview'>
                             <BoardSideBarPreview board={board} />
-                        </section>
+                        </li>
                     ))}
                 </ul>
             </nav>

@@ -9,7 +9,10 @@ import { MdOutlineOpenInNew } from "react-icons/md";
 
 
 export function BoardActionsModal({ board, anchorEl, setAnchorEl }) {
-    function handleClose() {
+    
+    function handleClose(event) {
+        event.preventDefault()
+        event.stopPropagation()
         setAnchorEl(null)
     }
 
@@ -17,7 +20,6 @@ export function BoardActionsModal({ board, anchorEl, setAnchorEl }) {
     const id = open ? 'simple-popover' : undefined
 
     return (
-
         <Popover
             className={`pop-over-board-actions ${id} Figtree-regular`}
             open={open}
@@ -33,7 +35,8 @@ export function BoardActionsModal({ board, anchorEl, setAnchorEl }) {
             }}
             PaperProps={{
                 sx: {
-                    ml: 2,
+                    mt: 1.2,
+                    ml: -1
                 },
             }}
         >
