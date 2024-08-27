@@ -57,7 +57,8 @@ function getEmptyBoard(type = 'Task') {
             },
         ],
         activities: [],
-        cmpsOrder: ['Person', 'Status', 'Date'],
+        // cmpsOrder: ['Person', 'Status', 'Date'],
+        cmpsOrder: ['MemberPicker', 'StatusPicker', 'DatePicker'],
         type,
     }
 }

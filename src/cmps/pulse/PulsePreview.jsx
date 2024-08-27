@@ -3,6 +3,7 @@ import { PulseTitle } from "./PulseTitle"
 import { showSuccessMsg } from "../../services/event-bus.service"
 import { useSelector } from "react-redux"
 import { removePulse, updatePulse } from "../../store/actions/selected-board.actions"
+import { DynamicCmp } from "../dynamic-cmps/DynamicCmp"
 
 export function PulsePreview({ group, pulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
@@ -19,7 +20,7 @@ export function PulsePreview({ group, pulse }) {
 
     async function onUpdatePulse(title) {
         try {
-            const pulseToUpdate = { ...pulse, title }
+            const pulseToUpdate = { ...pulse, title } // will need updating to match every pulse prop
             await updatePulse(board._id, group.id, pulseToUpdate)
             showSuccessMsg('Pulse updated successfully')
         } catch (err) {
@@ -31,10 +32,20 @@ export function PulsePreview({ group, pulse }) {
     return (
         <ul className="pulse-preview">
             <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
-            <div className="full-title-selector-container">
+            <ul className="full-title-selector-container">
                 <PulseSelector group={group} />
                 <PulseTitle pulse={pulse} onUpdatePulse={onUpdatePulse} />
-            </div>
+            </ul>
+
+            {board.cmpsOrder.length > 0 && board.cmpsOrder.map((cmp, idx) =>
+                <li className="pulse-dynamic-container" key={idx}>
+                    <DynamicCmp
+                        cmp={cmp}
+                        onUpdatePulse={onUpdatePulse}
+                    />
+                </li>
+            )}
+
             <button onClick={onRemovePulse}>Remove {group.type}</button>
         </ul >
     )
