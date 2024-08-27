@@ -1,5 +1,13 @@
 .board-list-side-bar {
     display: contents;
+    flex-direction: column;
+    margin-block-start: 0;
+    margin-inline-start: 0;
+    scroll-behavior: smooth;
+    max-height: 80vh;
+    overflow-y: scroll;
+    scrollbar-width: 1px;
+
 
     .board-side-bar-preview {
         display: flex;
@@ -13,12 +21,17 @@
             align-items: center;
             margin-block-start: 0;
             margin-inline-start: 0;
-            cursor: pointer;
             text-decoration: none;
             z-index: 100;
+            cursor: pointer;
+
+            &:hover {
+                background: $clr-menu-add-hover;
+                border-radius: $border-radius-li;
+            }
 
             &.active {
-                background: $clr-btn-active-bg;
+                background: #cce5ffad;
                 border-radius: $border-radius-li;
 
                 .board-icon {
@@ -31,22 +44,58 @@
                 align-items: center;
                 justify-content: space-between;
                 width: 100%;
-                cursor: pointer;
                 margin: 0;
+                cursor: pointer;
+
+                .board-name-title {
+                    flex-shrink: 0;
+                    flex-grow: 0;
+                    width: 80%;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
 
                 .board-dots-actions {
                     display: none;
                     margin-inline-end: 1rem;
                     color: $clr-text;
+
+                    .board-dots-actions.active {
+                        color: inherit;
+                    }
                 }
 
-                .board-dots-actions.active {
-                    color: inherit;
-                }
-
+                // when the line is hovered
                 &:hover .board-dots-actions {
-                    display: block;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 0.2rem;
+                    min-width: rem(27px);
+                    height: rem(27px);
+                    margin-block-start: 0;
+                    cursor: pointer;
+
+                    // and the dots are hovered
+                    &:hover {
+                        background-color: #d8d9e16f;
+                    }
+
                 }
+
+                // .add-board-btn {
+                //     border-radius: 0.2rem;
+                //     padding: 0;
+                //     margin: 0;
+                //     min-width: rem(33px);
+                //     height: rem(33px);
+                //     background: $clr-btn-blue;
+                //     color: white;
+
+                //     i {
+                //         margin: 0 auto;
+                //     }
+                // }
 
                 .board-name-title {
                     display: flex;

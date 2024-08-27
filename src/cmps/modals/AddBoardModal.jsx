@@ -1,8 +1,9 @@
+import { boardService } from '../../services/board'
+import { addBoard } from '../../store/actions/board.actions'
+import { useState } from 'react'
+
 import { Modal, Box, Button, FormControl, RadioGroup, FormControlLabel, Radio } from '@mui/material'
 import { IoCloseOutline } from "react-icons/io5"
-import { boardService } from '../../services/board'
-import { useState } from 'react'
-import { addBoard } from '../../store/actions/board.actions'
 
 export function AddBoardModal({ open, onClose }) {
     const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
