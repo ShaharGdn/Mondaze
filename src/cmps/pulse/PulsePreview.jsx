@@ -20,7 +20,7 @@ export function PulsePreview({ group, pulse }) {
 
     async function onUpdatePulse(title) {
         try {
-            const pulseToUpdate = { ...pulse, title } // will need updating to match every pulse prop
+            // const pulseToUpdate = { ...pulse, title } // will need updating to match every pulse prop
             await updatePulse(board._id, group.id, pulseToUpdate)
             showSuccessMsg('Pulse updated successfully')
         } catch (err) {
