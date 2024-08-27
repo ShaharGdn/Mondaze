@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import { BsThreeDots } from 'react-icons/bs';
 import BoardIcon from './icons/BoardIcon';
-import { Box, Popover } from '@mui/material';
+// import { Box, Popover } from '@mui/material';
 import { useState } from 'react';
+import { BoardActionsModal } from './modals/BoardActionsModal';
 
 export function BoardSideBarPreview({ board, type }) {
     const [anchorEl, setAnchorEl] = useState(null)
@@ -18,12 +19,12 @@ export function BoardSideBarPreview({ board, type }) {
         setAnchorEl(event.currentTarget)
     }
 
-    function handleClose() {
-        setAnchorEl(null)
-    }
+    // function handleClose() {
+    //     setAnchorEl(null)
+    // }
 
-    const open = Boolean(anchorEl)
-    const id = open ? 'simple-popover' : undefined
+    // const open = Boolean(anchorEl)
+    // const id = open ? 'simple-popover' : undefined
 
     return (
         <>
@@ -36,34 +37,13 @@ export function BoardSideBarPreview({ board, type }) {
                         <p>{board.title}</p>
                     </div>
                     <div className="board-dots-actions">
-                        <BsThreeDots onClick={handleClick} />
+                        <BsThreeDots
+                            onClick={handleClick}
+                        />
+                        <BoardActionsModal board={board} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
                     </div>
                 </div>
             </NavLink>
-
-            <Popover
-                className={`pop-over-add-board ${ id }`}
-                // id={id}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                }}
-                transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                }}
-                PaperProps={{
-                    sx: {
-                        ml: 1,
-                    },
-                }}
-            >
-                <Box sx={{ p: 1 }} className="modal-select">
-                </Box>
-            </Popover>
         </>
     )
 }
