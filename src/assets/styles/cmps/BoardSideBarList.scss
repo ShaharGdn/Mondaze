@@ -64,10 +64,19 @@
                     .board-dots-actions.active {
                         color: inherit;
                     }
+
+                    &:hover {
+                        background-color: #d8d9e16f;
+                    }
+
+                    &:focus-within {
+                        display: flex;
+                    }
                 }
 
                 // when the line is hovered
-                &:hover .board-dots-actions {
+                &:hover .board-dots-actions,
+                &:focus-within .board-dots-actions {
                     display: flex;
                     align-items: center;
                     border-radius: 0.2rem;
@@ -75,27 +84,7 @@
                     height: rem(27px);
                     margin-block-start: 0;
                     cursor: pointer;
-
-                    // and the dots are hovered
-                    &:hover {
-                        background-color: #d8d9e16f;
-                    }
-
                 }
-
-                // .add-board-btn {
-                //     border-radius: 0.2rem;
-                //     padding: 0;
-                //     margin: 0;
-                //     min-width: rem(33px);
-                //     height: rem(33px);
-                //     background: $clr-btn-blue;
-                //     color: white;
-
-                //     i {
-                //         margin: 0 auto;
-                //     }
-                // }
 
                 .board-name-title {
                     display: flex;
