@@ -1,6 +1,6 @@
-export function StatusPicker({ info, onUpdatePulse }) {
+export function StatusPicker({ info, onUpdatePulse, pulse }) {
     return (
-        <span>status</span>
+        <span>pulse.status</span>
     )
 
 }
