@@ -6,7 +6,7 @@ import FolderIcon from "../icons/FolderIcon"
 import { MdKeyboardArrowRight } from "react-icons/md"
 import { AddBoardModal } from "./AddBoardModal"
 
-export function AddModalSideBar() {
+export function AddModalSideBarBtn() {
     const [anchorEl, setAnchorEl] = useState(null)
     const [openModal, setOpenModal] = useState(false)
 
