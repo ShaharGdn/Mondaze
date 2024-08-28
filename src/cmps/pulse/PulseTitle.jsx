@@ -1,34 +1,14 @@
 import { Link } from "react-router-dom";
 import { ICON_EMPTY_MESSAGES } from "../icons/svg-icons";
-import { useRef, useState } from "react";
+import { useInputHandler } from "../../customHooks/useInputHandler";
 
 export function PulseTitle({ pulse, onUpdatePulse }) {
-    const [isBlurred, setIsBlurred] = useState(false)
-    const [titleToEdit, setTitleToEdit] = useState(pulse.title)
-    const [isEditable, setIsEditable] = useState(false)
-    const inputRef = useRef(null)
+    const [inputRef, setIsBlurred, propToEdit, setPropToEdit, isEditable,
+        setIsEditable, handleBlur, handleSubmit] = useInputHandler(pulse.title, handleUpdate)
 
-    function handleSubmit(ev) {
-        if (ev) ev.preventDefault()
-        if (isBlurred) return
-
-        if (titleToEdit !== pulse.title) {
-            onUpdatePulse(titleToEdit)
-        }
-
-        setIsBlurred(true)
-        setTimeout(() => {
-            if (inputRef.current) {
-                inputRef.current.blur()
-            }
-        }, 0)
-    }
-
-    function handleBlur() {
-        setIsEditable(false)
-
-        if (isBlurred) return
-        handleSubmit()
+    function handleUpdate(updatedTitle) {
+        const pulseToUpdate = { ...pulse, title: updatedTitle }
+        onUpdatePulse(pulseToUpdate)
     }
 
     return (
@@ -37,15 +17,14 @@ export function PulseTitle({ pulse, onUpdatePulse }) {
                 <form className="input-container" onSubmit={handleSubmit}>
                     {isEditable ? <input
                         className="title-input"
-                        // className={`title-input${isEditable ? ' editable' : ''}`}
                         type="text"
-                        value={titleToEdit}
-                        onChange={(ev) => setTitleToEdit(ev.target.value)}
+                        value={propToEdit}
+                        onChange={(ev) => setPropToEdit(ev.target.value)}
                         onBlur={handleBlur}
                         onFocus={() => setIsBlurred(false)}
                         ref={inputRef}
                         autoFocus
-                    /> : <span className="pulse-title" onClick={() => setIsEditable(true)}>{titleToEdit}</span>}
+                    /> : <span className="pulse-title" onClick={() => setIsEditable(true)}>{propToEdit}</span>}
                 </form>
             </div>
 
@@ -53,7 +32,6 @@ export function PulseTitle({ pulse, onUpdatePulse }) {
             <Link className="pulse-messages-container">
                 {ICON_EMPTY_MESSAGES}
             </Link>
-
         </li>
     )
 }
