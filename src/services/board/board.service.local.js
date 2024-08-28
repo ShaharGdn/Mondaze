@@ -192,6 +192,8 @@ async function addPulse(boardId, groupId, pulse) {
         const pulseToAdd = {
             id: makeId(),
             title: pulse.title || '',
+            status: pulse.status,
+            priority: pulse.priority
         }
 
         board.groups[groupIdx].pulses.push(pulseToAdd)
