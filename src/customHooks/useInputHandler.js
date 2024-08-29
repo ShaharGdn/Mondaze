@@ -26,5 +26,6 @@ export const useInputHandler = (initialPropState, callBack) => {
         handleSubmit()
     }
 
-    return [inputRef, isBlurred, setIsBlurred, propToEdit, setPropToEdit, isEditable, setIsEditable, handleBlur, handleSubmit]
+    return [inputRef, setIsBlurred, propToEdit, setPropToEdit,
+        isEditable, setIsEditable, handleBlur, handleSubmit]
 }

@@ -81,7 +81,24 @@ function getEmptyBoard(type = 'Task') {
                 color: '#579bfc'
             },
         ],
-        members: [],
+        members: [
+            {
+                _id: 'u101',
+                fullname: 'Michal Rotkop',
+                imgUrl: '../src/assets/img/michal.jpg',
+            },
+            {
+                _id: 'u102',
+                fullname: 'Shahar Gadon',
+                imgUrl: '../src/assets/img/shahar.jpg',
+            },
+            {
+                _id: 'u103',
+                fullname: 'Shush',
+                imgUrl: '../src/assets/img/shush.jpg',
+            },
+
+        ],
         groups: [
             {
                 title: 'Group Title',
@@ -95,6 +112,7 @@ function getEmptyBoard(type = 'Task') {
                         'status': 'woi5432',
                         'priority': 'mdm1126',
                         'dueDate': '2024-09-24',
+                        'memberIds': ['u101'],
                     },
                     {
                         'id': makeId(),
@@ -102,6 +120,7 @@ function getEmptyBoard(type = 'Task') {
                         'status': 'dnn8390',
                         'priority': 'mdm1126',
                         'dueDate': '2024-09-15',
+                        'memberIds': ['u101', 'u102'],
                     },
                     {
                         'id': makeId(),
@@ -109,6 +128,7 @@ function getEmptyBoard(type = 'Task') {
                         'status': 'stk4530',
                         'priority': 'hgh3899',
                         'dueDate': '2024-09-10',
+                        'memberIds': [],
                     },
                 ],
                 style: { color: '#579bfc' }
@@ -125,6 +145,7 @@ function getEmptyBoard(type = 'Task') {
                         'status': 'dnn8390',
                         'priority': 'hgh3899',
                         'dueDate': '2024-10-05',
+                        'memberIds': ['u101', 'u102', 'u103'],
                     },
                     {
                         'id': makeId(),
@@ -132,6 +153,7 @@ function getEmptyBoard(type = 'Task') {
                         'status': 'stk4530',
                         'priority': 'low7891',
                         'dueDate': '2024-09-14',
+                        'memberIds': ['u102'],
                     },
                 ],
                 style: { color: '#a25ddc' }
