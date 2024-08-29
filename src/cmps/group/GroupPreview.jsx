@@ -33,7 +33,7 @@ export function GroupPreview({ group }) {
     async function onAddPulse() {
         try {
             const pulse = {
-                title: 'Pulse',
+                title: board.type,
                 status: 'dft3488',
                 priority: 'dft3489'
             }

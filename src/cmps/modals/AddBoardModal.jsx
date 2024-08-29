@@ -4,24 +4,30 @@ import { useState } from 'react'
 
 import { Modal, Box, Button, FormControl, RadioGroup, FormControlLabel, Radio } from '@mui/material'
 import { IoCloseOutline } from "react-icons/io5"
+import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 
 export function AddBoardModal({ open, onClose }) {
     const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
 
     async function onAddBoard(ev) {
-        var board = boardService.getEmptyBoard(boardToAdd.type)
+        try {
+            ev.preventDefault()
 
-        board = {
-            ...board, title: boardToAdd.title
+            var board = boardService.getEmptyBoard(boardToAdd.type)
+            board = {
+                ...board, title: boardToAdd.title
+            }
+            await addBoard(board)
+            setBoardToAdd(boardService.getEmptyBoard())
+            onClose()
+            showSuccessMsg('Added Board Successfully')
+        } catch (err) {
+            console.log('err Couldnt add board:', err)
+            showErrorMsg('Couldnt add board')
         }
-        ev.preventDefault()
-        // console.log('Board data:', board)
-        addBoard(board)
-        setBoardToAdd(boardService.getEmptyBoard())
-        onClose()
     }
 
-    const handleChange = (ev) => {
+    function handleChange(ev) {
         const { name, value } = ev.target
         setBoardToAdd(prevBoard => ({ ...prevBoard, [name]: value }))
     }

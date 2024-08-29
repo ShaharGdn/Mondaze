@@ -30,24 +30,3 @@ export function boardReducer(state = initialState, action) {
     }
     return newState
 }
-
-// unitTestReducer()
-
-function unitTestReducer() {
-    var state = initialState
-    const board1 = { _id: 'b101', vendor: 'Board ' + parseInt(Math.random() * 10), msgs: [] }
-    const board2 = { _id: 'b102', vendor: 'Board ' + parseInt(Math.random() * 10), msgs: [] }
-
-    state = boardReducer(state, { type: SET_BOARDS, boards: [board1] })
-    console.log('After SET_BOARDS:', state)
-
-    state = boardReducer(state, { type: UPDATE_BOARD, board: { ...board2, vendor: 'Good' } })
-    console.log('After UPDATE_BOARD:', state)
-
-    state = boardReducer(state, { type: REMOVE_BOARD, boardId: board2._id })
-    console.log('After REMOVE_BOARD:', state)
-
-    state = boardReducer(state, { type: REMOVE_BOARD, boardId: board1._id })
-    console.log('After REMOVE_BOARD:', state)
-}
-

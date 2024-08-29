@@ -50,7 +50,7 @@ export function SideBar() {
                 </div>
 
                 <ul className="board-list-side-bar">
-                    {boards.map((board) => (
+                    {boards.filter(board => board.archivedAt === null).map((board) => (
                         <li key={board._id} className='board-side-bar-preview'>
                             <BoardSideBarPreview board={board} />
                         </li>

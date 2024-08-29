@@ -1,6 +1,6 @@
 import { PulseSelector } from "./PulseSelector"
 import { PulseTitle } from "./PulseTitle"
-import { showSuccessMsg } from "../../services/event-bus.service"
+import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { useSelector } from "react-redux"
 import { removePulse, updatePulse } from "../../store/actions/selected-board.actions"
 import { DynamicCmp } from "../dynamic-cmps/DynamicCmp"
@@ -20,7 +20,6 @@ export function PulsePreview({ group, pulse }) {
 
     async function onUpdatePulse(pulseToUpdate) {
         try {
-            // const pulseToUpdate = { ...pulse, prop } // will need updating to match every pulse prop
             await updatePulse(board._id, group.id, pulseToUpdate)
             showSuccessMsg('Pulse updated successfully')
         } catch (err) {
