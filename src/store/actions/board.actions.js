@@ -69,15 +69,3 @@ function getCmdUpdateBoard(board) {
         board
     }
 }
-
-// unitTestActions()
-async function unitTestActions() {
-    await loadBoards()
-    await addBoard(boardService.getEmptyBoard())
-    await updateBoard({
-        _id: 'm1oC7',
-        title: 'Board-Good',
-    })
-    await removeBoard('m1oC7')
-    // TODO unit test addBoardMsg
-}

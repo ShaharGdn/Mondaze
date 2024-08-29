@@ -40,21 +40,22 @@
 // Modals
 @import "cmps/modals/AddBoardModal";
 @import "cmps/modals/BoardActionsModal";
+@import "cmps/modals/Popover";
 
 @import "cmps/BoardTemplates";
 @import "cmps/Loader";
 
 // dynamic-cmps
-@import "cmps/dynamic-cmps/StatusPicker";
 @import "cmps/dynamic-cmps/MemberPicker";
 @import "cmps/dynamic-cmps/DatePicker";
 @import "cmps/dynamic-cmps/LabelPicker";
-@import "cmps/dynamic-cmps/PriorityPicker";
+@import "cmps/dynamic-cmps/LabelPickerList";
 
 // group
 @import "cmps/group/GroupList";
 @import "cmps/group/GroupPreview";
 @import "cmps/group/GroupTitleHeader";
+
 // pulse
 @import "cmps/pulse/PulseList.scss";
 @import "cmps/pulse/PulsePreview.scss";

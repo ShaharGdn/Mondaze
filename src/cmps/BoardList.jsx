@@ -19,7 +19,7 @@ export function BoardList({ boards }) {
                 <h1>Recently visited</h1>
             </div>
             <ul className="board-list">
-                {boards.map(board =>
+                {boards.filter(board => board.archivedAt === null).map(board =>
                     <li key={board._id}>
                         {isListOpen &&
                             <BoardPreview board={board} />

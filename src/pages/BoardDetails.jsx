@@ -1,13 +1,10 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { addGroup, loadBoard, removeGroup, updateGroup } from '../store/actions/selected-board.actions'
-import { BoardFilter } from '../cmps/BoardFilter'
+import { addGroup, loadBoard } from '../store/actions/selected-board.actions'
 import { GroupList } from '../cmps/group/GroupList'
-import { boardService } from '../services/board'
 
 
 export function BoardDetails() {
@@ -31,8 +28,7 @@ export function BoardDetails() {
     <section className="board-details main">
       <header className='board-header'></header>
 
-      {board && <div>
-        {/* <h1>{board.title}</h1> */}
+      {board && <div className="main-display">
         <button className='add-group-btn' onClick={() => onAddGroup('start')}>
           <i className="fa-regular fa-plus fa-lg"></i>Add new group
         </button>

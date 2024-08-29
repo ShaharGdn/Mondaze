@@ -1,6 +1,7 @@
 import { storageService } from '../async-storage.service'
 import { makeId } from '../util.service'
 import { userService } from '../user'
+import { updateBoard } from '../../store/actions/board.actions'
 
 const STORAGE_KEY = 'board'
 
@@ -60,7 +61,6 @@ async function removeBoard(boardId) {
 
 async function save(board) {
     try {
-
         var savedBoard
         if (board._id) {
             const boardToSave = {
@@ -135,7 +135,9 @@ async function addGroup(boardId, position = 'start') {
             board.groups.push(groupToAdd)
         }
 
-        await storageService.put(STORAGE_KEY, board)
+        const updatedBoard = await updateBoard(board)
+        await storageService.put(STORAGE_KEY, updatedBoard)
+        
         return groupToAdd
     } catch (err) {
         console.log('Could not add group:', err)
@@ -149,7 +151,9 @@ async function removeGroup(boardId, groupId) {
         if (groupIdx < 0) throw new Error(`Removing group failed, cannot find group with id: ${groupId} in board ${boardId}`)
 
         board.groups.splice(groupIdx, 1)
-        await storageService.put(STORAGE_KEY, board)
+
+        const updatedBoard = await updateBoard(board)
+        await storageService.put(STORAGE_KEY, updatedBoard)
 
         return groupId
     } catch (err) {
@@ -162,7 +166,8 @@ async function updateGroup(boardId, groupToUpdate) {
         const board = await getBoardById(boardId)
         const updatedGroups = board.groups.map(group => group.id === groupToUpdate.id ? groupToUpdate : group)
 
-        const updatedBoard = { ...board, groups: updatedGroups }
+        const newBoard = { ...board, groups: updatedGroups }
+        const updatedBoard = await updateBoard(newBoard)
         await storageService.put(STORAGE_KEY, updatedBoard)
 
         return groupToUpdate
@@ -192,11 +197,14 @@ async function addPulse(boardId, groupId, pulse) {
         const pulseToAdd = {
             id: makeId(),
             title: pulse.title || '',
+            status: pulse.status,
+            priority: pulse.priority
         }
 
         board.groups[groupIdx].pulses.push(pulseToAdd)
 
-        await storageService.put(STORAGE_KEY, board)
+        const updatedBoard = await updateBoard(board)
+        await storageService.put(STORAGE_KEY, updatedBoard)
 
         return pulseToAdd
     } catch (err) {
@@ -217,7 +225,8 @@ async function updatePulse(boardId, groupId, pulseToUpdate) {
 
         board.groups[groupIdx].pulses[pulseIdx] = pulseToUpdate
 
-        await storageService.put(STORAGE_KEY, board)
+        const updatedBoard = await updateBoard(board)
+        await storageService.put(STORAGE_KEY, updatedBoard)
 
         return pulseToUpdate
     } catch (err) {
@@ -238,7 +247,9 @@ async function removePulse(boardId, groupId, pulseId) {
 
         board.groups[groupIdx].pulses.splice(pulseIdx, 1)
 
-        await storageService.put(STORAGE_KEY, board)
+        const updatedBoard = await updateBoard(board)
+        await storageService.put(STORAGE_KEY, updatedBoard)
+
     } catch (err) {
         console.log('Could not update the pulse:', err)
         throw err

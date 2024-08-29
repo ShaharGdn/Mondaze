@@ -31,10 +31,11 @@ export function GroupPreview({ group }) {
     }
 
     async function onAddPulse() {
-        const title = prompt('Title?')
         try {
             const pulse = {
-                title,
+                title: board.type,
+                status: 'dft3488',
+                priority: 'dft3489'
             }
             await addPulse(board._id, group.id, pulse)
             showSuccessMsg('Pulse added')

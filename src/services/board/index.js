@@ -17,6 +17,12 @@ function getEmptyBoard(type = 'Task') {
         style: {},
         status: [
             {
+                id: 'dft3488',
+                title: 'Not Started',
+                color: '#c4c4c4',
+                type: 'Default',
+            },
+            {
                 id: 'woi5432',
                 title: 'Working on it',
                 color: '#fdab3d',
@@ -34,32 +40,37 @@ function getEmptyBoard(type = 'Task') {
                 color: '#00c875',
                 type: 'Default',
             },
-            {
-                id: 'dft3488',
-                title: 'New',
-                color: '#c4c4c4',
-                type: 'Lead',
-            },
-            {
-                id: 'inp9988',
-                title: 'In progress',
-                color: '#fdab3d',
-                type: 'Lead',
-            },
-            {
-                id: 'won1254',
-                title: 'Won',
-                color: '#00c875',
-                type: 'Lead',
-            },
-            {
-                id: 'lst7895',
-                title: 'Lost',
-                color: '#df2f4a',
-                type: 'Lead',
-            },
+            // {
+            //     id: 'dft3488',
+            //     title: 'New',
+            //     color: '#c4c4c4',
+            //     type: 'Lead',
+            // },
+            // {
+            //     id: 'inp9988',
+            //     title: 'In progress',
+            //     color: '#fdab3d',
+            //     type: 'Lead',
+            // },
+            // {
+            //     id: 'won1254',
+            //     title: 'Won',
+            //     color: '#00c875',
+            //     type: 'Lead',
+            // },
+            // {
+            //     id: 'lst7895',
+            //     title: 'Lost',
+            //     color: '#df2f4a',
+            //     type: 'Lead',
+            // },
         ],
         priority: [
+            {
+                id: 'dft3489',
+                title: '',
+                color: '#c4c4c4',
+            },
             {
                 id: 'crt5664',
                 title: 'Critical',
