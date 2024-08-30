@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import React, { useState } from "react";
-import { Popover } from "../modals/Popover";
+import { Popover } from "../popovers/Popover";
 
 export function LabelPicker({ type, onUpdatePulse, pulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
@@ -17,8 +17,13 @@ export function LabelPicker({ type, onUpdatePulse, pulse }) {
 
     function onSelectLabel(labelId) {
         setOpen(false)
+
+        const isDone = (labelId === 'dnn8390') ? true : false
+
         const pulseToUpdate = {
-            ...pulse, [type]: labelId
+            ...pulse,
+            [type]: labelId,
+            isDone
         }
         onUpdatePulse(pulseToUpdate)
     }

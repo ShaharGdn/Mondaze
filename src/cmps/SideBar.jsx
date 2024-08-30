@@ -8,7 +8,7 @@ import { GoStar } from "react-icons/go";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 
 import { loadBoards } from '../store/actions/board.actions'
-import { AddBtnSideBar } from "./modals/AddBtnSideBar.jsx";
+import { AddBtnSideBar } from "./buttons/AddBtnSideBar.jsx";
 
 export function SideBar() {
     const boards = useSelector(storeState => storeState.boardModule.boards)

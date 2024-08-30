@@ -1,0 +1,82 @@
+.date-picker-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    &.done {
+        text-decoration: line-through;
+    }
+
+    .date {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        width: 129px;
+        height: 25px;
+        border-radius: $border-radius-li;
+        cursor: text;
+
+        .progress-icon-container {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            left: 0.2rem;
+
+            .over-due {
+                color: $clr-exclamation-mark
+            }
+
+            .on-time,
+            .today {
+                color: $clr-check-mark
+            }
+        }
+
+        &:hover {
+            color: #1f76c2;
+            outline: 1px rgba(128, 128, 128, 0.494) solid;
+
+            .close-btn {
+                display: block;
+                position: absolute;
+                width: 18px;
+                height: 18px;
+                right: 5px;
+                border-radius: 0.2rem;
+                background-color: #dcdfec;
+                color: $clr-text;
+                fill: currentcolor;
+                z-index: 100;
+
+
+                &:hover {
+                    background-color: #cbceda;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .empty-date {
+        align-items: center;
+        justify-content: center;
+        gap: rem(5px);
+        position: relative;
+        text-align: center;
+        width: 129px;
+        height: 25px;
+        border-radius: 0.2rem;
+        cursor: text;
+        color: #0073EA;
+        outline: 1px rgba(128, 128, 128, 0.494) solid;
+    }
+
+    &:hover .empty-date {
+        display: flex;
+    }
+}

@@ -13,6 +13,10 @@
         box-shadow: 4px 3px 6px -3px $clr-table-shadow;
         cursor: pointer;
         z-index: 10;
+
+        .label-picker-container {
+            opacity: 0.8;
+        }
     }
 
     .pulse-side-color {
