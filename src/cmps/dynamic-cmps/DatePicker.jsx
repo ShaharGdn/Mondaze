@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import React, { useState } from "react";
 
-import { Popover } from "../modals/Popover";
+import { Popover } from "../popovers/Popover";
 import { format } from 'date-fns';
 import { compareAsc } from "date-fns";
 import dayjs from 'dayjs';

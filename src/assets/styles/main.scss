@@ -38,9 +38,9 @@
 @import "cmps/BoardSideBarPreview";
 
 // Modals
-@import "cmps/modals/AddBoardModal";
-@import "cmps/modals/BoardActionsModal";
-@import "cmps/modals/Popover";
+@import "cmps/popovers/AddBoardPopover";
+@import "cmps/popovers/BoardActionsList";
+@import "cmps/popovers/Popover";
 
 @import "cmps/BoardTemplates";
 @import "cmps/Loader";

@@ -6,7 +6,7 @@ import { Modal, Box, Button, FormControl, RadioGroup, FormControlLabel, Radio } 
 import { IoCloseOutline } from "react-icons/io5"
 import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 
-export function AddBoardModal({ open, onClose }) {
+export function AddBoardPopover({ open, onClose }) {
     const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
 
     async function onAddBoard(ev) {

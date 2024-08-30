@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom'
-import { BsThreeDots } from 'react-icons/bs';
 import BoardIcon from './icons/BoardIcon';
 import { useState } from 'react';
-import { BoardActionsModal } from './modals/BoardActionsModal';
+import { BoardActionsList } from './popovers/BoardActionsList';
+import { ThreeDots } from './buttons/ThreeDots';
 
 export function BoardSideBarPreview({ board, type }) {
     const [anchorEl, setAnchorEl] = useState(null)
@@ -17,11 +17,11 @@ export function BoardSideBarPreview({ board, type }) {
         }
     }
 
-    function handleClick(event) {
-        event.preventDefault()
-        event.stopPropagation()
-        setAnchorEl(event.currentTarget)
-    }
+    // function handleClick(event) {
+    //     event.preventDefault()
+    //     event.stopPropagation()
+    //     setAnchorEl(event.currentTarget)
+    // }
 
     return (
         <>
@@ -33,12 +33,15 @@ export function BoardSideBarPreview({ board, type }) {
                         </div>
                         <p>{board.title}</p>
                     </div>
-                    <div className="board-dots-actions">
-                        <BsThreeDots
-                            onClick={handleClick}
-                        />
-                        <BoardActionsModal board={board} anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
-                    </div>
+
+                    <ThreeDots children={<BoardActionsList board={board}
+                        anchorEl={anchorEl}
+                        setAnchorEl={setAnchorEl} />}
+                        anchorEl={anchorEl}
+                        setAnchorEl={setAnchorEl}
+                        className='board-dots-actions'
+                        classNameContent='actions-list'
+                    />
                 </div>
             </NavLink>
         </>

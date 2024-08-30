@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router';
 import { addBoard, removeBoard, updateBoard } from '../../store/actions/board.actions';
 import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service';
 
-import { Box, Popover } from '@mui/material';
-
 // Icons
 import { LuPen } from "react-icons/lu";
 import { FaRegStar } from "react-icons/fa";
@@ -13,7 +11,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { BsArchive } from "react-icons/bs";
 import { MdOutlineOpenInNew } from "react-icons/md";
 
-export function BoardActionsModal({ board, anchorEl, setAnchorEl }) {
+export function BoardActionsList({ board, anchorEl, setAnchorEl }) {
     const [boardToEdit, setBoardToEdit] = useState(board)
 
     useEffect(() => {
@@ -101,62 +99,39 @@ export function BoardActionsModal({ board, anchorEl, setAnchorEl }) {
     const id = open ? 'simple-popover' : undefined
 
     return (
-        <Popover
-            className={`pop-over-board-actions ${id} Figtree-regular`}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-            }}
-            transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-            }}
-            PaperProps={{
-                sx: {
-                    mt: 1.2,
-                    ml: -1
-                },
-            }}
-        >
-            <Box sx={{ p: 0 }} className="actions-list">
-                <ul>
-                    <li className="new-tab" onClick={onOpenNewTab}>
-                        <MdOutlineOpenInNew className="icon" />
-                        <span>Open Board in New Tab</span>
-                    </li>
+        <ul>
+            <li className="new-tab" onClick={onOpenNewTab}>
+                <MdOutlineOpenInNew className="icon" />
+                <span>Open Board in New Tab</span>
+            </li>
 
-                    <div className="border"></div>
-                    <li className="rename">
-                        <LuPen className="icon" />
-                        <span>Rename Board</span>
-                    </li>
+            <div className="border"></div>
+            <li className="rename">
+                <LuPen className="icon" />
+                <span>Rename Board</span>
+            </li>
 
-                    <li className="favorite" onClick={onFavoriteBoard}>
-                        <FaRegStar className="icon" />
-                        <span>{board.isStarred ? 'Remove from ' : 'Add to '}favorites</span>
-                    </li>
+            <li className="favorite" onClick={onFavoriteBoard}>
+                <FaRegStar className="icon" />
+                <span>{board.isStarred ? 'Remove from ' : 'Add to '}favorites</span>
+            </li>
 
-                    <li className="duplicate" onClick={onDuplicateBoard}>
-                        <HiOutlineDocumentDuplicate className="icon" />
-                        <span>Duplicate Board</span>
-                    </li>
+            <li className="duplicate" onClick={onDuplicateBoard}>
+                <HiOutlineDocumentDuplicate className="icon" />
+                <span>Duplicate Board</span>
+            </li>
 
-                    <div className="border"></div>
+            <div className="border"></div>
 
-                    <li className="delete" onClick={onDeleteBoard}>
-                        <AiOutlineDelete className="icon" />
-                        <span>Delete</span>
-                    </li>
+            <li className="delete" onClick={onDeleteBoard}>
+                <AiOutlineDelete className="icon" />
+                <span>Delete</span>
+            </li>
 
-                    <li className="archive" onClick={onArchiveBoard}>
-                        <BsArchive className="icon" />
-                        <span>Archive</span>
-                    </li>
-                </ul>
-            </Box>
-        </Popover >
+            <li className="archive" onClick={onArchiveBoard}>
+                <BsArchive className="icon" />
+                <span>Archive</span>
+            </li>
+        </ul>
     )
 }

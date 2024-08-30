@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import React, { useState } from "react";
-import { Popover } from "../modals/Popover";
+import { Popover } from "../popovers/Popover";
 
 export function LabelPicker({ type, onUpdatePulse, pulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
