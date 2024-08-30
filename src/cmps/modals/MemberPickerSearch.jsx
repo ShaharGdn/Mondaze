@@ -37,18 +37,14 @@ export function MemberPickerSearch({ pulse, onUpdatePulse, setOpen }) {
 
     function onRemoveMember(selectedMember) {
         const filteredMembers = selectedMembers.filter(member => member._id !== selectedMember._id)
-
         setSelectedMembers([...filteredMembers])
         setSuggestedMembers([...suggestedMembers, selectedMember])
+        availableMembers.current = [...suggestedMembers, selectedMember]
 
         const filteredMembersIds = filteredMembers.map(member => member._id)
         const updatedPulse = { ...pulse, memberIds: [...filteredMembersIds] }
         onUpdatePulse(updatedPulse)
     }
-
-    // function onClear() {
-    //     setSuggestedMembers([...availableMembers.current])
-    // }
 
     return (
         <section className="member-picker-container">
@@ -66,10 +62,8 @@ export function MemberPickerSearch({ pulse, onUpdatePulse, setOpen }) {
                     <span className="magnifying-glass-icon">{ICON_SEARCH}</span>
                     <input
                         onChange={handleChange}
-                        // value={searchTxt}
                         type="search"
                         placeholder="Search names, roles or teams" />
-                    {/* <span className="clear-member-search" onClick={onClear}>x</span> */}
                 </div>
                 <section className="suggested-container">
                     <h4 className="suggested-title">Suggested people</h4>
