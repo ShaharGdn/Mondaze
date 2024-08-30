@@ -35,7 +35,8 @@ export function GroupPreview({ group }) {
             const pulse = {
                 title: board.type,
                 status: 'dft3488',
-                priority: 'dft3489'
+                priority: 'dft3489',
+                isDone: '',
             }
             await addPulse(board._id, group.id, pulse)
             showSuccessMsg('Pulse added')

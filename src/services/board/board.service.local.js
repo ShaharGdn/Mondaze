@@ -137,7 +137,7 @@ async function addGroup(boardId, position = 'start') {
 
         const updatedBoard = await updateBoard(board)
         await storageService.put(STORAGE_KEY, updatedBoard)
-        
+
         return groupToAdd
     } catch (err) {
         console.log('Could not add group:', err)
@@ -197,8 +197,9 @@ async function addPulse(boardId, groupId, pulse) {
         const pulseToAdd = {
             id: makeId(),
             title: pulse.title || '',
-            status: pulse.status,
-            priority: pulse.priority
+            status: pulse.status || '',
+            priority: pulse.priority || '',
+            isDone: pulse.isDone || '',
         }
 
         board.groups[groupIdx].pulses.push(pulseToAdd)

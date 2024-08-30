@@ -16,7 +16,7 @@ export function MemberPicker({ pulse, onUpdatePulse }) {
     return (
         <div className="assignee-container" onClick={handleClick}>
             <div className="multiple-img-container">
-                {pulse.memberIds.length > 0
+                {pulse.memberIds?.length > 0
                     ? pulse.memberIds.map((memberId, idx) => {
                         // if (idx > 2) {
                         return <img

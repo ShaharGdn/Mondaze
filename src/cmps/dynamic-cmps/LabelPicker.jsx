@@ -17,8 +17,13 @@ export function LabelPicker({ type, onUpdatePulse, pulse }) {
 
     function onSelectLabel(labelId) {
         setOpen(false)
+
+        const isDone = (labelId === 'dnn8390') ? true : false
+
         const pulseToUpdate = {
-            ...pulse, [type]: labelId
+            ...pulse,
+            [type]: labelId,
+            isDone
         }
         onUpdatePulse(pulseToUpdate)
     }

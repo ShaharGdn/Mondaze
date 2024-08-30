@@ -124,6 +124,7 @@ function getEmptyBoard(type = 'Task') {
                         'priority': 'mdm1126',
                         'dueDate': '2024-09-24',
                         'memberIds': ['u101'],
+                        'isDone': ''
                     },
                     {
                         'id': makeId(),
@@ -132,6 +133,8 @@ function getEmptyBoard(type = 'Task') {
                         'priority': 'mdm1126',
                         'dueDate': '2024-09-15',
                         'memberIds': ['u101', 'u102'],
+                        'isDone': true
+
                     },
                     {
                         'id': makeId(),
@@ -140,6 +143,8 @@ function getEmptyBoard(type = 'Task') {
                         'priority': 'hgh3899',
                         'dueDate': '2024-09-10',
                         'memberIds': [],
+                        'isDone': ''
+
                     },
                 ],
                 style: { color: '#579bfc' }
@@ -157,6 +162,8 @@ function getEmptyBoard(type = 'Task') {
                         'priority': 'hgh3899',
                         'dueDate': '2024-10-05',
                         'memberIds': ['u101', 'u102', 'u103'],
+                        'isDone': true
+
                     },
                     {
                         'id': makeId(),
@@ -165,6 +172,8 @@ function getEmptyBoard(type = 'Task') {
                         'priority': 'low7891',
                         'dueDate': '2024-09-14',
                         'memberIds': ['u102'],
+                        'isDone': ''
+
                     },
                 ],
                 style: { color: '#a25ddc' }
