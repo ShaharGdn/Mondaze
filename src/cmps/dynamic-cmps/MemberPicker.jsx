@@ -14,7 +14,7 @@ export function MemberPicker({ pulse, onUpdatePulse }) {
     const trigger = (
         <div className="assignee-container">
             <div className="multiple-img-container">
-                {pulse.memberIds.length >= 3 && (
+                {pulse.memberIds?.length >= 3 && (
                     <>
                         <img
                             className="assignee-img multiple"
@@ -23,16 +23,16 @@ export function MemberPicker({ pulse, onUpdatePulse }) {
                         <div className="extra-members">+{pulse.memberIds.length - 1}</div>
                     </>
                 )}
-                {pulse.memberIds.length > 0 && pulse.memberIds.length < 3 && (
+                {pulse.memberIds?.length > 0 && pulse.memberIds?.length < 3 && (
                     pulse.memberIds.map((memberId, idx) => {
                         return <img
-                            className={`assignee-img${pulse.memberIds.length <= 1 ? '' : ' multiple'}`}
+                            className={`assignee-img${pulse.memberIds?.length <= 1 ? '' : ' multiple'}`}
                             key={idx}
                             src={getMemberById(memberId).imgUrl}
                             alt="" />
                     })
                 )}
-                {pulse.memberIds.length === 0 && (
+                {pulse.memberIds?.length === 0 && (
                     <img className="assignee-img" src='../src/assets/img/empty_assignee.svg' alt="" />
                 )}
             </div>
