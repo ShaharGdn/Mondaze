@@ -14,21 +14,27 @@ export function MemberPicker({ pulse, onUpdatePulse }) {
     const trigger = (
         <div className="assignee-container">
             <div className="multiple-img-container">
-                {pulse.memberIds.length > 0
-                    ? pulse.memberIds.map((memberId, idx) => {
-                        // if (idx > 2) {
+                {pulse.memberIds.length >= 3 && (
+                    <>
+                        <img
+                            className="assignee-img multiple"
+                            src={getMemberById(pulse.memberIds[0]).imgUrl}
+                            alt="" />
+                        <div className="extra-members">+{pulse.memberIds.length - 1}</div>
+                    </>
+                )}
+                {pulse.memberIds.length > 0 && pulse.memberIds.length < 3 && (
+                    pulse.memberIds.map((memberId, idx) => {
                         return <img
                             className={`assignee-img${pulse.memberIds.length <= 1 ? '' : ' multiple'}`}
                             key={idx}
                             src={getMemberById(memberId).imgUrl}
                             alt="" />
-                        // } else {
-                        // return <div className="extra-assignee">+{pulse.memberIds.length - 3}</div>
-                        // }
-                    }
-                    ) : (
-                        <img className="assignee-img" src='../src/assets/img/empty_assignee.svg' alt="" />
-                    )}
+                    })
+                )}
+                {pulse.memberIds.length === 0 && (
+                    <img className="assignee-img" src='../src/assets/img/empty_assignee.svg' alt="" />
+                )}
             </div>
             <i className="add-assignee-btn">+</i>
         </div>

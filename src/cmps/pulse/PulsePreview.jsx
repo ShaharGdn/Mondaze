@@ -21,9 +21,6 @@ export function PulsePreview({ group, pulse }) {
     async function onUpdatePulse(pulseToUpdate) {
         try {
             await updatePulse(board._id, group.id, pulseToUpdate)
-            console.log('pulseToUpdate', pulseToUpdate);
-            console.log('group', group);
-            
             showSuccessMsg('Pulse updated successfully')
         } catch (err) {
             console.log('err:', err)
