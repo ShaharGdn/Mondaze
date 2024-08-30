@@ -1,20 +1,18 @@
 import { useSelector } from "react-redux"
+import { MemberPickerSearch } from "../modals/MemberPickerSearch"
+import { useState } from "react"
+import { Popover } from "../modals/Popover"
 
 export function MemberPicker({ pulse, onUpdatePulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
+    const [open, setOpen] = useState(false)
 
     function getMemberById(memberId) {
-        return board.members.find(member => member._id === memberId)
+        return board.members.find(member => member._id === memberId) // service func?
     }
 
-    function handleClick(event) {
-        event.preventDefault()
-        event.stopPropagation()
-        setAnchorEl(event.currentTarget)
-    }
-
-    return (
-        <div className="assignee-container" onClick={handleClick}>
+    const trigger = (
+        <div className="assignee-container">
             <div className="multiple-img-container">
                 {pulse.memberIds.length > 0
                     ? pulse.memberIds.map((memberId, idx) => {
@@ -36,4 +34,12 @@ export function MemberPicker({ pulse, onUpdatePulse }) {
         </div>
     )
 
+    return (
+        <Popover trigger={trigger} open={open} setOpen={setOpen}>
+            <MemberPickerSearch
+                pulse={pulse}
+                onUpdatePulse={onUpdatePulse}
+                setOpen={setOpen} />
+        </Popover>
+    )
 }
