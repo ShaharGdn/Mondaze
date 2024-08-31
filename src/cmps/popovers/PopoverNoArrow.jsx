@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   useFloating,
   offset,
@@ -11,16 +11,25 @@ import {
   FloatingFocusManager,
 } from "@floating-ui/react";
 
-export function PopoverNoArrow({ children, trigger, open, setOpen }) {
+export function PopoverNoArrow({
+  children,
+  trigger,
+  open,
+  setOpen,
+  placement = 'bottom-start',  // Default placement
+  offset: offsetValue = 5,     // Default offset
+  flip: flipEnabled = true,    // Default flip enabled
+  shift: shiftEnabled = true   // Default shift enabled
+}) {
   const { refs, floatingStyles, context } = useFloating({
-    // placement,
+    placement,  // Use the passed placement prop
     open,
     onOpenChange: setOpen,
     middleware: [
-      offset(5),
-      flip(),
-      shift()
-    ],
+      offset(offsetValue),  // Use the passed offset prop
+      flipEnabled && flip(),  // Conditionally include flip middleware
+      shiftEnabled && shift()  // Conditionally include shift middleware
+    ].filter(Boolean),  // Filter out any false middleware
   });
 
   const click = useClick(context);
@@ -51,4 +60,3 @@ export function PopoverNoArrow({ children, trigger, open, setOpen }) {
     </>
   );
 }
-
