@@ -5,14 +5,14 @@ import { BoardActionsList } from './popovers/BoardActionsList';
 import { ThreeDots } from './buttons/ThreeDots';
 
 export function BoardSideBarPreview({ board, type }) {
-    const [anchorEl, setAnchorEl] = useState(null)
+    const [open, setOpen] = useState(false);
 
     function getLinkClassName({ isActive }) {
         return isActive ? `board-side-bar-link Figtree-regular active ${modalOpenClassName()}`
             : `board-side-bar-link Figtree-regular ${modalOpenClassName()}`
 
         function modalOpenClassName() {
-            const className = anchorEl ? 'modal-open' : ''
+            const className = open ? 'modal-open' : ''
             return className
         }
     }
@@ -29,12 +29,13 @@ export function BoardSideBarPreview({ board, type }) {
                     </div>
 
                     <ThreeDots children={<BoardActionsList board={board}
-                        anchorEl={anchorEl}
-                        setAnchorEl={setAnchorEl} />}
-                        anchorEl={anchorEl}
-                        setAnchorEl={setAnchorEl}
-                        className='board-dots-actions'
+                        open={open}
+                        setOpen={setOpen} />}
+                        open={open}
+                        setOpen={setOpen}
+                        MainClassName='board-dots-actions'
                         classNameContent='actions-list'
+                        placement={'bottom-start'}
                     />
                 </div>
             </NavLink>

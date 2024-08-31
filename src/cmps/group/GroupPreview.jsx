@@ -12,49 +12,49 @@ export function GroupPreview({ group }) {
     const [isGroupOpen, setIsGroupOpen] = useState(true)
 
 
-    async function onRemoveGroup() {
-        try {
-            await removeGroup(board._id, group.id)
-            showSuccessMsg(`Group removed (id: ${group.id})`)
-        } catch (err) {
-            showErrorMsg('Cannot remove group')
-        }
-    }
+    // async function onRemoveGroup() {
+    //     try {
+    //         await removeGroup(board._id, group.id)
+    //         showSuccessMsg(`Group removed (id: ${group.id})`)
+    //     } catch (err) {
+    //         showErrorMsg('Cannot remove group')
+    //     }
+    // }
 
-    async function onUpdateGroup() {
-        const newTitle = prompt('Title?')
-        const titleColor = prompt('Title Color?')
+    // async function onUpdateGroup() {
+    //     const newTitle = prompt('Title?')
+    //     const titleColor = prompt('Title Color?')
 
-        try {
-            const updatedGroup = { ...group, title: newTitle, style: { ...group.style, color: titleColor } }
-            await updateGroup(board._id, updatedGroup)
-            showSuccessMsg(`Group updated (id: ${updatedGroup.id})`)
-        } catch (err) {
-            showErrorMsg('Cannot update group')
-        }
-    }
+    //     try {
+    //         const updatedGroup = { ...group, title: newTitle, style: { ...group.style, color: titleColor } }
+    //         await updateGroup(board._id, updatedGroup)
+    //         showSuccessMsg(`Group updated (id: ${updatedGroup.id})`)
+    //     } catch (err) {
+    //         showErrorMsg('Cannot update group')
+    //     }
+    // }
 
-    async function onAddPulse() {
-        try {
-            const pulse = {
-                title: board.type,
-                status: 'dft3488',
-                priority: 'dft3489',
-                isDone: '',
-            }
-            await addPulse(board._id, group.id, pulse)
-            showSuccessMsg('Pulse added')
-        } catch (err) {
-            console.log('err:', err)
-            showErrorMsg('Cannot add pulse')
-        }
-    }
+    // async function onAddPulse() {
+    //     try {
+    //         const pulse = {
+    //             title: board.type,
+    //             status: 'dft3488',
+    //             priority: 'dft3489',
+    //             isDone: '',
+    //         }
+    //         await addPulse(board._id, group.id, pulse)
+    //         showSuccessMsg('Pulse added')
+    //     } catch (err) {
+    //         console.log('err:', err)
+    //         showErrorMsg('Cannot add pulse')
+    //     }
+    // }
 
     return (
         <section className="group-preview">
-            <button onClick={() => onRemoveGroup(group.id)}>Remove group</button>
-            <button onClick={onUpdateGroup}>Update group</button>
-            <button onClick={onAddPulse}>Add {group.type}</button>
+            {/* <button onClick={() => onRemoveGroup(group.id)}>Remove group</button> */}
+            {/* <button onClick={onUpdateGroup}>Update group</button> */}
+            {/* <button onClick={onAddPulse}>Add {group.type}</button> */}
 
             {/* 3 DOTS CMP for group */}
             <GroupTitleHeader group={group} isGroupOpen={isGroupOpen} setIsGroupOpen={setIsGroupOpen} />

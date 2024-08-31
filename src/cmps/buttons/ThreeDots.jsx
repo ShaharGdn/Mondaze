@@ -1,53 +1,42 @@
 import { BsThreeDots } from "react-icons/bs";
-import { FixedPopover } from "../popovers/FixedPopover";
+import { HiDotsHorizontal } from "react-icons/hi";
+import { PopoverNoArrow } from "../popovers/PopoverNoArrow";
 
-export function ThreeDots({ children, anchorEl, setAnchorEl, className, classNameContent }) {
+export function ThreeDots({
+    children,
+    open,
+    setOpen,
+    placement,
+    MainClassName,
+    classNameContent,
+    type
+}) {
     function handleClick(event) {
         event.preventDefault()
         event.stopPropagation()
-        setAnchorEl(event.currentTarget)
+        setOpen(!open)
     }
 
-    return (
-        <div className={className}>
-            <BsThreeDots
-                onClick={handleClick}
-            />
-            <FixedPopover
-                anchorEl={anchorEl}
-                setAnchorEl={setAnchorEl}
-                classNameContent={classNameContent}
-                children={children}
-            />
+    const trigger = (
+        <div className={MainClassName}>
+            {type === 'big' ?
+                <HiDotsHorizontal onClick={handleClick} size={19} />
+                :
+                <BsThreeDots
+                    onClick={handleClick}
+                />
+            }
         </div>
     )
-}
-
-
-
-
-export function ThreeDotss({ children, open, setOpen, placement, offset, flip, shift, className, classNameContent }) {
-    function handleClick(event) {
-        event.preventDefault()
-        event.stopPropagation()
-        setAnchorEl(event.currentTarget)
-    }
 
     return (
-        <div className={className}>
-            <BsThreeDots
-                onClick={handleClick}
-            />
-            <FixedPopover
-                open={open}
-                setOpen={setOpen}
-                classNameContent={classNameContent}
-                children={children}
-                placement={placement}
-                offset={offset}
-                flip={flip}
-                shift={shift}
-            />
-        </div>
+        <PopoverNoArrow
+            open={open}
+            setOpen={setOpen}
+            children={children}
+            placement={placement}
+            trigger={trigger}
+            classNameContent={classNameContent}
+        />
     )
 }

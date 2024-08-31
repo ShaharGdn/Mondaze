@@ -42,6 +42,7 @@ export function selectedBoardReducer(state = initialState, action) {
                     groups: state.board.groups.map(group => group.id === action.group.id ? action.group : group)
                 }
             }
+
         case ADD_PULSE:
             var group = state.board.groups.find(group => group.id === action.groupId)
             var newGroup = {

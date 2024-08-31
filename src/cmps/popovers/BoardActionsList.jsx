@@ -11,7 +11,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { BsArchive } from "react-icons/bs";
 import { MdOutlineOpenInNew } from "react-icons/md";
 
-export function BoardActionsList({ board, anchorEl, setAnchorEl }) {
+export function BoardActionsList({ board, open, setOpen }) {
     const [boardToEdit, setBoardToEdit] = useState(board)
 
     useEffect(() => {
@@ -30,7 +30,7 @@ export function BoardActionsList({ board, anchorEl, setAnchorEl }) {
             console.log('err: Cannot Update board', err)
             showErrorMsg('Cannot Update Board')
         } finally {
-            setAnchorEl(null)
+            setOpen(null)
         }
     }
 
@@ -43,7 +43,7 @@ export function BoardActionsList({ board, anchorEl, setAnchorEl }) {
             console.log('err: Cannot delete board', err)
             showErrorMsg('Cannot Delete Board')
         } finally {
-            setAnchorEl(null)
+            setOpen(null)
         }
     }
 
@@ -57,7 +57,7 @@ export function BoardActionsList({ board, anchorEl, setAnchorEl }) {
             console.log('err: Cannot Duplicated board', err)
             showErrorMsg('Cannot Duplicated Board')
         } finally {
-            setAnchorEl(null)
+            setOpen(null)
         }
     }
 
@@ -86,17 +86,17 @@ export function BoardActionsList({ board, anchorEl, setAnchorEl }) {
             ...boardToEdit, [prop]: value
         }
         onUpdateBoard(boardToUpdate)
-        setAnchorEl(null)
+        setOpen(null)
     }
 
     function handleClose(event) {
         event.preventDefault()
         event.stopPropagation()
-        setAnchorEl(null)
+        setOpen(null)
     }
 
-    const open = Boolean(anchorEl)
-    const id = open ? 'simple-popover' : undefined
+    const isOpen = Boolean(open)
+    const id = isOpen ? 'simple-popover' : undefined
 
     return (
         <ul>

@@ -30,16 +30,17 @@
 @import "cmps/AppHeader";
 @import "cmps/SideBar";
 @import "cmps/UserMsg";
-
 @import "cmps/BoardFilter";
 @import "cmps/BoardList";
 @import "cmps/BoardPreview";
 @import "cmps/BoardSideBarList";
 @import "cmps/BoardSideBarPreview";
+@import "cmps/AddPulseBtn";
 
-// Modals
+// Popovers
 @import "cmps/popovers/AddBoardModal";
 @import "cmps/popovers/BoardActionsList";
+@import "cmps/popovers/GroupActionsList";
 @import "cmps/popovers/Popover";
 @import "cmps/popovers/MemberPickerSearch";
 

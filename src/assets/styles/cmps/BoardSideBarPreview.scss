@@ -66,7 +66,7 @@
 
             .board-dots-actions {
                 display: none;
-                margin-inline-end: 1rem;
+                margin-inline-end: 0.5rem;
                 color: $clr-text;
 
                 .board-dots-actions.active {
@@ -80,17 +80,6 @@
                 * {
                     margin: 0 auto;
                 }
-
-                // &.modal-open {
-                //     display: flex;
-                //     align-items: center;
-                //     border-radius: 0.2rem;
-                //     min-width: rem(27px);
-                //     height: rem(27px);
-                //     margin-block-start: 0;
-                //     cursor: pointer;
-                //     background-color: #A8CDF3;
-                // }
             }
 
             // when the line is hovered
@@ -111,12 +100,6 @@
                 margin: 0;
                 margin-block-start: 0;
                 margin-inline-start: 0;
-
-
-                // .board-icon {
-                //     color: $clr-sidebar-icon-inactive;
-                //     top: rem(3px);
-                // }
 
                 p {
                     color: $clr-text;
