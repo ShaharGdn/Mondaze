@@ -5,6 +5,7 @@ import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.j
 import { PulseListHeader } from "../pulse/PulseListHeader.jsx";
 import { GroupTitleHeader } from "./GroupTitleHeader.jsx";
 import { useState } from "react";
+import { AddPulse } from "../pulse/AddPulse.jsx";
 
 export function GroupPreview({ group }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
@@ -61,6 +62,7 @@ export function GroupPreview({ group }) {
             <>
                 <PulseListHeader board={board} group={group} />
                 <PulseList group={group} />
+                <AddPulse group={group} />
             </>
             }
             {/* <PulseListHeader board={board} group={group} />

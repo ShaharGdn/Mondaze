@@ -17,7 +17,7 @@
         @include border(right);
 
         &.title-container {
-            min-width: 412px;
+            min-width: $pulse-title-full;
         }
 
         &.cmp-title-container {
