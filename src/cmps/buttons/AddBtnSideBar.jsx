@@ -4,7 +4,7 @@ import BoardIcon from "../icons/BoardIcon"
 import DashBoardIcon from "../icons/DashBoardIcon"
 import FolderIcon from "../icons/FolderIcon"
 import { MdKeyboardArrowRight } from "react-icons/md"
-import { AddBoardPopover } from "../popovers/AddBoardPopover"
+import { AddBoardModal } from "../popovers/AddBoardModal"
 
 export function AddBtnSideBar() {
     const [anchorEl, setAnchorEl] = useState(null)
@@ -82,7 +82,7 @@ export function AddBtnSideBar() {
                     </ul>
                 </Box>
             </Popover>
-            <AddBoardPopover open={openModal} onClose={handleCloseModal}/>
+            <AddBoardModal open={openModal} onClose={handleCloseModal}/>
         </>
     )
 }

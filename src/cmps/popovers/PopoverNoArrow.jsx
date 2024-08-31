@@ -11,11 +11,9 @@ import {
   FloatingFocusManager,
 } from "@floating-ui/react";
 
-export function PopoverNoArrow({ children, trigger, placement, open, setOpen }) {
-  const arrowRef = useRef(null);
-
-  const { refs, floatingStyles, context, placement } = useFloating({
-    placement,
+export function PopoverNoArrow({ children, trigger, open, setOpen }) {
+  const { refs, floatingStyles, context } = useFloating({
+    // placement,
     open,
     onOpenChange: setOpen,
     middleware: [
@@ -31,7 +29,6 @@ export function PopoverNoArrow({ children, trigger, placement, open, setOpen }) 
 
   return (
     <>
-      {/* Apply refs and props to the trigger element */}
       {React.cloneElement(trigger, {
         ref: refs.setReference,
         ...getReferenceProps(),
