@@ -27,6 +27,17 @@ export async function addGroup(boardId, position) {
     }
 }
 
+export async function duplicateGroup(group, boardId) {
+    try {
+        const addedGroup = await boardService.duplicateGroup(group, boardId)
+        store.dispatch(getCmdAddGroup(addedGroup, 'end'))
+        return addedGroup
+    } catch (err) {
+        console.log('Cannot add group', err)
+        throw err
+    }
+}
+
 export async function removeGroup(boardId, groupId) {
     try {
         await boardService.removeGroup(boardId, groupId)
@@ -99,6 +110,7 @@ function getCmdAddGroup(group, position) {
         group
     }
 }
+
 function getCmdRemoveGroup(groupId) {
     return {
         type: REMOVE_GROUP,

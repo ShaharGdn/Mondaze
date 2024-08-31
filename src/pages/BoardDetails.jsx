@@ -29,9 +29,9 @@ export function BoardDetails() {
       <header className='board-header'></header>
 
       {board && <div className="main-display">
-        <button className='add-group-btn' onClick={() => onAddGroup('start')}>
+        {/* <button className='add-group-btn' onClick={() => onAddGroup('start')}>
           <i className="fa-regular fa-plus fa-lg"></i>Add new group
-        </button>
+        </button> */}
         <GroupList groups={board.groups} />
         <button className='add-group-btn' onClick={() => onAddGroup('end')}>
           <i className="fa-regular fa-plus fa-lg"></i>Add new group</button>

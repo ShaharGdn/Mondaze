@@ -13,6 +13,7 @@ export const boardService = {
 
     getGroupById,
     addGroup,
+    duplicateGroup,
     updateGroup,
     removeGroup,
 
@@ -134,6 +135,30 @@ async function addGroup(boardId, position = 'start') {
         } else {
             board.groups.push(groupToAdd)
         }
+
+        const updatedBoard = await updateBoard(board)
+        await storageService.put(STORAGE_KEY, updatedBoard)
+
+        return groupToAdd
+    } catch (err) {
+        console.log('Could not add group:', err)
+    }
+}
+
+async function duplicateGroup(group, boardId) {
+    try {
+        const board = await getBoardById(boardId)
+        const groupToAdd = {
+            id: makeId(),
+            boardId,
+            title: group.title,
+            archivedAt: group.archivedAt,
+            pulses: group.pulses,
+            style: group.style,
+            type: board.type,
+        }
+
+        board.groups.push(groupToAdd)
 
         const updatedBoard = await updateBoard(board)
         await storageService.put(STORAGE_KEY, updatedBoard)

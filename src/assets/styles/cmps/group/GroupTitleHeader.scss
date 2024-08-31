@@ -49,12 +49,17 @@
         height: rem(25px);
         width: rem(25px);
 
-        &:hover {
+        &:hover,
+        &.open {
             cursor: pointer;
             color: $clr-text;
 
             &:hover {
                 background-color: #d8d9e1;
+            }
+
+            &.open {
+                background-color: #CAE3FD;
             }
         }
     }

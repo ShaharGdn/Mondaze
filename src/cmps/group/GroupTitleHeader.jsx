@@ -2,11 +2,19 @@ import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { ThreeDots } from "../buttons/ThreeDots";
+import { GroupActionsList } from "../popovers/GroupActionsList";
 
 export function GroupTitleHeader({ group, setIsGroupOpen, isGroupOpen }) {
     const [open, setOpen] = useState(false)
 
-    const children = <div>hello</div>
+    const children = (
+        <GroupActionsList
+            group={group}
+            setIsGroupOpen={setIsGroupOpen}
+            isGroupOpen={isGroupOpen}
+            open={open}
+            setOpen={setOpen} />
+    )
 
     return (
         <section className="group-title-header">
@@ -14,8 +22,8 @@ export function GroupTitleHeader({ group, setIsGroupOpen, isGroupOpen }) {
                 children={children}
                 open={open}
                 setOpen={setOpen}
-                placement={'right'}
-                MainClassName={'group-dots-actions'}
+                placement={'right-start'}
+                MainClassName={open ? 'group-dots-actions open' : 'group-dots-actions'}
                 type={'big'}
             />
             <button
