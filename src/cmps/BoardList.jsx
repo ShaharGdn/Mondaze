@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { BoardPreview } from './BoardPreview'
 import { IoIosArrowDown } from "react-icons/io";
-import { IoIosArrowUp } from "react-icons/io";
-
+import { IoIosArrowForward } from "react-icons/io";
 
 export function BoardList({ boards }) {
     const [isListOpen, setIsListOpen] = useState(true)
@@ -12,8 +11,8 @@ export function BoardList({ boards }) {
             <div className="recently-visited Figtree-bold">
                 <span className="arrow-down-icon" onClick={() => setIsListOpen(!isListOpen)}>
                     {isListOpen &&
-                        <IoIosArrowUp /> ||
-                        <IoIosArrowDown />
+                        <IoIosArrowDown /> ||
+                        <IoIosArrowForward />
                     }
                 </span>
                 <h1>Recently visited</h1>

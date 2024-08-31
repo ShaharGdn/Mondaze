@@ -4,9 +4,12 @@ import { PulseList } from "../pulse/PulseList.jsx";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.js";
 import { PulseListHeader } from "../pulse/PulseListHeader.jsx";
 import { GroupTitleHeader } from "./GroupTitleHeader.jsx";
+import { useState } from "react";
 
 export function GroupPreview({ group }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
+    const [isGroupOpen, setIsGroupOpen] = useState(true)
+
 
     async function onRemoveGroup() {
         try {
@@ -53,9 +56,15 @@ export function GroupPreview({ group }) {
             <button onClick={onAddPulse}>Add {group.type}</button>
 
             {/* 3 DOTS CMP for group */}
-            <GroupTitleHeader group={group} />
-            <PulseListHeader board={board} group={group} />
-            <PulseList group={group} />
+            <GroupTitleHeader group={group} isGroupOpen={isGroupOpen} setIsGroupOpen={setIsGroupOpen} />
+            {isGroupOpen && 
+            <>
+                <PulseListHeader board={board} group={group} />
+                <PulseList group={group} />
+            </>
+            }
+            {/* <PulseListHeader board={board} group={group} />
+            <PulseList group={group} /> */}
         </section >
     )
 }

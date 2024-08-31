@@ -17,12 +17,6 @@ export function BoardSideBarPreview({ board, type }) {
         }
     }
 
-    // function handleClick(event) {
-    //     event.preventDefault()
-    //     event.stopPropagation()
-    //     setAnchorEl(event.currentTarget)
-    // }
-
     return (
         <>
             <NavLink className={getLinkClassName} to={`/board/${board._id}`}>
