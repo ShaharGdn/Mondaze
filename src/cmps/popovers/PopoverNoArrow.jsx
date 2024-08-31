@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   useFloating,
   offset,
@@ -9,27 +9,20 @@ import {
   useInteractions,
   FloatingPortal,
   FloatingFocusManager,
+
 } from "@floating-ui/react";
 
-export function PopoverNoArrow({
-  children,
-  trigger,
-  open,
-  setOpen,
-  placement = 'bottom-start',  // Default placement
-  offset: offsetValue = 5,     // Default offset
-  flip: flipEnabled = true,    // Default flip enabled
-  shift: shiftEnabled = true   // Default shift enabled
-}) {
-  const { refs, floatingStyles, context } = useFloating({
-    placement,  // Use the passed placement prop
+export function PopoverNoArrow({ children, trigger, placement = "right", open, setOpen, classNameContent }) {
+
+  const { refs, floatingStyles, context, middlewareData, placement: currentPlacement } = useFloating({
+    placement,
     open,
     onOpenChange: setOpen,
     middleware: [
-      offset(offsetValue),  // Use the passed offset prop
-      flipEnabled && flip(),  // Conditionally include flip middleware
-      shiftEnabled && shift()  // Conditionally include shift middleware
-    ].filter(Boolean),  // Filter out any false middleware
+      offset(5),
+      flip(),
+      shift(),
+    ],
   });
 
   const click = useClick(context);
@@ -38,6 +31,7 @@ export function PopoverNoArrow({
 
   return (
     <>
+      {/* Apply refs and props to the trigger element */}
       {React.cloneElement(trigger, {
         ref: refs.setReference,
         ...getReferenceProps(),
@@ -52,7 +46,10 @@ export function PopoverNoArrow({
               {...getFloatingProps()}
               className="Popover"
             >
-              {children}
+              <div className={classNameContent}>
+                {children}
+              </div>
+              {/* Adjust FloatingArrow component for dynamic positioning */}
             </div>
           </FloatingFocusManager>
         </FloatingPortal>
@@ -60,3 +57,4 @@ export function PopoverNoArrow({
     </>
   );
 }
+
