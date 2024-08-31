@@ -52,6 +52,7 @@ export function GroupPreview({ group }) {
             <button onClick={onUpdateGroup}>Update group</button>
             <button onClick={onAddPulse}>Add {group.type}</button>
 
+            {/* 3 DOTS CMP for group */}
             <GroupTitleHeader group={group} />
             <PulseListHeader board={board} group={group} />
             <PulseList group={group} />

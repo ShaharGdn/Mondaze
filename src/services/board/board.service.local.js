@@ -200,6 +200,8 @@ async function addPulse(boardId, groupId, pulse) {
             status: pulse.status || '',
             priority: pulse.priority || '',
             isDone: pulse.isDone || '',
+            dueDate: pulse.dueDate || '',
+            memberIds: pulse.memberIds || [],
         }
 
         board.groups[groupIdx].pulses.push(pulseToAdd)

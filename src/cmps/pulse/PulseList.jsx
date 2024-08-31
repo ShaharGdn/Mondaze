@@ -6,6 +6,7 @@ export function PulseList({ group }) {
         <section className="pulses-container">
             <ul className="pulse-list">
                 {group.pulses.map(pulse =>
+                    //3 DOTS CMP for each pulse
                     <li className="pulse" key={pulse.id}>
                         <PulsePreview pulse={pulse} group={group} />
                     </li>)
