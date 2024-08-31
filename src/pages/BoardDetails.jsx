@@ -5,6 +5,9 @@ import { useSelector } from 'react-redux'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { addGroup, loadBoard } from '../store/actions/selected-board.actions'
 import { GroupList } from '../cmps/group/GroupList'
+import { AddPulseBtn } from '../cmps/buttons/AddPulseBtn'
+import { IoIosArrowDown } from "react-icons/io";
+
 
 
 export function BoardDetails() {
@@ -26,14 +29,22 @@ export function BoardDetails() {
 
   return (
     <section className="board-details main">
-      <header className='board-header'></header>
-
       {board && <div className="main-display">
-        {/* <button className='add-group-btn' onClick={() => onAddGroup('start')}>
+
+        <div className="board-header">
+          <h2 className="poppins-regular">{board?.title}</h2>
+          <div>
+            <IoIosArrowDown />
+          </div>
+        </div>
+        
+        <AddPulseBtn board={board} />
+
+        {/* <button className="add-group-btn" onClick={() => onAddGroup("start")}>
           <i className="fa-regular fa-plus fa-lg"></i>Add new group
         </button> */}
         <GroupList groups={board.groups} />
-        <button className='add-group-btn' onClick={() => onAddGroup('end')}>
+        <button className="add-group-btn" onClick={() => onAddGroup("end")}>
           <i className="fa-regular fa-plus fa-lg"></i>Add new group</button>
       </div>
       }

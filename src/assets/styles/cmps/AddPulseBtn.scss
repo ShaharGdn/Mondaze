@@ -1,0 +1,58 @@
+.add-pulse-button-component {
+    display: flex;
+
+    button {
+        color: white;
+        background-color: $clr-btn-blue;
+        margin: 0;
+
+        &.add-pulse {
+            border-top-left-radius: $border-radius-li;
+            border-bottom-left-radius: $border-radius-li;
+            border-right: 1px solid rgba(31, 31, 44, 0.207);
+            width: rem(74px);
+            height: rem(32px);
+            padding: rem(8px) rem(4px);
+            font-size: rem(14px);
+        }
+
+        &.add-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top-right-radius: $border-radius-li;
+            border-bottom-right-radius: $border-radius-li;
+            width: rem(28px);
+            height: rem(32px);
+        }
+    }
+}
+
+.add-group-container {
+    padding: 0.5rem;
+
+    .add-group-list {
+        display: flex;
+        align-items: center;
+        width: rem(240px);
+        padding-block: 0.4rem;
+        padding-inline: 0.5rem;
+        border-radius: $border-radius-li;
+
+        .icon {
+            color: $clr-sidebar-icon-inactive;
+            margin-inline-end: rem(10px);
+            font-size: rem(16px);
+        }
+
+        span {
+            font-size: rem(14px);
+            color: $clr-text;
+        }
+
+        &:hover {
+            background-color: $clr-menu-add-hover;
+            cursor: pointer;
+        }
+    }
+}

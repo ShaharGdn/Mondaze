@@ -2,9 +2,8 @@
     padding-inline-start: 40px;
 
     .main-display {
-        padding-block-start: 3rem;
+        padding-block-start: 1.5rem;
     }
-
 
     .add-group-btn {
         display: flex;
@@ -22,6 +21,20 @@
 
         &:hover {
             background-color: $clr-btn-hover;
+        }
+    }
+
+    .board-header {
+        display: flex;
+        align-items: baseline;
+
+        h2 {
+            margin-inline-end: 0.5rem;
+        }
+
+        div {
+            color: #676879;
+            cursor: pointer;
         }
     }
 
