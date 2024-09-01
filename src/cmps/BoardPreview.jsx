@@ -1,8 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import { GoStar } from 'react-icons/go'
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
-import { CiStar } from "react-icons/ci";
 import BoardIcon from './icons/BoardIcon';
 
 
