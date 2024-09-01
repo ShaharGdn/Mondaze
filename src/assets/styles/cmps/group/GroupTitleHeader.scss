@@ -4,9 +4,12 @@
     align-items: center;
     height: $pulse-row-height;
     position: relative;
-
     left: -2px; // to middle it when table color side border is added
 
+    &.collapsed {
+        // height: 60px;
+        // display: flex;
+    }
 
     .collapse-group-btn {
         display: flex;
@@ -14,28 +17,46 @@
         background-color: transparent;
         font-size: 16px;
         margin: 0;
-
-        // on collapse, add class and :
-        // transform-origin: center center;
-        // transform: rotate(90deg);
-        // transition: transform .2s;
-
     }
 
-    .group-title {
-        margin: 0;
-
+    .group-title,
+    .title-input {
+        margin: -2px;
         font-family: "Poppins", "Roboto", sans-serif;
         font-size: 18px;
         line-height: 24px;
         font-weight: 500;
         letter-spacing: 0.1px;
 
+        padding: 0px 4px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
 
-        padding: 0 2px;
+    .input-container {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+
+        .group-title {
+            &:hover {
+                border-color: $clr-border-color;
+            }
+        }
+
+        .title-input {
+            // width: 100%;
+            min-width: 500px;
+            &:focus-visible {
+                border: 1px solid $clr-btn-blue;
+                outline: none;
+            }
+        }
     }
 
     .group-dots-actions {
@@ -44,7 +65,7 @@
         justify-content: center;
         position: absolute;
         border-radius: 0.2rem;
-        left: -30px;
+        left: -32px;
         color: white;
         height: rem(25px);
         width: rem(25px);

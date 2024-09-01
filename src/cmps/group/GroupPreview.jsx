@@ -57,13 +57,17 @@ export function GroupPreview({ group }) {
             {/* <button onClick={onAddPulse}>Add {group.type}</button> */}
 
             {/* 3 DOTS CMP for group */}
-            <GroupTitleHeader group={group} isGroupOpen={isGroupOpen} setIsGroupOpen={setIsGroupOpen} />
-            {isGroupOpen && 
-            <>
-                <PulseListHeader board={board} group={group} />
-                <PulseList group={group} />
-                <AddPulse board={board} group={group} />
-            </>
+            <GroupTitleHeader
+                board={board}
+                group={group}
+                isGroupOpen={isGroupOpen}
+                setIsGroupOpen={setIsGroupOpen} />
+            {isGroupOpen &&
+                <>
+                    <PulseListHeader board={board} group={group} />
+                    <PulseList group={group} />
+                    <AddPulse board={board} group={group} />
+                </>
             }
             {/* <PulseListHeader board={board} group={group} />
             <PulseList group={group} /> */}
