@@ -41,6 +41,8 @@
 
             .title-input {
                 width: 100%;
+                font-size: inherit;
+                font-family: inherit;
 
                 &:focus-visible {
                     background-color: $clr-table-bg;

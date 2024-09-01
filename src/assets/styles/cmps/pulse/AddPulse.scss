@@ -1,6 +1,5 @@
 .add-pulse-container {
     position: relative;
-
     display: flex;
     height: $pulse-row-height;
     @include border(bottom);
@@ -29,23 +28,26 @@
 
         &.title-container {
             width: $pulse-title-full;
-        }
 
-        .add-pulse-title {
-            flex-basis: $pulse-title-full;
-            @include fontFigtree(14px, 400, normal);
-            padding-top: 2px;
-            // height: calc(100% - 12px);
-            margin: 6px 10px;
-            border-radius: 4px;
-            padding-left: 16px;
-            // text-align: left;
-            outline: none;
-            border-width: 0px;
+            form {
+                flex-basis: $pulse-title-full;
+                margin: 6px 10px;
 
-            &:focus {
-                outline: 1px solid $clr-btn-blue;
-                background-color: $clr-table-bg;
+                .add-pulse-title {
+                    width: 100%;
+                    @include fontFigtree(14px, 400, normal);
+                    padding-top: 2px;
+                    border-radius: 4px;
+                    padding-left: 16px;
+                    outline: none;
+                    border-width: 0px;
+                    color: $clr-text;
+
+                    &:focus {
+                        outline: 1px solid $clr-btn-blue;
+                        background-color: $clr-table-bg;
+                    }
+                }
             }
         }
     }
@@ -57,9 +59,11 @@
             opacity: 1;
         }
 
-        .add-pulse-title {
-            outline: 1px solid $clr-border-color;
-            background-color: $clr-pulse-hover;
+        .title-container {
+            .add-pulse-title {
+                outline: 1px solid $clr-border-color;
+                background-color: $clr-pulse-hover;
+            }
         }
     }
 

@@ -3,8 +3,8 @@ import { ICON_EMPTY_MESSAGES } from "../icons/svg-icons";
 import { useInputHandler } from "../../customHooks/useInputHandler";
 
 export function PulseTitle({ pulse, onUpdatePulse }) {
-    const [inputRef, setIsBlurred, propToEdit, setPropToEdit, isEditable,
-        setIsEditable, handleBlur, handleSubmit] = useInputHandler(pulse.title, handleUpdate)
+    const [inputRef, setIsBlurred, propToEdit, setPropToEdit,
+        handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(pulse.title, handleUpdate)
 
     function handleUpdate(updatedTitle) {
         const pulseToUpdate = { ...pulse, title: updatedTitle }
@@ -20,7 +20,7 @@ export function PulseTitle({ pulse, onUpdatePulse }) {
                         type="text"
                         value={propToEdit}
                         onChange={(ev) => setPropToEdit(ev.target.value)}
-                        onBlur={handleBlur}
+                        onBlur={() => handleBlur()}
                         onFocus={() => setIsBlurred(false)}
                         ref={inputRef}
                         autoFocus
