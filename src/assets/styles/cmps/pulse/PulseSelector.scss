@@ -1,14 +1,97 @@
-
 .pulse-select {
     display: flex;
-    @include border(left);
+    // @include border(left);
     padding: 9px;
     width: 33px;
 
-    .pulse-checkbox {
-        // font-size: 18px;
-        margin: 0;
-        scale: 1.28; // needs changing when switching checkbox
+    input {
+        // scale: 1.28; // needs changing when switching checkbox
+        transform: scale(1.28);
+        opacity: 0.4;
+        cursor: pointer;
+        transition: 200ms;
 
+        &:hover {
+            opacity: 0.7;
+        }
+
+        &:checked {
+            opacity: 1;
+        }
     }
 }
+
+// .pulse-select {
+//     display: flex;
+//     // @include border(left);
+//     padding: 9px;
+//     width: 33px;
+
+//     label {
+//         position: relative;
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+
+//         padding: 8px;
+//         width: fit-content;
+//         // height: min-content;
+//         cursor: pointer;
+
+//         input {
+//             // visibility: hidden;
+//             display: none;
+//             // display: flex;
+//             // align-items: center;
+//             // justify-content: center;
+//             // font-size: 18px;
+//             // margin: 0;
+//             // scale: 1.28; // needs changing when switching checkbox
+
+//             margin: 4px 0 0;
+//             line-height: normal;
+
+//             position: absolute;
+//             // font-family: inherit;
+//             // font-size: inherit;
+//             width: 0;
+//             height: 0;
+//             opacity: 0;
+//             // outline: 1px auto $clr-border-color;
+//             // outline-offset: 2px;
+//             // transform: scale(1.28);
+//             // outline-color: $clr-border-color;
+
+//             &:checked+ .checkbox-square .check-icon{
+//                 // visibility: visible;
+//             }
+//         }
+//         .checkbox-square {
+//             cursor: pointer;
+//             visibility: visible;
+//             display: flex;
+//             // display: none;
+//             justify-content: center;
+//             flex-direction: column;
+//             height: 16px;
+//             width: 16px;
+//             border: 1px solid $clr-border-color;
+//             border-radius: 2px;
+//             transition: transform 70ms cubic-bezier(0, 0, 0.35, 1);
+//             position: relative;
+//             overflow: hidden;
+//             background-color: $clr-table-bg;
+
+//             .check-icon {
+//                 // position: relative;
+//                 width: 100%;
+//                 // color: $clr-table-bg;
+//                 // visibility: hidden;
+//                 display: none;
+
+//             }
+//         }
+
+//     }
+
+// }

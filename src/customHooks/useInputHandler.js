@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 
-export const useInputHandler = (initialPropState, callBack) => {
+export const useInputHandler = (initialPropState, callBack, isInputOnly = false) => {
     const [isBlurred, setIsBlurred] = useState(false)
     const [propToEdit, setPropToEdit] = useState(initialPropState)
     const [isEditable, setIsEditable] = useState(false)
@@ -18,14 +18,16 @@ export const useInputHandler = (initialPropState, callBack) => {
                 inputRef.current.blur()
             }
         }, 0)
+        if (isInputOnly) setPropToEdit('')
     }
 
     function handleBlur() {
         setIsEditable(false)
         if (isBlurred) return
         handleSubmit()
+        if (isInputOnly) setPropToEdit('')
     }
 
     return [inputRef, setIsBlurred, propToEdit, setPropToEdit,
-        isEditable, setIsEditable, handleBlur, handleSubmit]
+        handleBlur, handleSubmit, isEditable, setIsEditable]
 }

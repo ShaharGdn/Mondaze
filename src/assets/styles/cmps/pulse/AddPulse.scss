@@ -1,0 +1,77 @@
+.add-pulse-container {
+    position: relative;
+    display: flex;
+    height: $pulse-row-height;
+    @include border(bottom);
+    cursor: text;
+
+    .pulse-side-color {
+        @include colored-border(bottom);
+        opacity: 0.5;
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        &.pulse-select {
+            justify-content: center;
+            @include border(right);
+
+            input {
+                z-index: 1;
+                opacity: 0.6;
+                cursor: text;
+            }
+        }
+
+        &.title-container {
+            width: $pulse-title-full;
+
+            form {
+                flex-basis: $pulse-title-full;
+                margin: 6px 10px;
+
+                .add-pulse-title {
+                    width: 100%;
+                    @include fontFigtree(14px, 400, normal);
+                    padding-top: 2px;
+                    border-radius: 4px;
+                    padding-left: 16px;
+                    outline: none;
+                    border-width: 0px;
+                    color: $clr-text;
+
+                    &:focus {
+                        outline: 1px solid $clr-btn-blue;
+                        background-color: $clr-table-bg;
+                    }
+                }
+            }
+        }
+    }
+
+    &:hover {
+        background-color: $clr-pulse-hover;
+
+        .pulse-side-color {
+            opacity: 1;
+        }
+
+        .title-container {
+            .add-pulse-title {
+                outline: 1px solid $clr-border-color;
+                background-color: $clr-pulse-hover;
+            }
+        }
+    }
+
+    &:focus-within {
+        background-color: $clr-btn-active-bg;
+
+        .pulse-side-color {
+            opacity: 1;
+        }
+    }
+}
