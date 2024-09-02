@@ -2,7 +2,20 @@
     padding-inline-start: 40px;
 
     .main-display {
-        padding-block-start: 1.5rem;
+        position: relative;
+        height: 100%;
+        overflow: auto;
+
+        .main-top-container {
+            position: sticky;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            padding-block: 1.5rem 1rem;
+
+            background-color: $clr-table-bg;
+            margin-block-start: 0;
+        }
     }
 
     .add-group-btn {

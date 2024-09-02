@@ -28,17 +28,39 @@ export function BoardDetails() {
 
   return (
     <section className="board-details main">
-      {board && <div className="main-display">
+      {board &&<div className="main-display">
 
-        <BoardHeader board={board}/>
+        <section className='main-top-container'>
+         <BoardHeader board={board}/>
+         <AddPulseBtn board={board} />
+       </section>
 
-        <AddPulseBtn board={board} />
-        <GroupList groups={board.groups} />
-        <button className="add-group-btn" onClick={() => onAddGroup("end")}>
-          <i className="fa-regular fa-plus fa-lg"></i>Add new group</button>
-      </div>
-      }
-
+        <section>
+          <GroupList groups={board.groups} />
+          <button className="add-group-btn" onClick={() => onAddGroup("end")}>
+            <i className="fa-regular fa-plus fa-lg"></i>Add new group
+          </button>
+        </section>
+      </div>}
     </section>
   )
 }
+
+// return (
+//   <section className="board-details main">
+//     {board && <div className="main-display">
+//       <section>
+        
+//       </section>
+
+//       <BoardHeader board={board}/>
+//       <AddPulseBtn board={board} />
+
+//       <GroupList groups={board.groups} />
+//       <button className="add-group-btn" onClick={() => onAddGroup("end")}>
+//         <i className="fa-regular fa-plus fa-lg"></i>Add new group</button>
+//     </div>
+//     }
+
+//   </section>
+// )
