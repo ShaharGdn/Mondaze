@@ -1,0 +1,18 @@
+.board-header {
+    display: flex;
+    align-items: baseline;
+
+    h2 {
+        margin: 0;
+        padding: 0;
+    }
+
+    div {
+        color: #676879;
+        cursor: pointer;
+    }
+}
+
+.board-details-popover {
+    padding: 1rem;
+}

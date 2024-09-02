@@ -24,18 +24,4 @@
         }
     }
 
-    .board-header {
-        display: flex;
-        align-items: baseline;
-
-        h2 {
-            margin-inline-end: 0.5rem;
-        }
-
-        div {
-            color: #676879;
-            cursor: pointer;
-        }
-    }
-
 }
