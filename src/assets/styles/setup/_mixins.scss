@@ -74,8 +74,13 @@
         border-top-left-radius: 6px;
     }
 
-    @else if $type ==bottom {
+    @if $type ==bottom {
         border-bottom-left-radius: 6px;
+    }
+
+    @else if $type ==collapse {
+        border-bottom-left-radius: 6px;
+        border-top-left-radius: 6px;
     }
 }
 
@@ -98,9 +103,8 @@
     }
 
     @else if $type ==block {
-        border-width: $width 0;
-        border-style: solid;
-        border-color: $clr;
+        border: $width solid $clr;
+        border-inline-start: none;
     }
 }
 
