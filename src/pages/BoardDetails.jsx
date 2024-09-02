@@ -36,15 +36,16 @@ export function BoardDetails() {
        </section>
 
         <section>
-          <GroupList groups={board.groups} board={board}/>
+          <GroupList groups={board.groups} />
           <button className="add-group-btn" onClick={() => onAddGroup("end")}>
             <i className="fa-regular fa-plus fa-lg"></i>Add new group
           </button>
-        {/* </section> */}
+        </section>
       </div>}
     </section>
   )
 }
+  
 
 // return (
 //   <section className="board-details main">
@@ -63,4 +64,3 @@ export function BoardDetails() {
 //     }
 
 //   </section>
-// )
