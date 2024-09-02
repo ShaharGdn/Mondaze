@@ -115,3 +115,11 @@
     line-height: $line-height;
     font-weight: $weight;
 }
+
+// group top area sticky:
+@mixin stickyGroupTop($top: 129px, $zIdx: 10) {
+    position: sticky;
+    top: $top;
+    background-color: $clr-table-bg;
+    z-index: $zIdx;
+}

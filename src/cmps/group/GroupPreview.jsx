@@ -69,8 +69,6 @@ export function GroupPreview({ group }) {
                     <AddPulse board={board} group={group} />
                 </>
             }
-            {/* <PulseListHeader board={board} group={group} />
-            <PulseList group={group} /> */}
         </section >
     )
 }

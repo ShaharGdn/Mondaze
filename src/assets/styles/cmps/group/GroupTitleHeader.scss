@@ -1,7 +1,17 @@
 .full-group-container {
-    position: relative;
     display: flex;
     align-items: center;
+    @include stickyGroupTop(131px, 11);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -10px;
+        height: $pulse-row-height;
+        width: 100%;
+        background-color: $clr-table-bg;
+    }
 
     .group-title-header {
         position: relative;
