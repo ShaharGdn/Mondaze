@@ -35,8 +35,8 @@ export function BoardDetails() {
          <AddPulseBtn board={board} />
        </section>
 
-        {/* <section> */}
-          <GroupList groups={board.groups} />
+        <section>
+          <GroupList groups={board.groups} board={board}/>
           <button className="add-group-btn" onClick={() => onAddGroup("end")}>
             <i className="fa-regular fa-plus fa-lg"></i>Add new group
           </button>
