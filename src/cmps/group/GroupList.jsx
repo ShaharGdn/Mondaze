@@ -1,15 +1,18 @@
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GroupPreview } from "./GroupPreview";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
 import { updateBoard } from "../../store/actions/board.actions";
 
-export function GroupList({ groups }) {
-    const board = useSelector(storeState => storeState.selectedBoardModule.board)
+export function GroupList({ groups, board }) {
     const [groupsToEdit, setGroups] = useState(groups)
     const [boardToEdit, setBoard] = useState(board)
     const [shouldCloseAllGroups, setShouldCloseAllGroups] = useState(false)
+
+    useEffect(() => {
+        setGroups(groups)
+        setBoard(board)
+    }, [groups, board])
 
     async function handleGroupDnd(results) {
         try {
@@ -34,16 +37,13 @@ export function GroupList({ groups }) {
                 setBoard(updatedBoard)
                 setGroups(reorderedGroups)
                 showSuccessMsg('Group has Moved')
-                setIsDragged(false)
             }
         } catch (err) {
             console.log('err:', err)
             showErrorMsg('Cannot move group!')
         } finally {
-            setIsDragged(false);
-            setShouldCloseAllGroups(false);
+            setShouldCloseAllGroups(false)
         }
-
     }
 
     return (
@@ -53,11 +53,11 @@ export function GroupList({ groups }) {
                     {(provided) => (
                         <ul className="group-list" {...provided.droppableProps} ref={provided.innerRef}>
                             {groupsToEdit.map((group, index) => (
-                                <Draggable key={group.id} draggableId={group.id} index={index}>
+                                <Draggable key={group.id} draggableId={group.id} index={index} >
                                     {(provided) => (
                                         <li
-                                            className="group"
                                             style={group.style}
+                                            className="group"
                                             ref={provided.innerRef}
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
