@@ -60,7 +60,7 @@ export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) 
                 type={'big'}
             />
 
-            {!isGroupOpen &&<div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>}
+            {!isGroupOpen && <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>}
 
             <section className={`group-title-header${isGroupOpen ? '' : ' collapsed'}`}>
                 <button
@@ -83,7 +83,8 @@ export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) 
                         style={group.style}
                         autoFocus
                     /> : <div className={`data-container${isGroupOpen ? '' : ' collapsed'}`}>
-                        <h4 className="group-title" onClick={() => setIsEditable(true)}>{propToEdit}</h4>
+                        <h4 className="group-title" style={group.style}
+                            onClick={() => setIsEditable(true)}>{propToEdit}</h4>
                         <span className="pulse-count">
                             {group.pulses.length > 0
                                 ? `${group.pulses.length} ${board.type}${group.pulses.length === 1 ? '' : 's'}`
