@@ -3,6 +3,8 @@ import { GroupPreview } from "./GroupPreview";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
 import { updateBoard } from "../../store/actions/board.actions";
+import { updateGroup } from "../../store/actions/selected-board.actions";
+import { boardService } from "../../services/board";
 
 export function GroupList({ groups, board }) {
     const [groupsToEdit, setGroups] = useState(groups)
@@ -21,6 +23,7 @@ export function GroupList({ groups, board }) {
             if (!destination) return
             if (source.droppableId === destination.droppableId && source.index === destination.index) return
 
+            // If moving groups
             if (type === 'group') {
                 const reorderedGroups = [...groupsToEdit]
                 const sourceIndex = source.index
@@ -37,18 +40,49 @@ export function GroupList({ groups, board }) {
                 setBoard(updatedBoard)
                 setGroups(reorderedGroups)
                 showSuccessMsg('Group has Moved')
+
+            } else if (type === 'pulse') {
+                // If moving pulses in the same group
+                if (source.droppableId === destination.droppableId) {
+                    const group = await boardService.getGroupById(boardToEdit._id, source.droppableId)
+                    const reorderedGroup = { ...group }
+                    const sourceIndex = source.index
+                    const destinationIndex = destination.index
+
+                    const [removedPulse] = reorderedGroup.pulses.splice(sourceIndex, 1)
+                    reorderedGroup.pulses.splice(destinationIndex, 0, removedPulse)
+                    await updateGroup(boardToEdit._id, reorderedGroup)
+                    showSuccessMsg('Pulse has Moved')
+
+                } else {
+                    // If moving pulses in different group
+                    const sourceGroup = await boardService.getGroupById(boardToEdit._id, source.droppableId)
+                    const reorderedSourceGroup = { ...sourceGroup }
+                    const sourceIndex = source.index
+                    const [removedPulse] = reorderedSourceGroup.pulses.splice(sourceIndex, 1)
+
+                    const destinationGroup = await boardService.getGroupById(boardToEdit._id, destination.droppableId)
+                    const reorderedDestinationGroup = { ...destinationGroup }
+                    const destinationIndex = destination.index
+                    reorderedDestinationGroup.pulses.splice(destinationIndex, 0, removedPulse)
+
+                    await updateGroup(boardToEdit._id, reorderedSourceGroup)
+                    await updateGroup(boardToEdit._id, reorderedDestinationGroup)
+                    showSuccessMsg('Pulse has Moved')
+                }
             }
         } catch (err) {
             console.log('err:', err)
             showErrorMsg('Cannot move group!')
         } finally {
-            setShouldCloseAllGroups(false)
+            // setShouldCloseAllGroups(false)
         }
     }
 
     return (
         <section className="groups-container">
-            <DragDropContext onDragStart={() => setShouldCloseAllGroups(true)} onDragEnd={handleGroupDnd}>
+            <DragDropContext onDragEnd={handleGroupDnd}>
+                {/* <DragDropContext onDragStart={() => setShouldCloseAllGroups(true)} onDragEnd={handleGroupDnd}> */}
                 <Droppable droppableId="group-list" type="group">
                     {(provided) => (
                         <ul className="group-list" {...provided.droppableProps} ref={provided.innerRef}>
