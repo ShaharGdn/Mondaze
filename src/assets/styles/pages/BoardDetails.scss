@@ -1,10 +1,11 @@
 .board-details {
     padding-inline-start: 40px;
-
+    width: max-content;
+    
     .main-display {
         position: relative;
         height: 100%;
-        overflow-y: auto;
+        // background-color: $clr-table-bg;
 
         .main-top-container {
             position: sticky;
@@ -15,6 +16,7 @@
 
             background-color: $clr-table-bg;
             margin-block-start: 0;
+
         }
     }
 
