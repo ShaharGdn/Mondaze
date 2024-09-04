@@ -1,7 +1,7 @@
 .full-group-container {
     display: flex;
     align-items: center;
-    @include stickyGroupTop(131px, 11);
+    @include stickyGroupTop(131px, 14);
     width: 100%;
 
 
@@ -111,7 +111,6 @@
             align-items: center;
             height: 100%;
             // width: 100%;
-            // flex-grow: 1;
 
             .group-title {
                 &:hover {

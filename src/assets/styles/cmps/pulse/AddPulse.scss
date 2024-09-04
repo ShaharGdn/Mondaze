@@ -64,6 +64,11 @@
             opacity: 1;
         }
 
+        .sticky-horizontal-wrapper {
+            background-color: $clr-pulse-hover;
+
+        }
+
         .title-container {
             .add-pulse-title {
                 outline: 1px solid $clr-border-color;
@@ -74,9 +79,18 @@
 
     &:focus-within {
         background-color: $clr-btn-active-bg;
+        cursor: auto;
+
+        .sticky-horizontal-wrapper {
+            background-color: $clr-btn-active-bg;
+        }
 
         .pulse-side-color {
             opacity: 1;
+        }
+
+        .pulse-select, .pulse-select input {
+            cursor: auto;
         }
     }
 }
