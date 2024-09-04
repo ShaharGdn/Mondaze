@@ -25,6 +25,19 @@ export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) 
         const updatedGroup = { ...group, title: titleToUpdate }
         onUpdateGroup(updatedGroup)
     }
+    // later pass this into GroupPreview for both here and PulseListHeader
+    function getTitles(cmp) {
+        switch (cmp) {
+            case 'StatusPicker': return 'Status'
+            case 'MemberPicker': return 'Assignee'
+            case 'DatePicker': return 'Due Date'
+            case 'PriorityPicker': return 'Priority'
+            case 'TimeLinePicker': return 'Timeline'
+            case 'FilesPicker': return 'Files'
+            // add more as needed
+            default: return ''
+        }
+    }
 
     // async function onUpdateGroup() {
     //     const newTitle = prompt('Title?')
@@ -51,48 +64,63 @@ export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) 
 
     return (
         <section className="full-group-container">
-            <ThreeDots
-                children={children}
-                open={open}
-                setOpen={setOpen}
-                placement={'right-start'}
-                MainClassName={open ? 'group-dots-actions open' : 'group-dots-actions'}
-                type={'big'}
-            />
+            <div className="sticky-horizontal-wrapper">
 
-            {!isGroupOpen && <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>}
+                <ThreeDots
+                    children={children}
+                    open={open}
+                    setOpen={setOpen}
+                    placement={'right-start'}
+                    MainClassName={open ? 'group-dots-actions open' : 'group-dots-actions'}
+                    type={'big'}
+                />
 
-            <section className={`group-title-header${isGroupOpen ? '' : ' collapsed'}`}>
-                <button
-                    className="collapse-group-btn"
-                    style={group.style}
-                    onClick={() => setIsGroupOpen(!isGroupOpen)}
-                >
-                    {isGroupOpen ? <IoIosArrowDown /> : <IoIosArrowForward />}
-                </button>
+                {!isGroupOpen && <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>}
 
-                <form className="input-container" onSubmit={handleSubmit}>
-                    {isEditable ? <input
-                        className="title-input"
-                        type="text"
-                        value={propToEdit}
-                        onChange={(ev) => setPropToEdit(ev.target.value)}
-                        onBlur={() => handleBlur()}
-                        onFocus={() => setIsBlurred(false)}
-                        ref={inputRef}
+                <section className={`group-title-header${isGroupOpen ? '' : ' collapsed'}`}>
+                    <button
+                        className="collapse-group-btn"
                         style={group.style}
-                        autoFocus
-                    /> : <div className={`data-container${isGroupOpen ? '' : ' collapsed'}`}>
-                        <h4 className="group-title" style={group.style}
-                            onClick={() => setIsEditable(true)}>{propToEdit}</h4>
-                        <span className="pulse-count">
-                            {group.pulses.length > 0
-                                ? `${group.pulses.length} ${board.type}${group.pulses.length === 1 ? '' : 's'}`
-                                : `No ${board.type}s`}
-                        </span>
-                    </div>}
-                </form>
+                        onClick={() => setIsGroupOpen(!isGroupOpen)}
+                    >
+                        {isGroupOpen ? <IoIosArrowDown /> : <IoIosArrowForward />}
+                    </button>
+
+                    <form className="input-container" onSubmit={handleSubmit}>
+                        {isEditable ? <input
+                            className="title-input"
+                            type="text"
+                            value={propToEdit}
+                            onChange={(ev) => setPropToEdit(ev.target.value)}
+                            onBlur={() => handleBlur()}
+                            onFocus={() => setIsBlurred(false)}
+                            ref={inputRef}
+                            style={group.style}
+                            autoFocus
+                        /> : <div className={`data-container${isGroupOpen ? '' : ' collapsed'}`}>
+                            <h4 className="group-title" style={group.style}
+                                onClick={() => setIsEditable(true)}>{propToEdit}</h4>
+                            <span className="pulse-count">
+                                {group.pulses.length > 0
+                                    ? `${group.pulses.length} ${board.type}${group.pulses.length === 1 ? '' : 's'}`
+                                    : `No ${board.type}s`}
+                            </span>
+                        </div>}
+                    </form>
+                </section>
+            </div>
+
+            <section className="cmps-title-container">
+
+                {!isGroupOpen && board.cmpsOrder.map((cmp, idx) =>
+                    <li className="cmp-title-container" key={cmp + idx}>
+                        {/* <span className="pulse-list-title">{cmp}</span> */}
+                        <span className="pulse-list-title">{getTitles(cmp)}</span>
+                    </li>)
+                }
+
             </section>
+
         </section>
     )
 }

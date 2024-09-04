@@ -5,6 +5,11 @@
     @include border(bottom);
     cursor: text;
 
+    .sticky-horizontal-wrapper {
+        display: flex;
+        @include stickyHorizontalTable();
+    }
+
     .pulse-side-color {
         @include colored-border(bottom);
         opacity: 0.5;

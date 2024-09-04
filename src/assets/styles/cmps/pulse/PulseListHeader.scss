@@ -7,8 +7,14 @@
     height: $pulse-row-height;
     @include border(block);
 
-    .pulse-side-color {
-        @include colored-border(top);
+    .sticky-horizontal-wrapper {
+        display: flex;
+        @include stickyHorizontalTable();
+        z-index: 10;
+
+        .pulse-side-color {
+            @include colored-border(top);
+        }
     }
 
     li {

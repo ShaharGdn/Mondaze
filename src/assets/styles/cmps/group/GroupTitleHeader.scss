@@ -2,6 +2,8 @@
     display: flex;
     align-items: center;
     @include stickyGroupTop(131px, 11);
+    width: 100%;
+
 
     &::before {
         content: '';
@@ -9,9 +11,43 @@
         top: 0;
         left: -10px;
         height: $pulse-row-height;
-        width: 100%;
+        // width: 100%;
+        width: 30px;
         background-color: $clr-table-bg;
     }
+
+    .sticky-horizontal-wrapper {
+        min-width: calc($pulse-title-full + 34px);
+        @include stickyHorizontalTable();
+        background-color: $clr-table-bg;
+        z-index: 1;
+    }
+
+    .cmps-title-container {
+        position: relative;
+        left: 0px;
+        display: flex;
+
+        li {
+            display: flex;
+            height: 62px;
+            align-items: center;
+            justify-content: center;
+            @include border(block);
+            @include border(right);
+            // @include border(left);
+            width: $table-column-width;
+
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+
+            &:last-of-type {
+                border-inline-end: none;
+            }
+        }
+    }
+
 
     .group-title-header {
         position: relative;
@@ -20,12 +56,16 @@
         height: $pulse-row-height;
         position: relative;
         left: -2px;
+        // width: 100%;
+
 
         &.collapsed {
             height: 62px;
             display: flex;
             width: 100%;
             @include border(block);
+            @include border(right);
+
 
             .collapse-group-btn {
                 position: relative;
@@ -63,13 +103,15 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+
         }
 
         .input-container {
             display: flex;
             align-items: center;
             height: 100%;
-            width: 100%;
+            // width: 100%;
+            // flex-grow: 1;
 
             .group-title {
                 &:hover {

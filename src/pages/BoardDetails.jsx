@@ -31,8 +31,10 @@ export function BoardDetails() {
       {board &&<div className="main-display">
 
         <section className='main-top-container'>
-         <BoardHeader board={board}/>
-         <AddPulseBtn board={board} />
+          <div className='top-sticky-wrapper'>
+            <BoardHeader board={board}/>
+            <AddPulseBtn board={board} />
+          </div>
        </section>
 
         <GroupList groups={board.groups} />

@@ -1,22 +1,30 @@
 .board-details {
     padding-inline-start: 40px;
     width: max-content;
-    
+
     .main-display {
         position: relative;
         height: 100%;
         // background-color: $clr-table-bg;
 
         .main-top-container {
+            position: relative;
             position: sticky;
             top: 0;
-            left: 0;
-            z-index: 100;
-            padding-block: 1.5rem 1rem;
-
             background-color: $clr-table-bg;
-            margin-block-start: 0;
+            width: 100%;
+            z-index: 500;
 
+            .top-sticky-wrapper {
+                position: sticky;
+                top: 0;
+                left: 40px;
+                z-index: 200;
+                padding-block: 1.5rem 1rem;
+                display: inline-flex;
+                flex-direction: column;
+                margin-block-start: 0;
+            }
         }
     }
 
@@ -38,5 +46,4 @@
             background-color: $clr-btn-hover;
         }
     }
-
 }

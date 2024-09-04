@@ -25,22 +25,25 @@ export function AddPulse({ board, group }) {
 
     return (
         <ul className="add-pulse-container">
-            <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
-            <PulseSelector disabled={true} />
-            <li className="title-container">
-                <form onSubmit={handleSubmit}>
-                    <input
-                        className="add-pulse-title"
-                        type="text"
-                        placeholder={`+ Add ${group.type}`}
-                        value={propToEdit}
-                        onChange={(ev) => setPropToEdit(ev.target.value)}
-                        onBlur={handleBlur}
-                        onFocus={() => setIsBlurred(false)}
-                        ref={inputRef}
-                    />
-                </form>
-            </li>
+            <div className="sticky-horizontal-wrapper">
+
+                <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
+                <PulseSelector disabled={true} />
+                <li className="title-container">
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            className="add-pulse-title"
+                            type="text"
+                            placeholder={`+ Add ${group.type}`}
+                            value={propToEdit}
+                            onChange={(ev) => setPropToEdit(ev.target.value)}
+                            onBlur={handleBlur}
+                            onFocus={() => setIsBlurred(false)}
+                            ref={inputRef}
+                        />
+                    </form>
+                </li>
+            </div>
         </ul>
     )
 }

@@ -30,8 +30,8 @@ export function PulsePreview({ group, pulse }) {
 
     return (
         <ul className="pulse-preview">
-            <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
             <ul className="full-title-selector-container">
+            <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
                 <PulseSelector group={group} />
                 <PulseTitle pulse={pulse} onUpdatePulse={onUpdatePulse} />
             </ul>

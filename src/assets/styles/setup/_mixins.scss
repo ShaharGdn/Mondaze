@@ -105,6 +105,7 @@
     @else if $type ==block {
         border: $width solid $clr;
         border-inline-start: none;
+        border-inline-end: none;
     }
 }
 
@@ -122,4 +123,12 @@
     top: $top;
     background-color: $clr-table-bg;
     z-index: $zIdx;
+}
+
+// table horizontal sticky:
+@mixin stickyHorizontalTable() {
+    position: sticky;
+    background-color: $clr-table-bg;
+    left: 46px
+    // z-index: $zIdx;
 }

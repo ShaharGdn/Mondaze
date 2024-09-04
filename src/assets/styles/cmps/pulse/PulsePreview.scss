@@ -12,7 +12,7 @@
         background-color: $clr-pulse-hover;
         box-shadow: 4px 3px 6px -3px $clr-table-shadow;
         cursor: pointer;
-        z-index: 2;
+        z-index: 10;
 
         .label-picker-container {
             opacity: 0.8;
@@ -30,7 +30,7 @@
         @include border(right);
         height: 100%;
         color: $clr-text;
-        
+
         &.pulse-dynamic-container {
             min-width: $table-column-width;
         }
@@ -38,6 +38,12 @@
 
     .full-title-selector-container {
         display: flex;
+        @include stickyHorizontalTable();
+        z-index: 9;
+
+        &:hover {
+            background-color: $clr-pulse-hover;
+        }
 
         &:focus-within {
             outline: 1px solid $clr-btn-blue;
