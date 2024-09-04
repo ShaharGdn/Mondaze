@@ -13,37 +13,39 @@ export function HomePage() {
         <section className="home-page full">
 
             <header className="header">
-                <img src="" alt="" className="logo" />
+                <img src="src/assets/img/mondaze-logo.png" alt="" className="logo" />
                 <button className="get-started">
                     <span>Get Started</span>
                     <IoMdArrowForward className="icon" />
                 </button>
             </header>
 
-            <main className="main-display">
-                <h1 className="title">
-                    Your go-to work platform
-                </h1>
-                <p>Streamline workflows and gain clear visibility across teams <br />
-                    to make strategic decisions with confidence.
-                </p>
-                <button className="get-started">
-                    <span>Get Started</span>
-                    <IoMdArrowForward className="icon" />
-                </button>
-                <p>No credit card needed  ✦  Unlimited time on Free plan</p>
+            <main className="main-display poppins-extralight">
+                <div className="titles-tags-wrapper">
+                    <h1 className="title poppins-extralight">
+                        Your go-to work platform
+                    </h1>
+                    <p className="subtitle">Streamline workflows and gain clear visibility across teams
+                        to make strategic decisions with confidence.
+                    </p>
+                    <button className="get-started">
+                        <span>Get Started</span>
+                        <IoMdArrowForward className="icon" />
+                    </button>
+                    <p className="offer">No credit card needed  ✦  Unlimited time on Free plan</p>
 
-                <div className="project-types-display">
-                    <div className="use-cases-container">
+                    <div className="project-types-display">
+                        <div className="use-cases-container">
 
-                    </div>
-                    <div className="assets-container">
-                        <img src="src/assets/img/static-carousel.avif" alt="" />
+                        </div>
+                        <div className="assets-container">
+                            <img src="src/assets/img/static-carousel.avif" alt="" />
+                        </div>
                     </div>
                 </div>
 
-            <div className="customers">
-                    <h5></h5>                
+                <div className="customers">
+                    <h5>Trusted by 225,000+ customers, from startups to enterprises</h5>
                     <div className="clients-logos">
                         <img src="src/assets/img/costumers/HoltCat.avif" alt="holt logo" />
                         <img src="src/assets/img/costumers/canva.png" alt="canva logo" />
@@ -55,7 +57,7 @@ export function HomePage() {
                         <img src="src/assets/img/costumers/glossier.png" alt="glossier logo" />
                         <img src="src/assets/img/costumers/universal.png" alt="univarsal logo" />
                     </div>
-            </div>
+                </div>
 
                 <div className="work-management">
                     <img src="src/assets/img/wm-square-logo.png" alt="" />
