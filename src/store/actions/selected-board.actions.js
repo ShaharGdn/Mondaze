@@ -51,8 +51,6 @@ export async function removeGroup(boardId, groupId) {
 
 export async function updateGroup(boardId, group) {
     try {
-        console.log('boardId:', boardId)
-        console.log('group:', group)
         const updatedGroup = await boardService.updateGroup(boardId, group)
         store.dispatch(getCmdUpdateGroup(updatedGroup))
         return updatedGroup
