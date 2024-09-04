@@ -105,7 +105,7 @@ export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) 
                         /> : <div className={`data-container${isGroupOpen ? '' : ' collapsed'}`}>
                             <h4 className="group-title" style={group.style}
                                 onClick={onRename}>{propToEdit}</h4>
-                                {/* onClick={() => setIsEditable(true)}>{propToEdit}</h4> */}
+                            {/* onClick={() => setIsEditable(true)}>{propToEdit}</h4> */}
                             <span className="pulse-count">
                                 {group.pulses.length > 0
                                     ? `${group.pulses.length} ${board.type}${group.pulses.length === 1 ? '' : 's'}`
@@ -116,17 +116,14 @@ export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) 
                 </section>
             </div>
 
-            <section className="cmps-title-container">
-
-                {!isGroupOpen && board.cmpsOrder.map((cmp, idx) =>
+            {!isGroupOpen && <ul className="cmps-title-container">
+                {board.cmpsOrder.map((cmp, idx) =>
                     <li className="cmp-title-container" key={cmp + idx}>
                         {/* <span className="pulse-list-title">{cmp}</span> */}
                         <span className="pulse-list-title">{getTitles(cmp)}</span>
-                    </li>)
-                }
-
-            </section>
-
-        </section>
+                    </li>)}
+            </ul>
+            }
+        </section >
     )
 }
