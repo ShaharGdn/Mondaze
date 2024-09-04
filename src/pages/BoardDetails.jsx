@@ -27,6 +27,7 @@ export function BoardDetails() {
   }
 
   return (
+    <main>
     <section className="board-details main">
       {board &&<div className="main-display">
 
@@ -43,6 +44,7 @@ export function BoardDetails() {
           </button>
       </div>}
     </section>
+    </main>
   )
 }
   

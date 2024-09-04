@@ -32,7 +32,7 @@ export function RootCmp() {
             {!isHomePage && <SideBar />}   {/* Render SideBar only if not on the homepage */}
             <UserMsg />
 
-            <main>
+            {/* <main> */}
                 <Routes>
                     <Route path="" element={<HomePage />} />
                     <Route path="about" element={<AboutUs />} />
@@ -49,7 +49,7 @@ export function RootCmp() {
                     <Route path="dashboard" element={<Dashboard />} />
                     <Route path="Kanban" element={<Kanban />} />
                 </Routes>
-            </main>
+            {/* </main> */}
         </div>
     )
 }

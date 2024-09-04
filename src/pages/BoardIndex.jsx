@@ -10,7 +10,7 @@ import { BoardList } from '../cmps/BoardList'
 import { BoardFilter } from '../cmps/BoardFilter'
 
 export function BoardIndex() {
-    const [ filterBy, setFilterBy ] = useState(boardService.getDefaultFilter())
+    const [filterBy, setFilterBy] = useState(boardService.getDefaultFilter())
     const boards = useSelector(storeState => storeState.boardModule.boards)
 
     const navigate = useNavigate()
@@ -33,19 +33,21 @@ export function BoardIndex() {
     // }
 
     return (
-        <section className="board-index main">
-            <header className='header-greeting'>
-                <div className="text-greeting">
-                    <h5 className='Figtree-regular'>Good evening `{ }`, Shahar! `{ }`</h5>
-                    <h6 className='Figtree-semi-bold'>Quickly access your recent boards, Inbox and workspaces</h6>
-                </div>
-                <img src="src/assets/img/header_background.svg" alt="header-bg-party" />
-            </header>
+        <main>
+            <section className="board-index main">
+                <header className='header-greeting'>
+                    <div className="text-greeting">
+                        <h5 className='Figtree-regular'>Good evening `{ }`, Shahar! `{ }`</h5>
+                        <h6 className='Figtree-semi-bold'>Quickly access your recent boards, Inbox and workspaces</h6>
+                    </div>
+                    <img src="src/assets/img/header_background.svg" alt="header-bg-party" />
+                </header>
 
-            <main className="board-list-container main">
-            <BoardList
-                boards={boards}/>
-            </main>
-        </section >
+                <main className="board-list-container main">
+                    <BoardList
+                        boards={boards} />
+                </main>
+            </section >
+        </main>
     )
 }
