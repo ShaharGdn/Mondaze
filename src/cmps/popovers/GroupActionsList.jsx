@@ -12,7 +12,7 @@ import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
 import { useState } from "react";
 
 
-export function GroupActionsList({ group, isGroupOpen, setIsGroupOpen, open, setOpen }) {
+export function GroupActionsList({ group, isGroupOpen, setIsGroupOpen, open, setOpen, onRename }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
     const [groupToEdit, setGroupToEdit] = useState(group)
 
@@ -41,17 +41,11 @@ export function GroupActionsList({ group, isGroupOpen, setIsGroupOpen, open, set
         }
     }
 
-    async function onUpdateGroup() {
-        const newTitle = prompt('Title?')
-        const titleColor = prompt('Title Color?')
-
+    async function onRenameGroup() {
         try {
-            const updatedGroup = { ...groupToEdit, title: newTitle, style: { ...groupToEdit.style, color: titleColor } }
-            await updateGroup(board._id, updatedGroup)
-            showSuccessMsg(`Group updated (id: ${updatedGroup.id})`)
-            setOpen(null)
+            await onRename()
         } catch (err) {
-            showErrorMsg('Cannot update group')
+            setOpen(null)
         }
     }
 
@@ -87,7 +81,7 @@ export function GroupActionsList({ group, isGroupOpen, setIsGroupOpen, open, set
                 <HiOutlineDocumentDuplicate className="icon" />
                 <span>Duplicate this group</span>
             </li>
-            <li  onClick={onUpdateGroup}>
+            <li onClick={onRenameGroup}>
                 <LuPen className="icon" />
                 <span>Rename group</span>
             </li>
