@@ -9,7 +9,6 @@
     margin: 0;
     overflow: hidden;
 
-
     >* {
         grid-column: 2;
 
@@ -31,15 +30,16 @@
         background-color: $clr-table-bg;
         margin-inline-start: var(--margin-inline-start-main);
 
-
         // &::before {
         //     content: "";
         //     background-color: $clr-table-bg;
+        //     // background-color: red;
         //     position: absolute;
         //     top: 0;
         //     left: 0;
         //     height: 100%;
         //     width: 40px;
+        //     z-index: 10;
         // }
     }
 

@@ -1,10 +1,12 @@
 .board-details {
     padding-inline-start: 40px;
     width: max-content;
+    // overflow: auto;
 
     .main-display {
         position: relative;
-        height: 100%;
+        // height: 100%;
+        padding-block-end: 40px;
         // background-color: $clr-table-bg;
 
         .main-top-container {
@@ -26,24 +28,27 @@
                 margin-block-start: 0;
             }
         }
-    }
 
-    .add-group-btn {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin: 0;
-        padding: 4px 8px;
-        height: 32px;
-        border: 1px solid $clr-table-shadow;
-        border-radius: 4px;
-        color: $clr-text;
-        background-color: transparent;
+        .add-group-btn {
+            position: sticky;
+            left: 40px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+            padding: 4px 8px;
+            height: 32px;
+            border: 1px solid $clr-table-shadow;
+            border-radius: 4px;
+            color: $clr-text;
+            background-color: transparent;
+            // margin-block-end: 40px;
 
-        @include fontFigtree();
+            @include fontFigtree();
 
-        &:hover {
-            background-color: $clr-btn-hover;
+            &:hover {
+                background-color: $clr-btn-hover;
+            }
         }
     }
 }

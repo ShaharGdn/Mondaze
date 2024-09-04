@@ -1,106 +1,124 @@
-.side-bar-container.open {
-    display: flex;
-    flex-direction: row;
-    grid-column: 1;
-    background: linear-gradient(135deg, white 5%, $clr-bg 100%);
-    border-radius: 0.5rem;
-    font-size: rem(14px);
+.side-bar-container {
 
-    * {
-        margin-inline-start: rem(8px);
-        margin-block-start: rem(4px);
-    }
-
-    nav {
-        width: 100%;
-        margin: 0;
-    }
-
-    .home-link,
-    .favorites,
-    .ws-cmp {
+    &.open {
         display: flex;
-        align-items: center;
-        cursor: pointer;
-        margin-block-end: rem(8px);
-    }
+        flex-direction: row;
+        grid-column: 1;
+        background: linear-gradient(135deg, white 5%, $clr-bg 100%);
+        border-radius: 0.5rem;
+        font-size: rem(14px);
 
-    .border {
-        background-color: $clr-border;
-        width: 100%;
-        height: 0.5px;
-        margin-inline-start: auto;
-    }
-
-    .ws-cmp {
-        font-size: rem(16px);
-
-        .ws-icon {
-            height: rem(20px);
-            width: rem(20px);
-            background-color: $clr-workspace-name-icon-bg;
-            color: white;
-            text-align: center;
-            font-size: rem(14px);
-            border-radius: 0.2rem;
-        }
-    }
-
-    .search-add {
-        display: flex;
-        align-items: flex-end;
-        margin-block-end: 1em;
-
-        .search-container,
-        .add-board-btn {
-            position: relative;
+        * {
+            margin-inline-start: rem(8px);
+            margin-block-start: rem(4px);
         }
 
-        .search-container input {
+        nav {
+            width: 100%;
             margin: 0;
-            padding: 0.5em 0.4em 0.5em rem(40px);
-            margin-inline-end: 0.5rem;
-            min-height: rem(32px);
-            border: 1px solid $clr-border-color;
-            border-radius: 0.3rem;
-            font-family: 'Figtree';
-            font-size: 1em;
         }
 
-        .search-container div {
-            position: absolute;
-            padding: 1em;
-            right: 80%;
-            top: 35%;
-            transform: translateY(-50%);
-            border: none;
-            background: none;
+        .home-link,
+        .favorites,
+        .ws-cmp {
             display: flex;
             align-items: center;
-            justify-content: center;
             cursor: pointer;
+            margin-block-end: rem(8px);
         }
 
-        .search-container input:focus {
-            background-color: white;
-            border-width: 0.1px;
-            border-color: blue;
-            outline: none;
-            box-shadow: 0 0 0 0.05px rgb(21, 0, 255);
+        .border {
+            background-color: $clr-border;
+            width: 100%;
+            height: 0.5px;
+            margin-inline-start: auto;
         }
 
-        .add-board-btn {
-            border-radius: 0.2rem;
-            padding: 0;
-            margin: 0;
-            min-width: rem(33px);
-            height: rem(33px);
-            background: $clr-btn-blue;
-            color: white;
+        .ws-cmp {
+            font-size: rem(16px);
 
-            i {
-                margin: 0 auto;
+            .ws-icon {
+                height: rem(20px);
+                width: rem(20px);
+                background-color: $clr-workspace-name-icon-bg;
+                color: white;
+                text-align: center;
+                font-size: rem(14px);
+                border-radius: 0.2rem;
+            }
+        }
+
+        .search-add {
+            display: flex;
+            align-items: flex-end;
+            margin-block-end: 1em;
+
+            .search-container,
+            .add-board-btn {
+                position: relative;
+            }
+
+            .search-container input {
+                margin: 0;
+                padding: 0.5em 0.4em 0.5em rem(40px);
+                margin-inline-end: 0.5rem;
+                min-height: rem(32px);
+                border: 1px solid $clr-border-color;
+                border-radius: 0.3rem;
+                font-family: 'Figtree';
+                font-size: 1em;
+            }
+
+            .search-container div {
+                position: absolute;
+                padding: 1em;
+                right: 80%;
+                top: 35%;
+                transform: translateY(-50%);
+                border: none;
+                background: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+
+            .search-container input:focus {
+                background-color: white;
+                border-width: 0.1px;
+                border-color: blue;
+                outline: none;
+                box-shadow: 0 0 0 0.05px rgb(21, 0, 255);
+            }
+
+            .add-board-btn {
+                border-radius: 0.2rem;
+                padding: 0;
+                margin: 0;
+                min-width: rem(33px);
+                height: rem(33px);
+                background: $clr-btn-blue;
+                color: white;
+
+                i {
+                    margin: 0 auto;
+                }
             }
         }
     }
+
+    &::after {
+        content: "";
+        background-color: $clr-table-bg;
+        // background-color: red;
+        position: absolute;
+        top: 48px;
+        // top: 32px;
+        left: 282px;
+        height: calc(100% - 4rem);
+        border-top-left-radius: 0.5rem;
+        width: 40px;
+        z-index: 12;
+    }
+
 }
