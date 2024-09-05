@@ -1,40 +1,26 @@
 .full-stats-wrapper {
     position: relative;
-    // @include stickyGroupTop(167px,13);
     display: flex;
     height: $pulse-row-height;
-
 
     .sticky-horizontal-wrapper {
         display: flex;
         @include stickyHorizontalTable();
         z-index: 10;
-
     }
 
     .group-stats-container {
         display: flex;
         @include border(bottom);
-        // @include border(left);
-        // border-bottom-left-radius: 6px;
-
         height: 100%;
         width: 100%;
         box-shadow: 0 8px 8px -8px rgba(0, 0, 0, 0.1);
-
-
-
-
     }
 
     .sticky-horizontal-wrapper {
         min-width: calc($pulse-title-full + 29px);
         background-color: $clr-table-bg;
-        // border: none;
         box-shadow: 1px 8px 0 -1px $clr-table-bg, inset 0 8px 9px -9px rgba(0, 0, 0, .1);
-
-        // @include border(right);
-
 
         &::before {
             content: "";
@@ -64,16 +50,13 @@
     }
 
     li {
-        // position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
         @include border(right);
 
-
-
-        &.empty-stats {
+        &.blank-footer {
             // z-index: 1000000;
             height: 100%;
             position: relative;
@@ -90,53 +73,10 @@
                 height: calc(100% + 3px);
                 background-color: $clr-table-bg;
             }
-
-
-
         }
 
-        &.cmp-title-container {
+        &.stats-container {
             min-width: $table-column-width;
         }
-
-        // .pulse-list-title { // cmps here
-
-        // }
     }
-
 }
-
-// li {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     height: 100%;
-//     @include border(right);
-
-
-
-//     &.empty-stats {
-//         min-width: calc($pulse-title-full + 29px);
-//         background-color: $clr-table-bg;
-//         // border: none;
-//         box-shadow: 1px 8px 0 -1px $clr-table-bg, inset 0 8px 9px -9px rgba(0, 0, 0, .1);
-//         &::before {
-//             content: "";
-//             pointer-events: none;
-//             position: absolute;
-//             width: 8px;
-//             height: 100%;
-//             left: 100%;
-//             background-color: $clr-table-bg;
-//             box-shadow: 0 6px 2px -2px $clr-table-bg;
-//         }
-//     }
-
-//     &.cmp-title-container {
-//         min-width: $table-column-width;
-//     }
-
-//     // .pulse-list-title { // cmps here
-
-//     // }
-// }
