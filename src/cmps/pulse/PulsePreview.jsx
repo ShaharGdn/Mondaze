@@ -46,7 +46,7 @@ export function PulsePreview({ group, pulse }) {
                 </li>
             )}
 
-            <button onClick={onRemovePulse}>Remove {group.type}</button>
+            {/* <button onClick={onRemovePulse}>Remove {group.type}</button> */}
         </ul >
     )
 }
