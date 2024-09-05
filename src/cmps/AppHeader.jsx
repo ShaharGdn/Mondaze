@@ -20,8 +20,8 @@ export function AppHeader() {
 
 	return (
 		<header className="app-header full">
-			<nav>
-				<img className='wm-logo' src="../src/assets/img/wm_favicon.png" alt="" />
+			<nav onClick={() => navigate('/')}>
+				<img className='wm-logo' src="../src/assets/img/wm_favicon.png" alt=""/>
 				<span className='proj-name poppins-bold'>mondaze </span>
 				<span className='wm-title poppins-extralight'>work management</span>
 			</nav>

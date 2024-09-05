@@ -3,6 +3,7 @@
         display: block;
         position: relative;
         background-color: #fff;
+        overflow: auto;
 
         .header {
             display: flex;
@@ -14,26 +15,15 @@
             .logo {
                 height: rem(36.33px);
                 cursor: pointer;
+                margin-inline-start: 1rem;
             }
 
             button {
-                display: flex;
-                justify-content: center;
-                font-size: 0.875rem;
                 padding: 16px 48px;
-                background-color: #6161FF;
-                color: #ffffff;
-                height: rem(50px);
-                transition: 0.1s ease background-color;
                 font-size: 1rem;
-                border-radius: 40px;
-                border: none;
-                font-weight: 400;
-                text-align: center;
-                user-select: none;
-                line-height: 17px;
-                cursor: pointer;
-                transition: background-color 0.5s ease;
+                margin-inline-end: 1rem;
+                height: rem(50px);
+                width: rem(210px);
 
                 &:hover {
                     background-color: #5151d5;
@@ -48,10 +38,11 @@
             margin: 0 auto;
             padding: 1em;
             text-align: center;
+            overflow: hidden;
 
             .titles-tags-wrapper {
                 background-color: $clr-bg;
-                border-radius: 3em;
+                border-radius: 3rem;
 
                 .title {
                     line-height: 110%;
@@ -59,6 +50,7 @@
                     margin: 0;
                     margin-block-start: 4rem;
                     margin-block-end: 1rem;
+                    color: #333;
                 }
 
                 .subtitle {
@@ -71,32 +63,10 @@
                 }
 
                 button {
-                    display: flex;
-                    justify-content: center;
-                    font-size: 0.875rem;
-                    padding: 16px 25px;
-                    background-color: #6161FF;
-                    color: #ffffff;
                     height: rem(50px);
                     width: rem(175px);
-                    transition: 0.1s ease background-color;
-                    font-size: 1rem;
-                    border-radius: 40px;
-                    border: none;
-                    font-weight: 400;
-                    text-align: center;
-                    user-select: none;
-                    line-height: 17px;
-                    margin: 0 auto;
-                    cursor: pointer;
                     margin-block-end: 1rem;
-                    transition: background-color 0.5s ease;
-
-
-                    &:hover {
-                        background-color: #5151d5;
-                    }
-
+                    margin: 0 auto;
                 }
 
                 p.offer {
@@ -105,12 +75,190 @@
                     font-size: 13px;
                     line-height: 110%;
                     color: #676879;
+                    margin-block-end: 1rem;
+                }
+
+                .project-types-display {
+                    .assets-container {
+                        img {
+                            width: 98%;
+                            margin: 0 auto;
+                            border-bottom-left-radius: 3rem;
+                            border-bottom-right-radius: 3rem;
+                        }
+                    }
+                }
+
+            }
+
+            .customers {
+                h5 {
+                    font-size: 0.875rem;
+                    line-height: 32px;
+                    font-weight: 400;
+                    margin-block: 2rem;
+                }
+
+                .clients-logos {
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    padding-inline: 0px;
+
+                    .images-gallery {
+                        height: auto;
+                        display: flex;
+                        justify-content: center;
+                        width: 150px;
+                        padding: 24px 0;
+
+                        img {
+                            max-height: 35px;
+                            max-width: 118px;
+                        }
+                    }
                 }
             }
 
+            .work-management {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 650px;
+                z-index: 200;
+                margin-block-start: 2rem;
+
+                .title {
+                    margin-top: 32px;
+                    position: relative;
+                    z-index: 555;
+                    position: absolute;
+
+                    h2 {
+                        margin-block-start: 1.5rem;
+                        font-weight: 600;
+                        font-size: 32px;
+                        line-height: 100%;
+                    }
+
+                    img {
+                        margin: 0 auto;
+                        width: rem(50px);
+                    }
+
+                    button {
+                        height: rem(50px);
+                        width: rem(175px);
+                        margin: 0 auto;
+                        margin-block-end: 1rem;
+                        margin-block-start: 1rem;
+
+                        &:hover {
+                            background-color: #5151d5;
+                        }
+                    }
+                }
+
+                video {
+                    height: 650px;
+                    object-fit: contain;
+                }
+
+
+            }
+        }
+
+        footer {
+            .main-footer {
+                display: flex;
+                margin: 0;
+                margin-block-start: 3rem;
+                color: rgb(255, 255, 255);
+                background: rgb(31, 15, 131);
+                padding-top: 64px;
+                padding-bottom: 64px;
+                padding-inline: 5rem;
+                align-items: center;
+                gap: 2rem;
+
+                .cta-section {
+                    max-width: 50%;
+                    font-size: rem(52px);
+
+                    span {
+                        color: #C2B3FF;
+                    }
+                }
+
+                .dev-pics {
+                    min-width: 300px;
+                    max-width: 500px;
+                }
+
+                button {
+                    &.white {
+                        background-color: #ffffff;
+                        color: #333;
+                        width: rem(210px);
+                        transition: opacity 0.5s ease;
+                        margin-block-start: 1rem;
+
+                        span {
+                            color: #333;
+                        }
+
+                        &:hover {
+                            opacity: 0.9;
+                        }
+                    }
+                }
+            }
+
+            .logo-nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-inline: 5rem;
+                padding-top: 2.5rem;
+                padding-bottom: 2.5rem;
+
+                img {
+                    height: rem(56.33px);
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+    }
+
+    button.get-started {
+        display: flex;
+        justify-content: center;
+        font-size: 0.875rem;
+        padding: 16px 25px;
+        background-color: #6161FF;
+        color: #ffffff;
+        font-size: 1rem;
+        border-radius: 40px;
+        border: none;
+        font-weight: 400;
+        text-align: center;
+        user-select: none;
+        line-height: 17px;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.5s ease;
+        transition: transform 0.5s ease-in-out;
 
 
 
+        &:hover:not(.white) {
+            background-color: #5151d5;
+        }
+
+        &:hover {
+            transform: scale(1.05);
         }
     }
 }
