@@ -44,8 +44,9 @@ export function GroupActionsList({ group, isGroupOpen, setIsGroupOpen, open, set
     async function onRenameGroup() {
         try {
             await onRename()
-        } catch (err) {
             setOpen(null)
+        } catch (err) {
+            console.log('err',err);
         }
     }
 
