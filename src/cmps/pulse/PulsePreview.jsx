@@ -4,9 +4,14 @@ import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { useSelector } from "react-redux"
 import { removePulse, updatePulse } from "../../store/actions/selected-board.actions"
 import { DynamicCmp } from "../dynamic-cmps/DynamicCmp"
+import { useState } from "react"
+import { ThreeDots } from "../buttons/ThreeDots"
+import { AiOutlineDelete } from "react-icons/ai";
+
 
 export function PulsePreview({ group, pulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
+    const [open, setOpen] = useState(false)
 
     async function onRemovePulse() {
         try {
@@ -28,10 +33,28 @@ export function PulsePreview({ group, pulse }) {
         }
     }
 
+    const children = (
+        <ul className="pulse-actions-list">
+            <li className="delete-pulse" onClick={onRemovePulse}>
+                <AiOutlineDelete className="icon" />
+                <span>Delete {board.type}</span>
+            </li>
+        </ul>
+    )
+
     return (
         <ul className="pulse-preview">
+            <ThreeDots
+                children={children}
+                open={open}
+                setOpen={setOpen}
+                placement={'right-start'}
+                MainClassName={open ? 'pulse-dots-actions open' : 'pulse-dots-actions'}
+                type={'small'}
+            />
+
             <ul className="full-title-selector-container">
-            <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
+                <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
                 <PulseSelector group={group} />
                 <PulseTitle pulse={pulse} onUpdatePulse={onUpdatePulse} />
             </ul>

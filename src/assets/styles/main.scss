@@ -42,6 +42,7 @@
 @import "cmps/popovers/AddBoardModal";
 @import "cmps/popovers/BoardActionsList";
 @import "cmps/popovers/GroupActionsList";
+@import "cmps/popovers/PulseActionsList";
 @import "cmps/popovers/Popover";
 @import "cmps/popovers/MemberPickerSearch";
 
@@ -67,3 +68,4 @@
 @import "cmps/pulse/PulseListHeader.scss";
 @import "cmps/pulse/PulseTitle.scss";
 @import "cmps/pulse/AddPulse.scss";
+@import "cmps/pulse/PulseDotsActions.scss";
