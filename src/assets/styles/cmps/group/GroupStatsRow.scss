@@ -1,0 +1,82 @@
+.full-stats-wrapper {
+    position: relative;
+    display: flex;
+    height: $pulse-row-height;
+
+    .sticky-horizontal-wrapper {
+        display: flex;
+        @include stickyHorizontalTable();
+        z-index: 10;
+    }
+
+    .group-stats-container {
+        display: flex;
+        @include border(bottom);
+        height: 100%;
+        width: 100%;
+        box-shadow: 0 8px 8px -8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sticky-horizontal-wrapper {
+        min-width: calc($pulse-title-full + 29px);
+        background-color: $clr-table-bg;
+        box-shadow: 1px 8px 0 -1px $clr-table-bg, inset 0 8px 9px -9px rgba(0, 0, 0, .1);
+
+        &::before {
+            content: "";
+            pointer-events: none;
+            position: absolute;
+            width: 8px;
+            height: 100%;
+            left: 100%;
+            background-color: $clr-table-bg;
+            box-shadow: 0 6px 2px -2px $clr-table-bg;
+        }
+
+        &::after {
+            content: "";
+            pointer-events: none;
+            position: absolute;
+            width: 8px;
+            height: 100%;
+            height: calc(100% - 1px);
+            left: 100%;
+            background-color: $clr-table-bg;
+
+            @include border(left);
+            @include border(bottom);
+            border-bottom-left-radius: 6px;
+        }
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        @include border(right);
+
+        &.blank-footer {
+            // z-index: 1000000;
+            height: 100%;
+            position: relative;
+            width: calc($pulse-title-full + 19px);
+            pointer-events: none;
+            border: none;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: -6px;
+                top: 0;
+                width: 7px;
+                height: calc(100% + 3px);
+                background-color: $clr-table-bg;
+            }
+        }
+
+        &.stats-container {
+            min-width: $table-column-width;
+        }
+    }
+}

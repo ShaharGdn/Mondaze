@@ -1,7 +1,7 @@
 .board-details {
     padding-inline-start: 40px;
-    width: max-content;
-    // overflow: auto;
+    min-width: max-content;
+    width: 100%;
 
     .main-display {
         position: relative;

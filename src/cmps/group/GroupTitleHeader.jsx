@@ -7,7 +7,7 @@ import { useInputHandler } from "../../customHooks/useInputHandler";
 import { updateGroup } from "../../store/actions/selected-board.actions";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
 
-export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) {
+export function GroupTitleHeader({ board, group, getTitles, setIsGroupOpen, isGroupOpen }) {
     const [open, setOpen] = useState(false)
     const [inputRef, setIsBlurred, propToEdit, setPropToEdit,
         handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(group.title, handleTitleUpdate)
@@ -25,19 +25,6 @@ export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) 
         const updatedGroup = { ...group, title: titleToUpdate }
         onUpdateGroup(updatedGroup)
     }
-    // later pass this into GroupPreview for both here and PulseListHeader
-    function getTitles(cmp) {
-        switch (cmp) {
-            case 'StatusPicker': return 'Status'
-            case 'MemberPicker': return 'Assignee'
-            case 'DatePicker': return 'Due Date'
-            case 'PriorityPicker': return 'Priority'
-            case 'TimeLinePicker': return 'Timeline'
-            case 'FilesPicker': return 'Files'
-            // add more as needed
-            default: return ''
-        }
-    }
 
     // async function onUpdateGroup() {
     //     const newTitle = prompt('Title?')
@@ -52,6 +39,10 @@ export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) 
     //     }
     // }
 
+    function onRename() {
+        setIsEditable(true)
+    }
+
 
     const children = (
         <GroupActionsList
@@ -59,7 +50,8 @@ export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) 
             setIsGroupOpen={setIsGroupOpen}
             isGroupOpen={isGroupOpen}
             open={open}
-            setOpen={setOpen} />
+            setOpen={setOpen}
+            onRename={onRename} />
     )
 
     return (
@@ -99,7 +91,8 @@ export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) 
                             autoFocus
                         /> : <div className={`data-container${isGroupOpen ? '' : ' collapsed'}`}>
                             <h4 className="group-title" style={group.style}
-                                onClick={() => setIsEditable(true)}>{propToEdit}</h4>
+                                onClick={onRename}>{propToEdit}</h4>
+                            {/* onClick={() => setIsEditable(true)}>{propToEdit}</h4> */}
                             <span className="pulse-count">
                                 {group.pulses.length > 0
                                     ? `${group.pulses.length} ${board.type}${group.pulses.length === 1 ? '' : 's'}`
@@ -110,17 +103,14 @@ export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) 
                 </section>
             </div>
 
-            <section className="cmps-title-container">
-
-                {!isGroupOpen && board.cmpsOrder.map((cmp, idx) =>
+            {!isGroupOpen && <ul className="cmps-title-container">
+                {board.cmpsOrder.map((cmp, idx) =>
                     <li className="cmp-title-container" key={cmp + idx}>
                         {/* <span className="pulse-list-title">{cmp}</span> */}
                         <span className="pulse-list-title">{getTitles(cmp)}</span>
-                    </li>)
-                }
-
-            </section>
-
-        </section>
+                    </li>)}
+            </ul>
+            }
+        </section >
     )
 }
