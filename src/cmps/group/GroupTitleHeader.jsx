@@ -7,7 +7,7 @@ import { useInputHandler } from "../../customHooks/useInputHandler";
 import { updateGroup } from "../../store/actions/selected-board.actions";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
 
-export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) {
+export function GroupTitleHeader({ board, group, getTitles, setIsGroupOpen, isGroupOpen }) {
     const [open, setOpen] = useState(false)
     const [inputRef, setIsBlurred, propToEdit, setPropToEdit,
         handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(group.title, handleTitleUpdate)
@@ -24,19 +24,6 @@ export function GroupTitleHeader({ board, group, setIsGroupOpen, isGroupOpen }) 
     function handleTitleUpdate(titleToUpdate) {
         const updatedGroup = { ...group, title: titleToUpdate }
         onUpdateGroup(updatedGroup)
-    }
-    // later pass this into GroupPreview for both here and PulseListHeader
-    function getTitles(cmp) {
-        switch (cmp) {
-            case 'StatusPicker': return 'Status'
-            case 'MemberPicker': return 'Assignee'
-            case 'DatePicker': return 'Due Date'
-            case 'PriorityPicker': return 'Priority'
-            case 'TimeLinePicker': return 'Timeline'
-            case 'FilesPicker': return 'Files'
-            // add more as needed
-            default: return ''
-        }
     }
 
     // async function onUpdateGroup() {

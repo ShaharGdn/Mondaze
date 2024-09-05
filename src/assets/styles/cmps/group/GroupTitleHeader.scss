@@ -1,7 +1,8 @@
     .full-group-container {
         display: flex;
         align-items: center;
-        @include stickyGroupTop(131px, 14);
+        // @include stickyGroupTop(131px, 14);
+        @include stickyGroupTop(131px, 13);
         // width: 100%;
 
         &::before {
