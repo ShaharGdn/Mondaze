@@ -42,6 +42,7 @@
 @import "cmps/popovers/AddBoardModal";
 @import "cmps/popovers/BoardActionsList";
 @import "cmps/popovers/GroupActionsList";
+@import "cmps/popovers/PulseActionsList";
 @import "cmps/popovers/Popover";
 @import "cmps/popovers/MemberPickerSearch";
 
@@ -53,6 +54,7 @@
 @import "cmps/dynamic-cmps/DatePicker";
 @import "cmps/dynamic-cmps/LabelPicker";
 @import "cmps/dynamic-cmps/LabelPickerList";
+@import "cmps/dynamic-cmps/TextInput";
 
 // group
 @import "cmps/group/GroupList";
@@ -68,3 +70,4 @@
 @import "cmps/pulse/PulseListHeader.scss";
 @import "cmps/pulse/PulseTitle.scss";
 @import "cmps/pulse/AddPulse.scss";
+@import "cmps/pulse/PulseDotsActions.scss";

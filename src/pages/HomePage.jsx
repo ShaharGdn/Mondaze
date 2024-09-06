@@ -17,7 +17,7 @@ export function HomePage() {
         <section className="home-page full">
 
             <header className="header">
-                <img src="src/assets/img/mondaze-logo.png" alt="" className="logo" onClick={() => navigate('/board/TSihL')}/>
+                <img src="src/assets/img/mondaze-logo.png" alt="" className="logo" onClick={() => navigate('/board/TSihL')} />
                 <button className="get-started" onClick={() => navigate('/board/TSihL')}>
                     <span>Get Started</span>
                     <IoMdArrowForward className="icon" />
@@ -81,19 +81,37 @@ export function HomePage() {
                     </div>
                 </div>
 
-                <div className="work-management">
-                    <div className="title">
-                        <img src="src/assets/img/wm-square-logo.png" alt="" />
-                        <h2>mondaze work management</h2>
-                        <h3 className="poppins-extralight">Manage projects & tasks</h3>
-                        <button className="get-started" onClick={() => navigate('/board/TSihL')}>
-                            <span>Get Started</span>
-                            <IoMdArrowForward className="icon" />
-                        </button>
+                <div className="videos-container">
+                    <div className="work-management">
+                        <div className="title">
+                            <img src="src/assets/img/wm-square-logo.png" alt="" />
+                            <h2>mondaze work management</h2>
+                            <h3 className="poppins-extralight">Manage projects & tasks</h3>
+                            <button className="get-started" onClick={() => navigate('/board/TSihL')}>
+                                <span>Get Started</span>
+                                <IoMdArrowForward className="icon" />
+                            </button>
+                        </div>
+                        <video autoPlay muted loop playsInline>
+                            <source src="https://dapulse-res.cloudinary.com/video/upload/q_auto,f_auto,cs_copy/remote_mondaycom_static/uploads/Yotam_Ron/110224-card-vid-wm-v1.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
-                    <video loop="">
-                        <source src="https://dapulse-res.cloudinary.com/video/upload/q_auto,f_auto,cs_copy/remote_mondaycom_static/uploads/Yotam_Ron/110224-card-vid-wm-v1.mp4"></source>
-                    </video>
+                    <div className="work-management">
+                        <div className="title white">
+                            <img src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/uploads/mayatauber/Group_1261164293.png" alt="monday CRM logo" />
+                            <h2>mondaze CRM</h2>
+                            <h3 className="poppins-extralight">Streamline sales processes</h3>
+                            <button className="get-started white" onClick={() => navigate('/crm')}>
+                                <span>Get Started</span>
+                                <IoMdArrowForward className="icon" />
+                            </button>
+                        </div>
+                        <video autoPlay muted loop playsInline>
+                            <source src="https://dapulse-res.cloudinary.com/video/upload/q_auto,f_auto,cs_copy/remote_mondaycom_static/uploads/Yotam_Ron/110224-card-vid-crm-v1.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 </div>
 
             </main>
@@ -101,7 +119,7 @@ export function HomePage() {
                 <main className="main-footer">
                     <div className="cta-section poppins-extralight">
                         <p>Deliver your best work</p>
-                        <p>with <span>monday.com</span></p>
+                        <p>with <span>mondaze.com</span></p>
                         <button className="get-started white" onClick={() => navigate('/board/TSihL')}>
                             <span>Get Started</span>
                             <IoMdArrowForward className="icon" />
@@ -112,7 +130,7 @@ export function HomePage() {
                     </div>
                 </main>
                 <div className="logo-nav poppins-extralight">
-                    <img src="src/assets/img/mondaze-logo.png" alt="logo" onClick={() => navigate('/board/TSihL')}/>
+                    <img src="src/assets/img/mondaze-logo.png" alt="logo" onClick={() => navigate('/board/TSihL')} />
                     <span>© All Rights Reserved</span>
                 </div>
             </footer>

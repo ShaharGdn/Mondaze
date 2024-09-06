@@ -180,7 +180,7 @@ function getEmptyBoard(type = 'Task') {
             },
         ],
         activities: [],
-        cmpsOrder: ['MemberPicker', 'StatusPicker', 'PriorityPicker', 'DatePicker'],
+        cmpsOrder: ['MemberPicker', 'StatusPicker', 'PriorityPicker', 'DatePicker', 'DateRangePicker', 'TextInput', 'NumberInput'],
         type,
     }
 }
