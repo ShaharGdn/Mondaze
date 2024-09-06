@@ -25,7 +25,9 @@ export function GroupPreview({ group, shouldCloseAllGroups }) {
             case 'MemberPicker': return 'Assignee'
             case 'DatePicker': return 'Due Date'
             case 'PriorityPicker': return 'Priority'
-            case 'TimeLinePicker': return 'Timeline'
+            case 'DateRangePicker': return 'Timeline'
+            case 'TextInput': return 'Comments'
+            case 'NumberInput': return 'Number'
             case 'FilesPicker': return 'Files'
             // add more as needed
             default: return ''
