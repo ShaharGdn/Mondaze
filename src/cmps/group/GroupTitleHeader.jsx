@@ -6,6 +6,7 @@ import { GroupActionsList } from "../popovers/GroupActionsList";
 import { useInputHandler } from "../../customHooks/useInputHandler";
 import { updateGroup } from "../../store/actions/selected-board.actions";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
+import { DynamicStatsCmp } from "./DynamicStatsCmp";
 
 export function GroupTitleHeader({ board, group, getTitles, setIsGroupOpen, isGroupOpen }) {
     const [open, setOpen] = useState(false)
@@ -103,11 +104,12 @@ export function GroupTitleHeader({ board, group, getTitles, setIsGroupOpen, isGr
                 </section>
             </div>
 
-            {!isGroupOpen && <ul className="cmps-title-container">
+            {!isGroupOpen && <ul className="cmps-stats-wrapper">
                 {board.cmpsOrder.map((cmp, idx) =>
-                    <li className="cmp-title-container" key={cmp + idx}>
-                        {/* <span className="pulse-list-title">{cmp}</span> */}
-                        <span className="pulse-list-title">{getTitles(cmp)}</span>
+                    <li className="cmp-stats-container" key={cmp + idx}>
+                        <span className="pulse-list-title">{getTitles(cmp, true)}</span>
+                        <DynamicStatsCmp board={board} cmp={cmp} group={group} />
+
                     </li>)}
             </ul>
             }
