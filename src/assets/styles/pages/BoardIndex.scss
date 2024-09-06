@@ -1,3 +1,7 @@
+main {
+    z-index: 600;
+}
+
 .board-index {
     width: 100%;
     // overflow-x: auto; 
@@ -25,6 +29,7 @@
         h6 {
             font-size: rem(16px);
         }
+
     }
 
     button {
