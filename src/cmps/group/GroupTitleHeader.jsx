@@ -119,7 +119,7 @@ export function GroupTitleHeader({ board, group, getTitles, setIsGroupOpen, isGr
                 {!isGroupOpen && <ul className="cmps-stats-wrapper">
                     {board.cmpsOrder.map((cmp, idx) =>
                         <li className="cmp-stats-container" key={cmp + idx}>
-                            <span className="pulse-list-title">{getTitles(cmp, isGroupOpen)}</span>
+                            <span className="pulse-list-title">{getTitles(cmp, true)}</span>
                             <DynamicStatsCmp board={board} cmp={cmp} group={group} />
 
                         </li>)}
