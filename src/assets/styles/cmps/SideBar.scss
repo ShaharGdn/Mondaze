@@ -110,7 +110,6 @@
     &::after {
         content: "";
         background-color: $clr-table-bg;
-        // background-color: red;
         position: absolute;
         top: 48px;
         // top: 32px;
@@ -118,8 +117,8 @@
         height: calc(100% - 4rem);
         border-top-left-radius: 0.5rem;
         width: 40px;
-        z-index: 13;
-        z-index: 14;
+        
+        z-index: 8;
     }
 
 }

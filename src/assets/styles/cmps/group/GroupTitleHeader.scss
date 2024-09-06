@@ -1,209 +1,214 @@
-    .full-group-container {
+.group-dots-wrapper {
+    position: sticky;
+    height: 0;
+    width: 0;
+    left: 47px;
+    z-index: 90;
+
+    .group-dots-actions {
         display: flex;
         align-items: center;
-        // @include stickyGroupTop(131px, 14);
-        @include stickyGroupTop(131px, 13);
+        justify-content: center;
+        position: absolute;
+        border-radius: 0.2rem;
+        left: -34px;
+        top: 5px;
+        color: white;
+        height: rem(25px);
+        width: rem(25px);
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -10px;
-            height: $pulse-row-height;
-            width: 30px;
-            background-color: $clr-table-bg;
-        }
-
-        .sticky-horizontal-wrapper {
-            min-width: calc($pulse-title-full + 34px);
-            @include stickyHorizontalTable();
-            background-color: $clr-table-bg;
-            z-index: 1;
-        }
-
-        .cmps-stats-wrapper {
-            position: relative;
-            left: 0px;
-            display: flex;
-            width: 100%;
-            @include border(block);
-
-            li {
-                display: flex;
-                height: 60px;
-                // height: 62px;
-                align-items: center;
-                justify-content: center;
-                @include border(right);
-                width: $table-column-width;
-
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
-
-                &:last-of-type {
-                }
-
-                &.cmp-stats-container {
-                    flex-direction: column;
-                    gap: 6px;
-                    padding-inline: 8px;
-                    z-index: 0;
-                    
-                    >* {
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-
-
-        .group-title-header {
-            position: relative;
-            display: flex;
-            align-items: center;
-            height: $pulse-row-height;
-            position: relative;
-            left: -2px;
-
-            &.collapsed {
-                height: 62px;
-                display: flex;
-                width: 100%;
-                @include border(block);
-                @include border(right);
-
-                .collapse-group-btn {
-                    position: relative;
-                    top: -10px;
-                }
-
-                &:focus-within {
-                    .title-input {
-                        margin-block-end: 20px;
-                    }
-                }
-            }
-
-            .collapse-group-btn {
-                display: flex;
-                padding: 8px;
-                background-color: transparent;
-                font-size: 16px;
-                margin: 0;
-            }
-
-            .group-title,
-            .title-input {
-                margin: -2px;
-                font-family: "Poppins", "Roboto", sans-serif;
-                font-size: 18px;
-                line-height: 24px;
-                font-weight: 500;
-                letter-spacing: 0.1px;
-
-                padding: 0px 4px;
-                border: 1px solid transparent;
-                border-radius: 4px;
-
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-
-            }
-
-            .input-container {
-                display: flex;
-                align-items: center;
-                height: 100%;
-
-                .group-title {
-                    &:hover {
-                        border-color: $clr-border-color;
-                    }
-                }
-
-                .title-input {
-                    min-width: 500px;
-
-                    &:focus-visible {
-                        border: 1px solid $clr-btn-blue;
-                        outline: none;
-                    }
-                }
-
-                .data-container {
-                    display: flex;
-
-                    &.collapsed {
-                        flex-direction: column;
-                        align-self: flex-start;
-                        gap: 4px;
-                        margin-block-start: 8px;
-
-                        .pulse-count {
-                            opacity: 1;
-                            margin-inline-start: 4px;
-                        }
-                    }
-
-                    .pulse-count {
-                        white-space: nowrap;
-                        color: $clr-sidebar-icon-inactive;
-                        line-height: 22px;
-                        opacity: 0;
-                        transition: opacity .2s;
-                        margin-inline-start: 6px;
-                    }
-                }
-            }
+        &:hover,
+        &.open {
+            cursor: pointer;
+            color: $clr-text;
 
             &:hover {
-                .data-container {
-                    .pulse-count {
-                        opacity: 1;
-                    }
-                }
+                background-color: #d8d9e1;
             }
-        }
 
-        .group-dots-actions {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            border-radius: 0.2rem;
-            left: -34px;
-            top: 5px;
-            color: white;
-            height: rem(25px);
-            width: rem(25px);
-
-            &:hover,
             &.open {
-                cursor: pointer;
-                color: $clr-text;
-
-                &:hover {
-                    background-color: #d8d9e1;
-                }
-
-                &.open {
-                    background-color: #CAE3FD;
-                }
-            }
-        }
-
-        .pulse-side-color {
-            @include colored-border(collapse);
-            top: 0;
-            height: 62px;
-        }
-
-        &:hover {
-            .group-dots-actions {
-                cursor: pointer;
-                color: $clr-text;
+                background-color: #CAE3FD;
             }
         }
     }
+}
+
+.full-group-container {
+    display: flex;
+    align-items: center;
+    @include stickyGroupTop(131px, 7);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -10px;
+        height: $pulse-row-height;
+        width: 30px;
+        background-color: $clr-table-bg;
+    }
+
+    .sticky-horizontal-wrapper {
+        min-width: calc($pulse-title-full + 34px);
+        @include stickyHorizontalTable();
+        background-color: $clr-table-bg;
+        z-index: 1;
+    }
+
+    .cmps-stats-wrapper {
+        position: relative;
+        left: 0px;
+        display: flex;
+        width: 100%;
+        @include border(block);
+
+        li {
+            display: flex;
+            height: 60px;
+            // height: 62px;
+            align-items: center;
+            justify-content: center;
+            @include border(right);
+            width: $table-column-width;
+
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+
+            &:last-of-type {}
+
+            &.cmp-stats-container {
+                flex-direction: column;
+                gap: 6px;
+                padding-inline: 8px;
+                z-index: 0;
+
+                >* {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .group-title-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: $pulse-row-height;
+        position: relative;
+        left: -2px;
+
+        &.collapsed {
+            height: 62px;
+            display: flex;
+            width: 100%;
+            @include border(block);
+            @include border(right);
+
+            .collapse-group-btn {
+                position: relative;
+                top: -10px;
+            }
+
+            &:focus-within {
+                .title-input {
+                    margin-block-end: 20px;
+                }
+            }
+        }
+
+        .collapse-group-btn {
+            display: flex;
+            padding: 8px;
+            background-color: transparent;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .group-title,
+        .title-input {
+            margin: -2px;
+            font-family: "Poppins", "Roboto", sans-serif;
+            font-size: 18px;
+            line-height: 24px;
+            font-weight: 500;
+            letter-spacing: 0.1px;
+
+            padding: 0px 4px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+            .group-title {
+                &:hover {
+                    border-color: $clr-border-color;
+                }
+            }
+
+            .title-input {
+                min-width: 500px;
+
+                &:focus-visible {
+                    border: 1px solid $clr-btn-blue;
+                    outline: none;
+                }
+            }
+
+            .data-container {
+                display: flex;
+
+                &.collapsed {
+                    flex-direction: column;
+                    align-self: flex-start;
+                    gap: 4px;
+                    margin-block-start: 8px;
+
+                    .pulse-count {
+                        opacity: 1;
+                        margin-inline-start: 4px;
+                    }
+                }
+
+                .pulse-count {
+                    white-space: nowrap;
+                    color: $clr-sidebar-icon-inactive;
+                    line-height: 22px;
+                    opacity: 0;
+                    transition: opacity .2s;
+                    margin-inline-start: 6px;
+                }
+            }
+        }
+
+        &:hover {
+            .data-container {
+                .pulse-count {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .pulse-side-color {
+        @include colored-border(collapse);
+        top: 0;
+        height: 62px;
+    }
+
+    &:hover {
+        .group-dots-actions {
+            cursor: pointer;
+            color: $clr-text;
+        }
+    }
+}

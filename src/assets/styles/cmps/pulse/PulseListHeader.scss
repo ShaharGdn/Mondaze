@@ -1,6 +1,6 @@
 .pulse-list-header {
     position: relative;
-    @include stickyGroupTop(167px,13);
+    @include stickyGroupTop(167px, 7);
 
     display: flex;
     height: $pulse-row-height;
@@ -9,7 +9,7 @@
     .sticky-horizontal-wrapper {
         display: flex;
         @include stickyHorizontalTable();
-        z-index: 10;
+        z-index: 6;
 
         .pulse-side-color {
             @include colored-border(top);
@@ -29,7 +29,6 @@
 
         &.cmp-title-container {
             min-width: $table-column-width;
-
             // min-width: 139px;
             // padding-inline: 10px 20px;
         }

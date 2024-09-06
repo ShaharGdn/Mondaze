@@ -6,7 +6,7 @@
     .sticky-horizontal-wrapper {
         display: flex;
         @include stickyHorizontalTable();
-        z-index: 10;
+        z-index: 5;
     }
 
     .group-stats-container {
