@@ -1,10 +1,11 @@
 .pulse-text-container {
+    width: 138px;
+
     .input-container {
         display: flex;
         align-items: center;
         position: relative;
-        height: 100%;
-        max-width: 138px;
+        height: 27px;
         padding-inline: 3px;
         font-size: $txt-font-size;
         color: $clr-text;
@@ -17,6 +18,15 @@
             border-radius: 4px;
             text-align: center;
             width: 100%;
+
+            &:hover {
+                cursor: pointer;
+                border-color: $clr-border-color;
+            }
+
+            &:hover .empty-text {
+                display: flex;
+            }
         }
 
         .pulse-text {
@@ -28,30 +38,40 @@
             height: 100%;
 
             &:hover {
-                width: 138px;
                 cursor: pointer;
                 border-color: $clr-border-color;
+            }
 
-                .close-btn {
-                    display: inline;
-                    position: absolute;
-                    width: 18px;
-                    height: 18px;
-                    right: 5px;
-                    top: 13px;
-                    border-radius: 0.2rem;
-                    background-color: #dcdfec;
-                    color: $clr-text;
-                    fill: currentcolor;
-                    z-index: 5;
+            &:hover .empty-text {
+                display: flex;
+            }
 
-                    &:hover {
-                        background-color: #cbceda;
-                        cursor: pointer;
+            &.with-text {
+
+                &:hover {
+
+                    .close-btn {
+                        display: inline;
+                        position: absolute;
+                        width: 18px;
+                        height: 18px;
+                        right: 5px;
+                        top: 4px;
+                        border-radius: 0.2rem;
+                        background-color: #dcdfec;
+                        color: $clr-text;
+                        fill: currentcolor;
+                        z-index: 5;
+
+                        &:hover {
+                            background-color: #cbceda;
+                            cursor: pointer;
+                        }
                     }
                 }
             }
         }
+
     }
 
     .text-input {
@@ -89,9 +109,5 @@
             font-size: 23px;
             color: #333;
         }
-    }
-
-    &:hover .empty-text {
-        display: flex;
     }
 }

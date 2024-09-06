@@ -37,7 +37,7 @@ export function NumberInput({ onUpdatePulse, pulse }) {
                     onFocus={() => setIsBlurred(false)}
                     ref={inputRef}
                     autoFocus
-                /> : <span className="pulse-number" onClick={() => setIsEditable(true)}>
+                /> : <span className={propToEdit ? "pulse-number with-number" : "pulse-number null"} onClick={() => setIsEditable(true)}>
                     {propToEdit ? propToEdit.toLocaleString('en-GB') :
                         <div className="empty-number hidden">
                             <BsFillPlusCircleFill />

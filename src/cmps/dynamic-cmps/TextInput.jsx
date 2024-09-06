@@ -39,7 +39,7 @@ export function TextInput({ onUpdatePulse, pulse }) {
                     onFocus={() => setIsBlurred(false)}
                     ref={inputRef}
                     autoFocus
-                /> : <span className="pulse-text" onClick={() => setIsEditable(true)}>
+                /> : <span className={ propToEdit? 'pulse-text with-text' : 'pulse-text null'} onClick={() => setIsEditable(true)}>
                     {propToEdit ? propToEdit :
                         <div className="empty-text hidden">
                             <BsFillPlusCircleFill />
