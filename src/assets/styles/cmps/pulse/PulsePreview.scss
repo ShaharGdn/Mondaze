@@ -1,3 +1,38 @@
+.pulse-dots-wrapper {
+    z-index: 90;
+    position: sticky;
+    width: 0;
+    left: 46px;
+
+    .pulse-dots-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        border-radius: 0.2rem;
+        left: -34px;
+        top: 5px;
+        color: $clr-table-bg;
+
+        height: rem(25px);
+        width: rem(25px);
+        cursor: pointer;
+
+        &:hover,
+        &.open {
+            color: $clr-text;
+
+            &:hover {
+                background-color: #d8d9e1;
+            }
+
+            &.open {
+                background-color: #CAE3FD;
+            }
+        }
+    }
+}
+
 .pulse-preview {
     position: relative;
     display: flex;
@@ -11,7 +46,6 @@
         background-color: $clr-pulse-hover;
         box-shadow: 4px 3px 6px -3px $clr-table-shadow;
         cursor: pointer;
-        z-index: 11;
         z-index: 5;
 
         .label-picker-container {
@@ -39,7 +73,6 @@
     .full-title-selector-container {
         display: flex;
         @include stickyHorizontalTable();
-        z-index: 10;
         z-index: 4;
 
         &:hover {

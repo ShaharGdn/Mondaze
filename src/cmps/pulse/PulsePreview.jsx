@@ -43,33 +43,44 @@ export function PulsePreview({ group, pulse }) {
     )
 
     return (
-        <ul className="pulse-preview">
-            <ThreeDots
-                children={children}
-                open={open}
-                setOpen={setOpen}
-                placement={'right-start'}
-                MainClassName={open ? 'pulse-dots-actions open' : 'pulse-dots-actions'}
-                type={'small'}
-            />
+        <>
+            <div className="pulse-dots-wrapper">
+                <ThreeDots
+                    children={children}
+                    open={open}
+                    setOpen={setOpen}
+                    placement={'right-start'}
+                    MainClassName={open ? 'pulse-dots-actions open' : 'pulse-dots-actions'}
+                    type={'small'}
+                />
+            </div>
 
-            <ul className="full-title-selector-container">
-                <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
-                <PulseSelector group={group} />
-                <PulseTitle pulse={pulse} onUpdatePulse={onUpdatePulse} />
-            </ul>
+            <ul className="pulse-preview">
+                {/* <ThreeDots
+                    children={children}
+                    open={open}
+                    setOpen={setOpen}
+                    placement={'right-start'}
+                    MainClassName={open ? 'pulse-dots-actions open' : 'pulse-dots-actions'}
+                    type={'small'}
+                /> */}
 
-            {board.cmpsOrder.length > 0 && board.cmpsOrder.map((cmp, idx) =>
-                <li className="pulse-dynamic-container" key={idx}>
-                    <DynamicCmp
-                        cmp={cmp}
-                        onUpdatePulse={onUpdatePulse}
-                        pulse={pulse}
-                    />
-                </li>
-            )}
+                <ul className="full-title-selector-container">
+                    <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
+                    <PulseSelector group={group} />
+                    <PulseTitle pulse={pulse} onUpdatePulse={onUpdatePulse} />
+                </ul>
 
-            {/* <button onClick={onRemovePulse}>Remove {group.type}</button> */}
-        </ul >
+                {board.cmpsOrder.length > 0 && board.cmpsOrder.map((cmp, idx) =>
+                    <li className="pulse-dynamic-container" key={idx}>
+                        <DynamicCmp
+                            cmp={cmp}
+                            onUpdatePulse={onUpdatePulse}
+                            pulse={pulse}
+                        />
+                    </li>
+                )}
+            </ul >
+        </>
     )
 }

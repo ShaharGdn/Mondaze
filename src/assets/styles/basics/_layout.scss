@@ -16,13 +16,6 @@
             grid-column: 1 / -1;
         }
     }
-    // >* {
-    //     grid-column: 2;
-
-    //     &.full {
-    //         grid-column: 1 / -1;
-    //     }
-    // }
 
     .main {
         background-color: white;
@@ -36,6 +29,7 @@
         overflow: auto;
         background-color: $clr-table-bg;
         margin-inline-start: var(--margin-inline-start-main);
+        border-top-left-radius: 0.5rem;
 
         // &::before {
         //     content: "";

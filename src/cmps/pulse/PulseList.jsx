@@ -1,7 +1,6 @@
 import { Droppable, Draggable } from "@hello-pangea/dnd"
 import { PulsePreview } from "./PulsePreview";
 
-
 export function PulseList({ group }) {
     return (
         <section className="pulses-container">

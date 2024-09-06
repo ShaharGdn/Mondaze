@@ -20,7 +20,7 @@ export function ThreeDots({
     const trigger = (
         <div className={MainClassName}>
             {type === 'big' ?
-                <HiDotsHorizontal onClick={handleClick} size={19} className={'test'}/>
+                <HiDotsHorizontal onClick={handleClick} size={19}/>
                 :
                 <BsThreeDots
                     onClick={handleClick}
