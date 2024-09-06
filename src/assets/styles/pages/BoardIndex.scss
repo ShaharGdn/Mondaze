@@ -1,12 +1,9 @@
-main {
-    z-index: 600;
-}
-
 .board-index {
     width: 100%;
     // overflow-x: auto; 
 
     .header-greeting {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -20,6 +17,8 @@ main {
         * {
             padding: 0;
             margin: 0;
+            z-index: 10;
+
         }
 
         h5 {
@@ -34,5 +33,9 @@ main {
 
     button {
         margin-inline-end: 0;
+    }
+
+    >* {
+        z-index: 10;
     }
 }
