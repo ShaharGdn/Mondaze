@@ -1,0 +1,96 @@
+.pulse-number-container {
+    .input-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 100%;
+        max-width: 138px;
+        padding-inline: 3px;
+        font-size: $txt-font-size;
+        color: $clr-text;
+
+        .number-input,
+        .pulse-number {
+            line-height: 23px;
+            padding: 0 2px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            text-align: center;
+            width: 138px;
+        }
+
+        .pulse-number {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+                cursor: pointer;
+                border-color: $clr-border-color;
+
+                .close-btn {
+                    display: inline;
+                    position: absolute;
+                    width: 18px;
+                    height: 18px;
+                    right: 5px;
+                    border-radius: 0.2rem;
+                    background-color: #dcdfec;
+                    color: $clr-text;
+                    fill: currentcolor;
+                    z-index: 5;
+
+                    &:hover {
+                        background-color: #cbceda;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    .number-input {
+        width: 95%;
+        font-size: inherit;
+        font-family: inherit;
+        padding: 0;
+        text-align: center;
+        margin: 0 auto;
+
+
+        &:focus-visible {
+            background-color: $clr-table-bg;
+            border: 1px solid $clr-btn-blue;
+            outline: none;
+        }
+
+        &:hover:not(:focus-visible) {
+            background-color: $clr-border-color;
+        }
+    }
+
+    .empty-number {
+        align-items: center;
+        justify-content: center;
+        gap: rem(5px);
+        position: relative;
+        text-align: center;
+        width: 129px;
+        height: 25px;
+        border-radius: 0.2rem;
+        cursor: text;
+        color: #0073EA;
+
+        .num-icon {
+            font-size: 18px;
+            color: #333;
+        }
+    }
+
+    &:hover .empty-number {
+        display: flex;
+    }
+}
