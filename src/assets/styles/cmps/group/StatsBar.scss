@@ -1,0 +1,31 @@
+.stats-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    margin-inline: 8px;
+    cursor: pointer;
+    height: 24px;
+    
+    .stats-clr {
+        height: 100%;
+        z-index: 1;
+        // overflow: visible;
+        transition: all .2s ease-in-out;
+        
+        &:hover {
+            border-radius: 2px;
+            height: 30px;
+            transition: all .0s ease-in-out;
+        }
+    }
+
+    .empty-stats {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: 0;
+        background-color: $clr-status-4;
+    }
+}
