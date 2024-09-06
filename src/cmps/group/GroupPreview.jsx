@@ -19,10 +19,10 @@ export function GroupPreview({ group, shouldCloseAllGroups }) {
         }
     }, [shouldCloseAllGroups])
 
-    function getTitles(cmp) {
+    function getTitles(cmp, collapsed = false) {
         switch (cmp) {
             case 'StatusPicker': return 'Status'
-            case 'MemberPicker': return 'Assignee'
+            case 'MemberPicker': return collapsed ? null : 'Assignee'
             case 'DatePicker': return 'Due Date'
             case 'PriorityPicker': return 'Priority'
             case 'TimeLinePicker': return 'Timeline'
