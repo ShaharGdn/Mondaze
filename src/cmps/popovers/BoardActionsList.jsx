@@ -34,7 +34,9 @@ export function BoardActionsList({ board, open, setOpen }) {
         }
     }
 
-    async function onDeleteBoard() {
+    async function onDeleteBoard(event) {
+        event.preventDefault()
+        event.stopPropagation()
         try {
             await removeBoard(boardToEdit._id)
             showSuccessMsg('Board Deleted Successfully')
@@ -47,7 +49,9 @@ export function BoardActionsList({ board, open, setOpen }) {
         }
     }
 
-    async function onDuplicateBoard() {
+    async function onDuplicateBoard(event) {
+        event.preventDefault()
+        event.stopPropagation()
         try {
             const newBoard = { ...boardToEdit }
             delete newBoard._id
@@ -61,20 +65,26 @@ export function BoardActionsList({ board, open, setOpen }) {
         }
     }
 
-    function onOpenNewTab() {
+    function onOpenNewTab(event) {
+        event.preventDefault()
+        event.stopPropagation()
         const url = `/board/${boardToEdit._id}`;
         window.open(url, '_blank')
     }
 
 
-    function onFavoriteBoard() {
+    function onFavoriteBoard(event) {
+        event.preventDefault()
+        event.stopPropagation()
         handleChange({
             prop: 'isStarred',
             value: boardToEdit.isStarred ? false : true
         })
     }
 
-    function onArchiveBoard() {
+    function onArchiveBoard(event) {
+        event.preventDefault()
+        event.stopPropagation()
         handleChange({
             prop: 'archivedAt',
             value: new Date()

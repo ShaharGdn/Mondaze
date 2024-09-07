@@ -2,10 +2,35 @@ import { useNavigate } from 'react-router-dom'
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
 import BoardIcon from './icons/BoardIcon';
+import { useState } from 'react';
+import { updateBoard } from '../store/actions/board.actions';
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 
 
 export function BoardPreview({ board, type }) {
     const navigate = useNavigate()
+    const [boardToEdit, setBoardToEdit] = useState(board)
+
+    async function onUpdateBoard(boardToUpdate) {
+        try {
+            const board = await updateBoard(boardToUpdate)
+            setBoardToEdit({ ...board })
+            showSuccessMsg('Board Updated Successfully')
+        } catch (err) {
+            console.log('err: Cannot Update board', err)
+            showErrorMsg('Cannot Update Board')
+        }
+    }
+
+    function onFavoriteBoard(event) {
+        event.preventDefault()
+        event.stopPropagation()
+
+        const boardToUpdate = {
+            ...boardToEdit, 'isStarred': boardToEdit.isStarred ? false : true
+        }
+        onUpdateBoard(boardToUpdate)
+    }
 
     return (
         <article className="board-preview" onClick={() => navigate(`/board/${board._id}`)}>
@@ -20,8 +45,9 @@ export function BoardPreview({ board, type }) {
                     </div>
                     <p>{board.title}</p>
                 </div>
-                {!board.isStarred && <FaStar color="#ffcb00" size={19} /> || <FaRegStar size={19} />}
-
+                <span className="favorite" onClick={onFavoriteBoard}>
+                    {board.isStarred && <FaStar color="#ffcb00" size={19} /> || <FaRegStar size={19} />}
+                </span>
             </div>
 
             <div className="board-path">
