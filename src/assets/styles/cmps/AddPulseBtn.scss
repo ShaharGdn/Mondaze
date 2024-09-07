@@ -1,20 +1,24 @@
 .add-pulse-button-component {
     display: flex;
-    margin-block-start: 1rem;
 
     button {
-        color: white;
+        color: $clr-table-bg;
         background-color: $clr-btn-blue;
         margin: 0;
 
         &.add-pulse {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-top-left-radius: $border-radius-li;
             border-bottom-left-radius: $border-radius-li;
             border-right: 1px solid rgba(31, 31, 44, 0.207);
             width: rem(74px);
             height: rem(32px);
             padding: rem(8px) rem(4px);
+            // padding: rem(4px) rem(8px);
             font-size: rem(14px);
+            font-weight: 400;
         }
 
         &.add-group {
