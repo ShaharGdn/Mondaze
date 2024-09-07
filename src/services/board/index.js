@@ -123,6 +123,10 @@ function getEmptyBoard(type = 'Task') {
                         'status': 'woi5432',
                         'priority': 'mdm1126',
                         'dueDate': '2024-09-24',
+                        'dateRange': {
+                            from: new Date('2024-09-24'),
+                            to: new Date('2024-09-30')
+                        },
                         'memberIds': ['u101'],
                         'isDone': ''
                     },
@@ -132,6 +136,10 @@ function getEmptyBoard(type = 'Task') {
                         'status': 'dnn8390',
                         'priority': 'mdm1126',
                         'dueDate': '2024-09-15',
+                        'dateRange': {
+                            from: new Date('2024-10-01'),
+                            to: new Date('2024-11-14')
+                        },
                         'memberIds': ['u101', 'u102'],
                         'isDone': true
 
@@ -142,6 +150,10 @@ function getEmptyBoard(type = 'Task') {
                         'status': 'stk4530',
                         'priority': 'hgh3899',
                         'dueDate': '2024-09-10',
+                        'dateRange': {
+                            from: new Date('2024-11-02'),
+                            to: new Date('2024-12-01')
+                        },
                         'memberIds': [],
                         'isDone': ''
 

@@ -1,0 +1,87 @@
+.date-range-container {
+    .timeline-bar {
+        background: rgb(196, 196, 196);
+        width: 110px;
+        text-align: center;
+        border-radius: 5rem;
+        color: white;
+
+        span {
+            color: white;
+        }
+
+        &:hover {
+            background: rgb(171, 171, 171);
+            color: white;
+
+            .set-dates {
+                display: block;
+                font-size: 13px;
+            }
+
+            .date-range-null {
+                display: none;
+            }
+        }
+
+        &.with-range {
+            display: flex;
+            justify-content: center;
+            // background-color: black;
+            position: relative;
+            background: linear-gradient(to right, red 50%, blue 50%);
+
+            &:hover {
+                .close-btn {
+                    display: inline;
+                    position: absolute;
+                    width: 18px;
+                    height: 18px;
+                    right: -10px;
+                    // top:4px;
+                    border-radius: 0.2rem;
+                    background-color: #dcdfec;
+                    color: $clr-text;
+                    fill: currentcolor;
+                    z-index: 5;
+
+                    &:hover {
+                        background-color: #cbceda;
+                        cursor: pointer;
+                    }
+                }
+
+
+                .date-range {
+                    display: none;
+                }
+
+                .days-diff {
+                    display: block;
+                }
+            }
+        } 
+    }
+    // .date-range {
+    //     background: black;
+    //     text-align: center;
+    //     border-radius: 5rem;
+    //     color: white;
+
+    //     span {
+    //         padding: 1rem;
+    //     }
+    // }
+
+}
+
+.date-range-content {
+    padding: 1rem;
+    font-size: 13px;
+
+    .rdp-caption_label {
+        font-size: 1rem;
+        font-weight: 550;
+        margin-block-end: 1rem;
+    }
+}
