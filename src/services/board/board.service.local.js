@@ -1,5 +1,5 @@
 import { storageService } from '../async-storage.service'
-import { makeId } from '../util.service'
+import { makeId, getRandomColor } from '../util.service'
 import { userService } from '../user'
 import { updateBoard } from '../../store/actions/board.actions'
 
@@ -126,7 +126,7 @@ async function addGroup(boardId, position = 'start') {
             title: 'New Group',
             archivedAt: null,
             pulses: [],
-            style: {},
+            style: {color : getRandomColor()},
             type: board.type,
         }
 
