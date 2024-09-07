@@ -6,8 +6,9 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { addGroup, loadBoard } from '../store/actions/selected-board.actions'
 
 import { GroupList } from '../cmps/group/GroupList'
-import { AddPulseBtn } from '../cmps/buttons/AddPulseBtn'
+// import { AddPulseBtn } from '../cmps/buttons/AddPulseBtn'
 import { BoardHeader } from '../cmps/BoardHeader'
+import { BoardActionsBar } from '../cmps/BoardActionsBar'
 
 export function BoardDetails() {
   const { boardId } = useParams()
@@ -34,7 +35,8 @@ export function BoardDetails() {
         <section className='main-top-container'>
           <div className='top-sticky-wrapper'>
             <BoardHeader board={board}/>
-            <AddPulseBtn board={board} />
+            <BoardActionsBar board={board}/>
+            {/* <AddPulseBtn board={board} /> */}
           </div>
        </section>
 

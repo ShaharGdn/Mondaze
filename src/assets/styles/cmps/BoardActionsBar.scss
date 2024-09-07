@@ -1,0 +1,77 @@
+.board-actions-bar {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    color: $clr-text;
+    width: 80vw;
+
+    .displays-list,
+    .add-filter-sort-actions {
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .displays-list {
+        border-bottom: 1px solid #d0d4e4;
+        
+        .main-table,
+        .kanban {
+            padding-inline: 1rem;
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem;
+            padding-block-end: 0.4rem;
+            cursor: pointer;
+
+            &.active {
+                border-bottom: 2px solid #0073EA;
+            }
+
+            span {
+                font-size: 14px;
+            }
+        }
+
+        .main-table {
+            gap: 5px;
+        }
+    }
+
+    .add-filter-sort-actions {
+        align-items: end;
+        gap: 1rem;
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+        }
+
+        >*:not(.add-pulse-button-component) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 32px;
+            width: 100px;
+            gap: 5px;
+            border-radius: $border-radius-li;
+            
+            & span {
+                position: relative;
+                top: 2px;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: $clr-pulse-hover;
+            }
+        }
+    }
+    .icon {
+        color: $clr-sidebar-icon-inactive;
+    }
+
+}

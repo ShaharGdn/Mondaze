@@ -1,6 +1,8 @@
 .board-header {
     display: flex;
     align-items: baseline;
+    width: max-content;
+    gap: 0.5rem;
 
     h2 {
         margin: 0;
