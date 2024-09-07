@@ -5,8 +5,9 @@ import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
 import { updateBoard } from "../../store/actions/board.actions";
 import { updateGroup } from "../../store/actions/selected-board.actions";
 import { boardService } from "../../services/board";
+import { GroupPreviewKanban } from "./GroupPrevieKanban";
 
-export function GroupList({ groups, board }) {
+export function GroupList({ groups, board, type }) {
     const [groupsToEdit, setGroups] = useState(groups)
     const [boardToEdit, setBoard] = useState(board)
     const [shouldCloseAllGroups, setShouldCloseAllGroups] = useState(false)
@@ -80,7 +81,7 @@ export function GroupList({ groups, board }) {
     }
 
     return (
-        <section className="groups-container">
+        <section className={type === 'kanban' ? "groups-container kanban" : "groups-container"}>
             <DragDropContext onDragEnd={handleGroupDnd}>
                 {/* <DragDropContext onDragStart={() => setShouldCloseAllGroups(true)} onDragEnd={handleGroupDnd}> */}
                 <Droppable droppableId="group-list" type="group">
@@ -96,7 +97,7 @@ export function GroupList({ groups, board }) {
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
                                         >
-                                            <GroupPreview group={group} shouldCloseAllGroups={shouldCloseAllGroups} />
+                                            {type === 'kanban' ? <GroupPreviewKanban group={group} type={type} /> : <GroupPreview group={group} shouldCloseAllGroups={shouldCloseAllGroups} />}
                                         </li>
                                     )}
                                 </Draggable>

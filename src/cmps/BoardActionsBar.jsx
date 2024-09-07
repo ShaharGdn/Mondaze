@@ -2,8 +2,7 @@ import { useState } from "react";
 import { AddPulseBtn } from "./buttons/AddPulseBtn";
 import { EMPTY_PERSON, FILTER_ICON, ICON_HOME, ICON_SEARCH, ICON_SQUARE_CHART, SORT_ICON } from "./icons/svg-icons";
 
-export function BoardActionsBar({ board }) {
-    const [displayType, setDisplayType] = useState("main")
+export function BoardActionsBar({ board, setDisplayType, displayType }) {
 
     return <div className="board-actions-bar Figtree-regular">
         <nav className="display-types-container">
