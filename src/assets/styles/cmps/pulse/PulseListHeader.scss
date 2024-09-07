@@ -1,6 +1,6 @@
 .pulse-list-header {
     position: relative;
-    @include stickyGroupTop(167px, 7);
+    @include stickyGroupTop(209px, 7);
 
     display: flex;
     height: $pulse-row-height;
