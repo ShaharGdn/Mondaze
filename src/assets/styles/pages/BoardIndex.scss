@@ -3,6 +3,7 @@
     // overflow-x: auto; 
 
     .header-greeting {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -16,6 +17,8 @@
         * {
             padding: 0;
             margin: 0;
+            z-index: 10;
+
         }
 
         h5 {
@@ -25,9 +28,14 @@
         h6 {
             font-size: rem(16px);
         }
+
     }
 
     button {
         margin-inline-end: 0;
+    }
+
+    >* {
+        z-index: 10;
     }
 }
