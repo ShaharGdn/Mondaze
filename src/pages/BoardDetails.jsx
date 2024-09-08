@@ -16,7 +16,7 @@ export function BoardDetails() {
 
   useEffect(() => {
     loadBoard(boardId)
-  }, [boardId])
+  }, [boardId, displayType])
 
   async function onAddGroup(position = 'start') {
     try {
@@ -55,8 +55,6 @@ export function BoardDetails() {
 
     return groupedPulses
   }
-
-  groupPulsesByStatus()
 
   return (
     <main>
