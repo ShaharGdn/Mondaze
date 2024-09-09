@@ -4,10 +4,10 @@
     grid-template-columns: rem(270px) 1fr;
     background-color: $clr-bg;
     height: 100vh;
-    // width: calc(100vw - calc(var(--margin-inline-start-main) + 3px));
     width: 100%;
     margin: 0;
     overflow: hidden;
+    transition: grid-template-columns 0.05s ease;
 
     >* {
         grid-column: 2;
@@ -17,9 +17,12 @@
         }
     }
 
+    &:has(.side-bar-container.close){
+        grid-template-columns: rem(30px) 1fr;
+    }
+
     .main {
         background-color: white;
-        // margin-inline-start: var(--margin-inline-start-main);
         border-radius: 0.5rem;
         height: 100vh;
     }
@@ -30,46 +33,5 @@
         background-color: $clr-table-bg;
         margin-inline-start: var(--margin-inline-start-main);
         border-top-left-radius: 0.5rem;
-
-        // &::before {
-        //     content: "";
-        //     background-color: $clr-table-bg;
-        //     background-color: red;
-        //     position: absolute;
-        //     top: 0;
-        //     left: 0;
-        //     height: 100%;
-        //     width: 40px;
-        //     z-index: 10;
-        // }
     }
-
-
-
-    // @include for-narrow-layout {
-    //     grid-template-columns: 
-    //         minmax(20px, 1fr)
-    //         minmax(auto, $mobile-breakpoint)
-    //         minmax(20px, 1fr);
-    // }
-    // @include for-normal-layout {
-    //     grid-template-columns: 
-    //         minmax(20px, 1fr)
-    //         minmax(auto, $narrow-breakpoint)
-    //         minmax(20px, 1fr);
-    // }
-    // @include for-wide-layout {
-    //     grid-template-columns: 
-    //         minmax(20px, 1fr)
-    //         minmax(auto, $normal-breakpoint)
-    //         minmax(20px, 1fr);
-    // }
-
 }
-
-
-// .card-grid {
-//     display: grid;
-//     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-//     grid-gap: 20px;
-// }

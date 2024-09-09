@@ -1,11 +1,10 @@
 .side-bar-container {
-
     &.open {
         display: flex;
         flex-direction: row;
         grid-column: 1;
         background: linear-gradient(135deg, white 5%, $clr-bg 100%);
-        border-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
         font-size: rem(14px);
 
         * {
@@ -105,20 +104,98 @@
                 }
             }
         }
+
+        &:hover {
+            .toggle-open {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                left: rem(240px);
+                top: 48px;
+                height: 38px;
+                width: 30px;
+                background-color: rgba(103, 104, 121, 0.1);
+                background: #f6f7fb;
+                border: none;
+                border-radius: 0 8px 0 8px;
+                cursor: pointer;
+                transition: width 10ms ease;
+                z-index: 100;
+                margin: 0;
+                padding: 0;
+
+                span {
+                    margin: 0;
+                    padding: 0;
+                }
+
+
+                &:hover {
+                    background-color: #EFF0F1;
+                }
+            }
+        }
+    }
+
+    &.close {
+        display: flex;
+        flex-direction: row;
+        grid-column: 1;
+        background: linear-gradient(135deg, white 5%, $clr-bg 100%);
+        border-top-right-radius: 0.5rem;
+        font-size: rem(14px);
+        width: rem(30px);
+
+        nav {
+            display: none;
+        }
+
+        &::after {
+            left: rem(42px);
+        }
+
+
+        &:hover {
+            .toggle-open {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                left: rem(0px);
+                top: 48px;
+                height: 38px;
+                width: 30px;
+                background: #f6f7fb;
+                border: none;
+                border-radius: 0 8px 0 8px;
+                cursor: pointer;
+                margin: 0;
+                padding: 0;
+
+                span {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                &:hover {
+                    background-color: #EFF0F1;
+                }
+            }
+        }
     }
 
     &::after {
         content: "";
         background-color: $clr-table-bg;
         position: absolute;
-        top: 48px;
-        // top: 32px;
-        left: 282px;
+        top: rem(48px);
+        left: rem(282px);
         height: calc(100% - 4rem);
         border-top-left-radius: 0.5rem;
-        width: 40px;
-        
+        width: rem(40px);
+
         z-index: 8;
     }
-
 }

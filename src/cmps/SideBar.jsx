@@ -6,6 +6,9 @@ import { BoardSideBarPreview } from "./BoardSideBarPreview";
 import { GoHome } from "react-icons/go";
 import { GoStar } from "react-icons/go";
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import { SlArrowLeft } from "react-icons/sl";
+import { SlArrowRight } from "react-icons/sl";
+
 
 import { loadBoards } from '../store/actions/board.actions'
 import { AddBtnSideBar } from "./buttons/AddBtnSideBar.jsx";
@@ -13,6 +16,7 @@ import { AddBtnSideBar } from "./buttons/AddBtnSideBar.jsx";
 export function SideBar() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
     const [filterBy, setFilterBy] = useState(boardService.getDefaultFilter())
+    const [isOpen, toggleIsOpen] = useState(true)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -20,7 +24,12 @@ export function SideBar() {
     }, [filterBy])
 
     return (
-        <article className="side-bar-container open Figtree-regular">
+        <article className={isOpen ? "side-bar-container open Figtree-regular" : "side-bar-container close Figtree-regular"}>
+            <div className="toggle-open hidden" onClick={() => toggleIsOpen(!isOpen)}>
+                <span className="arrow">
+                    {isOpen === true ? <SlArrowLeft size={12} className="icon"/> : <SlArrowRight size={12}  className="icon"/>}
+                </span>
+            </div>
             <nav>
                 <div className="home-link" onClick={() => navigate('/board')}>
                     <GoHome size={20} />
