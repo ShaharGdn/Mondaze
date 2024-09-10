@@ -126,7 +126,7 @@ async function addGroup(boardId, position = 'start') {
             title: 'New Group',
             archivedAt: null,
             pulses: [],
-            style: {color : getRandomColor()},
+            style: { color: getRandomColor() },
             type: board.type,
         }
 
@@ -148,24 +148,16 @@ async function addGroup(boardId, position = 'start') {
 async function duplicateGroup(group, boardId) {
     try {
         const board = await getBoardById(boardId)
-        const groupToAdd = {
-            id: makeId(),
-            boardId,
-            title: group.title,
-            archivedAt: group.archivedAt,
-            pulses: group.pulses,
-            style: group.style,
-            type: board.type,
-        }
+        const duplicatedGroup = { ...group, id: makeId() }
 
-        board.groups.push(groupToAdd)
+        board.groups.push(duplicatedGroup)
 
         const updatedBoard = await updateBoard(board)
         await storageService.put(STORAGE_KEY, updatedBoard)
 
-        return groupToAdd
+        return duplicatedGroup
     } catch (err) {
-        console.log('Could not add group:', err)
+        console.log('Could not duplicate group:', err)
     }
 }
 

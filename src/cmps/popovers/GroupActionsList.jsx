@@ -52,9 +52,7 @@ export function GroupActionsList({ group, isGroupOpen, setIsGroupOpen, open, set
 
     async function onDuplicateGroup() {
         try {
-            const newGroup = { ...groupToEdit }
-            delete newGroup.id
-            await duplicateGroup(newGroup, board._id)
+            await duplicateGroup(group, board._id)
             showSuccessMsg('Group Duplicated Successfully')
         } catch (err) {
             console.log('err: Cannot Duplicated Group', err)
