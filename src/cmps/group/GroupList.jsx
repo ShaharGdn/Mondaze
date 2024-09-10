@@ -18,73 +18,74 @@ export function GroupList({ groups, board, type }) {
     }, [groups, board])
 
     async function handleGroupDnd(results) {
-        try {
-            const { source, destination, type } = results
+        if (type === 'kanban') return
+            try {
+                const { source, destination, type } = results
 
-            if (!destination) return
-            if (source.droppableId === destination.droppableId && source.index === destination.index) return
+                if (!destination) return
+                if (source.droppableId === destination.droppableId && source.index === destination.index) return
 
-            // If moving groups
-            if (type === 'group') {
-                const reorderedGroups = [...groupsToEdit]
-                const sourceIndex = source.index
-                const destinationIndex = destination.index
-
-                const [removedGroup] = reorderedGroups.splice(sourceIndex, 1)
-                reorderedGroups.splice(destinationIndex, 0, removedGroup)
-
-                const boardToUpdate = {
-                    ...boardToEdit, groups: reorderedGroups
-                }
-
-                const updatedBoard = await updateBoard(boardToUpdate)
-                setBoard(updatedBoard)
-                setGroups(reorderedGroups)
-                showSuccessMsg('Group has Moved')
-
-            } else if (type === 'pulse') {
-                // If moving pulses in the same group
-                if (source.droppableId === destination.droppableId) {
-                    const group = await boardService.getGroupById(boardToEdit._id, source.droppableId)
-                    const reorderedGroup = { ...group }
+                // If moving groups
+                if (type === 'group') {
+                    const reorderedGroups = [...groupsToEdit]
                     const sourceIndex = source.index
                     const destinationIndex = destination.index
 
-                    const [removedPulse] = reorderedGroup.pulses.splice(sourceIndex, 1)
-                    reorderedGroup.pulses.splice(destinationIndex, 0, removedPulse)
-                    await updateGroup(boardToEdit._id, reorderedGroup)
-                    showSuccessMsg('Pulse has Moved')
+                    const [removedGroup] = reorderedGroups.splice(sourceIndex, 1)
+                    reorderedGroups.splice(destinationIndex, 0, removedGroup)
 
-                } else {
-                    // If moving pulses in different group
-                    const sourceGroup = await boardService.getGroupById(boardToEdit._id, source.droppableId)
-                    const reorderedSourceGroup = { ...sourceGroup }
-                    const sourceIndex = source.index
-                    const [removedPulse] = reorderedSourceGroup.pulses.splice(sourceIndex, 1)
+                    const boardToUpdate = {
+                        ...boardToEdit, groups: reorderedGroups
+                    }
 
-                    const destinationGroup = await boardService.getGroupById(boardToEdit._id, destination.droppableId)
-                    const reorderedDestinationGroup = { ...destinationGroup }
-                    const destinationIndex = destination.index
-                    reorderedDestinationGroup.pulses.splice(destinationIndex, 0, removedPulse)
+                    const updatedBoard = await updateBoard(boardToUpdate)
+                    setBoard(updatedBoard)
+                    setGroups(reorderedGroups)
+                    showSuccessMsg('Group has Moved')
 
-                    await updateGroup(boardToEdit._id, reorderedSourceGroup)
-                    await updateGroup(boardToEdit._id, reorderedDestinationGroup)
-                    showSuccessMsg('Pulse has Moved')
+                } else if (type === 'pulse') {
+                    // If moving pulses in the same group
+                    if (source.droppableId === destination.droppableId) {
+                        const group = await boardService.getGroupById(boardToEdit._id, source.droppableId)
+                        const reorderedGroup = { ...group }
+                        const sourceIndex = source.index
+                        const destinationIndex = destination.index
+
+                        const [removedPulse] = reorderedGroup.pulses.splice(sourceIndex, 1)
+                        reorderedGroup.pulses.splice(destinationIndex, 0, removedPulse)
+                        await updateGroup(boardToEdit._id, reorderedGroup)
+                        showSuccessMsg('Pulse has Moved')
+
+                    } else {
+                        // If moving pulses in different group
+                        const sourceGroup = await boardService.getGroupById(boardToEdit._id, source.droppableId)
+                        const reorderedSourceGroup = { ...sourceGroup }
+                        const sourceIndex = source.index
+                        const [removedPulse] = reorderedSourceGroup.pulses.splice(sourceIndex, 1)
+
+                        const destinationGroup = await boardService.getGroupById(boardToEdit._id, destination.droppableId)
+                        const reorderedDestinationGroup = { ...destinationGroup }
+                        const destinationIndex = destination.index
+                        reorderedDestinationGroup.pulses.splice(destinationIndex, 0, removedPulse)
+
+                        await updateGroup(boardToEdit._id, reorderedSourceGroup)
+                        await updateGroup(boardToEdit._id, reorderedDestinationGroup)
+                        showSuccessMsg('Pulse has Moved')
+                    }
                 }
+            } catch (err) {
+                console.log('err:', err)
+                showErrorMsg('Cannot move group!')
+            } finally {
+                // setShouldCloseAllGroups(false)
             }
-        } catch (err) {
-            console.log('err:', err)
-            showErrorMsg('Cannot move group!')
-        } finally {
-            // setShouldCloseAllGroups(false)
-        }
     }
 
     return (
         <section className={type === 'kanban' ? "groups-container kanban" : "groups-container"}>
             <DragDropContext onDragEnd={handleGroupDnd}>
                 {/* <DragDropContext onDragStart={() => setShouldCloseAllGroups(true)} onDragEnd={handleGroupDnd}> */}
-                <Droppable droppableId="group-list" type="group">
+                <Droppable droppableId="group-list" type={type === 'kanban'? "kanban-group" : "group"}>
                     {(provided) => (
                         <ul className="group-list" {...provided.droppableProps} ref={provided.innerRef}>
                             {groupsToEdit.map((group, index) => (
