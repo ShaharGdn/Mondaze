@@ -3,20 +3,28 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { addGroup, loadBoard } from '../store/actions/selected-board.actions'
+import { addGroup, loadBoard, updatePulse } from '../store/actions/selected-board.actions'
 
 import { GroupList } from '../cmps/group/GroupList'
 import { BoardHeader } from '../cmps/BoardHeader'
 import { BoardActionsBar } from '../cmps/BoardActionsBar'
+import { SidePanel } from '../cmps/SidePanel'
 
 export function BoardDetails() {
   const { boardId } = useParams()
   const board = useSelector(storeState => storeState.selectedBoardModule.board)
   const [displayType, setDisplayType] = useState('main')
+  const [sidePanelOpen, setSidePanelOpen] = useState(false)
+  const [selectedPulse, setSelectedPulse] = useState(null)
 
   useEffect(() => {
     loadBoard(boardId)
-  }, [boardId, displayType])
+    setSelectedPulse(selectedPulse)
+
+    return () => {
+      setSelectedPulse(null)
+    }
+  }, [boardId, displayType, selectedPulse])
 
   async function onAddGroup(position = 'start') {
     try {
@@ -56,24 +64,38 @@ export function BoardDetails() {
     return groupedPulses
   }
 
-  return (
-    <main>
-      <section className="board-details main">
-        {board && <div className="main-display">
+  async function onUpdatePulse(groupId, pulseToUpdate) {
+    try {
+      await updatePulse(board._id, groupId, pulseToUpdate)
+      showSuccessMsg('Pulse updated successfully')
+    } catch (err) {
+      console.log('err:', err)
+      showErrorMsg('Cannot update pulse')
+    }
+  }
 
-          <section className='main-top-container'>
-            <div className='top-sticky-wrapper'>
-              <BoardHeader board={board} />
-              <BoardActionsBar board={board} setDisplayType={setDisplayType} displayType={displayType} />
-            </div>
-          </section>
-          <GroupList groups={displayType === 'kanban' ? groupPulsesByStatus()
-            : board.groups} board={board} type={displayType} />
-          {displayType !== 'kanban' && <button className="add-group-btn" onClick={() => onAddGroup("end")}>
-            <i className="fa-regular fa-plus fa-lg"></i>Add new group
-          </button>}
-        </div>}
-      </section>
-    </main>
+  return (
+    <>
+      <main>
+        <section className="board-details main">
+          {board && <div className="main-display">
+
+            <section className='main-top-container'>
+              <div className='top-sticky-wrapper'>
+                <BoardHeader board={board} />
+                <BoardActionsBar board={board} setDisplayType={setDisplayType} displayType={displayType} />
+              </div>
+            </section>
+            <GroupList
+              groups={displayType === 'kanban' ? groupPulsesByStatus()
+                : board.groups} board={board} type={displayType} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse} />
+            {displayType !== 'kanban' && <button className="add-group-btn" onClick={() => onAddGroup("end")}>
+              <i className="fa-regular fa-plus fa-lg"></i>Add new group
+            </button>}
+          </div>}
+        </section>
+      </main>
+      {selectedPulse && <SidePanel sidePanelOpen={sidePanelOpen} selectedPulse={selectedPulse} onUpdatePulse={onUpdatePulse} setSidePanelOpen={setSidePanelOpen}/>}
+    </>
   )
 }

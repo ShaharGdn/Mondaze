@@ -1,10 +1,15 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export const useInputHandler = (initialPropState, callBack, isInputOnly = false) => {
     const [isBlurred, setIsBlurred] = useState(false)
     const [propToEdit, setPropToEdit] = useState(initialPropState)
     const [isEditable, setIsEditable] = useState(false)
     const inputRef = useRef(null)
+
+    useEffect(() => {
+        setPropToEdit(initialPropState)
+    }, [initialPropState])
+
 
     function handleSubmit(ev) {
         if (ev) ev.preventDefault()

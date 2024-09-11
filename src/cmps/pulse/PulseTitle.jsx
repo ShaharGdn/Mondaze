@@ -2,13 +2,24 @@ import { Link } from "react-router-dom";
 import { ICON_EMPTY_MESSAGES } from "../icons/svg-icons";
 import { useInputHandler } from "../../customHooks/useInputHandler";
 
-export function PulseTitle({ pulse, onUpdatePulse }) {
+export function PulseTitle({ pulse, groupId, onUpdatePulse, setSidePanelOpen, setSelectedPulse }) {
     const [inputRef, setIsBlurred, propToEdit, setPropToEdit,
         handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(pulse.title, handleUpdate)
 
     function handleUpdate(updatedTitle) {
         const pulseToUpdate = { ...pulse, title: updatedTitle }
         onUpdatePulse(pulseToUpdate)
+        setSelectedPulse({ pulse: pulseToUpdate, groupId })
+    }
+
+    function onOpenSidePanel() {
+        setSelectedPulse((prevPulse) => {
+            if (prevPulse?.pulse?.id !== pulse.id) {
+                return { pulse, groupId }
+            }
+            return prevPulse
+        })
+        setSidePanelOpen((prevOpen) => !prevOpen)
     }
 
     return (
@@ -29,7 +40,7 @@ export function PulseTitle({ pulse, onUpdatePulse }) {
             </div>
 
             {/* later make this nested route that leads to PulseDetails */}
-            <Link className="pulse-messages-container">
+            <Link className="pulse-messages-container" onClick={onOpenSidePanel}>
                 {ICON_EMPTY_MESSAGES}
             </Link>
         </li>
