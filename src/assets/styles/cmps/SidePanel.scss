@@ -1,0 +1,152 @@
+.side-panel-container {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    grid-column: 3;
+    z-index: 88;
+
+    .side-panel {
+        top: 48px;
+        right: 0px;
+        height: calc(100vh - 48px);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        background-color: white;
+
+        .header {
+            .header-content {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: start;
+                text-align: left;
+                margin: 20px 20px 6px 24px;
+
+                .close-btn {
+                    display: flex;
+                    align-items: start;
+                    justify-content: start;
+                    padding: 0;
+                    margin: 0;
+                    background: none;
+                    border-radius: rem(4px);
+                    height: 24px;
+                    width: 24px;
+                    margin-left: -5px;
+                    cursor: pointer;
+                    text-decoration: none;
+                    color: #777;
+                    margin-block-end: 0.2rem;
+
+                    &:hover {
+                        background: $clr-menu-add-hover
+                    }
+
+                    .icon {
+                        font-size: 90px;
+
+                        path {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                form {
+                    font-family: inherit;
+                    font-size: rem(24px);
+                    padding: 0;
+                    margin: 0;
+                    width: 100%;
+                }
+
+                span,
+                input {
+                    font-family: inherit;
+                    font-size: rem(24px);
+                    padding: 0;
+                    margin: 0;
+                    width: 100%;
+
+                    &:focus-within {
+                        outline: none;
+                    }
+                }
+
+                .update-list {
+                    margin-block-end: 0;
+                    position: relative;
+                    display: flex;
+                    flex-direction: row;
+                    font-size: 14px;
+                    font-weight: 400;
+                    margin-block-end: 1.5rem;
+
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        height: 1px;
+                        width: 500px;
+                        background-color: $clr-border;
+                    }
+
+                    .updates,
+                    .activities {
+                        display: flex;
+                        align-items: center;
+                        font-size: 0.875rem;
+                        padding: 4px 0px;
+                        cursor: pointer;
+                        border-bottom: 3px solid transparent;
+                        border-radius: 4px;
+                        justify-content: center;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+
+
+                        .title {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 120px;
+                            border-right: 0.1px solid rgba(128, 128, 128, 0.258);
+                            text-align: center;
+                            gap: 10px;
+                        }
+
+                        &.active {
+                            border-color: $clr-btn-blue;
+                            border-bottom-left-radius: 0;
+                            border-bottom-right-radius: 0;
+                        }
+
+                        &:hover {
+                            background-color: $clr-btn-hover;
+                        }
+
+                        span {
+                            font-size: 14px;
+                        }
+                    }
+
+                    .main-table {
+                        gap: 4px;
+                    }
+                }
+            }
+
+        }
+
+        .pulse-container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: 100%;
+
+        }
+    }
+}
