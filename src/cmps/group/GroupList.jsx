@@ -7,7 +7,7 @@ import { updateGroup } from "../../store/actions/selected-board.actions";
 import { boardService } from "../../services/board";
 import { GroupPreviewKanban } from "./GroupPrevieKanban";
 
-export function GroupList({ groups, board, type }) {
+export function GroupList({ groups, board, type, setSidePanelOpen, setSelectedPulse }) {
     const [groupsToEdit, setGroups] = useState(groups)
     const [boardToEdit, setBoard] = useState(board)
     const [shouldCloseAllGroups, setShouldCloseAllGroups] = useState(false)
@@ -98,7 +98,7 @@ export function GroupList({ groups, board, type }) {
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
                                         >
-                                            {type === 'kanban' ? <GroupPreviewKanban group={group} type={type} /> : <GroupPreview group={group} shouldCloseAllGroups={shouldCloseAllGroups} />}
+                                            {type === 'kanban' ? <GroupPreviewKanban group={group} type={type} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse}/> : <GroupPreview group={group} shouldCloseAllGroups={shouldCloseAllGroups} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse}/>}
                                         </li>
                                     )}
                                 </Draggable>

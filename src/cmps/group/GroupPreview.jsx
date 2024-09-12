@@ -7,7 +7,7 @@ import { AddPulse } from "../pulse/AddPulse.jsx";
 import { Droppable } from "@hello-pangea/dnd";
 import { GroupStatsRow } from "./groupStatsRow.jsx";
 
-export function GroupPreview({ group, shouldCloseAllGroups }) {
+export function GroupPreview({ group, shouldCloseAllGroups, setSidePanelOpen, setSelectedPulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
     const [isGroupOpen, setIsGroupOpen] = useState(true)
 
@@ -49,7 +49,7 @@ export function GroupPreview({ group, shouldCloseAllGroups }) {
                     {isGroupOpen &&
                         <>
                             <PulseListHeader board={board} group={group} getTitles={getTitles} />
-                            <PulseList group={group} />
+                            <PulseList group={group} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse}/>
                             <AddPulse board={board} group={group} />
                             <GroupStatsRow board={board} group={group} />
                         </>

@@ -1,0 +1,21 @@
+.sum-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        margin: 0;
+        padding: 0;
+        line-height: 14px;
+
+        &.total-amount {
+            font-size: 14px;
+        }
+
+        &.sum-title {
+            font-size: 12px;
+            color: #5AA4F1;
+        }
+    }
+}

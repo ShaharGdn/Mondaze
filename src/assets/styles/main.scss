@@ -39,6 +39,8 @@
 @import "cmps/BoardHeader";
 @import "cmps/BoardActionsBar";
 @import "cmps/Kanban";
+@import "cmps/SidePanel";
+@import "cmps/QuillEditor";
 
 // Popovers
 @import "cmps/popovers/AddBoardModal";
@@ -66,6 +68,7 @@
 @import "cmps/group/GroupTitleHeader";
 @import "cmps/group/GroupStatsRow";
 @import "cmps/group/StatsBar";
+@import "cmps/group/NumberSumBar";
 
 // pulse
 @import "cmps/pulse/PulseList.scss";

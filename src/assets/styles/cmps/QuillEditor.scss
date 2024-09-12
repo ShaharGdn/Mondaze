@@ -1,0 +1,101 @@
+$clr-text: #333;
+$clr-icon: #666;
+$clr-primary: #007fff;
+$clr-bg-toolbar: #ffffff;
+$clr-bg-editor: #ffffff;
+$clr-border: #82B7EC;
+
+.editor-wrapper {
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 1rem;
+    margin: 0;
+    position: relative;
+    font-size: 16px;
+    max-width: 750px;
+
+    .editor-toolbar {
+        background-color: $clr-bg-toolbar;
+        width: 100%;
+    }
+
+    .ql-toolbar.ql-snow {
+        border: 1px solid $clr-border;
+        border-bottom-color: #6666665f;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+        box-sizing: border-box;
+        font-family: 'poppins', 'Helvetica', 'Arial', sans-serif;
+        font-size: 12px;
+
+        .ql-formats {
+            span {
+                font-size: 12px;
+            }
+        }
+
+        button {
+            margin: 0;
+            padding: 5px;
+
+        }
+    }
+
+    .editor-container {
+        width: 100%;
+        margin-inline: 0.5rem;
+
+        .ql-container.ql-snow {
+            border: 1px solid $clr-border;
+            border-bottom-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+            min-height: 70px;
+            max-height: 400px;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            padding: 0.5rem 0.2rem 1rem 0.5rem;
+
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+          background-color: #B2B2B2;
+        }
+    }
+
+    .editor-footer {
+        display: flex;
+        justify-content: end;
+        background-color: $clr-bg-toolbar;
+        width: 100%;
+
+        .update-btn {
+            background-color: $clr-primary;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            letter-spacing: 0.5px;
+            font-family: inherit;
+            font-weight: 200;
+            cursor: pointer;
+            margin: 0.5rem 0;
+
+
+            &:hover {
+                background-color: darken($clr-primary, 10%);
+            }
+        }
+    }
+}

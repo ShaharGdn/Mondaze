@@ -1,7 +1,7 @@
 import { Droppable, Draggable } from "@hello-pangea/dnd"
 import { PulsePreview } from "./PulsePreview";
 
-export function PulseList({ group, type }) {
+export function PulseList({ group, type, setSidePanelOpen, setSelectedPulse }) {
     return (
         <section className="pulses-container">
             <Droppable droppableId={group.id} type="pulse">
@@ -20,7 +20,12 @@ export function PulseList({ group, type }) {
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
                                     >
-                                        <PulsePreview pulse={pulse} group={group} type={type}/>
+                                        <PulsePreview
+                                            pulse={pulse}
+                                            group={group}
+                                            type={type}
+                                            setSidePanelOpen={setSidePanelOpen}
+                                            setSelectedPulse={setSelectedPulse} />
                                     </li>
                                 )}
                             </Draggable>

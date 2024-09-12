@@ -4,14 +4,13 @@ import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { useSelector } from "react-redux"
 import { removePulse, updatePulse } from "../../store/actions/selected-board.actions"
 import { DynamicCmp } from "../dynamic-cmps/DynamicCmp"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ThreeDots } from "../buttons/ThreeDots"
 import { AiOutlineDelete } from "react-icons/ai";
-import { format } from "date-fns"
-import { ICON_DATE } from "../icons/svg-icons"
+import { Kanban } from "../Kanban"
 
 
-export function PulsePreview({ group, pulse, type }) {
+export function PulsePreview({ group, pulse, type, setSidePanelOpen, setSelectedPulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
     const [open, setOpen] = useState(false)
 
@@ -66,55 +65,18 @@ export function PulsePreview({ group, pulse, type }) {
                         <ul className="full-title-selector-container">
                             <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
                             <PulseSelector group={group} />
-                            <PulseTitle pulse={pulse} onUpdatePulse={onUpdatePulse} />
+                            <PulseTitle pulse={pulse} groupId={group.id} onUpdatePulse={onUpdatePulse} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse} />
                         </ul>
 
                         {board.cmpsOrder.length > 0 &&
                             board.cmpsOrder.map((cmp, idx) => (
                                 <li className="pulse-dynamic-container" key={idx}>
-                                    <DynamicCmp cmp={cmp} onUpdatePulse={onUpdatePulse} pulse={pulse} />
+                                    <DynamicCmp cmp={cmp} onUpdatePulse={onUpdatePulse} pulse={pulse} group={group}/>
                                 </li>
                             ))}
                     </ul>
                 </>
             )}
         </>
-    )
-}
-
-const Kanban = ({ pulse, group }) => {
-    function formatDate() {
-        if (!pulse.dueDate) return <></>
-
-        const dateToShow = new Date(pulse.dueDate)
-        const formattedDate = {
-            day: format(dateToShow, 'd'),
-            month: (format(dateToShow, 'MMMM')).substring(0, 3),
-            year: format(dateToShow, 'yyyy'),
-        }
-
-        return (
-            <>
-                <ICON_DATE />
-                {`${formattedDate.day} ${formattedDate.month}`}
-            </>
-        )
-    }
-
-    return (
-        <div className="pulse-preview-kanban Figtree-regular">
-            <div className="pulse-card">
-                <span className="pulse-title" >{pulse.title}</span>
-                <div className="status-date">
-                    <span className={"pulse-status " + group.title}>
-                        <div className={"side-color " + group.title}>
-                        </div>
-                        {group.title}
-                    </span>
-                    {/* <span>{pulse.priority}</span> */}
-                    <span className="pulse-due-date">{formatDate()}</span>
-                </div>
-            </div>
-        </div>
     )
 }

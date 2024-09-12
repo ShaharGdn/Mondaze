@@ -5,7 +5,7 @@ import { TextInput } from "./TextInput"
 import { NumberInput } from "./NumberInput"
 import { DateRangePicker } from "./DateRangePicker"
 
-export function DynamicCmp({ cmp, onUpdatePulse, pulse }) {
+export function DynamicCmp({ cmp, onUpdatePulse, pulse, group }) {
     switch (cmp) {
         case 'StatusPicker':
             return <LabelPicker onUpdatePulse={onUpdatePulse} pulse={pulse} type={'status'} />
@@ -20,7 +20,7 @@ export function DynamicCmp({ cmp, onUpdatePulse, pulse }) {
         case 'NumberInput':
             return <NumberInput onUpdatePulse={onUpdatePulse} pulse={pulse} />
         case 'DateRangePicker':
-            return <DateRangePicker onUpdatePulse={onUpdatePulse} pulse={pulse} />
+            return <DateRangePicker onUpdatePulse={onUpdatePulse} pulse={pulse} group={group}/>
         default:
             return <p>UNKNOWN {cmp}</p>
     }
