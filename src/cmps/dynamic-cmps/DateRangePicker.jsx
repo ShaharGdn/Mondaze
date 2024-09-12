@@ -9,7 +9,7 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
 
 
-export function DateRangePicker({ onUpdatePulse, pulse }) {
+export function DateRangePicker({ onUpdatePulse, pulse, group }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
     const [open, setOpen] = useState(false)
 
@@ -52,12 +52,10 @@ export function DateRangePicker({ onUpdatePulse, pulse }) {
                 return { background: '#333333' }
             } else {
                 return {
-                    background: `linear-gradient(to right, #7F5347 ${elapsed}%,#333333 ${elapsed}%, #333333 ${remaining}%)`
+                    background: `linear-gradient(to right, ${group.style.color} ${elapsed}%,#333333 ${elapsed}%, #333333 ${remaining}%)`
                 }
             }
         }
-
-
 
         return (
             <span className="timeline-bar with-range" style={style()}>

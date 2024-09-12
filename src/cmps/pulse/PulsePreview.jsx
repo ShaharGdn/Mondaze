@@ -71,7 +71,7 @@ export function PulsePreview({ group, pulse, type, setSidePanelOpen, setSelected
                         {board.cmpsOrder.length > 0 &&
                             board.cmpsOrder.map((cmp, idx) => (
                                 <li className="pulse-dynamic-container" key={idx}>
-                                    <DynamicCmp cmp={cmp} onUpdatePulse={onUpdatePulse} pulse={pulse} />
+                                    <DynamicCmp cmp={cmp} onUpdatePulse={onUpdatePulse} pulse={pulse} group={group}/>
                                 </li>
                             ))}
                     </ul>

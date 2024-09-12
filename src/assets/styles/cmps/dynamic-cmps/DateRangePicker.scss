@@ -1,5 +1,5 @@
-.date-range-container {
-    .timeline-bar {
+    .timeline-bar,
+    .due-date-bar {
         background: rgb(196, 196, 196);
         width: 110px;
         text-align: center;
@@ -24,7 +24,8 @@
             }
         }
 
-        &.with-range {
+        &.with-range,
+        .with-date {
             display: flex;
             justify-content: center;
             // background-color: black;
@@ -52,7 +53,8 @@
                 }
 
 
-                .date-range {
+                .date-range,
+                .date {
                     display: none;
                 }
 
@@ -60,8 +62,9 @@
                     display: block;
                 }
             }
-        } 
+        }
     }
+
     // .date-range {
     //     background: black;
     //     text-align: center;
@@ -73,15 +76,15 @@
     //     }
     // }
 
-}
 
-.date-range-content {
-    padding: 1rem;
-    font-size: 13px;
 
-    .rdp-caption_label {
-        font-size: 1rem;
-        font-weight: 550;
-        margin-block-end: 1rem;
+    .date-range-content {
+        padding: 1rem;
+        font-size: 13px;
+
+        .rdp-caption_label {
+            font-size: 1rem;
+            font-weight: 550;
+            margin-block-end: 1rem;
+        }
     }
-}
