@@ -21,7 +21,7 @@
                 position: absolute;
                 bottom: 0;
                 height: 1px;
-                width: 70vw; 
+                width: 70vw;
                 background-color: $clr-border;
             }
 
@@ -59,44 +59,6 @@
             display: flex;
             margin-block-start: 1rem;
             gap: 14px;
-
-            .board-filter-sort-actions {
-                gap: 6px;
-
-                .search-container {
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-
-                    .icon {
-                        scale: 1.2;
-                    }
-                }
-
-                >* {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 30px;
-                    padding: 4px 16px 4px 10px;
-                    gap: 5px;
-                    border-radius: $border-radius-li;
-
-                    & span {
-                        position: relative;
-                        top: 2px;
-                    }
-
-                    &:hover {
-                        cursor: pointer;
-                        background-color: $clr-btn-hover;
-                    }
-                }
-            }
-
-            .icon {
-                color: $clr-sidebar-icon-inactive;
-            }
         }
     }
 

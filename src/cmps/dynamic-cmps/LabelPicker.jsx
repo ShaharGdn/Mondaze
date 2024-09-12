@@ -4,7 +4,7 @@ import { Popover } from "../popovers/Popover";
 
 export function LabelPicker({ type, onUpdatePulse, pulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false)
 
     const labelId = pulse[type]
 

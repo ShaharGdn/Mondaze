@@ -13,6 +13,8 @@ import { SidePanel } from '../cmps/SidePanel'
 export function BoardDetails() {
   const { boardId } = useParams()
   const board = useSelector(storeState => storeState.selectedBoardModule.board)
+  const [filterBy, setFilterBy] = useState()
+
   const [displayType, setDisplayType] = useState('main')
   const [sidePanelOpen, setSidePanelOpen] = useState(false)
   const [selectedPulse, setSelectedPulse] = useState(null)
@@ -83,7 +85,7 @@ export function BoardDetails() {
             <section className='main-top-container'>
               <div className='top-sticky-wrapper'>
                 <BoardHeader board={board} />
-                <BoardActionsBar board={board} setDisplayType={setDisplayType} displayType={displayType} />
+                <BoardActionsBar board={board} setDisplayType={setDisplayType} displayType={displayType} filterBy={filterBy} setFilterBy={setFilterBy} />
               </div>
             </section>
             <GroupList
@@ -95,7 +97,7 @@ export function BoardDetails() {
           </div>}
         </section>
       </main>
-      {selectedPulse && <SidePanel sidePanelOpen={sidePanelOpen} selectedPulse={selectedPulse} onUpdatePulse={onUpdatePulse} setSidePanelOpen={setSidePanelOpen}/>}
+      {selectedPulse && <SidePanel sidePanelOpen={sidePanelOpen} selectedPulse={selectedPulse} onUpdatePulse={onUpdatePulse} setSidePanelOpen={setSidePanelOpen} />}
     </>
   )
 }
