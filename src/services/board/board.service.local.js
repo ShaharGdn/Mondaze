@@ -178,16 +178,16 @@ async function removeGroup(boardId, groupId) {
     }
 }
 
-async function updateGroup(boardId, groupToUpdate) {
+async function updateGroup(boardId, updatedGroup) {
     try {
         const board = await getBoardById(boardId)
-        const updatedGroups = board.groups.map(group => group.id === groupToUpdate.id ? groupToUpdate : group)
+        const updatedGroups = board.groups.map(group => group.id === updatedGroup.id ? updatedGroup : group)
 
         const newBoard = { ...board, groups: updatedGroups }
         const updatedBoard = await updateBoard(newBoard)
         await storageService.put(STORAGE_KEY, updatedBoard)
 
-        return groupToUpdate
+        return updatedGroup
     } catch (err) {
         console.log('Could not update group:', err)
         throw err
