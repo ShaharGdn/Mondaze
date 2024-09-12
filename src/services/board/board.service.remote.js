@@ -72,7 +72,6 @@ function getPulseById(boardId, groupId, pulseId) {
     return httpService.get(`board/pulse/${boardId}/${groupId}/${pulseId}`)
 }
 
-
 function addPulse(boardId, groupId, pulse) {
     return httpService.post(`board/pulse/${boardId}/${groupId}`, pulse)
 }
