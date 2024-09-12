@@ -35,7 +35,7 @@ export function BoardPreview({ board, type }) {
     return (
         <article className="board-preview" onClick={() => navigate(`/board/${board._id}`)}>
             <div className="board-preview-img-container">
-                <img src="src/assets/img/recent_board_prv.svg" alt="board-preview" />
+                <img src="../src/assets/img/recent_board_prv.svg" alt="board-preview" />
             </div>
 
             <div className="board-name-and-star Figtree-bold">
