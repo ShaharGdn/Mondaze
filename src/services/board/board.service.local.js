@@ -61,42 +61,27 @@ async function removeBoard(boardId) {
 }
 
 async function save(board) {
+    const boardToSave = {
+        title: board.title,
+        status: board.status,
+        priority: board.priority,
+        isStarred: board.isStarred,
+        archivedAt: board.archivedAt,
+        createdBy: board.createdBy,
+        style: board.style,
+        labels: board.labels,
+        members: board.members,
+        groups: board.groups,
+        activities: board.activities,
+        cmpsOrder: board.cmpsOrder,
+        type: board.type
+    }
     try {
         var savedBoard
         if (board._id) {
-            const boardToSave = {
-                _id: board._id,
-                title: board.title,
-                status: board.status,
-                priority: board.priority,
-                isStarred: board.isStarred,
-                archivedAt: board.archivedAt,
-                createdBy: board.createdBy,
-                style: board.style,
-                labels: board.labels,
-                members: board.members,
-                groups: board.groups,
-                activities: board.activities,
-                cmpsOrder: board.cmpsOrder,
-                type: board.type
-            }
+            boardToSave._id = board._id
             savedBoard = await storageService.put(STORAGE_KEY, boardToSave)
         } else {
-            const boardToSave = {
-                title: board.title,
-                status: board.status,
-                priority: board.priority,
-                isStarred: board.isStarred,
-                archivedAt: board.archivedAt,
-                createdBy: board.createdBy,
-                style: board.style,
-                labels: board.labels,
-                members: board.members,
-                groups: board.groups,
-                activities: board.activities,
-                cmpsOrder: board.cmpsOrder,
-                type: board.type
-            }
             savedBoard = await storageService.post(STORAGE_KEY, boardToSave)
         }
         return savedBoard
