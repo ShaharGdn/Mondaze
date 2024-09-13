@@ -41,6 +41,7 @@
 @import "cmps/Kanban";
 @import "cmps/SidePanel";
 @import "cmps/QuillEditor";
+@import "cmps/UpdatesList";
 
 // Popovers
 @import "cmps/popovers/AddBoardModal";
@@ -77,4 +78,4 @@
 @import "cmps/pulse/PulseListHeader.scss";
 @import "cmps/pulse/PulseTitle.scss";
 @import "cmps/pulse/AddPulse.scss";
-@import "cmps/pulse/PulseDotsActions.scss";
+// @import "cmps/pulse/PulseDotsActions.scss";

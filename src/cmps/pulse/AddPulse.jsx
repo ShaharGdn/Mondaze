@@ -34,7 +34,7 @@ export function AddPulse({ board, group }) {
                         <input
                             className="add-pulse-title"
                             type="text"
-                            placeholder={`+ Add ${group.type}`}
+                            placeholder={`+ Add ${board.type}`}
                             value={propToEdit}
                             onChange={(ev) => setPropToEdit(ev.target.value)}
                             onBlur={handleBlur}

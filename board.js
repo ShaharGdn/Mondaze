@@ -169,6 +169,9 @@ const board = {
 		{
 			id: 'a101',
 			title: 'Changed Color',
+			type: 'Status',
+			before: '',
+			after: '',
 			createdAt: 154514,
 			byMember: {
 				_id: 'u101',

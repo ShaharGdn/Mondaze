@@ -8,7 +8,7 @@ export function PulseListHeader({ board, group, getTitles }) {
                 <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
                 <PulseSelector />
                 <li className="title-container">
-                    <span className="pulse-list-title">{group.type}</span>
+                    <span className="pulse-list-title">{board.type}</span>
                 </li>
             </div>
 

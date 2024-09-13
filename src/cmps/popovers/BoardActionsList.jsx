@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
-import { addBoard, removeBoard, updateBoard } from '../../store/actions/board.actions';
-import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service';
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
+import { addBoard, removeBoard, updateBoard } from '../../store/actions/board.actions'
+import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 
 // Icons
-import { LuPen } from "react-icons/lu";
-import { FaRegStar } from "react-icons/fa";
-import { HiOutlineDocumentDuplicate } from "react-icons/hi";
-import { AiOutlineDelete } from "react-icons/ai";
-import { BsArchive } from "react-icons/bs";
-import { MdOutlineOpenInNew } from "react-icons/md";
+import { LuPen } from "react-icons/lu"
+import { FaRegStar } from "react-icons/fa"
+import { HiOutlineDocumentDuplicate } from "react-icons/hi"
+import { AiOutlineDelete } from "react-icons/ai"
+import { BsArchive } from "react-icons/bs"
+import { MdOutlineOpenInNew } from "react-icons/md"
 
 export function BoardActionsList({ board, open, setOpen }) {
     const [boardToEdit, setBoardToEdit] = useState(board)
@@ -68,7 +68,7 @@ export function BoardActionsList({ board, open, setOpen }) {
     function onOpenNewTab(event) {
         event.preventDefault()
         event.stopPropagation()
-        const url = `/board/${boardToEdit._id}`;
+        const url = `/board/${boardToEdit._id}`
         window.open(url, '_blank')
     }
 

@@ -1,30 +1,51 @@
-import { useInputHandler } from "../customHooks/useInputHandler";
-import { IoCloseOutline } from "react-icons/io5";
-import { ICON_HOME } from "./icons/svg-icons";
-import { useEffect, useState, useRef } from "react";
-import { useQuill } from 'react-quilljs';
-import Quill from 'quill'; // Import Quill directly
+import { useInputHandler } from "../customHooks/useInputHandler"
+import { IoCloseOutline } from "react-icons/io5"
+import { CLOCK_ICON, ICON_HOME } from "./icons/svg-icons"
+import { useState } from "react"
 
-import 'quill/dist/quill.snow.css'; // Import Quill CSS for snow theme
-import { QuillEditor } from "./QuillEditor";
+
+import 'quill/dist/quill.snow.css'
+import { QuillEditor } from "./QuillEditor"
+import { useSelector } from "react-redux"
+import { UpdatesList } from "./UpdatesList"
+import { makeId } from "../services/util.service"
 
 export function SidePanel({ sidePanelOpen, setSidePanelOpen, selectedPulse, onUpdatePulse }) {
-    const { pulse, groupId } = selectedPulse;
-    const [displayType, setDisplayType] = useState(null);
-    console.log('sidePanelOpen:', sidePanelOpen)
-
+    const { pulse, groupId } = selectedPulse
+    const [displayType, setDisplayType] = useState(null)
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [inputRef, setIsBlurred, propToEdit, setPropToEdit,
-        handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(pulse.title, handleUpdate);
+        handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(pulse.title, handleUpdate)
 
     function handleUpdate(updatedTitle) {
         const pulseToUpdate = { ...pulse, title: updatedTitle }
         onUpdatePulse(groupId, pulseToUpdate)
     }
 
+    function onAddUpdate(newUpdate) {
+        const newUpdateWithId = { ...newUpdate, id: makeId() }
+        const pulseToUpdate = {
+            ...pulse,
+            updates: [newUpdateWithId, ...pulse.updates || []]
+        }
+        onUpdatePulse(groupId, pulseToUpdate)
+    }
+
+    function onDeleteUpdate(updateId) {
+        const newUpdates = pulse.updates.filter(update => update.id !== updateId)
+
+        const pulseToUpdate = {
+            ...pulse,
+            updates: newUpdates
+        }
+
+        onUpdatePulse(groupId, pulseToUpdate)
+    }
+
     return (
         <div className="side-panel-container">
             <div className={sidePanelOpen ? "side-panel open" : "side-panel close"}>
-                <div className="side-panel-content">
+                {sidePanelOpen && <div className="side-panel-content">
                     <div className="header poppins-semibold">
                         <div className="header-content">
                             <button className="close-btn" onClick={() => setSidePanelOpen((prevOpen) => !prevOpen)}>
@@ -46,8 +67,8 @@ export function SidePanel({ sidePanelOpen, setSidePanelOpen, selectedPulse, onUp
                                     <span className="pulse-title" onClick={() => setIsEditable(true)}>{propToEdit}</span>
                                 )}
                             </form>
-                            <nav className="update-types-container">
-                                <ul className="update-list">
+                            <nav className="update-activity-container">
+                                <ul>
                                     <li className={displayType === "updates" ? "updates active" : "updates"} onClick={() => setDisplayType("updates")}>
                                         <span className="title">
                                             <ICON_HOME className="icon" />
@@ -63,11 +84,12 @@ export function SidePanel({ sidePanelOpen, setSidePanelOpen, selectedPulse, onUp
                     </div>
                     <div className="pulse-container">
                         <div className="pulse-content">
-                            <QuillEditor />
+                            <QuillEditor loggedInUser={loggedInUser} pulse={pulse} onAddUpdate={onAddUpdate} />
+                            <UpdatesList pulse={pulse} onDeleteUpdate={onDeleteUpdate} />
                         </div>
                     </div>
-                </div>
+                </div>}
             </div>
         </div>
-    );
+    )
 }

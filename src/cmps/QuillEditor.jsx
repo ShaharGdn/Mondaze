@@ -1,28 +1,86 @@
-import Quill from 'quill'; // Import Quill directly
+import Quill from 'quill'
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react"
 
 
-export function QuillEditor() {
-    const quillRef = useRef(null); // Use ref for the Quill editor container
-    const toolbarRef = useRef(null); // Use ref for the custom toolbar container
+export function QuillEditor({ loggedInUser, onAddUpdate }) {
+    const quillRef = useRef(null) // Use ref for the Quill editor container
+    const toolbarRef = useRef(null) // Use ref for the custom toolbar container
+    const [editorContent, setEditorContent] = useState('')
+    const quillInstanceRef = useRef(null)
+    const MAX_FILE_SIZE_MB = 3
 
     useEffect(() => {
         if (quillRef.current && toolbarRef.current) {
             const quill = new Quill(quillRef.current, {
                 theme: 'snow',
                 modules: {
-                    toolbar: toolbarRef.current, // Use the ref to attach the toolbar
+                    toolbar: toolbarRef.current,
                 },
-            });
+            })
+
+            quill.getModule('toolbar').addHandler('image', () => {
+                handleImageUpload()
+            })
+
+            quillInstanceRef.current = quill;
+
+            quill.on('text-change', () => {
+                const content = quill.root.innerHTML
+                setEditorContent(content)
+            })
 
             return () => {
-                quill.disable(); // Cleanup on component unmount
-                quill.container.remove();
-            };
-        }
-    }, []);
+                quill.disable() // Cleanup on component unmount
+                quill.container.remove()
 
+                if (quillInstanceRef.current) { //clear text area and content of local state on unmount
+                    quillInstanceRef.current.setText('')
+                }
+                setEditorContent('')
+            }
+        }
+    }, [])
+
+    function addUpdate() {
+        const newUpdate = {
+            createdBy: loggedInUser,
+            createdAt: new Date(),
+            content: editorContent,
+        }
+
+        onAddUpdate(newUpdate)
+
+        if (quillInstanceRef.current) {
+            quillInstanceRef.current.setText('')
+        }
+        setEditorContent('')
+    }
+
+    const handleImageUpload = () => {
+        const input = document.createElement('input')
+        input.setAttribute('type', 'file')
+        input.setAttribute('accept', 'image/*')
+        input.click()
+
+        input.onchange = () => {
+            const file = input.files[0]
+            if (file) {
+                const fileSizeMB = file.size / (1024 * 1024)
+                if (fileSizeMB > MAX_FILE_SIZE_MB) {
+                    alert(`File size exceeds ${MAX_FILE_SIZE_MB} MB limit.`)
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const range = quillInstanceRef.current.getSelection()
+                    quillInstanceRef.current.insertEmbed(range.index, 'image', reader.result)
+                }
+                reader.readAsDataURL(file)
+            }
+        }
+    }
 
     return (
         <div className="editor-wrapper">
@@ -58,7 +116,7 @@ export function QuillEditor() {
 
             <div className="editor-footer">
                 <div className="footer-icons"></div>
-                <button className="update-btn">Update</button>
+                <button className="update-btn" onClick={addUpdate}>Update</button>
             </div>
         </div>
     )

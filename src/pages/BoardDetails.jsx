@@ -68,7 +68,8 @@ export function BoardDetails() {
 
   async function onUpdatePulse(groupId, pulseToUpdate) {
     try {
-      await updatePulse(board._id, groupId, pulseToUpdate)
+      const updatedPulse = await updatePulse(board._id, groupId, pulseToUpdate)
+      setSelectedPulse({ pulse: updatedPulse, groupId })
       showSuccessMsg('Pulse updated successfully')
     } catch (err) {
       console.log('err:', err)

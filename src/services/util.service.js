@@ -56,3 +56,25 @@ export function getRandomColor() {
     const colors = ['#008800', '#00CC00', '#CCCC33', '#FFD700', '#0088CC', '#66CCFF', '#FF00CC', '#800080', '#CC0066', '#FF6666', '#FF9900', '#FFCC66', '#808080'];
     return colors[Math.floor(Math.random() * colors.length)];
 }
+
+export function timeAgo(date) {
+    const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+
+    const intervals = {
+        year: 31536000,
+        month: 2592000,
+        week: 604800,
+        day: 86400,
+        hour: 3600,
+        minute: 60,
+        second: 1,
+    };
+
+    for (const [unit, value] of Object.entries(intervals)) {
+        const interval = Math.floor(seconds / value);
+        if (interval >= 1) {
+            return interval === 1 ? `1${unit[0]}` : `${interval}${unit[0]}`;
+        }
+    }
+    return 'just now';
+}

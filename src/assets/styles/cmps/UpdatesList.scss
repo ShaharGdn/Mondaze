@@ -1,0 +1,112 @@
+.updates-list {
+    margin: 0;
+    display: block;
+    position: relative;
+    font-size: rem(16px);
+    max-width: rem(750px);
+    padding: rem(16px);
+
+    .update {
+        border-radius: rem(8px);
+        border: 1px solid #D1D5E5;
+        padding: 1rem;
+        margin-bottom: rem(16px);
+
+        .update-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: rem(16px);
+
+            .user-details {
+                display: flex;
+                align-items: center;
+                gap: rem(10px);
+
+                img {
+                    width: rem(40px);
+                    height: rem(40px);
+                    position: relative;
+                    display: flex;
+                    border-radius: 50%;
+                    flex-shrink: 0;
+                }
+            }
+
+            margin-block-end: rem(8px);
+        }
+
+        .update-content {
+            padding: 0.5rem;
+            margin-block-start: rem(8px);
+
+            img {
+                max-width: rem(458px);
+            }
+        }
+    }
+
+    .time-and-delete {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: rem(1px);
+        color: #676879;
+
+        .update-dots-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.2rem;
+            height: rem(25px);
+            width: rem(25px);
+            margin-inline-start: rem(5px);
+            cursor: pointer;
+
+            &:hover,
+            &.open {
+                &:hover {
+                    background-color: #d8d9e1;
+                }
+
+                &.open {
+                    background-color: #CAE3FD;
+                }
+            }
+        }
+    }
+}
+
+.actions-list {
+    display: flex;
+    align-items: center;
+    padding: 0.4rem;
+    font-size: rem(14px);
+    color: $clr-text;
+    border-radius: $border-radius-li;
+    width: max-content;
+    cursor: pointer;
+
+    .delete {
+        display: flex;
+        align-items: center;
+        padding: 0.15rem;
+
+        span {
+            margin-inline-end: rem(10px);
+        }
+
+        .icon {
+            color: $clr-sidebar-icon-inactive;
+            margin-inline: rem(10px);
+            font-size: rem(16px);
+        }
+
+        &:hover {
+            background-color: $clr-menu-add-hover;
+            cursor: pointer;
+        }
+    }
+
+
+}

@@ -15,11 +15,13 @@ export function PulseTitle({ pulse, groupId, onUpdatePulse, setSidePanelOpen, se
     function onOpenSidePanel() {
         setSelectedPulse((prevPulse) => {
             if (prevPulse?.pulse?.id !== pulse.id) {
+                setSidePanelOpen(true)
                 return { pulse, groupId }
+
             }
+            setSidePanelOpen((prevOpen) => !prevOpen)
             return prevPulse
         })
-        setSidePanelOpen((prevOpen) => !prevOpen)
     }
 
     return (
