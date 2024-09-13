@@ -46,13 +46,13 @@ export function GroupActionsList({ group, isGroupOpen, setIsGroupOpen, open, set
             await onRename()
             setOpen(null)
         } catch (err) {
-            console.log('err',err);
+            console.log('err', err);
         }
     }
 
     async function onDuplicateGroup() {
         try {
-            await duplicateGroup(group, board._id)
+            await duplicateGroup(board._id, group)
             showSuccessMsg('Group Duplicated Successfully')
         } catch (err) {
             console.log('err: Cannot Duplicated Group', err)

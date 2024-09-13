@@ -17,7 +17,7 @@ export function HomePage() {
         <section className="home-page full">
 
             <header className="header">
-                <img src="src/assets/img/mondaze-logo.png" alt="" className="logo" onClick={() => navigate('/board/TSihL')} />
+                <img src="../src/assets/img/mondaze-logo.png" alt="" className="logo" onClick={() => navigate('/board/TSihL')} />
                 <button className="get-started" onClick={() => navigate('/board/TSihL')}>
                     <span>Get Started</span>
                     <IoMdArrowForward className="icon" />
@@ -43,7 +43,7 @@ export function HomePage() {
 
                         </div>
                         <div className="assets-container">
-                            <img src="src/assets/img/static-carousel.avif" alt="" />
+                            <img src="../src/assets/img/static-carousel.avif" alt="" />
                         </div>
                     </div>
                 </div>
@@ -52,31 +52,31 @@ export function HomePage() {
                     <h5 className="title poppins-regular">Trusted by 225,000+ customers, from startups to enterprises</h5>
                     <div className="clients-logos">
                         <div className="images-gallery">
-                            <img src="src/assets/img/costumers/HoltCat.avif" alt="holt logo" />
+                            <img src="../src/assets/img/costumers/HoltCat.avif" alt="holt logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="src/assets/img/costumers/canva.png" alt="canva logo" />
+                            <img src="../src/assets/img/costumers/canva.png" alt="canva logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="src/assets/img/costumers/coca_cola.png" alt="coca-cola logo" />
+                            <img src="../src/assets/img/costumers/coca_cola.png" alt="coca-cola logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="src/assets/img/costumers/oxy.png" alt="oxy logo" />
+                            <img src="../src/assets/img/costumers/oxy.png" alt="oxy logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="src/assets/img/costumers/lionsgate.avif" alt="lionsgate logo" />
+                            <img src="../src/assets/img/costumers/lionsgate.avif" alt="lionsgate logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="src/assets/img/costumers/carrefour.png" alt="carrefour logo" />
+                            <img src="../src/assets/img/costumers/carrefour.png" alt="carrefour logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="src/assets/img/costumers/bd.png" alt="bd logo" />
+                            <img src="../src/assets/img/costumers/bd.png" alt="bd logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="src/assets/img/costumers/glossier.png" alt="glossier logo" />
+                            <img src="../src/assets/img/costumers/glossier.png" alt="glossier logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="src/assets/img/costumers/universal.png" alt="universal logo" />
+                            <img src="../src/assets/img/costumers/universal.png" alt="universal logo" />
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@ export function HomePage() {
                 <div className="videos-container">
                     <div className="work-management">
                         <div className="title">
-                            <img src="src/assets/img/wm-square-logo.png" alt="" />
+                            <img src="../src/assets/img/wm-square-logo.png" alt="" />
                             <h2>mondaze work management</h2>
                             <h3 className="poppins-extralight">Manage projects & tasks</h3>
                             <button className="get-started" onClick={() => navigate('/board/TSihL')}>
@@ -126,11 +126,11 @@ export function HomePage() {
                         </button>
                     </div>
                     <div className="dev-pics">
-                        <img src="src/assets/img/contact_sales.png" alt="developers pictures" />
+                        <img src="../src/assets/img/contact_sales.png" alt="developers pictures" />
                     </div>
                 </main>
                 <div className="logo-nav poppins-extralight">
-                    <img src="src/assets/img/mondaze-logo.png" alt="logo" onClick={() => navigate('/board/TSihL')} />
+                    <img src="../src/assets/img/mondaze-logo.png" alt="logo" onClick={() => navigate('/board/TSihL')} />
                     <span>© All Rights Reserved</span>
                 </div>
             </footer>

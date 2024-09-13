@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
-import { MemberPickerSearch } from "../popovers/MemberPickerSearch"
+import { MemberPickerSearch } from "../popovers/MemberPickerSearch.jsx"
 import { useState } from "react"
-import { Popover } from "../popovers/Popover"
+import { Popover } from "../popovers/Popover.jsx"
 
 export function MemberPicker({ pulse, onUpdatePulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)

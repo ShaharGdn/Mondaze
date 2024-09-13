@@ -61,42 +61,27 @@ async function removeBoard(boardId) {
 }
 
 async function save(board) {
+    const boardToSave = {
+        title: board.title,
+        status: board.status,
+        priority: board.priority,
+        isStarred: board.isStarred,
+        archivedAt: board.archivedAt,
+        createdBy: board.createdBy,
+        style: board.style,
+        labels: board.labels,
+        members: board.members,
+        groups: board.groups,
+        activities: board.activities,
+        cmpsOrder: board.cmpsOrder,
+        type: board.type
+    }
     try {
         var savedBoard
         if (board._id) {
-            const boardToSave = {
-                _id: board._id,
-                title: board.title,
-                status: board.status,
-                priority: board.priority,
-                isStarred: board.isStarred,
-                archivedAt: board.archivedAt,
-                createdBy: board.createdBy,
-                style: board.style,
-                labels: board.labels,
-                members: board.members,
-                groups: board.groups,
-                activities: board.activities,
-                cmpsOrder: board.cmpsOrder,
-                type: board.type
-            }
+            boardToSave._id = board._id
             savedBoard = await storageService.put(STORAGE_KEY, boardToSave)
         } else {
-            const boardToSave = {
-                title: board.title,
-                status: board.status,
-                priority: board.priority,
-                isStarred: board.isStarred,
-                archivedAt: board.archivedAt,
-                createdBy: board.createdBy,
-                style: board.style,
-                labels: board.labels,
-                members: board.members,
-                groups: board.groups,
-                activities: board.activities,
-                cmpsOrder: board.cmpsOrder,
-                type: board.type
-            }
             savedBoard = await storageService.post(STORAGE_KEY, boardToSave)
         }
         return savedBoard
@@ -178,16 +163,16 @@ async function removeGroup(boardId, groupId) {
     }
 }
 
-async function updateGroup(boardId, groupToUpdate) {
+async function updateGroup(boardId, updatedGroup) {
     try {
         const board = await getBoardById(boardId)
-        const updatedGroups = board.groups.map(group => group.id === groupToUpdate.id ? groupToUpdate : group)
+        const updatedGroups = board.groups.map(group => group.id === updatedGroup.id ? updatedGroup : group)
 
         const newBoard = { ...board, groups: updatedGroups }
         const updatedBoard = await updateBoard(newBoard)
         await storageService.put(STORAGE_KEY, updatedBoard)
 
-        return groupToUpdate
+        return updatedGroup
     } catch (err) {
         console.log('Could not update group:', err)
         throw err

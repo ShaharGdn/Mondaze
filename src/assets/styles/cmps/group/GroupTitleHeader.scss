@@ -36,7 +36,7 @@
 .full-group-container {
     display: flex;
     align-items: center;
-    @include stickyGroupTop(172px, 7);
+    @include stickyGroupTop(173px, 7);
 
     &::before {
         content: '';

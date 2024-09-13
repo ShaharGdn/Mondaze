@@ -24,7 +24,7 @@ export function BoardIndex() {
                         <h5 className='Figtree-regular'>Good evening `{ }`, Guest!</h5>
                         <h6 className='Figtree-semi-bold'>Quickly access your recent boards, Inbox and workspaces</h6>
                     </div>
-                    <img src="src/assets/img/header_background.svg" alt="header-bg-party" />
+                    <img src="../src/assets/img/header_background.svg" alt="header-bg-party" />
                 </header>
 
                 <main className="board-list-container main">
