@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ICON_EMPTY_MESSAGES } from "../icons/svg-icons";
+import { ICON_EMPTY_MESSAGES, UPDATE_ICON } from "../icons/svg-icons";
 import { useInputHandler } from "../../customHooks/useInputHandler";
 
 export function PulseTitle({ pulse, groupId, onUpdatePulse, setSidePanelOpen, setSelectedPulse }) {
@@ -43,7 +43,13 @@ export function PulseTitle({ pulse, groupId, onUpdatePulse, setSidePanelOpen, se
 
             {/* later make this nested route that leads to PulseDetails */}
             <Link className="pulse-messages-container" onClick={onOpenSidePanel}>
-                {ICON_EMPTY_MESSAGES}
+                {!pulse.updates.length ? 
+                ICON_EMPTY_MESSAGES : 
+                <div className="has-updates Figtree-regular">
+                    <UPDATE_ICON />
+                    <span className="update-count">{pulse.updates.length}</span>
+                </div>
+                }
             </Link>
         </li>
     )

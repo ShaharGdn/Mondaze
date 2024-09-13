@@ -1,17 +1,15 @@
+.Popover:has(.pulse-actions-list) {
+    width: 180px;
+}
 .pulse-actions-list {
-    padding-inline: 0.5rem;
-
-    .border {
-        width: 100%;
-        height: 2px;
-        background-color: #c3c6d435;
-        margin: 0.5rem 0;
-    }
+    // padding-inline: 0.5rem;
+    padding-block: 0px;
+    margin: 8px;
 
     li {
         display: flex;
         align-items: center;
-        width: rem(240px);
+        // width: rem(240px);
         padding-block: 0.4rem;
         padding-inline: 1rem;
         border-radius: $border-radius-li;
@@ -22,17 +20,11 @@
             margin-inline-end: rem(10px);
             font-size: rem(16px);
         }
-
-        span {
-            font-size: rem(14px);
-            color: $clr-text;
-        }
-
+        
         &:hover {
             background-color: $clr-menu-add-hover;
             cursor: pointer;
         }
-
     }
 
 }

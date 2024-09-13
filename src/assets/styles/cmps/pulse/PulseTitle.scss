@@ -1,5 +1,5 @@
 .pulse-title-message-container {
-    
+
     .pulse-title-container {
         display: flex;
         // align-items: center;
@@ -63,6 +63,30 @@
         display: flex;
         justify-content: center;
         width: 65px;
-        color: $clr-sidebar-icon-inactive;
+        color: #676879;
+        position: relative;
+
+        .has-updates {
+            color: $clr-btn-blue;
+            position: relative;
+            display: flex;
+            min-width: 24px;
+            height: 24px;
+            
+            .update-count {
+                background-color: $clr-btn-blue;
+                color: white;
+                position: absolute;
+                left: 13px;
+                top: 10px;
+                line-height: 9px;
+                font-size: 10px;
+                font-weight: 400;
+                border-radius: 10px;
+                text-align: center;
+                padding: 2px 4px;
+            }
+
+        }
     }
 }
