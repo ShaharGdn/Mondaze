@@ -30,18 +30,20 @@
 @import "cmps/AppHeader";
 @import "cmps/SideBar";
 @import "cmps/UserMsg";
-@import "cmps/BoardFilter";
-@import "cmps/BoardList";
-@import "cmps/BoardPreview";
-@import "cmps/BoardSideBarList";
-@import "cmps/BoardSideBarPreview";
-@import "cmps/AddPulseBtn";
-@import "cmps/BoardHeader";
-@import "cmps/BoardActionsBar";
 @import "cmps/Kanban";
 @import "cmps/SidePanel";
 @import "cmps/QuillEditor";
 @import "cmps/UpdatesList";
+
+// board
+@import "cmps/board/BoardFilter";
+@import "cmps/board/BoardList";
+@import "cmps/board/BoardPreview";
+@import "cmps/board/BoardSideBarList";
+@import "cmps/board/BoardSideBarPreview";
+@import "cmps/board/BoardHeader";
+@import "cmps/board/BoardActionsBar";
+@import "cmps/board/BoardTemplates";
 
 // Popovers
 @import "cmps/popovers/AddBoardModal";
@@ -51,7 +53,6 @@
 @import "cmps/popovers/Popover";
 @import "cmps/popovers/MemberPickerSearch";
 
-@import "cmps/BoardTemplates";
 @import "cmps/Loader";
 
 // dynamic-cmps
@@ -78,4 +79,5 @@
 @import "cmps/pulse/PulseListHeader.scss";
 @import "cmps/pulse/PulseTitle.scss";
 @import "cmps/pulse/AddPulse.scss";
+@import "cmps/pulse/AddPulseBtn.scss";
 // @import "cmps/pulse/PulseDotsActions.scss";
