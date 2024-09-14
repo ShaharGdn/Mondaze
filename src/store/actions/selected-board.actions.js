@@ -4,9 +4,9 @@ import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UPDATE_GROUP, ADD_PULSE, REMOVE_PUL
 
 
 // Board
-export async function loadBoard(boardId) {
+export async function loadBoard(boardId, filterBy = {}) {
     try {
-        const board = await boardService.getBoardById(boardId)
+        const board = await boardService.getBoardById(boardId, filterBy)
         store.dispatch(getCmdSetBoard(board))
     } catch (err) {
         console.log('Cannot load board', err)

@@ -4,19 +4,18 @@ import { debounce } from "../services/util.service";
 import { Popover } from "./popovers/Popover.jsx";
 
 
-export function BoardFilter({ filterBy, onSetFilter, displayType, setGroupBy }) {
+export function BoardFilter({ filterBy, setFilterBy, displayType, setGroupBy }) {
+    const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
     const [isSearchInputOpen, setSearchInputOpen] = useState(false)
     const [isBlurred, setIsBlurred] = useState(false)
     const [open, setOpen] = useState(null)
-    const onDebouncedSetFilter = useRef(debounce(onSetFilter, 300))
-
-    // console.log('isSearchInputOpen:', isSearchInputOpen)
 
     useEffect(() => {
+        setFilterByToEdit(filterBy)
         if (isSearchInputOpen && inputRef.current) {
             inputRef.current.focus()
         }
-    }, [isSearchInputOpen])
+    }, [isSearchInputOpen, filterBy])
 
     function onToggleSearchInput(ev) {
         ev.stopPropagation()
@@ -27,25 +26,22 @@ export function BoardFilter({ filterBy, onSetFilter, displayType, setGroupBy }) 
     function handleChange(ev) {
         if (ev) ev.preventDefault()
         const { target } = ev
-        console.log('target:', target.value)
-        // if (isBlurred) return
-        // if (propToEdit !== initialPropState) {
-        //     callBack(propToEdit)
-        // }
-        // setIsBlurred(true)
-        // setTimeout(() => {
-        //     if (inputRef.current) {
-        //         inputRef.current.blur()
-        //     }
-        // }, 0)
-        // if (isInputOnly) setPropToEdit('')
+        const { type, value } = target
+
+        if (type === 'search') {
+            const newFilterBy = {
+                ...filterByToEdit,
+                txt: value
+            }
+            setFilterBy(newFilterBy)
+        }
     }
 
     function handleBlur() {
         setSearchInputOpen(false)
+        inputRef.current.value = ''
         if (isBlurred) return
-        // handleSubmit()
-        // if (isInputOnly) setPropToEdit('')
+        // handleChange()
     }
 
     const inputRef = useRef(null)
@@ -66,7 +62,7 @@ export function BoardFilter({ filterBy, onSetFilter, displayType, setGroupBy }) 
                         className={isSearchInputOpen ? "search-input open" : "search-input hidden"}
                         onBlur={() => handleBlur()}
                         onFocus={() => setIsBlurred(false)}
-                        onInput={() => debounce(handleChange)}
+                        onInput={handleChange}
                         ref={inputRef}
                         autoFocus
                         placeholder="Search this board" />
@@ -90,8 +86,8 @@ export function BoardFilter({ filterBy, onSetFilter, displayType, setGroupBy }) 
                     setOpen={setOpen}
                     children={
                         <div className="grouping-types">
-                            <span onClick={()=> setGroupBy("status")}>Status</span>
-                            <span onClick={()=> setGroupBy("priority")}>Priority</span>
+                            <span onClick={() => setGroupBy("status")}>Status</span>
+                            <span onClick={() => setGroupBy("priority")}>Priority</span>
                         </div>
                     }
                 >

@@ -27,8 +27,7 @@
 
             .search-input {
                 margin: 0;
-                padding: 0.5em 0.4em 0.5em rem(40px);
-                margin-inline-end: 0.5rem;
+                padding: 0.5em 0.4em 0.5em rem(30px);
                 min-height: rem(32px);
                 border: 1px solid $clr-border-color;
                 border-radius: 0.3rem;
@@ -123,7 +122,4 @@
     //     margin-inline: rem(10px);
     //     font-size: rem(16px);
     // }
-
-
-
 }

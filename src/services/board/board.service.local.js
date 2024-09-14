@@ -51,9 +51,28 @@ async function query(filterBy = { txt: '', person: 0 }) { // needs modifying
     return boards
 }
 
-function getBoardById(boardId) {
-    return storageService.get(STORAGE_KEY, boardId)
+async function getBoardById(boardId, filterBy = {}) {
+    const board = await storageService.get(STORAGE_KEY, boardId)
+    let filteredBoard = board
+
+    if (filterBy && filterBy.txt) {
+        // Filter the groups and pulses based on the filterBy.txt
+        filteredBoard = {
+            ...board,
+            groups: board.groups.map(group => {
+                const filteredPulses = group.pulses.filter(pulse => 
+                    pulse.title.toLowerCase().includes(filterBy.txt.toLowerCase())
+                )
+                return {
+                    ...group,
+                    pulses: filteredPulses
+                }
+            }).filter(group => group.pulses.length > 0) // Only keep groups with matching pulses
+        }
+    }
+    return filteredBoard
 }
+
 
 async function removeBoard(boardId) {
     // throw new Error('Nope')

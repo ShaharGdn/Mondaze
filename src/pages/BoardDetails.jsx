@@ -10,25 +10,26 @@ import { BoardHeader } from '../cmps/BoardHeader'
 import { BoardActionsBar } from '../cmps/BoardActionsBar'
 import { SidePanel } from '../cmps/SidePanel'
 import { GroupListKanban } from '../cmps/Kanban/GroupListKanban'
+import { boardService } from '../services/board'
 
 export function BoardDetails() {
   const { boardId } = useParams()
   const board = useSelector(storeState => storeState.selectedBoardModule.board)
-  const [filterBy, setFilterBy] = useState()
-  const [groupBy, setGroupBy] = useState('status')
 
+  const [filterBy, setFilterBy] = useState(boardService.getDefaultFilter())
+  const [groupBy, setGroupBy] = useState('status')
   const [displayType, setDisplayType] = useState('main')
   const [sidePanelOpen, setSidePanelOpen] = useState(false)
   const [selectedPulse, setSelectedPulse] = useState(null)
 
   useEffect(() => {
-    loadBoard(boardId)
+    loadBoard(boardId, filterBy)
     setSelectedPulse(selectedPulse)
 
     return () => {
       setSelectedPulse(null)
     }
-  }, [boardId, displayType, selectedPulse])
+  }, [boardId, displayType, selectedPulse, filterBy])
 
   async function onAddGroup(position = 'start') {
     try {
