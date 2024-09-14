@@ -1,19 +1,22 @@
 import { boardService } from '../../services/board'
 import { store } from '../store'
 import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UPDATE_GROUP, ADD_PULSE, REMOVE_PULSE, UPDATE_PULSE } from '../reducers/selected-board.reducer'
-
+import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
 
 // Board
 export async function loadBoard(boardId) {
     try {
+        store.dispatch({ type: LOADING_START })
+
         const board = await boardService.getBoardById(boardId)
         store.dispatch(getCmdSetBoard(board))
     } catch (err) {
         console.log('Cannot load board', err)
         throw err
+    } finally {
+        store.dispatch({ type: LOADING_DONE })
     }
 }
-
 
 // Groups
 export async function addGroup(boardId, position) {
@@ -94,7 +97,6 @@ export async function removePulse(boardId, groupId, pulseId) {
         throw err
     }
 }
-
 
 // Command Creators:
 function getCmdSetBoard(board) {

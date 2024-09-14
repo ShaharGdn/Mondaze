@@ -8,14 +8,15 @@ import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from '../reducers/
 
 export async function loadUsers() {
     try {
-        store.dispatch({ type: LOADING_START })
+        // store.dispatch({ type: LOADING_START })
         const users = await userService.getUsers()
         store.dispatch({ type: SET_USERS, users })
     } catch (err) {
         console.log('UserActions: err in loadUsers', err)
-    } finally {
-        store.dispatch({ type: LOADING_DONE })
     }
+    // } finally {
+    //     store.dispatch({ type: LOADING_DONE })
+    // }
 }
 
 export async function removeUser(userId) {
@@ -74,6 +75,16 @@ export async function logout() {
 export async function loadUser(userId) {
     try {
         const user = await userService.getById(userId)
+        store.dispatch({ type: SET_WATCHED_USER, user })
+    } catch (err) {
+        showErrorMsg('Cannot load user')
+        console.log('Cannot load user', err)
+    }
+}
+
+export async function updateUser(userId) {
+    try {
+        const user = await userService.updateUser(userId)
         store.dispatch({ type: SET_WATCHED_USER, user })
     } catch (err) {
         showErrorMsg('Cannot load user')
