@@ -89,4 +89,41 @@
     .icon {
         color: $clr-sidebar-icon-inactive;
     }
+
+}
+
+.grouping-types {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.4rem;
+    font-size: rem(14px);
+    color: $clr-text;
+    border-radius: $border-radius-li;
+    width: max-content;
+    gap: 5px;
+    cursor: pointer;
+
+    span {
+        padding-inline: rem(10px);
+        min-width: 120px;
+        min-height: 29px;
+        line-height: 29px;
+        border-radius: $border-radius-li;
+
+
+        &:hover {
+            background-color: $clr-menu-add-hover;
+            cursor: pointer;
+        }
+    }
+
+    // .icon {
+    //     color: $clr-sidebar-icon-inactive;
+    //     margin-inline: rem(10px);
+    //     font-size: rem(16px);
+    // }
+
+
+
 }

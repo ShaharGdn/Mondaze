@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { EMPTY_PERSON, FILTER_ICON, ICON_SEARCH, SORT_ICON } from "./icons/svg-icons";
-import { HiMagnifyingGlass } from "react-icons/hi2";
+import { EMPTY_PERSON, FILTER_ICON, GROUP_BY, ICON_SEARCH } from "./icons/svg-icons.jsx";
 import { debounce } from "../services/util.service";
+import { Popover } from "./popovers/Popover.jsx";
 
 
-export function BoardFilter({ filterBy, onSetFilter }) {
+export function BoardFilter({ filterBy, onSetFilter, displayType, setGroupBy }) {
     const [isSearchInputOpen, setSearchInputOpen] = useState(false)
     const [isBlurred, setIsBlurred] = useState(false)
+    const [open, setOpen] = useState(null)
     const onDebouncedSetFilter = useRef(debounce(onSetFilter, 300))
 
     // console.log('isSearchInputOpen:', isSearchInputOpen)
@@ -75,14 +76,26 @@ export function BoardFilter({ filterBy, onSetFilter }) {
                 <EMPTY_PERSON className="icon" />
                 <span>Person</span>
             </div>
-            <div className="filter">
+            {/* <div className="filter">
                 <FILTER_ICON className="icon" />
                 <span>Filter</span>
-            </div>
-            <div className="sort">
-                <SORT_ICON className="icon" />
-                <span>Sort</span>
-            </div>
+            </div> */}
+            {displayType === "kanban" &&
+                <Popover
+                    trigger={<div className="group-by">
+                        <GROUP_BY className="icon" />
+                        <span>Group By</span>
+                    </div>}
+                    open={open}
+                    setOpen={setOpen}
+                    children={
+                        <div className="grouping-types">
+                            <span onClick={()=> setGroupBy("status")}>Status</span>
+                            <span onClick={()=> setGroupBy("priority")}>Priority</span>
+                        </div>
+                    }
+                >
+                </Popover>}
         </section>
     )
 }

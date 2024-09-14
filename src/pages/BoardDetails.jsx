@@ -15,6 +15,7 @@ export function BoardDetails() {
   const { boardId } = useParams()
   const board = useSelector(storeState => storeState.selectedBoardModule.board)
   const [filterBy, setFilterBy] = useState()
+  const [groupBy, setGroupBy] = useState('status')
 
   const [displayType, setDisplayType] = useState('main')
   const [sidePanelOpen, setSidePanelOpen] = useState(false)
@@ -58,21 +59,41 @@ export function BoardDetails() {
             <section className='main-top-container'>
               <div className='top-sticky-wrapper'>
                 <BoardHeader board={board} />
-                <BoardActionsBar board={board} setDisplayType={setDisplayType} displayType={displayType} filterBy={filterBy} setFilterBy={setFilterBy} />
+                <BoardActionsBar
+                  board={board}
+                  setDisplayType={setDisplayType}
+                  displayType={displayType}
+                  setGroupBy={setGroupBy}
+                  filterBy={filterBy}
+                  setFilterBy={setFilterBy} />
               </div>
             </section>
-            {/* <GroupList
-              groups={displayType === 'kanban' ? groupPulsesByStatus()
-                : board.groups} board={board} type={displayType} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse} /> */}
-            {displayType === 'kanban' ? <GroupListKanban groups={board.groups} board={board} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse} />
-              : <GroupList groups={board.groups} board={board} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse} />}
-            {displayType !== 'kanban' && <button className="add-group-btn" onClick={() => onAddGroup("end")}>
-              <i className="fa-regular fa-plus fa-lg"></i>Add new group
-            </button>}
+            {displayType === 'kanban' ?
+              <GroupListKanban
+                groups={board.groups}
+                board={board}
+                setSidePanelOpen={setSidePanelOpen}
+                setSelectedPulse={setSelectedPulse}
+                groupBy={groupBy} />
+              :
+              <GroupList
+                groups={board.groups}
+                board={board}
+                setSidePanelOpen={setSidePanelOpen}
+                setSelectedPulse={setSelectedPulse} />}
+            {displayType !== "kanban" &&
+              <button className="add-group-btn" onClick={() => onAddGroup("end")}>
+                <i className="fa-regular fa-plus fa-lg"></i>Add new group
+              </button>}
           </div>}
         </section>
       </main>
-      {selectedPulse && <SidePanel sidePanelOpen={sidePanelOpen} selectedPulse={selectedPulse} onUpdatePulse={onUpdatePulse} setSidePanelOpen={setSidePanelOpen} />}
+      {selectedPulse &&
+        <SidePanel
+          sidePanelOpen={sidePanelOpen}
+          selectedPulse={selectedPulse}
+          onUpdatePulse={onUpdatePulse}
+          setSidePanelOpen={setSidePanelOpen} />}
     </>
   )
 }

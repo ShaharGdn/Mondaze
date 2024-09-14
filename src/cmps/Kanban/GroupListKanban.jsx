@@ -4,36 +4,36 @@ import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
 import { updateBoard } from "../../store/actions/board.actions";
 import { GroupPreviewKanban } from "./GroupPrevieKanban";
 
-export function GroupListKanban({ groups, board }) {
-    const [groupsToEdit, setGroups] = useState(groupPulsesByStatus(board.views[0]?.kanban.groups) || groupPulsesByStatus(groups))
+export function GroupListKanban({ groups, board, groupBy }) {
+    const [groupsToEdit, setGroups] = useState(groupPulsesByType(board.views[0]?.length ? board.views[0]?.kanban.groups : groups))
     const [boardToEdit, setBoard] = useState(board)
 
     useEffect(() => {
-        setGroups(groupPulsesByStatus(groups))
+        setGroups(groupPulsesByType(groups, groupBy))
         setBoard(board)
 
-    }, [board, groups])
+    }, [board, groups, groupBy])
 
-    function groupPulsesByStatus(groups) {
-        if (!board?.status) return
+    function groupPulsesByType(groups, type = groupBy) {
+        if (!board?.[type]) return
 
-        const statuses = board.status
+        const categories = board[type]
 
         const allPulses = groups.reduce((allPulses, group) => {
             return [...allPulses, ...group.pulses]
         }, [])
 
-        const groupedPulses = statuses.map((status) => {
-            const pulsesForStatus = allPulses.filter(pulse => pulse.status === status.id)
+        const groupedPulses = categories.map((category) => {
+            const pulsesForCategory = allPulses.filter(pulse => pulse[type] === category.id)
 
-            // Only include the status if there are pulses associated with it
-            if (pulsesForStatus.length > 0) {
+            // Only include the category if there are pulses associated with it
+            if (pulsesForCategory.length > 0) {
                 return {
-                    title: status.title,
-                    id: status.id,
+                    title: category.title,
+                    id: category.id,
                     archivedAt: null,
-                    pulses: pulsesForStatus,
-                    style: { color: status.color },
+                    pulses: pulsesForCategory,
+                    style: { color: category.color },
                 }
             }
 
@@ -113,7 +113,7 @@ export function GroupListKanban({ groups, board }) {
                     const [removedPulse] = reorderedSourceGroup.pulses.splice(sourceIndex, 1)
 
                     // change the pulse status
-                    removedPulse.status = destination.droppableId
+                    removedPulse[groupBy] = destination.droppableId
 
                     // add pulse to destination group
                     const destinationGroup = groupsToEdit.find(group => group.id === destination.droppableId)
@@ -159,24 +159,24 @@ export function GroupListKanban({ groups, board }) {
                         <ul className="group-list" {...provided.droppableProps} ref={provided.innerRef}>
                             {groupsToEdit.map((group, index) => {
                                 // Render the li only if group.pulses.length > 0
-                                if (group.pulses.length > 0) {
-                                    return (
-                                        <Draggable key={group.id} draggableId={group.id} index={index}>
-                                            {(provided) => (
-                                                <li
-                                                    style={group.style}
-                                                    className="group"
-                                                    ref={provided.innerRef}
-                                                    {...provided.draggableProps}
-                                                    {...provided.dragHandleProps}
-                                                >
-                                                    <GroupPreviewKanban group={group} />
-                                                </li>
-                                            )}
-                                        </Draggable>
-                                    )
-                                }
-                                return null; // Return null for groups with no pulses
+                                // if (group.pulses.length > 0) {
+                                return (
+                                    <Draggable key={group.id} draggableId={group.id} index={index}>
+                                        {(provided) => (
+                                            <li
+                                                style={group.style}
+                                                className="group"
+                                                ref={provided.innerRef}
+                                                {...provided.draggableProps}
+                                                {...provided.dragHandleProps}
+                                            >
+                                                <GroupPreviewKanban group={group} />
+                                            </li>
+                                        )}
+                                    </Draggable>
+                                )
+                                // }
+                                // return null; // Return null for groups with no pulses
                             })}
                             {provided.placeholder}
                         </ul>

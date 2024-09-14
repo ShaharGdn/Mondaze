@@ -2,7 +2,7 @@ import { AddPulseBtn } from "./buttons/AddPulseBtn";
 import { ICON_HOME } from "./icons/svg-icons";
 import { BoardFilter } from "./BoradFilter";
 
-export function BoardActionsBar({ board, setDisplayType, displayType, filterBy, setFilterBy }) {
+export function BoardActionsBar({ board, setDisplayType, displayType, filterBy, setFilterBy, setGroupBy }) {
     return (
         <div className="board-details-header Figtree-regular">
             <nav className="display-types-container">
@@ -19,7 +19,11 @@ export function BoardActionsBar({ board, setDisplayType, displayType, filterBy, 
 
             <section className="board-action-bar">
                 <AddPulseBtn board={board} />
-                <BoardFilter board={board} filterBy={filterBy} setFilterBy={setFilterBy} />
+                <BoardFilter board={board}
+                    filterBy={filterBy}
+                    setFilterBy={setFilterBy}
+                    displayType={displayType}
+                    setGroupBy={setGroupBy} />
             </section>
         </div>
     )

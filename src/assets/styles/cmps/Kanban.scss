@@ -117,6 +117,45 @@
                                 }
                             }
 
+                            &.Low {
+                                .side-color {
+                                    background-color: $clr-priority-1;
+                                }
+
+                                &:hover {
+                                    background-color: $clr-priority-1;
+                                }
+                            }
+
+                            &.Medium {
+                                .side-color {
+                                    background-color: $clr-priority-2;
+                                }
+
+                                &:hover {
+                                    background-color: $clr-priority-2;
+                                }
+                            }
+
+                            &.High {
+                                .side-color {
+                                    background-color: $clr-priority-3;
+                                }
+
+                                &:hover {
+                                    background-color: $clr-priority-3;
+                                }
+                            }
+
+                            &.Critical {
+                                .side-color {
+                                    background-color: $clr-priority-4;
+                                }
+
+                                &:hover {
+                                    background-color: $clr-priority-4;
+                                }
+                            }
                         }
 
                         .side-color {
@@ -140,6 +179,16 @@
                             &:hover {
                                 background-color: #BBBECC;
                             }
+                        }
+                    }
+
+                    .assignees {
+                        align-self: start;
+                        cursor: auto;
+
+                        img {
+                            width: 27px;
+                            height: 27px;
                         }
                     }
                 }
