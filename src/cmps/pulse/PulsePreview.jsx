@@ -7,10 +7,9 @@ import { DynamicCmp } from "../dynamic-cmps/DynamicCmp"
 import { useEffect, useState } from "react"
 import { ThreeDots } from "../buttons/ThreeDots"
 import { AiOutlineDelete } from "react-icons/ai";
-import { Kanban } from "../Kanban"
 
 
-export function PulsePreview({ group, pulse, type, setSidePanelOpen, setSelectedPulse }) {
+export function PulsePreview({ group, pulse, setSidePanelOpen, setSelectedPulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
     const [open, setOpen] = useState(false)
 
@@ -45,38 +44,31 @@ export function PulsePreview({ group, pulse, type, setSidePanelOpen, setSelected
 
     return (
         <>
-            {type === 'kanban' ? (
-                <Kanban pulse={pulse} group={group} />
-            ) : (
-                <>
-                    <div className="pulse-dots-wrapper">
-                        <ThreeDots
-                            children={children}
-                            open={open}
-                            setOpen={setOpen}
-                            placement={'right-start'}
-                            MainClassName={open ? 'pulse-dots-actions open' : 'pulse-dots-actions'}
-                            type={'small'}
-                        />
-                    </div>
+            <div className="pulse-dots-wrapper">
+                <ThreeDots
+                    children={children}
+                    open={open}
+                    setOpen={setOpen}
+                    placement={'right-start'}
+                    MainClassName={open ? 'pulse-dots-actions open' : 'pulse-dots-actions'}
+                    type={'small'}
+                />
+            </div>
 
+            <ul className="pulse-preview">
+                <ul className="full-title-selector-container">
+                    <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
+                    <PulseSelector group={group} />
+                    <PulseTitle pulse={pulse} groupId={group.id} onUpdatePulse={onUpdatePulse} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse} />
+                </ul>
 
-                    <ul className="pulse-preview">
-                        <ul className="full-title-selector-container">
-                            <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>
-                            <PulseSelector group={group} />
-                            <PulseTitle pulse={pulse} groupId={group.id} onUpdatePulse={onUpdatePulse} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse} />
-                        </ul>
-
-                        {board.cmpsOrder.length > 0 &&
-                            board.cmpsOrder.map((cmp, idx) => (
-                                <li className="pulse-dynamic-container" key={idx}>
-                                    <DynamicCmp cmp={cmp} onUpdatePulse={onUpdatePulse} pulse={pulse} group={group}/>
-                                </li>
-                            ))}
-                    </ul>
-                </>
-            )}
+                {board.cmpsOrder.length > 0 &&
+                    board.cmpsOrder.map((cmp, idx) => (
+                        <li className="pulse-dynamic-container" key={idx}>
+                            <DynamicCmp cmp={cmp} onUpdatePulse={onUpdatePulse} pulse={pulse} group={group} />
+                        </li>
+                    ))}
+            </ul>
         </>
     )
 }

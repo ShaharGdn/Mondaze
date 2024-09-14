@@ -74,6 +74,7 @@ async function save(board) {
         groups: board.groups,
         activities: board.activities,
         cmpsOrder: board.cmpsOrder,
+        views: board.views || [],
         type: board.type
     }
     try {

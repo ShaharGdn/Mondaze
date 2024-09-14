@@ -43,7 +43,7 @@ export function PulseTitle({ pulse, groupId, onUpdatePulse, setSidePanelOpen, se
 
             {/* later make this nested route that leads to PulseDetails */}
             <Link className="pulse-messages-container" onClick={onOpenSidePanel}>
-                {!pulse.updates.length ? 
+                {!pulse.updates?.length ? 
                 ICON_EMPTY_MESSAGES : 
                 <div className="has-updates Figtree-regular">
                     <UPDATE_ICON />

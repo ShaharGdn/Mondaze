@@ -192,10 +192,12 @@ function getEmptyBoard(type = 'Task') {
             },
         ],
         activities: [],
+        views: [],
         cmpsOrder: ['MemberPicker', 'StatusPicker', 'PriorityPicker', 'DatePicker', 'DateRangePicker', 'NumberInput', 'TextInput'],
         type,
     }
 }
+
 
 function getDefaultFilter() {
     return {
@@ -205,6 +207,7 @@ function getDefaultFilter() {
         priority: '',
     }
 }
+
 
 const service = VITE_LOCAL === 'true' ? local : remote
 export const boardService = { getEmptyBoard, getDefaultFilter, ...service }

@@ -1,9 +1,7 @@
-import { useSelector } from "react-redux";
-import { PulseList } from "../pulse/PulseList.jsx";
+import { PulseListKanban } from "../Kanban/PulseListKanban.jsx";
 import { Droppable } from "@hello-pangea/dnd";
 
-export function GroupPreviewKanban({ group, type }) {
-    const board = useSelector(storeState => storeState.selectedBoardModule.board)
+export function GroupPreviewKanban({ group }) {
     const bgc = group.style.color
 
     return (
@@ -12,8 +10,8 @@ export function GroupPreviewKanban({ group, type }) {
                 <section className="group-preview-kanban"
                     {...provided.droppableProps}
                     ref={provided.innerRef}>
-                    <span className="group-title Figtree-regular" style={{background : bgc}}>{group.title}  / {group.pulses.length}</span>
-                    <PulseList group={group} type={type} />
+                    <span className="group-title Figtree-regular" style={{ background: bgc }}>{group.title}  / {group.pulses.length}</span>
+                    <PulseListKanban group={group} />
                     {provided.placeholder}
                 </section >
             )}

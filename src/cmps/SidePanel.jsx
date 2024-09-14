@@ -12,7 +12,7 @@ import { makeId } from "../services/util.service"
 
 export function SidePanel({ sidePanelOpen, setSidePanelOpen, selectedPulse, onUpdatePulse }) {
     const { pulse, groupId } = selectedPulse
-    const [displayType, setDisplayType] = useState(null)
+    const [displayType, setDisplayType] = useState('updates')
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [inputRef, setIsBlurred, propToEdit, setPropToEdit,
         handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(pulse.title, handleUpdate)

@@ -9,6 +9,7 @@ import { GroupList } from '../cmps/group/GroupList'
 import { BoardHeader } from '../cmps/BoardHeader'
 import { BoardActionsBar } from '../cmps/BoardActionsBar'
 import { SidePanel } from '../cmps/SidePanel'
+import { GroupListKanban } from '../cmps/Kanban/GroupListKanban'
 
 export function BoardDetails() {
   const { boardId } = useParams()
@@ -37,35 +38,6 @@ export function BoardDetails() {
     }
   }
 
-  function groupPulsesByStatus() {
-    if (!board?.status) return
-
-    const statuses = board.status
-
-    const allPulses = board.groups.reduce((allPulses, group) => {
-      return [...allPulses, ...group.pulses]
-    }, [])
-
-    const groupedPulses = statuses.map((status) => {
-      const pulsesForStatus = allPulses.filter(pulse => pulse.status === status.id)
-
-      // Only include the status if there are pulses associated with it
-      if (pulsesForStatus.length > 0) {
-        return {
-          title: status.title,
-          id: status.id,
-          archivedAt: null,
-          pulses: pulsesForStatus,
-          style: { color: status.color },
-        }
-      }
-
-      return null
-    }).filter(group => group !== null)
-
-    return groupedPulses
-  }
-
   async function onUpdatePulse(groupId, pulseToUpdate) {
     try {
       const updatedPulse = await updatePulse(board._id, groupId, pulseToUpdate)
@@ -89,9 +61,11 @@ export function BoardDetails() {
                 <BoardActionsBar board={board} setDisplayType={setDisplayType} displayType={displayType} filterBy={filterBy} setFilterBy={setFilterBy} />
               </div>
             </section>
-            <GroupList
+            {/* <GroupList
               groups={displayType === 'kanban' ? groupPulsesByStatus()
-                : board.groups} board={board} type={displayType} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse} />
+                : board.groups} board={board} type={displayType} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse} /> */}
+            {displayType === 'kanban' ? <GroupListKanban groups={board.groups} board={board} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse} />
+              : <GroupList groups={board.groups} board={board} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse} />}
             {displayType !== 'kanban' && <button className="add-group-btn" onClick={() => onAddGroup("end")}>
               <i className="fa-regular fa-plus fa-lg"></i>Add new group
             </button>}

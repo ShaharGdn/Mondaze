@@ -1,7 +1,7 @@
 import { format } from "date-fns"
-import { ICON_DATE } from "./icons/svg-icons"
+import { ICON_DATE } from "../icons/svg-icons"
 
-export function Kanban({ pulse, group }) {
+export function PulsePreviewKanban({ pulse, group }) {
     function formatDate() {
         if (!pulse.dueDate) return <></>
 
