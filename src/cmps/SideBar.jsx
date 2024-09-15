@@ -8,16 +8,20 @@ import { GoStar } from "react-icons/go";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { SlArrowLeft } from "react-icons/sl";
 import { SlArrowRight } from "react-icons/sl";
-
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 
 import { loadBoards } from '../store/actions/board.actions'
 import { AddBtnSideBar } from "./buttons/AddBtnSideBar.jsx";
+import { FaStar } from "react-icons/fa6";
 
 export function SideBar() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
-    const [filterBy, setFilterBy] = useState(boardService.getDefaultFilter())
+    const [favoritesOpen, setFavoritesOpen] = useState(false)
+    const [filterBy, setFilterBy] = useState(null)
     const [isOpen, toggleIsOpen] = useState(true)
     const navigate = useNavigate()
+
 
     useEffect(() => {
         loadBoards(filterBy)
@@ -27,7 +31,8 @@ export function SideBar() {
         <article className={isOpen ? "side-bar-container open Figtree-regular" : "side-bar-container close Figtree-regular"}>
             <div className="toggle-open hidden" onClick={() => toggleIsOpen(!isOpen)}>
                 <span className="arrow">
-                    {isOpen === true ? <SlArrowLeft size={12} className="icon"/> : <SlArrowRight size={12}  className="icon"/>}
+                    {isOpen === true ? <SlArrowLeft size={12} className="icon" />
+                        : <SlArrowRight size={12} className="icon" />}
                 </span>
             </div>
             <nav>
@@ -38,19 +43,43 @@ export function SideBar() {
 
                 <div className="border"></div>
 
-                <div className="favorites">
-                    <GoStar size={20} />
-                    <span>Favorites</span>
+                <div className="favorites-container">
+                    <div
+                        className={favoritesOpen ? "favorites open" : "favorites"}
+                        onClick={() => setFavoritesOpen((prev) => !prev)}>
+                        {favoritesOpen ? <FaStar color="#ffcb00" size={19} /> : <GoStar size={20} />}
+                        <span>Favorites</span>
+                        {favoritesOpen ? <IoIosArrowUp className="icon up" />
+                            : <IoIosArrowDown className="icon down" />}
+                    </div>
+                    {/* favoritesList */}
+                    {favoritesOpen &&
+                        <div className="board-list-side-bar favorites-list">
+                            {boards.filter(board => board.archivedAt === null && board.isStarred).length > 0 ? (
+                                boards.filter(board => board.archivedAt === null && board.isStarred).map((board) => (
+                                    <li key={board._id} className='board-side-bar-preview'>
+                                        <BoardSideBarPreview board={board} />
+                                    </li>
+                                ))
+                            ) : (
+                                <div className="no-boards-message">
+                                    <img src="/src/assets/img/favorites-no-bg.gif" alt="star" />
+                                    <p className="title-empty">No favorite boards yet</p>
+                                    <span className="title-empty">"Star" any board so that you can easily access it later</span>
+                                </div>
+                            )}
+                        </div>
+                    }
                 </div>
 
-                <div className="border"></div>
+                {favoritesOpen ? <div></div> : <div className="border"></div>}
 
-                <div className="ws-cmp Figtree-bold">
+                <div className={favoritesOpen ? "ws-cmp closed" : "ws-cmp Figtree-bold"}>
                     <span className="ws-icon">M</span>
                     <div>My Workspace</div>
                 </div>
 
-                <div className="search-add">
+                <div className={favoritesOpen ? "search-add closed" : "search-add"}>
                     <div className="search-container">
                         <div><HiMagnifyingGlass /></div>
                         <input id="txt" onChange={(ev) => handleChange(ev, 'filter')} autoFocus name="txt" type="text" placeholder="Search" />
@@ -58,7 +87,7 @@ export function SideBar() {
                     < AddBtnSideBar />
                 </div>
 
-                <ul className="board-list-side-bar">
+                <ul className={favoritesOpen ? "board-list-side-bar closed" : "board-list-side-bar"}>
                     {boards.filter(board => board.archivedAt === null).map((board) => (
                         <li key={board._id} className='board-side-bar-preview'>
                             <BoardSideBarPreview board={board} />

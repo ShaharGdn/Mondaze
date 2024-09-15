@@ -1,7 +1,7 @@
 .main-container {
     --margin-inline-start-main: 0.75rem;
     display: grid;
-    grid-template-columns: rem(270px) 1fr 0px;
+    grid-template-columns: rem(255px) 1fr 0px;
     background-color: $clr-bg;
     height: 100vh;
     width: 100%;
@@ -31,14 +31,14 @@
 
 
     &:has(.side-bar-container.open) {
-        grid-template-columns: rem(270px) 1fr 0px;
+        grid-template-columns: rem(255px) 1fr 0px;
 
         &:has(.side-panel.open) {
-            grid-template-columns: rem(270px) 1fr 700px;
+            grid-template-columns: rem(255px) 1fr 700px;
         }
 
         &:has(.side-panel.close) {
-            grid-template-columns: rem(270px) 1fr 0px;
+            grid-template-columns: rem(255px) 1fr 0px;
         }
     }
 

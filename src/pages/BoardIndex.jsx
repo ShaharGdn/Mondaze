@@ -11,7 +11,6 @@ export function BoardIndex() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
 
-
     // const navigate = useNavigate()
 
     useEffect(() => {
