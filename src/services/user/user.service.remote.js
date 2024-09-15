@@ -10,43 +10,50 @@ export const userService = {
 	getById,
 	remove,
 	update,
-    getLoggedinUser,
-    saveLoggedinUser,
+	getLoggedinUser,
+	saveLoggedinUser,
 }
 
 function getUsers() {
-	return httpService.get(`user`)
+	return httpService.get(`user/`)
 }
 
 async function getById(userId) {
-	const user = await httpService.get(`user/${userId}`)
-	return user
+	return await httpService.get(`user/${userId}`)
 }
 
 function remove(userId) {
 	return httpService.delete(`user/${userId}`)
 }
 
-async function update({ _id, score }) {
-	const user = await httpService.put(`user/${_id}`, { _id, score })
-
-	// When admin updates other user's details, do not update loggedinUser
-    const loggedinUser = getLoggedinUser() // Might not work because its defined in the main service???
-    if (loggedinUser._id === user._id) saveLoggedinUser(user)
-
-	return user
+async function update(user) {
+	return await httpService.put(`user/${user._id}`, user)
 }
 
 async function login(userCred) {
-	const user = await httpService.post('auth/login', userCred)
-	if (user) return saveLoggedinUser(user)
+	try {
+		const user = await httpService.post('auth/login', userCred)
+		if (user) {
+			saveLoggedinUser(user)
+			return user
+		}
+	} catch (err) {
+		console.log('Login failed:', err);
+		throw err;
+	}
 }
 
 async function signup(userCred) {
-	if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2017/07/18/23/23/user-2517433_1280.png'
-
-    const user = await httpService.post('auth/signup', userCred)
-	return saveLoggedinUser(user)
+	try {
+		const user = await httpService.post('auth/signup', userCred)
+		if (user) {
+			saveLoggedinUser(user)
+			return user
+		}
+	} catch (err) {
+		console.log('Sign up failed:', err);
+		throw err;
+	}
 }
 
 async function logout() {
@@ -55,17 +62,25 @@ async function logout() {
 }
 
 function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+	// for auto Guest user if no loggedInUser:
+	const guest = {
+		_id: '',
+		fullname: 'Guest',
+		imgUrl: 'https://cdn.pixabay.com/photo/2017/07/18/23/23/user-2517433_1280.png',
+		updates: []
+	}
+	const loggedInUser = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+	return loggedInUser ? loggedInUser : guest
+	// return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
 function saveLoggedinUser(user) {
-	user = { 
-        _id: user._id, 
-        fullname: user.fullname, 
-        imgUrl: user.imgUrl, 
-        // mentions?
-        // username?
-    }
-	sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-	return user
+	const userToSave = {
+		_id: user._id,
+		fullname: user.fullname,
+		imgUrl: user.imgUrl,
+		updates: user.updates || []
+	}
+	sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
+	return userToSave
 }

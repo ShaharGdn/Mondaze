@@ -9,6 +9,8 @@ import { BoardList } from '../cmps/BoardList'
 export function BoardIndex() {
     const [filterBy, setFilterBy] = useState(boardService.getDefaultFilter())
     const boards = useSelector(storeState => storeState.boardModule.boards)
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+
 
     // const navigate = useNavigate()
 
@@ -21,7 +23,7 @@ export function BoardIndex() {
             <section className="board-index main">
                 <header className='header-greeting'>
                     <div className="text-greeting">
-                        <h5 className='Figtree-regular'>Good evening `{ }`, Guest!</h5>
+                        <h5 className='Figtree-regular'>{`Good evening, ${loggedInUser.fullname}!`}</h5>
                         <h6 className='Figtree-semi-bold'>Quickly access your recent boards, Inbox and workspaces</h6>
                     </div>
                     <img src="../src/assets/img/header_background.svg" alt="header-bg-party" />
