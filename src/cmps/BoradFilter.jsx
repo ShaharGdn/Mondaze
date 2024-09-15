@@ -27,7 +27,7 @@ export function BoardFilter({ filterBy, setFilterBy, displayType, setGroupBy }) 
         if (ev) ev.preventDefault()
         const { target } = ev
         const { type, value } = target
-
+      
         if (type === 'search') {
             const newFilterBy = {
                 ...filterByToEdit,

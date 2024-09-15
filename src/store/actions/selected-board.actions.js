@@ -7,7 +7,6 @@ import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
 export async function loadBoard(boardId, filterBy = {}) {
     try {
         store.dispatch({ type: LOADING_START })
-
         const board = await boardService.getBoardById(boardId, filterBy)
         store.dispatch(getCmdSetBoard(board))
     } catch (err) {

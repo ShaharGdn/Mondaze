@@ -29,8 +29,8 @@ async function query(filterBy = { txt: '' }) {
 }
 
 // BOARD
-function getBoardById(boardId) {
-    return httpService.get(`board/${boardId}`)
+function getBoardById(boardId, filterBy = { txt: '' }) {
+    return httpService.get(`board/${boardId}`, filterBy)
 }
 
 async function removeBoard(boardId) {
