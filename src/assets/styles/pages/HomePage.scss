@@ -18,15 +18,39 @@
                 margin-inline-start: 1rem;
             }
 
-            button {
-                padding: 16px 48px;
-                font-size: 1rem;
-                margin-inline-end: 1rem;
-                height: rem(50px);
-                width: rem(210px);
+            .header-btns {
+                display: flex;
+                align-items: center;
+                gap: 10px;
 
-                &:hover {
-                    background-color: #5151d5;
+                button {
+                    padding: 16px 48px;
+                    font-size: 1rem;
+                    margin-inline-end: 1rem;
+                    height: rem(50px);
+                    width: rem(210px);
+
+                    &:hover {
+                        background-color: #5151d5;
+                    }
+                }
+
+                a {
+                    &.login-btn {
+                        border-radius: 8px;
+                        padding: 6px 12px 8px 12px;
+                        background-color: transparent;
+                        color: #535768;
+                        font-weight: 300;
+                        text-decoration: none;
+                        cursor: pointer;
+                        transition: color 200ms ease;
+
+                        &:hover {
+                            color: #5034FF;
+                            background-color: #F0F3FF;
+                        }
+                    }
                 }
             }
         }
@@ -182,7 +206,7 @@
                         object-fit: contain;
                     }
 
-                    
+
                 }
             }
 
@@ -193,7 +217,7 @@
                 }
             }
         }
-        
+
 
         footer {
             .main-footer {

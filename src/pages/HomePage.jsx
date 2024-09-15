@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { IoMdArrowForward } from "react-icons/io";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 
 
 export function HomePage() {
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [tags, setTags] = useState(null)
     const navigate = useNavigate()
 
@@ -15,13 +17,16 @@ export function HomePage() {
 
     return (
         <section className="home-page full">
-
             <header className="header">
-                <img src="../src/assets/img/mondaze-logo.png" alt="" className="logo" onClick={() => navigate('/board/TSihL')} />
-                <button className="get-started" onClick={() => navigate('/board/TSihL')}>
-                    <span>Get Started</span>
-                    <IoMdArrowForward className="icon" />
-                </button>
+                <img src="../src/assets/img/mondaze-logo.png" alt="" className="logo" onClick={() => navigate('/board')} />
+                <div className="header-btns">
+                    {!loggedInUser?.username && <a className="login-btn" href="/login">Log in</a>}
+                    {loggedInUser?.username && <a className="login-btn" href="/login">Logout</a>}
+                    <button className="get-started" onClick={() => navigate('/board')}>
+                        <span>Get Started</span>
+                        <IoMdArrowForward className="icon" />
+                    </button>
+                </div>
             </header>
 
             <main className="main-display poppins-extralight">
@@ -32,7 +37,7 @@ export function HomePage() {
                     <p className="subtitle">Streamline workflows and gain clear visibility across teams
                         to make strategic decisions with confidence.
                     </p>
-                    <button className="get-started" onClick={() => navigate('/board/TSihL')}>
+                    <button className="get-started" onClick={() => navigate('/board')}>
                         <span>Get Started</span>
                         <IoMdArrowForward className="icon" />
                     </button>

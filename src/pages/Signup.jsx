@@ -11,58 +11,64 @@ export function Signup() {
     const navigate = useNavigate()
 
     function clearState() {
-        setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
+        setCredentials(userService.getEmptyUser())
     }
 
     function handleChange(ev) {
-        const type = ev.target.type
-
         const field = ev.target.name
         const value = ev.target.value
         setCredentials({ ...credentials, [field]: value })
     }
-    
+
     async function onSignup(ev = null) {
         if (ev) ev.preventDefault()
 
         if (!credentials.username || !credentials.password || !credentials.fullname) return
         await signup(credentials)
         clearState()
-        navigate('/')
+        navigate('/board')
     }
 
-    function onUploaded(imgUrl) {
-        setCredentials({ ...credentials, imgUrl })
-    }
+    // function onUploaded(imgUrl) {
+    //     setCredentials({ ...credentials, imgUrl })
+    // }
 
     return (
-        <form className="signup-form" onSubmit={onSignup}>
-            <input
-                type="text"
-                name="fullname"
-                value={credentials.fullname}
-                placeholder="Fullname"
-                onChange={handleChange}
-                required
-            />
-            <input
-                type="text"
-                name="username"
-                value={credentials.username}
-                placeholder="Username"
-                onChange={handleChange}
-                required
-            />
-            <input
-                type="password"
-                name="password"
-                value={credentials.password}
-                placeholder="Password"
-                onChange={handleChange}
-                required
-            />
-            <ImgUploader onUploaded={onUploaded} />
-            <button>Signup</button>
-        </form>
+        <section className='login-container'>
+            <h1 className="login-title">Welcome to mondaze.com</h1>
+            <form className="signup-form" onSubmit={onSignup}>
+                <label htmlFor="fullname">Enter your full name</label>
+                <input
+                    id='fullname'
+                    type="text"
+                    name="fullname"
+                    value={credentials.fullname}
+                    onChange={handleChange}
+                    required
+                />
+
+                <label htmlFor="username">Enter your username</label>
+                <input
+                    id='username'
+                    type="text"
+                    name="username"
+                    value={credentials.username}
+                    onChange={handleChange}
+                    required
+                />
+
+                <label htmlFor="password">Enter your password</label>
+                <input
+                    id='password'
+                    type="password"
+                    name="password"
+                    value={credentials.password}
+                    onChange={handleChange}
+                    required
+                />
+                {/* <ImgUploader onUploaded={onUploaded} /> */}
+                <button>Signup</button>
+            </form>
+        </section>
     )
 }
