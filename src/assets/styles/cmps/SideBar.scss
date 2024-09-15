@@ -17,13 +17,60 @@
             margin: 0;
         }
 
+
         .home-link,
         .favorites,
         .ws-cmp {
             display: flex;
             align-items: center;
+            width: 95%;
             cursor: pointer;
-            margin-block-end: rem(8px);
+            padding-block-end: 4px;
+            margin-block-end: rem(4px);
+            border-radius: 4px;
+
+            &:hover {
+                background-color: #d8d9e16f;
+            }
+        }
+
+        .home-link {
+            width: 80%;
+        }
+
+        .favorites-container {
+            margin: 0;
+
+            .icon {
+                position: absolute;
+                left: 215px;
+            }
+
+            .favorites-list {
+                margin: 0;
+                padding: 0;
+                position: relative;
+
+                .title-empty {
+                    position: absolute;
+                    display: block;
+                    width: 250px;
+                    text-align: center;
+                    left: -5px;
+                    top: 18%;
+                }
+
+                p.title-empty {
+                    font-weight: 800;
+                    top: 16%;
+                }
+
+                img {
+                    width: 80px;
+                    margin: 0 auto;
+                }
+
+            }
         }
 
         .border {
@@ -44,6 +91,10 @@
                 text-align: center;
                 font-size: rem(14px);
                 border-radius: 0.2rem;
+            }
+
+            &.closed {
+                display: none;
             }
         }
 
@@ -103,6 +154,10 @@
                     margin: 0 auto;
                 }
             }
+
+            &.closed {
+                display: none;
+            }
         }
 
         &:hover {
@@ -110,7 +165,7 @@
                 position: absolute;
                 display: flex;
                 align-items: center;
-                left: rem(240px);
+                left: rem(225px);
                 top: 48px;
                 height: 38px;
                 width: 30px;
@@ -191,7 +246,7 @@
         background-color: $clr-table-bg;
         position: absolute;
         top: rem(48px);
-        left: rem(282px);
+        left: rem(267px);
         height: calc(100% - 4rem);
         border-top-left-radius: 0.5rem;
         width: rem(40px);
