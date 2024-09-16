@@ -1,11 +1,11 @@
-$clr-text: #333;
-$clr-icon: #666;
-$clr-primary: #007fff;
-$clr-bg-toolbar: #ffffff;
-$clr-bg-editor: #ffffff;
-$clr-border: #82B7EC;
-
 .editor-wrapper {
+    $clr-text: #333;
+    $clr-icon: #666;
+    $clr-primary: #007fff;
+    $clr-bg-toolbar: #ffffff;
+    $clr-bg-editor: #ffffff;
+    $clr-border: #82B7EC;
+
     margin: 0 auto;
     border-radius: 15px;
     overflow: hidden;
@@ -60,17 +60,17 @@ $clr-border: #82B7EC;
             padding: 0.5rem 0.2rem 1rem 0.5rem;
 
         }
-        
+
         ::-webkit-scrollbar {
             width: 8px;
         }
-        
+
         ::-webkit-scrollbar-track {
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         }
-        
+
         ::-webkit-scrollbar-thumb {
-          background-color: #B2B2B2;
+            background-color: #B2B2B2;
         }
     }
 

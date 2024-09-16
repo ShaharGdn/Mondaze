@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoMdArrowForward } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { logout } from "../store/actions/user.actions";
 
 
 
@@ -20,8 +21,8 @@ export function HomePage() {
             <header className="header">
                 <img src="../src/assets/img/mondaze-logo.png" alt="" className="logo" onClick={() => navigate('/board')} />
                 <div className="header-btns">
-                    {!loggedInUser?.username && <a className="login-btn" href="/login">Log in</a>}
-                    {loggedInUser?.username && <a className="login-btn" href="/login">Logout</a>}
+                    {!loggedInUser?._id && <a className="login-btn" href="/login">Log in</a>}
+                    {loggedInUser?._id && <a className="login-btn" href="" onClick={logout}>Logout</a>}
                     <button className="get-started" onClick={() => navigate('/board')}>
                         <span>Get Started</span>
                         <IoMdArrowForward className="icon" />
