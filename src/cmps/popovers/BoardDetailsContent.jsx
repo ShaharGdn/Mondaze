@@ -8,10 +8,10 @@ export function BoardDetailsContent({ board }) {
     const [inputRef, setIsBlurred, propToEdit, setPropToEdit,
         handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(board.title, handleTitleChange)
 
-        function handleTitleChange(updatedTitle) {
-            const boardToUpdate = { ...board, title: updatedTitle }
-            onUpdateBoard(boardToUpdate)
-        }
+    function handleTitleChange(updatedTitle) {
+        const boardToUpdate = { ...board, title: updatedTitle }
+        onUpdateBoard(boardToUpdate)
+    }
 
     async function onUpdateBoard(boardToUpdate) {
         try {
@@ -54,8 +54,36 @@ export function BoardDetailsContent({ board }) {
                         <FaRegStar size={19} />}
                 </div>
             </div>
-            <p>Manage any type of project. Assign owners, set timelines and keep track of where your project stands.</p>
-            <div>Board info</div>
+            <div className="board-info-main">
+                <p>Manage any type of project. Assign owners, set timelines and keep track of where your project stands.</p>
+                <h3>Board info</h3>
+                <ul>
+                    <li className="info-row">
+                        <span>Board type</span>
+                        <span>{board.type}</span>
+                    </li>
+                    <li className="info-row">
+                        <span>Owner</span>
+                        <div className="owners">
+                            <div className="person">
+                                <img src="../src/assets/img/shahar.jpg" alt="" />
+                                <span>Shahar Gadon</span>
+                            </div>
+                            <div className="person">
+                                <img src="../src/assets/img/michal.jpg" alt="" />
+                                <span>Michal Rotkop</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li className="info-row">
+                        <span>Created By</span>
+                        <div className="person">
+                            <img src={board.createdBy.imgUrl} alt="" />
+                            <span>{board.createdBy.fullname}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     )
 }
