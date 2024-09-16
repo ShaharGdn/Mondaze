@@ -28,13 +28,10 @@ export function RootCmp() {
 
     return (
         <div className="main-container">
-            {/* {!isHomePage && <AppHeader />} Render AppHeader only if not on the homepage */}
-            {/* {!isHomePage && <SideBar />}   Render SideBar only if not on the homepage */}
             {!isHomePage && !isLoginPage && <AppHeader />} {/* Render AppHeader only if not on the homepage */}
             {!isHomePage && !isLoginPage && <SideBar />}   {/* Render SideBar only if not on the homepage */}
             <UserMsg />
 
-            {/* <main> */}
             <Routes>
                 <Route path="" element={<HomePage />} />
                 <Route path="about" element={<AboutUs />} />
@@ -51,7 +48,6 @@ export function RootCmp() {
                 {/* <Route path="Kanban" element={<Kanban />} /> */}
                 {/* <Route path="Kanban/:boardId" element={<Kanban />} /> */}
             </Routes>
-            {/* </main> */}
         </div>
     )
 }

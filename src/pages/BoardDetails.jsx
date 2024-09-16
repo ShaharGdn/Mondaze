@@ -11,6 +11,7 @@ import { BoardActionsBar } from '../cmps/BoardActionsBar'
 import { SidePanel } from '../cmps/SidePanel'
 import { GroupListKanban } from '../cmps/Kanban/GroupListKanban'
 import { boardService } from '../services/board'
+import { updateBoard } from '../store/actions/board.actions'
 
 export function BoardDetails() {
   const { boardId } = useParams()

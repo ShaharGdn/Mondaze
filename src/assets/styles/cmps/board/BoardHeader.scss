@@ -3,18 +3,90 @@
     align-items: baseline;
     width: max-content;
     gap: 0.5rem;
+    color: $clr-text;
 
     h2 {
         margin: 0;
         padding: 0;
     }
 
-    div {
-        color: #676879;
-        cursor: pointer;
+    .board-title {
+        max-width: 400px;
+        font-family: "Poppins", "Roboto", sans-serif;
+        font-size: rem(24px);
+        font-weight: 500;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 
 .board-details-popover {
-    padding: 1rem;
+    width: 400px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 12px 24px 16px 24px;
+
+    .board-info-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include border(bottom);
+        margin-block-end: 0.5rem;
+        padding-block-end: 0.5rem;
+
+        .input-container {
+            >* {
+                margin: 0;
+            }
+
+            .board-info-title,
+            .board-title-input {
+                font-weight: 500;
+                line-height: rem(24px);
+                font-size: rem(18px);
+                padding: 0 4px;
+                border-radius: 4px;
+                font-family: "Poppins", "Roboto", sans-serif;
+
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+
+            }
+
+            .board-info-title {
+                border: 1px solid transparent;
+                max-width: 300px;
+
+
+
+                &:hover {
+                    cursor: text;
+                    border-color: $clr-border-color;
+                }
+            }
+
+            .board-title-input {
+                outline: none;
+                border: 1px solid $clr-border-color;
+            }
+        }
+
+        .toggle-favorite {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            color: #676879;
+            border-radius: 4px;
+
+            &:hover {
+                background-color: $clr-btn-hover;
+            }
+        }
+    }
 }

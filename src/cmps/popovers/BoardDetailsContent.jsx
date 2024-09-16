@@ -2,19 +2,24 @@ import { useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa6";
 import { updateBoard } from "../../store/actions/board.actions";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
-
+import { useInputHandler } from "../../customHooks/useInputHandler";
 
 export function BoardDetailsContent({ board }) {
-    const [boardToEdit, setBoardToEdit] = useState(board)
+    const [inputRef, setIsBlurred, propToEdit, setPropToEdit,
+        handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(board.title, handleTitleChange)
+
+        function handleTitleChange(updatedTitle) {
+            const boardToUpdate = { ...board, title: updatedTitle }
+            onUpdateBoard(boardToUpdate)
+        }
 
     async function onUpdateBoard(boardToUpdate) {
         try {
-            const board = await updateBoard(boardToUpdate)
-            setBoardToEdit({ ...board })
-            showSuccessMsg('Board Updated Successfully')
+            await updateBoard(boardToUpdate)
+            showSuccessMsg('Board updated Successfully')
         } catch (err) {
-            console.log('err: Cannot Update board', err)
-            showErrorMsg('Cannot Update Board')
+            console.log('err: Cannot update board', err)
+            showErrorMsg('Cannot update Board')
         }
     }
 
@@ -23,16 +28,28 @@ export function BoardDetailsContent({ board }) {
         event.stopPropagation()
 
         const boardToUpdate = {
-            ...boardToEdit, 'isStarred': boardToEdit.isStarred ? false : true
+            ...board, 'isStarred': !board.isStarred
         }
         onUpdateBoard(boardToUpdate)
     }
     return (
         <div className="board-details-popover">
-            <div className="board-title">
-                <h3>{board.title}</h3>
+            <div className="board-info-header">
+                <form className="input-container" onSubmit={handleSubmit}>
+                    {isEditable ? <input
+                        className="board-title-input"
+                        type="text"
+                        value={propToEdit}
+                        onChange={(ev) => setPropToEdit(ev.target.value)}
+                        onBlur={() => handleBlur()}
+                        onFocus={() => setIsBlurred(false)}
+                        ref={inputRef}
+                        autoFocus
+                    /> : <h3 className="board-info-title" onClick={() => setIsEditable(true)}>{propToEdit}</h3>}
+                </form>
+
                 <div className="toggle-favorite" onClick={onFavoriteBoard}>
-                    {boardToEdit.isStarred ?
+                    {board.isStarred ?
                         <FaStar color="#ffcb00" size={19} /> :
                         <FaRegStar size={19} />}
                 </div>
@@ -40,5 +57,64 @@ export function BoardDetailsContent({ board }) {
             <p>Manage any type of project. Assign owners, set timelines and keep track of where your project stands.</p>
             <div>Board info</div>
         </div>
-    );
+    )
 }
+
+// export function BoardDetailsContent({ board }) {
+//     const [boardToEdit, setBoardToEdit] = useState(board)
+
+//     const [inputRef, setIsBlurred, propToEdit, setPropToEdit,
+//         handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(board.title, handleUpdate)
+
+//         function handleUpdate(updatedTitle) {
+//             const boardToUpdate = { ...board, title: updatedTitle }
+//             onUpdateBoard(boardToUpdate)
+//         }
+
+//     async function onUpdateBoard(boardToUpdate) {
+//         try {
+//             const board = await updateBoard(boardToUpdate)
+//             setBoardToEdit({ ...board })
+//             showSuccessMsg('Board Updated Successfully')
+//         } catch (err) {
+//             console.log('err: Cannot Update board', err)
+//             showErrorMsg('Cannot Update Board')
+//         }
+//     }
+
+//     function onFavoriteBoard(event) {
+//         event.preventDefault()
+//         event.stopPropagation()
+
+//         const boardToUpdate = {
+//             ...boardToEdit, 'isStarred': !boardToEdit.isStarred
+//         }
+//         onUpdateBoard(boardToUpdate)
+//     }
+//     return (
+//         <div className="board-details-popover">
+//             <div className="board-title">
+//                 <form className="input-container" onSubmit={handleSubmit}>
+//                     {isEditable ? <input
+//                         className="title-input"
+//                         type="text"
+//                         value={propToEdit}
+//                         onChange={(ev) => setPropToEdit(ev.target.value)}
+//                         onBlur={() => handleBlur()}
+//                         onFocus={() => setIsBlurred(false)}
+//                         ref={inputRef}
+//                         autoFocus
+//                     /> : <h3 className="pulse-title" onClick={() => setIsEditable(true)}>{propToEdit}</h3>}
+//                 </form>
+
+//                 <div className="toggle-favorite" onClick={onFavoriteBoard}>
+//                     {boardToEdit.isStarred ?
+//                         <FaStar color="#ffcb00" size={19} /> :
+//                         <FaRegStar size={19} />}
+//                 </div>
+//             </div>
+//             <p>Manage any type of project. Assign owners, set timelines and keep track of where your project stands.</p>
+//             <div>Board info</div>
+//         </div>
+//     )
+// }

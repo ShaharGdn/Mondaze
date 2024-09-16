@@ -70,16 +70,6 @@ export function GroupTitleHeader({ board, group, getTitles, setIsGroupOpen, isGr
 
             <section className="full-group-container">
                 <div className="sticky-horizontal-wrapper">
-                    {/* 
-                    <ThreeDots
-                        children={children}
-                        open={open}
-                        setOpen={setOpen}
-                        placement={'right-start'}
-                        MainClassName={open ? 'group-dots-actions open' : 'group-dots-actions'}
-                        type={'big'}
-                    /> */}
-
                     {!isGroupOpen && <div className="pulse-side-color" style={{ backgroundColor: group.style.color }}></div>}
 
                     <section className={`group-title-header${isGroupOpen ? '' : ' collapsed'}`}>

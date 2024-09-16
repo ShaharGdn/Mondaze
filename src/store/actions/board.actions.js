@@ -1,6 +1,7 @@
 import { boardService } from '../../services/board'
 import { store } from '../store'
 import { ADD_BOARD, REMOVE_BOARD, SET_BOARDS, UPDATE_BOARD} from '../reducers/board.reducer'
+import { loadBoard } from './selected-board.actions'
 
 export async function loadBoards(filterBy) {
     try {
@@ -37,6 +38,7 @@ export async function updateBoard(board) {
     try {
         const savedBoard = await boardService.save(board)
         store.dispatch(getCmdUpdateBoard(savedBoard))
+        loadBoard(savedBoard._id)
         return savedBoard
     } catch (err) {
         console.log('Cannot save board', err)

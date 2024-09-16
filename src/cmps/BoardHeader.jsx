@@ -8,7 +8,7 @@ export function BoardHeader({ board }) {
 
     const trigger = (
         <div className="board-header">
-            <h2 className="poppins-regular">{board?.title}</h2>
+            <h2 className="board-title">{board?.title}</h2>
             <div>
                 <IoIosArrowDown />
             </div>
@@ -21,12 +21,12 @@ export function BoardHeader({ board }) {
 
     return (
         <PopoverNoArrow
-        open={open}
-        setOpen={setOpen}
-        children={children}
-        placement={'bottom-start'}
-        trigger={trigger}
-        className="pop-over-board-details"
-    />
+            open={open}
+            setOpen={setOpen}
+            children={children}
+            placement={'bottom-start'}
+            trigger={trigger}
+            className="pop-over-board-details"
+        />
     )
 }
