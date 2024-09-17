@@ -16,14 +16,15 @@
             margin-block-end: 0;
             position: relative;
 
-            &::before {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                height: 1px;
-                width: 70vw;
-                background-color: $clr-border;
-            }
+            // &::before {
+            //     content: '';
+            //     position: absolute;
+            //     bottom: 0;
+            //     height: 1px;
+            //     // width: 70vw;
+            //     width: 100%;
+            //     background-color: $clr-border;
+            // }
 
             .main-table,
             .kanban {

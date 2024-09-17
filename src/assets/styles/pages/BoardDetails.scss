@@ -29,6 +29,18 @@
                 border-top-left-radius: 0.5rem;
             }
 
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 64px;
+                // left: 0;
+                // width: calc(100% - 30px);
+                right: 30px;
+                height: 1px;
+                width: 100%;
+                background-color: $clr-border;
+            }
+
             .top-sticky-wrapper {
                 position: sticky;
                 top: 0;
