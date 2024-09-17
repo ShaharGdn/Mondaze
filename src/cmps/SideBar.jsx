@@ -14,18 +14,26 @@ import { IoIosArrowUp } from "react-icons/io";
 import { loadBoards } from '../store/actions/board.actions'
 import { AddBtnSideBar } from "./buttons/AddBtnSideBar.jsx";
 import { FaStar } from "react-icons/fa6";
+import { SOCKET_EVENT_UPDATE_BOARDS, socketService } from "../services/socket.service";
 
 export function SideBar() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
     const [favoritesOpen, setFavoritesOpen] = useState(false)
-    const [filterBy, setFilterBy] = useState(null)
     const [isOpen, toggleIsOpen] = useState(true)
     const navigate = useNavigate()
 
 
     useEffect(() => {
-        loadBoards(filterBy)
-    }, [filterBy])
+        loadBoards()
+
+        socketService.on(SOCKET_EVENT_UPDATE_BOARDS, boards => {
+            dispatch(getCmdSetBoards(boards))
+        })
+
+        return () => {
+            socketService.off(SOCKET_EVENT_UPDATE_BOARDS)
+        }
+    }, [])
 
     return (
         <article className={isOpen ? "side-bar-container open Figtree-regular" : "side-bar-container close Figtree-regular"}>

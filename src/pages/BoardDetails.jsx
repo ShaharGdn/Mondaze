@@ -27,6 +27,8 @@ export function BoardDetails() {
     loadBoard(boardId, filterBy)
     setSelectedPulse(selectedPulse)
 
+    
+
     return () => {
       setSelectedPulse(null)
     }
