@@ -4,10 +4,8 @@ import { Routes, Route, useLocation } from 'react-router'
 import { HomePage } from './pages/HomePage'
 import { AboutUs } from './pages/AboutUs'
 import { BoardIndex } from './pages/BoardIndex.jsx'
-import { ChatApp } from './pages/Chat.jsx'
 
 import { BoardDetails } from './pages/BoardDetails.jsx'
-import { UserDetails } from './pages/UserDetails'
 
 import { AppHeader } from './cmps/AppHeader'
 import { UserMsg } from './cmps/UserMsg.jsx'
@@ -37,8 +35,6 @@ export function RootCmp() {
                 <Route path="about" element={<AboutUs />} />
                 <Route path="board" element={<BoardIndex />} />
                 <Route path="board/:boardId" element={<BoardDetails />} />
-                <Route path="user/:id" element={<UserDetails />} />
-                <Route path="chat" element={<ChatApp />} />
                 <Route path="login" element={<LoginSignup />}>
                     <Route index element={<Login />} />
                     <Route path="signup" element={<Signup />} />

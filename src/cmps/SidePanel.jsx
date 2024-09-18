@@ -1,6 +1,6 @@
 import { useInputHandler } from "../customHooks/useInputHandler"
 import { IoCloseOutline } from "react-icons/io5"
-import { CLOCK_ICON, ICON_HOME } from "./icons/svg-icons"
+import { ICON_HOME } from "./icons/svg-icons"
 import { useState } from "react"
 
 

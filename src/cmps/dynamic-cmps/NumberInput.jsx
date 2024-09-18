@@ -31,7 +31,7 @@ export function NumberInput({ onUpdatePulse, pulse }) {
                 {isEditable ? <input
                     className="number-input"
                     type="text"
-                    value={propToEdit}
+                    value={isNaN(propToEdit) ? 0 : propToEdit}
                     onChange={(ev) => setPropToEdit(+ev.target.value)}
                     onBlur={() => handleBlur()}
                     onFocus={() => setIsBlurred(false)}

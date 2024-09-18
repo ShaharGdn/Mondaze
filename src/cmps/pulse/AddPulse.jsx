@@ -1,5 +1,6 @@
 import { useInputHandler } from "../../customHooks/useInputHandler";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
+import { SOCKET_EVENT_ADD_PULSE, socketService } from "../../services/socket.service";
 import { addPulse } from "../../store/actions/selected-board.actions";
 import { PulseSelector } from "./PulseSelector";
 
@@ -15,7 +16,9 @@ export function AddPulse({ board, group }) {
                 priority: 'dft3489',
                 isDone: '',
             }
-            await addPulse(board._id, group.id, pulse)
+            const addedPulse = await addPulse(board._id, group.id, pulse)
+            // const data = { groupId: group.id, pulse: addedPulse }
+            // socketService.emit(SOCKET_EVENT_ADD_PULSE, data)
             showSuccessMsg('Pulse added')
         } catch (err) {
             console.log('err:', err)

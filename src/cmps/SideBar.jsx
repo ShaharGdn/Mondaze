@@ -18,14 +18,13 @@ import { FaStar } from "react-icons/fa6";
 export function SideBar() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
     const [favoritesOpen, setFavoritesOpen] = useState(false)
-    const [filterBy, setFilterBy] = useState(null)
     const [isOpen, toggleIsOpen] = useState(true)
     const navigate = useNavigate()
 
 
     useEffect(() => {
-        loadBoards(filterBy)
-    }, [filterBy])
+        loadBoards()
+    }, [])
 
     return (
         <article className={isOpen ? "side-bar-container open Figtree-regular" : "side-bar-container close Figtree-regular"}>

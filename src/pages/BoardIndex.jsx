@@ -1,21 +1,18 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router'
 
 import { loadBoards } from '../store/actions/board.actions'
-import { boardService } from '../services/board'
 import { BoardList } from '../cmps/BoardList'
 
 export function BoardIndex() {
-    const [filterBy, setFilterBy] = useState(boardService.getDefaultFilter())
     const boards = useSelector(storeState => storeState.boardModule.boards)
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
 
     // const navigate = useNavigate()
 
     useEffect(() => {
-        loadBoards(filterBy)
-    }, [filterBy])
+        loadBoards()
+    }, [])
 
     return (
         <main>

@@ -42,27 +42,21 @@
             margin: 0;
 
             .icon {
-                position: absolute;
-                left: 215px;
+                // position: absolute;
+                // left: 215px;
             }
 
-            .favorites-list {
+            .no-boards-message {
                 margin: 0;
                 padding: 0;
-                position: relative;
-
                 .title-empty {
-                    position: absolute;
                     display: block;
-                    width: 250px;
                     text-align: center;
-                    left: -5px;
-                    top: 18%;
+                    margin: 0;
                 }
 
                 p.title-empty {
                     font-weight: 800;
-                    top: 16%;
                 }
 
                 img {
@@ -70,6 +64,12 @@
                     margin: 0 auto;
                 }
 
+            }
+
+            .favorites-list {
+                margin: 0;
+                padding: 0;
+                position: relative;
             }
         }
 

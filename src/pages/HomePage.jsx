@@ -8,13 +8,13 @@ import { logout } from "../store/actions/user.actions";
 
 export function HomePage() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
-    const [tags, setTags] = useState(null)
+    // const [tags, setTags] = useState(null)
     const navigate = useNavigate()
 
 
-    function handleImg() {
+    // function handleImg() {
 
-    }
+    // }
 
     return (
         <section className="home-page full">
@@ -93,7 +93,7 @@ export function HomePage() {
                             <img src="../src/assets/img/wm-square-logo.png" alt="" />
                             <h2>mondaze work management</h2>
                             <h3 className="poppins-extralight">Manage projects & tasks</h3>
-                            <button className="get-started" onClick={() => navigate('/board/TSihL')}>
+                            <button className="get-started" onClick={() => navigate('/board')}>
                                 <span>Get Started</span>
                                 <IoMdArrowForward className="icon" />
                             </button>
@@ -108,7 +108,7 @@ export function HomePage() {
                             <img src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/uploads/mayatauber/Group_1261164293.png" alt="monday CRM logo" />
                             <h2>mondaze CRM</h2>
                             <h3 className="poppins-extralight">Streamline sales processes</h3>
-                            <button className="get-started white" onClick={() => navigate('/crm')}>
+                            <button className="get-started white" onClick={() => navigate('/board')}>
                                 <span>Get Started</span>
                                 <IoMdArrowForward className="icon" />
                             </button>
@@ -126,7 +126,7 @@ export function HomePage() {
                     <div className="cta-section poppins-extralight">
                         <p>Deliver your best work</p>
                         <p>with <span>mondaze.com</span></p>
-                        <button className="get-started white" onClick={() => navigate('/board/TSihL')}>
+                        <button className="get-started white" onClick={() => navigate('/board')}>
                             <span>Get Started</span>
                             <IoMdArrowForward className="icon" />
                         </button>
@@ -136,7 +136,7 @@ export function HomePage() {
                     </div>
                 </main>
                 <div className="logo-nav poppins-extralight">
-                    <img src="../src/assets/img/mondaze-logo.png" alt="logo" onClick={() => navigate('/board/TSihL')} />
+                    <img src="../src/assets/img/mondaze-logo.png" alt="logo" onClick={() => navigate('/board')} />
                     <span>© All Rights Reserved</span>
                 </div>
             </footer>

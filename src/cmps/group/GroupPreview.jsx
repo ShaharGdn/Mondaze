@@ -28,6 +28,9 @@ export function GroupPreview({ group, shouldCloseAllGroups, setSidePanelOpen, se
             case 'DateRangePicker': return 'Timeline'
             case 'TextInput': return collapsed ? null : 'Comments'
             case 'NumberInput': return 'Numbers'
+            case 'PhoneInput': return 'Phone'
+            case 'FilesPicker': return 'File'
+            case 'EmailInput': return 'Email'
             case 'FilesPicker': return 'Files'
             // add more as needed
             default: return ''
