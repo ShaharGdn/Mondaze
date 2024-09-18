@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 
 import { loadBoards } from '../store/actions/board.actions'
 import { BoardList } from '../cmps/BoardList'
-import { socketService, SOCKET_EVENT_UPDATE_BOARDS } from '../services/socket.service'
 
 export function BoardIndex() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
@@ -13,14 +12,6 @@ export function BoardIndex() {
 
     useEffect(() => {
         loadBoards()
-
-        socketService.on(SOCKET_EVENT_UPDATE_BOARDS, boards => {
-            dispatch(getCmdSetBoards(boards))
-        })
-
-        return () => {
-            socketService.off(SOCKET_EVENT_UPDATE_BOARDS)
-        }
     }, [])
 
     return (

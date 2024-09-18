@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { addGroup, loadBoard, updatePulse } from '../store/actions/selected-board.actions'
+import { addGroup, getCmdAddGroup, getCmdAddPulse, getCmdRemoveGroup, getCmdRemovePulse, getCmdUpdateGroup, getCmdUpdatePulse, loadBoard, updatePulse } from '../store/actions/selected-board.actions'
+import { getCmdAddBoard, getCmdUpdateBoard, getCmdRemoveBoard } from '../store/actions/board.actions'
 
 import { GroupList } from '../cmps/group/GroupList'
 import { BoardHeader } from '../cmps/BoardHeader'
@@ -11,7 +12,7 @@ import { BoardActionsBar } from '../cmps/BoardActionsBar'
 import { SidePanel } from '../cmps/SidePanel'
 import { GroupListKanban } from '../cmps/Kanban/GroupListKanban'
 import { boardService } from '../services/board'
-import { updateBoard } from '../store/actions/board.actions'
+import { socketService, SOCKET_EVENT_ADD_PULSE, SOCKET_EVENT_UPDATE_PULSE, SOCKET_EVENT_REMOVE_PULSE, SOCKET_EVENT_ADD_GROUP, SOCKET_EVENT_UPDATE_GROUP, SOCKET_EVENT_REMOVE_GROUP, SOCKET_EVENT_ADD_BOARD, SOCKET_EVENT_REMOVE_BOARD, SOCKET_EVENT_UPDATE_BOARD } from '../services/socket.service'
 
 export function BoardDetails() {
   const { boardId } = useParams()
@@ -23,16 +24,65 @@ export function BoardDetails() {
   const [sidePanelOpen, setSidePanelOpen] = useState(false)
   const [selectedPulse, setSelectedPulse] = useState(null)
 
+  const dispatch = useDispatch()
+
   useEffect(() => {
     loadBoard(boardId, filterBy)
     setSelectedPulse(selectedPulse)
-
-    
 
     return () => {
       setSelectedPulse(null)
     }
   }, [boardId, displayType, selectedPulse, filterBy])
+
+  useEffect(() => {
+    loadBoard(boardId, filterBy)
+
+    // board sockets
+    socketService.on(SOCKET_EVENT_ADD_BOARD, board => {
+      dispatch(getCmdAddBoard(board))
+    })
+    socketService.on(SOCKET_EVENT_UPDATE_BOARD, board => {
+      dispatch(getCmdUpdateBoard(board))
+    })
+    socketService.on(SOCKET_EVENT_REMOVE_BOARD, boardId => {
+      dispatch(getCmdRemoveBoard(boardId))
+    })
+
+    // group sockets
+    socketService.on(SOCKET_EVENT_ADD_GROUP, data => {
+      dispatch(getCmdAddGroup(data.group, data.position))
+    })
+    socketService.on(SOCKET_EVENT_UPDATE_GROUP, data => {
+      dispatch(getCmdUpdateGroup(data.group))
+    })
+    socketService.on(SOCKET_EVENT_REMOVE_GROUP, groupId => {
+      dispatch(getCmdRemoveGroup(groupId))
+    })
+
+    // pulse sockets
+    socketService.on(SOCKET_EVENT_ADD_PULSE, data => {
+      dispatch(getCmdAddPulse(data.groupId, data.pulse))
+    })
+    socketService.on(SOCKET_EVENT_UPDATE_PULSE, data => {
+      dispatch(getCmdUpdatePulse(data.groupId, data.pulseToUpdate))
+      const updatedPulse = { groupId: data.groupId, pulse: data.pulseToUpdate }
+      setSelectedPulse(updatedPulse)
+    })
+    socketService.on(SOCKET_EVENT_REMOVE_PULSE, data => {
+      dispatch(getCmdRemovePulse(data.groupId, data.pulseId))
+    })
+
+    return () => {
+      setSelectedPulse(null)
+      socketService.off(SOCKET_EVENT_ADD_PULSE)
+      socketService.off(SOCKET_EVENT_UPDATE_PULSE)
+      socketService.off(SOCKET_EVENT_REMOVE_PULSE)
+      socketService.off(SOCKET_EVENT_ADD_GROUP)
+      socketService.off(SOCKET_EVENT_UPDATE_GROUP)
+      socketService.off(SOCKET_EVENT_REMOVE_GROUP)
+    }
+  }, [boardId, selectedPulse])
 
   async function onAddGroup(position = 'start') {
     try {

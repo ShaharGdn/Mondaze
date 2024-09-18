@@ -14,7 +14,6 @@ import { IoIosArrowUp } from "react-icons/io";
 import { loadBoards } from '../store/actions/board.actions'
 import { AddBtnSideBar } from "./buttons/AddBtnSideBar.jsx";
 import { FaStar } from "react-icons/fa6";
-import { SOCKET_EVENT_UPDATE_BOARDS, socketService } from "../services/socket.service";
 
 export function SideBar() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
@@ -25,14 +24,6 @@ export function SideBar() {
 
     useEffect(() => {
         loadBoards()
-
-        socketService.on(SOCKET_EVENT_UPDATE_BOARDS, boards => {
-            dispatch(getCmdSetBoards(boards))
-        })
-
-        return () => {
-            socketService.off(SOCKET_EVENT_UPDATE_BOARDS)
-        }
     }, [])
 
     return (
