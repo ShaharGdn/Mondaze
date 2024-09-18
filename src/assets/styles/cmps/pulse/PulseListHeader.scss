@@ -24,7 +24,13 @@
         @include border(right);
 
         &.title-container {
-            min-width: $pulse-title-full;
+            // min-width: $pulse-title-full;
+            min-width: $table-column-width;
+            width: $pulse-title-full;
+
+            // @include for-mobile-layout {
+            //     width: 165px;
+            // }
         }
 
         &.cmp-title-container {
@@ -40,6 +46,17 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+        }
+
+        @include for-mobile-layout {
+            &.title-container {
+                width: $pulse-title-full-mobile;
+            }
+
+            &.cmp-title-container {
+                min-width: $table-column-width-mobile;
+
+            }
         }
     }
 }

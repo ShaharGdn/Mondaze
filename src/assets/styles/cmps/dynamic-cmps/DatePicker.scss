@@ -15,7 +15,8 @@
         justify-content: center;
         position: relative;
         text-align: center;
-        width: 129px;
+        // width: 129px;
+        width: 100%;
         height: 25px;
         border-radius: $border-radius-li;
         cursor: text;
@@ -25,7 +26,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            left: 0.2rem;
+            // left: 0.2rem;
+            left: 0.5rem;
 
             .over-due {
                 color: $clr-exclamation-mark

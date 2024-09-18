@@ -1,3 +1,4 @@
+    
     .timeline-bar,
     .due-date-bar {
         background: rgb(196, 196, 196);
@@ -5,6 +6,11 @@
         text-align: center;
         border-radius: 5rem;
         color: white;
+
+        @include for-mobile-layout {
+            width: 88px;
+            font-size: rem(12px);
+        }
 
         span {
             color: white;

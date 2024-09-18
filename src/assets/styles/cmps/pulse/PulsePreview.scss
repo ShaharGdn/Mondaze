@@ -67,6 +67,10 @@
 
         &.pulse-dynamic-container {
             min-width: $table-column-width;
+
+            @include for-mobile-layout {
+                min-width: $table-column-width-mobile;
+            }
         }
     }
 

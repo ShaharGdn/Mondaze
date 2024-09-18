@@ -1,13 +1,13 @@
-export function StatsBar({ board, group, type }) {
+export function StatsBar({ board, group, labelType }) {
 
     function getLabelColor(labelId) {
-        const label = board[type].find(label => label.id === labelId)
+        const label = board[labelType].find(label => label.id === labelId)
         return label.color
     }
 
     function getColorMap() {
         return group.pulses.reduce((acc, pulse) => {
-            const color = getLabelColor(pulse[type])
+            const color = getLabelColor(pulse[labelType])
             acc[color] ? acc[color]++ : acc[color] = 1
             return acc
         }, {})
@@ -15,9 +15,7 @@ export function StatsBar({ board, group, type }) {
 
     function getColorData() {
         const colorMap = getColorMap()
-        const total = Object.values(colorMap).reduce((acc, count) => {
-            return acc + count
-        }, 0)
+        const total = group.pulses.length
         const colorData = Object.entries(colorMap).map(([labelColor, labelCount]) => {
             return {
                 color: labelColor,
@@ -29,7 +27,7 @@ export function StatsBar({ board, group, type }) {
     }
 
     return (
-        <section className="stats-container">
+        <section className="stats-bar">
             <div className="empty-stats"></div>
             {getColorData().map((data, idx) => {
                 return <div

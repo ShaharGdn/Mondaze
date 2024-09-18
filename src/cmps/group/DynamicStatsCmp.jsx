@@ -6,9 +6,9 @@ import { TimeLineBar } from "./TimeLineBar"
 export function DynamicStatsCmp({ cmp, board, group }) {
     switch (cmp) {
         case 'StatusPicker':
-            return <StatsBar board={board} group={group} type={'status'} />
+            return <StatsBar board={board} group={group} labelType={'status'} />
         case 'PriorityPicker':
-            return <StatsBar board={board} group={group} type={'priority'} />
+            return <StatsBar board={board} group={group} labelType={'priority'} />
         case 'DatePicker':
             return <DueDateBar board={board} group={group} />
         case 'NumberInput':

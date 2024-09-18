@@ -4,9 +4,13 @@
         display: flex;
         // align-items: center;
         @include border(right);
-        width: 346px;
         height: 100%;
         padding-inline-end: 8px;
+        width: 346px;
+
+        @include for-mobile-layout {
+            width: $table-column-width-mobile;
+        }
 
         .input-container {
             display: flex;
@@ -26,7 +30,6 @@
                 padding: 0 2px;
                 border: 1px solid transparent;
                 border-radius: 4px;
-
             }
 
             .pulse-title {
@@ -72,7 +75,7 @@
             display: flex;
             min-width: 24px;
             height: 24px;
-            
+
             .update-count {
                 background-color: $clr-btn-blue;
                 color: white;
