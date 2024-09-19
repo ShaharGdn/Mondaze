@@ -9,7 +9,7 @@
     "dev:remote:mac": "npm run dev",
     "dev:local": "set VITE_LOCAL=true&&vite",
     "dev:local:mac": "export VITE_LOCAL=true && vite",
-    "build": "vite build",
+    "build": "vite build --base=/",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
