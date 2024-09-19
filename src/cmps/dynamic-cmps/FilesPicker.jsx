@@ -5,46 +5,46 @@ import { CiFileOn } from "react-icons/ci";
 import { FaFileAlt } from "react-icons/fa"; // Import a file icon for non-image files
 
 export function FilesPicker({ onUpdatePulse, pulse }) {
-    const board = useSelector(storeState => storeState.selectedBoardModule.board);
-    const MAX_FILE_SIZE_MB = 1;
+    const board = useSelector(storeState => storeState.selectedBoardModule.board)
+    const MAX_FILE_SIZE_MB = 1
 
     function onClearFile(event) {
-        event.preventDefault();
-        event.stopPropagation();
+        event.preventDefault()
+        event.stopPropagation()
         const pulseToUpdate = {
             ...pulse, file: ''
         };
-        onUpdatePulse(pulseToUpdate);
+        onUpdatePulse(pulseToUpdate)
     }
 
     function handleFileUpload() {
-        const input = document.createElement('input');
-        input.setAttribute('type', 'file');
-        input.setAttribute('accept', '*/*'); // Allows all file types
-        input.click();
+        const input = document.createElement('input')
+        input.setAttribute('type', 'file')
+        input.setAttribute('accept', '*/*') // Allows all file types
+        input.click()
 
         input.onchange = () => {
-            const file = input.files[0];
+            const file = input.files[0]
             if (file) {
-                const fileSizeMB = file.size / (1024 * 1024);
+                const fileSizeMB = file.size / (1024 * 1024)
                 if (fileSizeMB > MAX_FILE_SIZE_MB) {
-                    alert(`File size exceeds ${MAX_FILE_SIZE_MB} MB limit.`);
-                    return;
+                    alert(`File size exceeds ${MAX_FILE_SIZE_MB} MB limit.`)
+                    return
                 }
 
                 if (file.type.startsWith('image/')) {
                     // Handle image file
-                    const reader = new FileReader();
+                    const reader = new FileReader()
                     reader.onload = () => {
-                        onUpdatePulse({ ...pulse, file: reader.result }); // Store the image as a data URL
-                    };
-                    reader.readAsDataURL(file);
+                        onUpdatePulse({ ...pulse, file: reader.result }) // Store the image as a data URL
+                    }
+                    reader.readAsDataURL(file)
                 } else {
                     // Handle other file types
-                    onUpdatePulse({ ...pulse, file: file.name }); // Store the file name
+                    onUpdatePulse({ ...pulse, file: file.name }) // Store the file name
                 }
             }
-        };
+        }
     }
 
     return (
@@ -69,5 +69,5 @@ export function FilesPicker({ onUpdatePulse, pulse }) {
                 </span>
             </form>
         </div>
-    );
+    )
 }

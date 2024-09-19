@@ -7,11 +7,11 @@ import { BsFillPlusCircleFill } from "react-icons/bs";
 export function EmailInput({ onUpdatePulse, pulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
     const [inputRef, setIsBlurred, propToEdit, setPropToEdit,
-        handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(pulse.phone || '', handleUpdate)
+        handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(pulse.email || '', handleUpdate)
 
 
-    function handleUpdate(updatedPhone) {
-        const pulseToUpdate = { ...pulse, email: updatedPhone }
+    function handleUpdate(updatedEmail) {
+        const pulseToUpdate = { ...pulse, email: updatedEmail }
         onUpdatePulse(pulseToUpdate)
     }
 
@@ -22,7 +22,7 @@ export function EmailInput({ onUpdatePulse, pulse }) {
             ...pulse, email: ''
         }
         onUpdatePulse(pulseToUpdate)
-        setPropToEdit(pulseToUpdate.phone)
+        setPropToEdit(pulseToUpdate.email)
     }
 
 
