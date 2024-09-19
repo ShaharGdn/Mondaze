@@ -4,6 +4,10 @@
     justify-content: center;
     align-items: center;
 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
     span {
         margin: 0;
         padding: 0;

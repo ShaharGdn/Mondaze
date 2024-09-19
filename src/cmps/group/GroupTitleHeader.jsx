@@ -27,23 +27,9 @@ export function GroupTitleHeader({ board, group, getTitles, setIsGroupOpen, isGr
         onUpdateGroup(updatedGroup)
     }
 
-    // async function onUpdateGroup() {
-    //     const newTitle = prompt('Title?')
-    //     const titleColor = prompt('Title Color?')
-
-    //     try {
-    //         const updatedGroup = { ...group, title: newTitle, style: { ...group.style, color: titleColor } }
-    //         await updateGroup(board._id, updatedGroup)
-    //         showSuccessMsg(`Group updated (id: ${updatedGroup.id})`)
-    //     } catch (err) {
-    //         showErrorMsg('Cannot update group')
-    //     }
-    // }
-
     function onRename() {
         setIsEditable(true)
     }
-
 
     const children = (
         <GroupActionsList

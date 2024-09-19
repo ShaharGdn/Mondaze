@@ -5,6 +5,10 @@
     font-size: rem(16px);
     max-width: rem(750px);
     padding: rem(16px);
+    
+    @include for-mobile-layout() {
+        max-width: 100vw;
+    }
 
     .update {
         border-radius: rem(8px);

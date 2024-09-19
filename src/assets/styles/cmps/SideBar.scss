@@ -110,7 +110,8 @@
 
             .search-container input {
                 margin: 0;
-                padding: 0.5em 0.4em 0.5em rem(40px);
+                // padding: 0.5em 0.4em 0.5em rem(40px);
+                padding: 0.5em 0em 0.5em rem(35px);
                 margin-inline-end: 0.5rem;
                 min-height: rem(32px);
                 border: 1px solid $clr-border-color;
@@ -250,7 +251,11 @@
         height: calc(100% - 4rem);
         border-top-left-radius: 0.5rem;
         width: rem(40px);
-
+        
         z-index: 8;
+        
+        @include for-mobile-layout {
+            top: rem(64px);
+        }
     }
 }

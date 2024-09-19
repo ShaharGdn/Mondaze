@@ -5,6 +5,10 @@
 
         .group {
             margin-block-end: 28px;
+
+            @include for-mobile-layout {
+                margin-block-end: 15px;
+            }
         }
     }
 }

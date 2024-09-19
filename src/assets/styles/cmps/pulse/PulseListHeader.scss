@@ -24,19 +24,12 @@
         @include border(right);
 
         &.title-container {
-            // min-width: $pulse-title-full;
             min-width: $table-column-width;
             width: $pulse-title-full;
-
-            // @include for-mobile-layout {
-            //     width: 165px;
-            // }
         }
 
         &.cmp-title-container {
             min-width: $table-column-width;
-            // min-width: 139px;
-            // padding-inline: 10px 20px;
         }
 
         .pulse-list-title {
@@ -48,7 +41,12 @@
             white-space: nowrap;
         }
 
-        @include for-mobile-layout {
+    }
+
+    @include for-mobile-layout {
+        top: 186px;
+
+        li {
             &.title-container {
                 width: $pulse-title-full-mobile;
             }

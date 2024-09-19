@@ -42,13 +42,12 @@ $clr-sidebar-icon-active: #323338;
 $clr-workspace-name-icon-bg: #579bfc;
 $clr-workspace-text-blue: #0073ea;
 
-
 // Borders
 $border-radius-li: 0.3rem;
 
-
 // Breakpoints - needs modifying
-$mobile-breakpoint: 460px;
+// $mobile-breakpoint: 460px;
+$mobile-breakpoint: 580px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
 
@@ -61,4 +60,6 @@ $table-column-width-mobile: 99px;
 // table column widths
 $pulse-title-full: 412px;
 $pulse-title-full-mobile: 165px;
+$pulse-title-collapsed: 446px;
+$pulse-title-collapsed-mobile: 199px;
 

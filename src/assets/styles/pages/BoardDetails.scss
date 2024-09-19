@@ -50,8 +50,21 @@
                 display: inline-flex;
                 flex-direction: column;
                 margin-block-start: 0;
+
+            }
+
+            @include for-mobile-layout() {
+                .top-sticky-wrapper {
+                    padding-block: 8px;
+                }
+
+                &::after {
+                    bottom: 56px;
+
+                }
             }
         }
+
 
         .add-group-btn {
             position: sticky;

@@ -34,6 +34,10 @@
         &.title-container {
             width: $pulse-title-full;
 
+            @include for-mobile-layout {
+                width: $pulse-title-full-mobile;
+            }
+
             form {
                 flex-basis: $pulse-title-full;
                 margin: 6px 10px;
@@ -89,7 +93,8 @@
             opacity: 1;
         }
 
-        .pulse-select, .pulse-select input {
+        .pulse-select,
+        .pulse-select input {
             cursor: auto;
         }
     }

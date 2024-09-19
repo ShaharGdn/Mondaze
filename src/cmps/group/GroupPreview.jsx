@@ -28,11 +28,9 @@ export function GroupPreview({ group, shouldCloseAllGroups, setSidePanelOpen, se
             case 'DateRangePicker': return 'Timeline'
             case 'TextInput': return collapsed ? null : 'Comments'
             case 'NumberInput': return 'Numbers'
-            case 'PhoneInput': return 'Phone'
-            case 'FilesPicker': return 'File'
-            case 'EmailInput': return 'Email'
-            case 'FilesPicker': return 'Files'
-            // add more as needed
+            case 'PhoneInput': return collapsed ? null : 'Phone'
+            case 'EmailInput': return collapsed ? null : 'Email'
+            case 'FilesPicker': return collapsed ? null : 'Files'
             default: return ''
         }
     }
@@ -52,7 +50,7 @@ export function GroupPreview({ group, shouldCloseAllGroups, setSidePanelOpen, se
                     {isGroupOpen &&
                         <>
                             <PulseListHeader board={board} group={group} getTitles={getTitles} />
-                            <PulseList group={group} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse}/>
+                            <PulseList group={group} setSidePanelOpen={setSidePanelOpen} setSelectedPulse={setSelectedPulse} />
                             <AddPulse board={board} group={group} />
                             <GroupStatsRow board={board} group={group} />
                         </>

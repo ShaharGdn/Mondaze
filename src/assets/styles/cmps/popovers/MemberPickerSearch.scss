@@ -15,6 +15,10 @@
     color: $clr-text;
     font-weight: 400;
 
+    @include for-mobile-layout {
+        width: 240px;
+    }
+
     img {
         width: 28px;
         height: 28px;

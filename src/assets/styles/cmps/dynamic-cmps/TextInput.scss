@@ -1,6 +1,10 @@
 .pulse-text-container {
     width: 138px;
 
+    @include for-mobile-layout {
+        width: 90px;
+    }
+
     .input-container {
         display: flex;
         align-items: center;
