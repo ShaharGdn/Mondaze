@@ -59,7 +59,7 @@ export function MemberPickerSearch({ pulse, onUpdatePulse, setOpen }) {
             </ul>
             <section className="members-search-container">
                 <div className="members-search">
-                    <span className="magnifying-glass-icon">{ICON_SEARCH}</span>
+                    <span className="magnifying-glass-icon"><ICON_SEARCH /></span>
                     <input
                         onChange={handleChange}
                         type="search"

@@ -41,9 +41,10 @@
         .update-content {
             padding: 0.5rem;
             margin-block-start: rem(8px);
-
+            
             img {
-                max-width: rem(458px);
+                max-width: 70%;
+                margin-inline: auto;
             }
         }
     }
