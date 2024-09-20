@@ -41,11 +41,6 @@
         .favorites-container {
             margin: 0;
 
-            .icon {
-                // position: absolute;
-                // left: 215px;
-            }
-
             .no-boards-message {
                 margin: 0;
                 padding: 0;
@@ -110,7 +105,6 @@
 
             .search-container input {
                 margin: 0;
-                // padding: 0.5em 0.4em 0.5em rem(40px);
                 padding: 0.5em 0em 0.5em rem(35px);
                 margin-inline-end: 0.5rem;
                 min-height: rem(32px);
@@ -136,7 +130,6 @@
 
             .search-container input:focus {
                 background-color: white;
-                border-width: 0.1px;
                 border-color: blue;
                 outline: none;
                 box-shadow: 0 0 0 0.05px rgb(21, 0, 255);

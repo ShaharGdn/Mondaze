@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { useInputHandler } from "../../customHooks/useInputHandler";
 import { ICON_CLOSE_SQUARE } from "../icons/svg-icons";
 import { BsFillPlusCircleFill } from "react-icons/bs";
@@ -6,10 +5,8 @@ import { SlScreenSmartphone } from "react-icons/sl";
 
 
 export function PhoneInput({ onUpdatePulse, pulse }) {
-    const board = useSelector(storeState => storeState.selectedBoardModule.board)
     const [inputRef, setIsBlurred, propToEdit, setPropToEdit,
         handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(pulse.phone || '', handleUpdate)
-
 
     function handleUpdate(updatedPhone) {
         const pulseToUpdate = { ...pulse, phone: updatedPhone }
@@ -25,7 +22,6 @@ export function PhoneInput({ onUpdatePulse, pulse }) {
         onUpdatePulse(pulseToUpdate)
         setPropToEdit(pulseToUpdate.phone)
     }
-
 
     return (
         <div className="pulse-text-container">
