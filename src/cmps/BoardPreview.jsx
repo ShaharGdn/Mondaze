@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
-import BoardIcon from './icons/BoardIcon';
 import { useState } from 'react';
 import { updateBoard } from '../store/actions/board.actions';
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { BoardIcon } from './icons/svg-icons';
 
 
 export function BoardPreview({ board, type }) {
