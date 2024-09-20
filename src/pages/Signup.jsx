@@ -29,9 +29,9 @@ export function Signup() {
         navigate('/board')
     }
 
-    // function onUploaded(imgUrl) {
-    //     setCredentials({ ...credentials, imgUrl })
-    // }
+    function onUploaded(imgUrl) {
+        setCredentials({ ...credentials, imgUrl })
+    }
 
     return (
         <section className='login-container'>
@@ -66,7 +66,7 @@ export function Signup() {
                     onChange={handleChange}
                     required
                 />
-                {/* <ImgUploader onUploaded={onUploaded} /> */}
+                <ImgUploader onUploaded={onUploaded} />
                 <button>Signup</button>
             </form>
         </section>

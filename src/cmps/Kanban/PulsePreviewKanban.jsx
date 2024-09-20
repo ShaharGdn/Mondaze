@@ -25,7 +25,7 @@ export function PulsePreviewKanban({ pulse, group }) {
 
 
     function getMemberById(memberId) {
-        return board.members.find(member => member._id === memberId) // service func?
+        return board.members.find(member => member._id === memberId)
     }
 
     const assignees = (
@@ -61,15 +61,14 @@ export function PulsePreviewKanban({ pulse, group }) {
             <div className="pulse-card">
                 <span className="pulse-title" >{pulse.title}</span>
                 <div className="status-date">
-                    <span className={"pulse-status " + group.title}>
+                    {group.title.length > 0 && <span className={"pulse-status " + group.title}>
                         <div className={"side-color " + group.title}>
                         </div>
                         {group.title}
-                    </span>
-                    {/* <span>{pulse.priority}</span> */}
-                    <span className="pulse-due-date">{formatDate()}</span>
+                    </span>}
+                    {pulse.dueDate && <span className="pulse-due-date">{formatDate()}</span>}
                 </div>
-                    <span className="assignees">{assignees}</span>
+                <span className="assignees">{assignees}</span>
             </div>
         </div>
     )

@@ -21,6 +21,19 @@ export function SideBar() {
     const [isOpen, toggleIsOpen] = useState(true)
     const navigate = useNavigate()
 
+    useEffect(() => {
+        const handleResize = () => {
+          const width = window.innerWidth
+          if (width < 581) {
+            toggleIsOpen(false)
+          }
+        }
+        window.addEventListener('resize', handleResize)
+        return () => {
+          window.removeEventListener('resize', handleResize)
+        }
+      }, [])
+
 
     useEffect(() => {
         loadBoards()

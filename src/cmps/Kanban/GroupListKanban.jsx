@@ -27,7 +27,7 @@ export function GroupListKanban({ groups, board, groupBy }) {
             const pulsesForCategory = allPulses.filter(pulse => pulse[type] === category.id)
 
             // Only include the category if there are pulses associated with it
-            if (pulsesForCategory.length > 0) {
+            // if (pulsesForCategory.length > 0) {
                 return {
                     title: category.title,
                     id: category.id,
@@ -35,7 +35,7 @@ export function GroupListKanban({ groups, board, groupBy }) {
                     pulses: pulsesForCategory,
                     style: { color: category.color },
                 }
-            }
+            // }
 
             return null
         }).filter(group => group !== null)

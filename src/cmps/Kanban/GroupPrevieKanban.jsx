@@ -10,7 +10,7 @@ export function GroupPreviewKanban({ group }) {
                 <section className="group-preview-kanban"
                     {...provided.droppableProps}
                     ref={provided.innerRef}>
-                    <span className="group-title Figtree-regular" style={{ background: bgc }}>{group.title}  / {group.pulses.length}</span>
+                    <span className="group-title Figtree-regular" style={{ background: bgc }}>{group.title || 'No Priority'} / {group.pulses.length}</span>
                     <PulseListKanban group={group} />
                     {provided.placeholder}
                 </section >

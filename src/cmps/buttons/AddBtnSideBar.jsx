@@ -1,10 +1,11 @@
 import { useState } from "react"
+import { AddBoardModal } from "../popovers/AddBoardModal"
+import { PopoverNoArrow } from "../popovers/PopoverNoArrow"
+
 import BoardIcon from "../icons/BoardIcon"
 import DashBoardIcon from "../icons/DashBoardIcon"
 import FolderIcon from "../icons/FolderIcon"
 import { MdKeyboardArrowRight } from "react-icons/md"
-import { AddBoardModal } from "../popovers/AddBoardModal"
-import { PopoverNoArrow } from "../popovers/PopoverNoArrow"
 
 export function AddBtnSideBar() {
     const [open, setOpen] = useState(null)

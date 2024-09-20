@@ -81,6 +81,9 @@ export function BoardDetails() {
       socketService.off(SOCKET_EVENT_ADD_GROUP)
       socketService.off(SOCKET_EVENT_UPDATE_GROUP)
       socketService.off(SOCKET_EVENT_REMOVE_GROUP)
+      socketService.off(SOCKET_EVENT_ADD_BOARD)
+      socketService.off(SOCKET_EVENT_UPDATE_BOARD)
+      socketService.off(SOCKET_EVENT_REMOVE_BOARD)
     }
   }, [boardId, selectedPulse])
 
