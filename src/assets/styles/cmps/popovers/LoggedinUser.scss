@@ -1,0 +1,18 @@
+.Popover:has(.popover-logout) {
+    padding: 10px;
+}
+
+.popover-logout {
+    padding: 0.4rem 1rem;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #F1F1F2;
+        border-radius: 0.3rem;
+    }
+
+}

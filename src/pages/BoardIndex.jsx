@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
+import { loadUser } from '../store/actions/user.actions'
 import { loadBoards } from '../store/actions/board.actions'
 import { BoardList } from '../cmps/BoardList'
 
@@ -11,6 +12,7 @@ export function BoardIndex() {
     // const navigate = useNavigate()
 
     useEffect(() => {
+        loadUser()
         loadBoards()
     }, [])
 
@@ -19,7 +21,7 @@ export function BoardIndex() {
             <section className="board-index main">
                 <header className='header-greeting'>
                     <div className="text-greeting">
-                        <h5 className='Figtree-regular'>{`Good evening, ${loggedInUser.fullname}!`}</h5>
+                        <h5 className='Figtree-regular'>{`Good evening, ${loggedInUser?.fullname}!`}</h5>
                         <h6 className='Figtree-semi-bold'>Quickly access your recent boards, Inbox and workspaces</h6>
                     </div>
                     <img src="../src/assets/img/header_background.svg" alt="header-bg-party" />

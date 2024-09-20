@@ -1,28 +1,87 @@
 .app-header {
     display: flex;
-    align-items: center;
     background-color: $clr-bg;
     color: $clr-text;
     font-size: rem(16px);
     height: rem(48px);
-
-    .proj-name {
-        margin-inline-start: rem(8px);
-    }
-
-    .wm-title {
-        margin-inline-start: rem(4px);
-    }
-
-    img {
-        fill: currentcolor;
-        width: rem(27px);
-        height: rem(27px);
-        margin-inline-start: rem(16px);
-    }
+    font-family: 'poppins', 'Helvetica', 'Arial', sans-serif;
 
     nav {
+        width: 100%;
         display: flex;
-        cursor: pointer;
+        align-items: center;
+        justify-content: space-between;
+        padding-inline-end: rem(24px);
+
+        .logo-container {
+            display: flex;
+            cursor: pointer;
+
+            span {
+                padding-top: 2px;
+            }
+
+            .proj-name {
+                margin-inline-start: rem(8px);
+                font-weight: 700;
+            }
+
+            .wm-title {
+                margin-inline-start: rem(4px);
+                font-weight: 300;
+            }
+
+            .wm-logo {
+                fill: currentcolor;
+                width: rem(27px);
+                height: rem(27px);
+                margin-inline-start: rem(16px);
+            }
+        }
+
+        .loggedin-user {
+            display: flex;
+            align-items: center;
+            padding-top: 2px;
+            font-size: rem(14px);
+
+            font-weight: 300;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid #f7f7f7;
+            border-radius: 4px 20px 20px 4px;
+            padding-inline-start: rem(6px);
+            height: 32px;
+            cursor: pointer;
+
+            img {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                margin-inline-start: rem(6px);
+            }
+
+            &:hover {
+                background: rgba(103, 104, 121, 0.1);
+            }
+
+        }
+
+        @include for-mobile-layout {
+            padding-inline-end: rem(4px);
+
+            .wm-title {
+                display: none;
+            }
+
+            .loggedin-user {
+                height: 30px;
+
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+
+        }
     }
 }
