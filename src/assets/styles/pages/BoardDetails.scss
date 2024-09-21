@@ -3,6 +3,9 @@
     min-width: max-content;
     width: 100%;
 
+    display: flex;
+    flex-direction: column;
+
     .main-display {
         position: relative;
         // height: 100%;

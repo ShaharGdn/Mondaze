@@ -1,7 +1,7 @@
 import { boardService } from '../../services/board'
 import { store } from '../store'
-import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UPDATE_GROUP, ADD_PULSE, REMOVE_PULSE, UPDATE_PULSE } from '../reducers/selected-board.reducer'
 import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
+import { ADD_GROUP, REMOVE_GROUP, SET_BOARD, UPDATE_GROUP, ADD_PULSE, REMOVE_PULSE, UPDATE_PULSE } from '../reducers/selected-board.reducer'
 import { SOCKET_EVENT_ADD_GROUP, SOCKET_EVENT_ADD_PULSE, SOCKET_EVENT_REMOVE_GROUP, SOCKET_EVENT_REMOVE_PULSE, SOCKET_EVENT_UPDATE_GROUP, SOCKET_EVENT_UPDATE_PULSE, socketService } from '../../services/socket.service'
 
 // Board

@@ -1,16 +1,20 @@
 import { boardService } from '../../services/board'
 import { store } from '../store'
-import { ADD_BOARD, REMOVE_BOARD, SET_BOARDS, UPDATE_BOARD} from '../reducers/board.reducer'
+import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
+import { ADD_BOARD, REMOVE_BOARD, SET_BOARDS, UPDATE_BOARD } from '../reducers/board.reducer'
 import { loadBoard } from './selected-board.actions'
 import { SOCKET_EVENT_ADD_BOARD, SOCKET_EVENT_REMOVE_BOARD, SOCKET_EVENT_UPDATE_BOARD } from '../../services/socket.service'
 
 export async function loadBoards(filterBy) {
     try {
+        store.dispatch({ type: LOADING_START })
         const boards = await boardService.query(filterBy)
         store.dispatch(getCmdSetBoards(boards))
     } catch (err) {
         console.log('Cannot load boards', err)
         throw err
+    } finally {
+        store.dispatch({ type: LOADING_DONE })
     }
 }
 

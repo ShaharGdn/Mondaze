@@ -1,0 +1,8 @@
+.loader-container {
+    align-self: center;
+    margin-block-start: 300px;
+
+    @include for-mobile-layout() {
+        margin-block-start: 100px;
+    }
+}

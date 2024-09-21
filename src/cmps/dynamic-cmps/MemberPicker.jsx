@@ -10,7 +10,7 @@ export function MemberPicker({ pulse, onUpdatePulse }) {
     const [open, setOpen] = useState(false)
 
     function getMemberById(memberId) {
-        return board.members.find(member => member._id === memberId) // service func?
+        return board.members.find(member => member._id === memberId)
     }
 
     const trigger = (

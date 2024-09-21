@@ -6,11 +6,13 @@ import { loadBoards } from '../store/actions/board.actions'
 import { BoardList } from '../cmps/BoardList'
 
 import header_background from '../assets/img/header_background.svg'
+import { Loader } from '../cmps/Loader'
 
 
 export function BoardIndex() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const isLoading = useSelector(storeState => storeState.systemModule.isLoading)
 
     // const navigate = useNavigate()
 
@@ -31,8 +33,8 @@ export function BoardIndex() {
                 </header>
 
                 <main className="board-list-container main">
-                    <BoardList
-                        boards={boards} />
+                    {isLoading && <Loader />}
+                    {!isLoading && <BoardList boards={boards} />}
                 </main>
             </section >
         </main>
