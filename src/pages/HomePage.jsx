@@ -3,8 +3,18 @@ import { IoMdArrowForward } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { logout } from "../store/actions/user.actions";
-import logo from ".././assets/img/mondaze-logo.png"
 
+import logo from ".././assets/img/mondaze-logo.png"
+import static_carousel from ".././assets/img/static-carousel.avif"
+import bd from ".././assets/img/customers/bd.png"
+import canva from ".././assets/img/customers/canva.png"
+import carrefour from ".././assets/img/customers/carrefour.png"
+import coca_cola from ".././assets/img/customers/coca_cola.png"
+import glossier from ".././assets/img/customers/glossier.png"
+import HoltCat from ".././assets/img/customers/HoltCat.avif"
+import lionsgate from ".././assets/img/customers/lionsgate.avif"
+import oxy from ".././assets/img/customers/oxy.png"
+import universal from ".././assets/img/customers/universal.png"
 
 export function HomePage() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
@@ -49,7 +59,7 @@ export function HomePage() {
 
                         </div>
                         <div className="assets-container">
-                            <img src="../src/assets/img/static-carousel.avif" alt="" />
+                            <img src={static_carousel} alt="" />
                         </div>
                     </div>
                 </div>
@@ -58,31 +68,31 @@ export function HomePage() {
                     <h5 className="title poppins-regular">Trusted by 225,000+ customers, from startups to enterprises</h5>
                     <div className="clients-logos">
                         <div className="images-gallery">
-                            <img src="../src/assets/img/costumers/HoltCat.avif" alt="holt logo" />
+                            <img src={HoltCat} alt="holt logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="../src/assets/img/costumers/canva.png" alt="canva logo" />
+                            <img src={canva} alt="canva logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="../src/assets/img/costumers/coca_cola.png" alt="coca-cola logo" />
+                            <img src={coca_cola} alt="coca-cola logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="../src/assets/img/costumers/oxy.png" alt="oxy logo" />
+                            <img src={oxy} alt="oxy logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="../src/assets/img/costumers/lionsgate.avif" alt="lionsgate logo" />
+                            <img src={lionsgate} alt="lionsgate logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="../src/assets/img/costumers/carrefour.png" alt="carrefour logo" />
+                            <img src={carrefour} alt="carrefour logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="../src/assets/img/costumers/bd.png" alt="bd logo" />
+                            <img src={bd} alt="bd logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="../src/assets/img/costumers/glossier.png" alt="glossier logo" />
+                            <img src={glossier} alt="glossier logo" />
                         </div>
                         <div className="images-gallery">
-                            <img src="../src/assets/img/costumers/universal.png" alt="universal logo" />
+                            <img src={universal} alt="universal logo" />
                         </div>
                     </div>
                 </div>
@@ -132,11 +142,12 @@ export function HomePage() {
                         </button>
                     </div>
                     <div className="dev-pics">
-                        <img src="../src/assets/img/contact_sales.png" alt="developers pictures" />
+                        {/* <img src={teamImg} alt="developers pictures" /> */}
+                        <img src="https://i.postimg.cc/pLD0Tw3L/contact-sales.png" alt="developers pictures" />
                     </div>
                 </main>
                 <div className="logo-nav poppins-extralight">
-                    <img src="../src/assets/img/mondaze-logo.png" alt="logo" onClick={() => navigate('/board')} />
+                    <img src={logo} alt="logo" onClick={() => navigate('/board')} />
                     <span>© All Rights Reserved</span>
                 </div>
             </footer>

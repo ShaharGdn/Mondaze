@@ -20,8 +20,7 @@ export function AddBoardModal({ open, onClose }) {
                 ...board, title: boardToAdd.title
             }
             const addedBoard = await addBoard(board)
-            setBoardToAdd(addedBoard)
-            // setBoardToAdd(boardService.getEmptyBoard())
+            setBoardToAdd(boardService.getEmptyBoard())
             onClose()
             navigate(`/board/${addedBoard._id}`)
         } catch (err) {

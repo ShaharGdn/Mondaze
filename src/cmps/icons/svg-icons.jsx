@@ -359,7 +359,6 @@ export const ICON_LOGOUT = (
         width="16"
         height="16"
         role="img"
-        // tabindex="0"
         aria-hidden="false"
         aria-label="Log out"
         className="icon_d6a7187c13 icon-service-icon noFocusStyle_48049c26c1"
@@ -378,3 +377,41 @@ export const ICON_LOGOUT = (
     </svg>
 
 )
+export function BoardIcon(props) {
+    return (
+        <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" {...props}>
+            <path d="M7.5 4.5H16C16.2761 4.5 16.5 4.72386 16.5 5V15C16.5 15.2761 16.2761 15.5 16 15.5H7.5L7.5 4.5ZM6 4.5H4C3.72386 4.5 3.5 4.72386 3.5 5V15C3.5 15.2761 3.72386 15.5 4 15.5H6L6 4.5ZM2 5C2 3.89543 2.89543 3 4 3H16C17.1046 3 18 3.89543 18 5V15C18 16.1046 17.1046 17 16 17H4C2.89543 17 2 16.1046 2 15V5Z" fill="currentColor" fillRule="evenodd" />
+        </svg>
+    )
+}
+
+export function DashBoardIcon(props) {
+    return (
+        <svg width="19" height="19" fill="currentColor" aria-hidden="false" aria-label="Public Dashboard" data-testid="icon" tabIndex="0" viewBox="0 0 20 20" {...props}>
+            <path fillRule="evenodd" d="M4 3.5h12a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5H4a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5ZM2 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Zm3.5 10.25a.75.75 0 0 0 1.5 0v-3.5a.75.75 0 0 0-1.5 0v3.5Zm4.75.75a.75.75 0 0 1-.75-.75v-6.5a.75.75 0 0 1 1.5 0v6.5a.75.75 0 0 1-.75.75Zm3.25-.75a.75.75 0 0 0 1.5 0v-8.5a.75.75 0 0 0-1.5 0v8.5Z" clipRule="evenodd" />
+        </svg>
+    )
+}
+
+export function FolderIcon(props) {
+    return (
+        <svg
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            width="18"
+            height="18"
+            aria-hidden="true"
+            aria-label="Folder"
+            className="icon_a2927e1dcf icon_4bcbbf70cf noFocusStyle_a4081a0d1e"
+            data-testid="icon"
+            {...props}
+        >
+            <path
+                d="M3 2.25C2.58579 2.25 2.25 2.58579 2.25 3V16.8571C2.25 17.2714 2.58579 17.6071 3 17.6071H16.8571C17.2714 17.6071 17.6071 17.2714 17.6071 16.8571V3C17.6071 2.58579 17.2714 2.25 16.8571 2.25H3ZM3.75 16.1071V3.75H16.1071V16.1071H3.75ZM10.5303 12.5303C10.2374 12.8232 9.76256 12.8232 9.46967 12.5303L9.46797 12.5286L6.46967 9.53033C6.17678 9.23744 6.17678 8.76256 6.46967 8.46967C6.76256 8.17678 7.23744 8.17678 7.53033 8.46967L10 10.9393L12.4697 8.46967C12.7626 8.17678 13.2374 8.17678 13.5303 8.46967C13.8232 8.76256 13.8232 9.23744 13.5303 9.53033L11.1947 11.8659L11.1903 11.8704L10.5303 12.5303Z"
+                fill="currentColor"
+                fillRule="evenodd"
+                clipRule="evenodd"
+            ></path>
+        </svg>
+    )
+}

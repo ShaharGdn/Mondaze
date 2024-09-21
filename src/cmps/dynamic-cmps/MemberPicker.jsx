@@ -3,6 +3,8 @@ import { MemberPickerSearch } from "../popovers/MemberPickerSearch.jsx"
 import { useState } from "react"
 import { Popover } from "../popovers/Popover.jsx"
 
+import empty_assignee from '../../assets/img/empty_assignee.svg'
+
 export function MemberPicker({ pulse, onUpdatePulse }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
     const [open, setOpen] = useState(false)
@@ -33,7 +35,7 @@ export function MemberPicker({ pulse, onUpdatePulse }) {
                     })
                 )}
                 {pulse.memberIds?.length === 0 && (
-                    <img className="assignee-img" src='../src/assets/img/empty_assignee.svg' alt="" />
+                    <img className="assignee-img" src={empty_assignee} alt="" />
                 )}
             </div>
             <i className="add-assignee-btn">+</i>

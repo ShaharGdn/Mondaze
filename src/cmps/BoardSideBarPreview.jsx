@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom'
-import BoardIcon from './icons/BoardIcon';
 import { useState } from 'react';
 import { BoardActionsList } from './popovers/BoardActionsList';
 import { ThreeDots } from './buttons/ThreeDots';
+import { BoardIcon } from './icons/svg-icons';
 
 export function BoardSideBarPreview({ board, type }) {
     const [open, setOpen] = useState(false);

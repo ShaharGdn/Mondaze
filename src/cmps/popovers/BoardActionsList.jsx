@@ -4,7 +4,7 @@ import { addBoard, removeBoard, updateBoard } from '../../store/actions/board.ac
 import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 
 // Icons
-import { LuPen } from "react-icons/lu"
+import { LuArchive, LuPen } from "react-icons/lu"
 import { FaRegStar } from "react-icons/fa"
 import { HiOutlineDocumentDuplicate } from "react-icons/hi"
 import { AiOutlineDelete } from "react-icons/ai"
@@ -133,13 +133,13 @@ export function BoardActionsList({ board, open, setOpen }) {
 
             <div className="border"></div>
 
-            <li className="delete" onClick={onDeleteBoard}>
+            <li className="delete-board" onClick={onDeleteBoard}>
                 <AiOutlineDelete className="icon" />
                 <span>Delete</span>
             </li>
 
             <li className="archive" onClick={onArchiveBoard}>
-                <BsArchive className="icon" />
+                <LuArchive className="icon" />
                 <span>Archive</span>
             </li>
         </ul>

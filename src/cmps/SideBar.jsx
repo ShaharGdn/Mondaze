@@ -1,19 +1,22 @@
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
-import { useEffect, useState } from "react";
-import { BoardSideBarPreview } from "./BoardSideBarPreview";
+import { useNavigate } from "react-router"
+import { useEffect, useState } from "react"
+import { BoardSideBarPreview } from "./BoardSideBarPreview"
 
-import { GoHome } from "react-icons/go";
-import { GoStar } from "react-icons/go";
-import { HiMagnifyingGlass } from "react-icons/hi2";
-import { SlArrowLeft } from "react-icons/sl";
-import { SlArrowRight } from "react-icons/sl";
-import { IoIosArrowDown } from "react-icons/io";
-import { IoIosArrowUp } from "react-icons/io";
+import { GoHome } from "react-icons/go"
+import { GoStar } from "react-icons/go"
+import { HiMagnifyingGlass } from "react-icons/hi2"
+import { SlArrowLeft } from "react-icons/sl"
+import { SlArrowRight } from "react-icons/sl"
+import { IoIosArrowDown } from "react-icons/io"
+import { IoIosArrowUp } from "react-icons/io"
 
-import { loadBoards } from '../store/actions/board.actions'
-import { AddBtnSideBar } from "./buttons/AddBtnSideBar.jsx";
-import { FaStar } from "react-icons/fa6";
+import { loadBoards } from "../store/actions/board.actions"
+import { AddBtnSideBar } from "./buttons/AddBtnSideBar.jsx"
+import { FaStar } from "react-icons/fa6"
+
+import favorites_empty from ".././assets/img/favorites-no-bg.gif"
+
 
 export function SideBar() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
@@ -23,16 +26,16 @@ export function SideBar() {
 
     useEffect(() => {
         const handleResize = () => {
-          const width = window.innerWidth
-          if (width < 581) {
-            toggleIsOpen(false)
-          }
+            const width = window.innerWidth
+            if (width < 581) {
+                toggleIsOpen(false)
+            }
         }
         window.addEventListener('resize', handleResize)
         return () => {
-          window.removeEventListener('resize', handleResize)
+            window.removeEventListener('resize', handleResize)
         }
-      }, [])
+    }, [])
 
 
     useEffect(() => {
@@ -75,7 +78,7 @@ export function SideBar() {
                                 ))
                             ) : (
                                 <div className="no-boards-message">
-                                    <img src="/src/assets/img/favorites-no-bg.gif" alt="star" />
+                                    <img src={favorites_empty} alt="star" />
                                     <p className="title-empty">No favorite boards yet</p>
                                     <span className="title-empty">"Star" any board so that you can easily access it later</span>
                                 </div>
