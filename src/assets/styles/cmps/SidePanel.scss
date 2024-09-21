@@ -22,6 +22,7 @@
 
         .header {
             width: 50%;
+
             .header-content {
                 display: flex;
                 flex-direction: column;
@@ -156,6 +157,40 @@
             flex-direction: column;
             flex-wrap: nowrap;
             height: 100%;
+
+            .empty-updates {
+                padding: 20px;
+                margin-top: rem(80px);
+                list-style: none;
+                clear: both;
+
+                .img-wrapper {
+                    display: flex;
+                    -ms-flex-pack: center;
+                    justify-content: center;
+                    padding-bottom: 24px;
+
+                    img {
+                        max-width: 290px;
+                    }
+                }
+
+                .unread-message {
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: var(--secondary-text-color);
+                    padding: 15px;
+                    text-align: center;
+
+                    h1 {
+                        font-weight: 500;
+                    }
+
+                    p {
+                        font-size: 16px;
+                    }
+                }
+            }
         }
     }
 }

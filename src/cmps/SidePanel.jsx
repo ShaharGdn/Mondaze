@@ -10,6 +10,10 @@ import { useSelector } from "react-redux"
 import { UpdatesList } from "./UpdatesList"
 import { makeId } from "../services/util.service"
 
+
+import empty_updates from '../assets/img/empty_updates.png'
+
+
 export function SidePanel({ sidePanelOpen, setSidePanelOpen, selectedPulse, onUpdatePulse }) {
     const { pulse, groupId } = selectedPulse
     const [displayType, setDisplayType] = useState('updates')
@@ -76,7 +80,7 @@ export function SidePanel({ sidePanelOpen, setSidePanelOpen, selectedPulse, onUp
                                         </span>
                                     </li>
                                     <li className={displayType === "activities" ? "activities active" : "activities"} onClick={() => setDisplayType("activities")}>
-                                        <span className="title"> Activity Log</span>
+                                        {/* <span className="title"> Activity Log</span> */}
                                     </li>
                                 </ul>
                             </nav>
@@ -85,7 +89,19 @@ export function SidePanel({ sidePanelOpen, setSidePanelOpen, selectedPulse, onUp
                     <div className="pulse-container">
                         <div className="pulse-content">
                             <QuillEditor loggedInUser={loggedInUser} pulse={pulse} onAddUpdate={onAddUpdate} />
-                            <UpdatesList pulse={pulse} onDeleteUpdate={onDeleteUpdate} />
+                            {pulse.updates?.length ?
+                                <UpdatesList pulse={pulse} onDeleteUpdate={onDeleteUpdate} />
+                                :
+                                <div className="empty-updates popping-regular">
+                                    <div className="img-wrapper">
+                                        <img src={empty_updates} alt="empty_updates" />
+                                    </div>
+                                    <div className="unread-message poppins-regular">
+                                        <h1>No updates yet for this item</h1>
+                                        <p>Be the first one to update about progress, mention someone
+                                            or upload files to share with your team members</p>
+                                    </div>
+                                </div>}
                         </div>
                     </div>
                 </div>}
