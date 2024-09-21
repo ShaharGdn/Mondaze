@@ -68,5 +68,18 @@
         background-color: $clr-table-bg;
         margin-inline-start: var(--margin-inline-start-main);
         border-top-left-radius: 0.5rem;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+            height: 15px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #c0bfcc;
+        }
+
+        &::-webkit-scrollbar-track {
+            border-radius: 10px;
+        }
     }
 }
