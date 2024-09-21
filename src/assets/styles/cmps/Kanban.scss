@@ -23,6 +23,8 @@
                 flex-direction: column;
                 gap: 0.3rem;
                 min-height: 980px;
+                max-height: 980px;
+                overflow: hidden;
 
                 .group-title {
                     color: white;
@@ -32,7 +34,8 @@
                     justify-content: flex-start;
                     align-items: center;
                     padding: 0 rem(8px);
-                    height: rem(40px);
+                    min-height: rem(40px);
+                    max-height: rem(40px);
                     opacity: 0.8;
                     font-size: rem(16px);
                     font-weight: 500;

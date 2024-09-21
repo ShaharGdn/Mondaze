@@ -1,6 +1,6 @@
-export function NumberSumBar({ board, group }) {
+export function NumberSumBar({ group }) {
     const sum = group.pulses.reduce((total, pulse) => {
-        return !isNaN(pulse.number) ? total + pulse.number : total
+        return !isNaN(pulse.number) ? total + +pulse.number : total
     }, 0)
 
     return (
