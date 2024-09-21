@@ -15,9 +15,21 @@
         overflow: scroll;
         background-color: white;
 
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #b1b2b5;
+        }
+
         @include for-mobile-layout() {
             position: relative;
             left: -40px;
+
+            &::-webkit-scrollbar {
+                width: 5px;
+            }
         }
 
         .header {
