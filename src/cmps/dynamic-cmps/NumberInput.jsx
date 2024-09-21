@@ -18,7 +18,7 @@ export function NumberInput({ onUpdatePulse, pulse }) {
         event.preventDefault()
         event.stopPropagation()
         const pulseToUpdate = {
-            ...pulse, number: ''
+            ...pulse, number: 0,
         }
         onUpdatePulse(pulseToUpdate)
         setPropToEdit(pulseToUpdate.number)
