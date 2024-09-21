@@ -5,7 +5,7 @@ export function NumberSumBar({ board, group }) {
 
     return (
         <section className="sum-container">
-                <span className="total-amount">{sum}</span>
+                <span className="total-amount">{sum.toLocaleString('en-GB')}</span>
                 <span className="sum-title">sum</span>
         </section>
     )

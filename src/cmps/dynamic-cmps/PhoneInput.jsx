@@ -1,7 +1,9 @@
-import { useInputHandler } from "../../customHooks/useInputHandler";
-import { ICON_CLOSE_SQUARE } from "../icons/svg-icons";
-import { BsFillPlusCircleFill } from "react-icons/bs";
-import { SlScreenSmartphone } from "react-icons/sl";
+import { useInputHandler } from "../../customHooks/useInputHandler"
+import { ICON_CLOSE_SQUARE } from "../icons/svg-icons"
+import { BsFillPlusCircleFill } from "react-icons/bs"
+import { SlScreenSmartphone } from "react-icons/sl"
+
+import il_flag from "../../assets/img/flag_il.png"
 
 
 export function PhoneInput({ onUpdatePulse, pulse }) {
@@ -39,13 +41,13 @@ export function PhoneInput({ onUpdatePulse, pulse }) {
                 /> : <span className={propToEdit ? 'pulse-text with-text' : 'pulse-text null'} onClick={() => setIsEditable(true)}>
                     {propToEdit ?
                         <div className="phone">
-                            <img src="/src/assets/img/flag_il.png" alt="" />
+                            <img src={il_flag} alt="" />
                             <a href={`tel:+${propToEdit}`}>{propToEdit}</a>
                         </div>
                         :
                         <div className="empty-text hidden">
                             <BsFillPlusCircleFill />
-                            <SlScreenSmartphone className="t-icon" size={16}/>
+                            <SlScreenSmartphone className="t-icon" size={16} />
                         </div>
                     }
                     <ICON_CLOSE_SQUARE className="close-btn hidden" onClick={onClearInput} />

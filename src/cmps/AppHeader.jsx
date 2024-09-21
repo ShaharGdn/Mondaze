@@ -4,6 +4,8 @@ import { logout } from '../store/actions/user.actions'
 import { LoggedinUser } from './LoggedinUser'
 import { useState } from 'react'
 
+import wm_favicon from '../assets/img/wm_favicon.png'
+
 export function AppHeader() {
 	const loggedInUser = useSelector(storeState => storeState.userModule.user)
 	const [open, setOpen] = useState(false)
@@ -23,7 +25,7 @@ export function AppHeader() {
 		<header className="app-header full">
 			<nav>
 				<div className='logo-container' onClick={() => navigate('/')}>
-					<img className='wm-logo' src="../src/assets/img/wm_favicon.png" alt="" />
+					<img className='wm-logo' src={wm_favicon} alt="" />
 					<span className='proj-name'>mondaze </span>
 					<span className='wm-title'>work management</span>
 				</div>

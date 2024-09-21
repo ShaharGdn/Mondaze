@@ -6,6 +6,9 @@ import { updateBoard } from '../store/actions/board.actions';
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { BoardIcon } from './icons/svg-icons';
 
+import recent_board_prv from '../assets/img/recent_board_prv.svg'
+import wm_favicon from '../assets/img/wm_favicon.png'
+
 
 export function BoardPreview({ board, type }) {
     const navigate = useNavigate()
@@ -35,7 +38,7 @@ export function BoardPreview({ board, type }) {
     return (
         <article className="board-preview" onClick={() => navigate(`/board/${board._id}`)}>
             <div className="board-preview-img-container">
-                <img src="../src/assets/img/recent_board_prv.svg" alt="board-preview" />
+                <img src={recent_board_prv} alt="board-preview" />
             </div>
 
             <div className="board-name-and-star Figtree-bold">
@@ -51,7 +54,7 @@ export function BoardPreview({ board, type }) {
             </div>
 
             <div className="board-path">
-                <img className='wm-logo' src="../src/assets/img/wm_favicon.png" alt="Workspace Logo" />
+                <img className='wm-logo' src={wm_favicon} alt="Workspace Logo" />
                 <p>work management {'>'} My Workspace</p>
             </div>
         </article>

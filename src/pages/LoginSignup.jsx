@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Outlet, useNavigate } from 'react-router'
 import { NavLink } from 'react-router-dom'
 
+import logo from ".././assets/img/mondaze-logo.png"
 
 export function LoginSignup() {
     const navigate = useNavigate()
@@ -10,7 +11,7 @@ export function LoginSignup() {
     return (
         <section className="login-page-container full">
             <header className="header">
-                <img src="../src/assets/img/mondaze-logo.png" alt="" className="logo" onClick={() => navigate('/board')} />
+                <img src={logo} alt="" className="logo" onClick={() => navigate('/board')} />
             </header>
             <div className="login-page">
                 <Outlet />

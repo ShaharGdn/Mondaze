@@ -2,6 +2,9 @@ import { format } from "date-fns"
 import { ICON_DATE } from "../icons/svg-icons"
 import { useSelector } from "react-redux"
 
+import empty_assignee from '../../assets/img/empty_assignee.svg'
+
+
 export function PulsePreviewKanban({ pulse, group }) {
     const board = useSelector(storeState => storeState.selectedBoardModule.board)
 
@@ -50,7 +53,7 @@ export function PulsePreviewKanban({ pulse, group }) {
                     })
                 )}
                 {pulse.memberIds?.length === 0 && (
-                    <img className="assignee-img" src='../src/assets/img/empty_assignee.svg' alt="" />
+                    <img className="assignee-img" src={empty_assignee} alt="" />
                 )}
             </div>
         </div>

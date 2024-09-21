@@ -2,7 +2,6 @@ import React from 'react'
 import { Routes, Route, useLocation } from 'react-router'
 
 import { HomePage } from './pages/HomePage'
-import { AboutUs } from './pages/AboutUs'
 import { BoardIndex } from './pages/BoardIndex.jsx'
 
 import { BoardDetails } from './pages/BoardDetails.jsx'
@@ -13,8 +12,7 @@ import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 
-import { Dashboard } from './pages/Dashboard.jsx'
-// import { Kanban } from './pages/Kanban.jsx'
+// import { Dashboard } from './pages/Dashboard.jsx'
 import { SideBar } from './cmps/SideBar.jsx'
 
 export function RootCmp() {
@@ -32,7 +30,6 @@ export function RootCmp() {
 
             <Routes>
                 <Route path="" element={<HomePage />} />
-                <Route path="about" element={<AboutUs />} />
                 <Route path="board" element={<BoardIndex />} />
                 <Route path="board/:boardId" element={<BoardDetails />} />
                 <Route path="login" element={<LoginSignup />}>
@@ -40,9 +37,8 @@ export function RootCmp() {
                     <Route path="signup" element={<Signup />} />
                 </Route>
 
-                <Route path="dashboard" element={<Dashboard />} />
-                {/* <Route path="Kanban" element={<Kanban />} /> */}
-                {/* <Route path="Kanban/:boardId" element={<Kanban />} /> */}
+                {/* <Route path="dashboard" element={<Dashboard />} /> */}
+                <Route path="Kanban/:boardId" element={<BoardDetails />} />
             </Routes>
         </div>
     )
