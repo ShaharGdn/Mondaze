@@ -5,11 +5,9 @@ import { useState } from 'react'
 import { Modal, Box, Button, FormControl, RadioGroup, FormControlLabel, Radio } from '@mui/material'
 import { IoCloseOutline } from "react-icons/io5"
 import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
-import { useNavigate } from 'react-router'
 
 export function AddBoardModal({ open, onClose }) {
     const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
-    const navigate = useNavigate()
 
     async function onAddBoard(ev) {
         try {
@@ -19,10 +17,10 @@ export function AddBoardModal({ open, onClose }) {
             board = {
                 ...board, title: boardToAdd.title
             }
-            const addedBoard = await addBoard(board)
+            await addBoard(board)
             setBoardToAdd(boardService.getEmptyBoard())
             onClose()
-            navigate(`/board/${addedBoard._id}`)
+            showSuccessMsg('Added Board Successfully')
         } catch (err) {
             console.log('err Couldnt add board:', err)
             showErrorMsg('Couldnt add board')
