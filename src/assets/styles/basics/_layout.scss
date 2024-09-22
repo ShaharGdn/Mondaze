@@ -22,6 +22,10 @@
 
         &:has(.side-panel.open) {
             grid-template-columns: rem(30px) 1fr 700px;
+
+            @include for-mobile-layout() {
+                grid-template-columns: 0px 0px 100vw;
+            }
         }
 
         &:has(.side-panel.close) {
@@ -81,6 +85,7 @@
         &::-webkit-scrollbar-track {
             border-radius: 10px;
         }
+
         @include for-mobile-layout {
             &::-webkit-scrollbar {
                 width: 5px;

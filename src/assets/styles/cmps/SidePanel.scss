@@ -24,11 +24,12 @@
         }
 
         @include for-mobile-layout() {
-            position: relative;
-            left: -40px;
+            // position: relative;
+            // left: -40px;
 
             &::-webkit-scrollbar {
                 width: 5px;
+                height: 5px;
             }
         }
 
@@ -113,8 +114,11 @@
                         bottom: 0;
                         height: 1px;
                         width: 500px;
-                        // width: 100%;
                         background-color: $clr-border;
+
+                        @include for-mobile-layout() {
+                            width: 80vw;
+                        }
                     }
 
                     .updates,
@@ -169,6 +173,33 @@
             flex-direction: column;
             flex-wrap: nowrap;
             height: 100%;
+
+            @include for-mobile-layout() {
+                .pulse-content {
+                    .empty-updates {
+                        padding: 0;
+                        margin-top: rem(15px);
+
+                        .img-wrapper {
+                            padding-bottom: 0;
+
+                            img {
+                                width: 200px;
+                            }
+                        }
+
+                        .unread-message {
+                            h1 {
+                                font-size: 18px;
+                            }
+
+                            p {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
 
             .empty-updates {
                 padding: 20px;
