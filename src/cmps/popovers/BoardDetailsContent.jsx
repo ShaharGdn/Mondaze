@@ -3,6 +3,9 @@ import { updateBoard } from "../../store/actions/board.actions";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
 import { useInputHandler } from "../../customHooks/useInputHandler";
 
+import Shahar from '../../assets/img/shahar.jpg'
+import Michal from '../../assets/img/michal.jpg'
+
 export function BoardDetailsContent({ board }) {
     const [inputRef, setIsBlurred, propToEdit, setPropToEdit,
         handleBlur, handleSubmit, isEditable, setIsEditable] = useInputHandler(board.title, handleTitleChange)
@@ -65,11 +68,11 @@ export function BoardDetailsContent({ board }) {
                         <span>Owner</span>
                         <div className="owners">
                             <div className="person">
-                                <img src="../src/assets/img/shahar.jpg" alt="" />
+                                <img src={Shahar} alt="" />
                                 <span>Shahar Gadon</span>
                             </div>
                             <div className="person">
-                                <img src="../src/assets/img/michal.jpg" alt="" />
+                                <img src={Michal} alt="" />
                                 <span>Michal Rotkop</span>
                             </div>
                         </div>
