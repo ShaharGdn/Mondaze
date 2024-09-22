@@ -93,24 +93,6 @@ function getEmptyBoard(type = 'Task') {
             },
         ],
         members: [],
-        // members: [
-        //     {
-        //         _id: 'u101',
-        //         fullname: 'Michal Rotkop',
-        //         imgUrl: '../src/assets/img/michal.jpg',
-        //     },
-        //     {
-        //         _id: 'u102',
-        //         fullname: 'Shahar Gadon',
-        //         imgUrl: '../src/assets/img/shahar.jpg',
-        //     },
-        //     {
-        //         _id: 'u103',
-        //         fullname: 'Shush',
-        //         imgUrl: '../src/assets/img/shush.jpg',
-        //     },
-
-        // ],
         groups: [
             {
                 title: 'Group Title',
@@ -207,9 +189,7 @@ function getEmptyBoard(type = 'Task') {
     } else if (type === 'Item') {
         cmpsOrder = ['NumberInput', 'TextInput', 'PriorityPicker', 'FilesPicker'];
     }
-
-    // cmpsOrder: ['MemberPicker', 'StatusPicker', 'PriorityPicker', 'DatePicker', 'DateRangePicker', 'NumberInput', 'TextInput', 'PhoneInput', 'EmailInput', 'FilesPicker'],
-
+    
     board.cmpsOrder = cmpsOrder
     return board
 }
