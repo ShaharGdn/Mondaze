@@ -12,7 +12,7 @@ import { RootCmp } from './RootCmp'
 import './assets/styles/main.scss'
 
 import appleTouchIcon from './assets/img/favicon/apple-touch-icon.png'
-import favicon32 from './assets//img/favicon/favicon-32x32.png'
+import favicon32 from './assets/img/favicon/favicon-32x32.png'
 import favicon16 from './assets/img/favicon/favicon-16x16.png'
 import siteManifest from './assets/img/favicon/site.webmanifest'
 

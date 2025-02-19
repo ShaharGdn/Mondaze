@@ -24,15 +24,7 @@
                 gap: 10px;
 
                 button {
-                    padding: 16px 48px;
-                    font-size: 1rem;
                     margin-inline-end: 1rem;
-                    height: rem(50px);
-                    width: rem(210px);
-
-                    &:hover {
-                        background-color: #5151d5;
-                    }
                 }
 
                 a {
@@ -49,6 +41,27 @@
                         &:hover {
                             color: #5034FF;
                             background-color: #F0F3FF;
+                        }
+                    }
+                }
+            }
+
+            @include for-mobile-layout {
+                margin-block: 0;
+
+                .logo {
+                    height: rem(30px);
+                    margin-inline-start: 0;
+
+                }
+
+                .header-btns {
+                    gap: 0px;
+
+                    a {
+                        &.login-btn {
+                            font-size: $font-size-subtitle-mobile;
+                            width: rem(66px);
                         }
                     }
                 }
@@ -70,42 +83,58 @@
 
                 .title {
                     line-height: 110%;
-                    font-size: 72px;
+                    font-size: $font-size-large-title;
                     margin: 0;
                     margin-block-start: 4rem;
                     margin-block-end: 1rem;
                     color: #333;
+                    margin-inline: 1rem;
+
                 }
 
                 .subtitle {
                     max-width: 540px;
-                    font-size: 1.125rem;
-                    line-height: 32px;
+                    font-size: $font-size-subtitle;
+                    line-height: 2rem;
                     word-break: break-word;
                     margin: 0 auto;
                     margin-block-end: 1.5rem;
+                    padding-inline: 0.5rem;
                 }
 
                 button {
-                    height: rem(50px);
-                    width: rem(175px);
-                    margin-block-end: 1rem;
                     margin: 0 auto;
                 }
 
                 p.offer {
                     font-weight: 400;
                     margin-top: 13px;
-                    font-size: 13px;
+                    font-size: $font-size-tiny;
                     line-height: 110%;
                     color: #676879;
                     margin-block-end: 1rem;
                 }
 
+                @include for-mobile-layout {
+                    .title {
+                        font-size: $font-size-large-title-mobile;
+                    }
+
+                    .subtitle {
+                        font-size: $font-size-subtitle-mobile;
+                        line-height: 1.6rem;
+                        margin-block-end: 0.5rem;
+                        padding-inline: 1rem;
+                    }
+
+                    p.offer {
+                        font-size: $font-size-tiny-mobile;
+                    }
+                }
+
                 .project-types-display {
                     .assets-container {
                         img {
-                            width: 98%;
                             margin: 0 auto;
                             border-bottom-left-radius: 3rem;
                             border-bottom-right-radius: 3rem;
@@ -116,11 +145,13 @@
             }
 
             .customers {
+
                 h5 {
-                    font-size: 0.875rem;
+                    font-size: $font-size-small;
                     line-height: 32px;
                     font-weight: 400;
                     margin-block: 2rem;
+
                 }
 
                 .clients-logos {
@@ -142,28 +173,47 @@
                         }
                     }
                 }
+
+                @include for-mobile-layout {
+
+                    h5 {
+                        font-size: $font-size-small-mobile;
+                        margin-block: 1rem;
+                    }
+
+                    .clients-logos {
+                        .images-gallery {
+                            padding-block: 0.8rem;
+
+                            img {
+                                max-height: 30px;
+                                max-width: 100px;
+                            }
+                        }
+                    }
+                }
             }
 
             .videos-container {
                 display: flex;
                 flex-direction: column;
                 gap: 1rem;
-                // max-width: 1920px;
                 margin: auto;
-                min-width: 991px;
                 flex-wrap: nowrap;
+                width: 100%;
+
 
                 .work-management {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    height: 650px;
                     z-index: 200;
                     margin-block-start: 2rem;
+                    width: 100%;
+
 
                     .title {
                         margin-top: 32px;
-                        position: relative;
                         z-index: 555;
                         position: absolute;
 
@@ -184,29 +234,66 @@
                         }
 
                         button {
-                            height: rem(50px);
-                            width: rem(175px);
                             margin: 0 auto;
-                            margin-block-end: 1rem;
                             margin-block-start: 1rem;
-                            transition: transform 0.5s ease-in-out;
-
-                            &:hover {
-                                background-color: #5151d5;
-
-                                &.white {
-                                    background-color: #fff;
-                                }
-                            }
                         }
                     }
 
                     video {
-                        height: 650px;
                         object-fit: contain;
+                        width: 100%;
                     }
 
+                    @include for-mobile-layout {
+                        .title {
+                            position: static;
+                            margin-top: 0;
 
+
+                            img {
+                                width: rem(35px);
+                            }
+
+                            h2 {
+                                margin-block-start: 0.5rem;
+                                font-size: 1.5rem;
+                            }
+
+                            h3 {
+                                font-size: 1rem;
+                            }
+
+                            &.white {
+                                color: #333;
+                            }
+
+                            button {
+                                margin-block-start: 0;
+
+                                &.white {
+
+                                    background-color: #00d2d2;
+                                    color: #ffffff;
+                                    // transition: opacity 0.5s ease;
+                                    // margin-block-start: 1rem;
+                                    margin-block-end: 1rem;
+
+                                    span {
+                                        color: #ffffff;
+                                    }
+
+                                    &:hover {
+                                        background-color: #5151d5;
+                                    }
+                                }
+                            }
+                        }
+
+                        video {
+                            height: fit-content;
+                            width: 100%;
+                        }
+                    }
                 }
             }
 
@@ -214,6 +301,10 @@
                 .videos-container {
                     flex-direction: row;
                     gap: 2rem;
+                }
+
+                video {
+                    height: 650px;
                 }
             }
         }
@@ -249,19 +340,10 @@
 
                 button {
                     &.white {
-                        background-color: #ffffff;
-                        color: #333;
-                        width: rem(210px);
-                        transition: opacity 0.5s ease;
-                        margin-block-start: 1rem;
                         transition: transform 0.5s ease-in-out;
 
                         span {
                             color: #333;
-                        }
-
-                        &:hover {
-                            opacity: 0.9;
                         }
                     }
                 }
@@ -281,6 +363,42 @@
                 }
             }
 
+            @include for-mobile-layout {
+
+                .main-footer {
+                    margin-block-start: 0;
+                    padding-inline: 1rem;
+                    padding-block: 2rem;
+                    gap: 0;
+
+                    .cta-section {
+                        font-size: 1.4rem;
+
+                        span {
+                            color: #C2B3FF;
+                        }
+                    }
+
+                    .dev-pics {
+                        min-width: 120px;
+                    }
+                }
+
+                .logo-nav {
+                    flex-direction: column;
+                    padding-block: 1.2rem;
+
+                    img {
+                        height: rem(40px);
+                    }
+
+                    span {
+                        font-size: $font-size-regular-mobile;
+                    }
+                }
+
+            }
+
         }
 
     }
@@ -288,8 +406,10 @@
     button.get-started {
         display: flex;
         justify-content: center;
-        font-size: 0.875rem;
+        align-items: center;
         padding: 16px 25px;
+        width: rem(175px);
+        height: rem(50px);
         background-color: #6161FF;
         color: #ffffff;
         font-size: 1rem;
@@ -302,22 +422,24 @@
         gap: 0.5rem;
         cursor: pointer;
         transition: background-color 0.5s ease;
-        transition: transform 0.5s ease-in-out;
 
-
-
-        &:hover:not(.white) {
-            background-color: #5151d5;
+        .icon {
+            transition: transform 0.4s ease;
         }
 
         &:hover {
-            transform: scale(1.05);
+            &:not(.white) {
+                background-color: #5151d5;
+            }
+
+            .icon {
+                transform: translateX(6px);
+            }
         }
 
         &.white {
             background-color: #ffffff;
             color: #333;
-            width: rem(210px);
             transition: opacity 0.5s ease;
             margin-block-start: 1rem;
 
@@ -328,6 +450,13 @@
             &:hover {
                 opacity: 0.9;
             }
+        }
+
+        @include for-mobile-layout {
+            font-size: 0.875rem;
+            padding: 0px;
+            width: rem(124px);
+            height: rem(38px);
         }
     }
 }
