@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -109,13 +109,15 @@ export function BoardDetails() {
     }
   }
 
+  function onSetFilterBy(filterBy) {
+    setFilterBy(prevFilterBy => ({ ...prevFilterBy, ...filterBy }))
+  }
+
   return (
     <>
       <main>
         <section className="board-details main">
-          {isLoading && <Loader />}
-          {!isLoading && board && <div className="main-display">
-
+          <div className="main-display">
             <section className='main-top-container'>
               <div className='top-sticky-wrapper'>
                 <BoardHeader board={board} />
@@ -125,27 +127,31 @@ export function BoardDetails() {
                   displayType={displayType}
                   setGroupBy={setGroupBy}
                   filterBy={filterBy}
-                  setFilterBy={setFilterBy} />
+                  onSetFilterBy={onSetFilterBy}
+                />
               </div>
             </section>
-            {displayType === 'kanban' ?
-              <GroupListKanban
-                groups={board.groups}
-                board={board}
-                setSidePanelOpen={setSidePanelOpen}
-                setSelectedPulse={setSelectedPulse}
-                groupBy={groupBy} />
-              :
-              <GroupList
-                groups={board.groups}
-                board={board}
-                setSidePanelOpen={setSidePanelOpen}
-                setSelectedPulse={setSelectedPulse} />}
-            {displayType !== "kanban" &&
-              <button className="add-group-btn" onClick={() => onAddGroup("end")}>
-                <i className="fa-regular fa-plus fa-lg"></i>Add new group
-              </button>}
-          </div>}
+            {isLoading && <Loader />}
+            {!isLoading && board && <React.Fragment>
+              {displayType === 'kanban' ?
+                <GroupListKanban
+                  groups={board.groups}
+                  board={board}
+                  setSidePanelOpen={setSidePanelOpen}
+                  setSelectedPulse={setSelectedPulse}
+                  groupBy={groupBy} />
+                :
+                <GroupList
+                  groups={board.groups}
+                  board={board}
+                  setSidePanelOpen={setSidePanelOpen}
+                  setSelectedPulse={setSelectedPulse} />}
+              {displayType !== "kanban" &&
+                <button className="add-group-btn" onClick={() => onAddGroup("end")}>
+                  <i className="fa-regular fa-plus fa-lg"></i>Add new group
+                </button>}
+            </React.Fragment>}
+          </div>
         </section>
       </main>
       {selectedPulse &&

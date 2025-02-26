@@ -47,7 +47,7 @@ export function AddPulseBtn({ board }) {
     const children = (
         <div className="add-group-list" onClick={onAddGroup}>
             <ICON_GROUP className="icon" />
-            <span>New group of {board.type.toLowerCase()}s</span>
+            <span>New group of {board?.type.toLowerCase()}s</span>
         </div>
     )
 

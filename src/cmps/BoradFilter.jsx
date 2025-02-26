@@ -3,19 +3,18 @@ import { EMPTY_PERSON, FILTER_ICON, GROUP_BY, ICON_SEARCH } from "./icons/svg-ic
 import { debounce } from "../services/util.service";
 import { Popover } from "./popovers/Popover.jsx";
 
-
-export function BoardFilter({ filterBy, setFilterBy, displayType, setGroupBy }) {
+export function BoardFilter({ filterBy, onSetFilterBy, displayType, setGroupBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
     const [isSearchInputOpen, setSearchInputOpen] = useState(false)
-    const [isBlurred, setIsBlurred] = useState(false)
     const [open, setOpen] = useState(null)
+    const inputRef = useRef(null)
 
     useEffect(() => {
-        setFilterByToEdit(filterBy)
+        onSetFilterBy(filterByToEdit)
         if (isSearchInputOpen && inputRef.current) {
             inputRef.current.focus()
         }
-    }, [isSearchInputOpen, filterBy])
+    }, [isSearchInputOpen, filterByToEdit])
 
     function onToggleSearchInput(ev) {
         ev.stopPropagation()
@@ -26,26 +25,17 @@ export function BoardFilter({ filterBy, setFilterBy, displayType, setGroupBy }) 
     function handleChange(ev) {
         if (ev) ev.preventDefault()
         const { target } = ev
-        const { type, value } = target
-      
-        if (type === 'search') {
-            const newFilterBy = {
-                ...filterByToEdit,
-                txt: value
-            }
-            setFilterBy(newFilterBy)
-        }
+        const { type, value, name: field } = target
+
+        setFilterByToEdit(prevFilterByToEdit => ({ ...prevFilterByToEdit, [field]: value }))
     }
 
     function handleBlur() {
+        if (filterByToEdit.txt) return
         setSearchInputOpen(false)
-        inputRef.current.value = ''
-        if (isBlurred) return
-        // handleChange()
     }
 
-    const inputRef = useRef(null)
-
+    const { txt } = filterByToEdit
     return (
         <section className="board-filter-sort-actions">
             <div className="search-wrapper">
@@ -58,14 +48,15 @@ export function BoardFilter({ filterBy, setFilterBy, displayType, setGroupBy }) 
                     <ICON_SEARCH className="icon" />
                     <input
                         type="search"
+                        name="txt"
                         id="search"
                         className={isSearchInputOpen ? "search-input open" : "search-input hidden"}
                         onBlur={() => handleBlur()}
-                        onFocus={() => setIsBlurred(false)}
                         onInput={handleChange}
                         ref={inputRef}
                         autoFocus
-                        placeholder="Search this board" />
+                        placeholder="Search this board"
+                        value={txt} />
                 </label>
             </div>
             <div className="person-filter">
