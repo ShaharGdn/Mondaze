@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -14,6 +14,7 @@ import { SidePanel } from '../cmps/SidePanel'
 import { GroupListKanban } from '../cmps/Kanban/GroupListKanban'
 import { boardService } from '../services/board'
 import { socketService, SOCKET_EVENT_ADD_PULSE, SOCKET_EVENT_UPDATE_PULSE, SOCKET_EVENT_REMOVE_PULSE, SOCKET_EVENT_ADD_GROUP, SOCKET_EVENT_UPDATE_GROUP, SOCKET_EVENT_REMOVE_GROUP, SOCKET_EVENT_ADD_BOARD, SOCKET_EVENT_REMOVE_BOARD, SOCKET_EVENT_UPDATE_BOARD } from '../services/socket.service'
+import { debounce } from '../services/util.service'
 
 export function BoardDetails() {
   const { boardId } = useParams()
@@ -26,6 +27,7 @@ export function BoardDetails() {
   const [sidePanelOpen, setSidePanelOpen] = useState(false)
   const [selectedPulse, setSelectedPulse] = useState(null)
 
+  const debouncedOnSetFilterBy = useRef(debounce(onSetFilterBy, 300))
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -127,7 +129,7 @@ export function BoardDetails() {
                   displayType={displayType}
                   setGroupBy={setGroupBy}
                   filterBy={filterBy}
-                  onSetFilterBy={onSetFilterBy}
+                  onSetFilterBy={debouncedOnSetFilterBy.current}
                 />
               </div>
             </section>

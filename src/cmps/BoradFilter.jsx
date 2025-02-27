@@ -10,7 +10,9 @@ export function BoardFilter({ filterBy, onSetFilterBy, displayType, setGroupBy }
     const inputRef = useRef(null)
 
     useEffect(() => {
-        onSetFilterBy(filterByToEdit)
+        if (filterByToEdit.txt !== filterBy.txt) {
+            onSetFilterBy(filterByToEdit)
+        }
         if (isSearchInputOpen && inputRef.current) {
             inputRef.current.focus()
         }
