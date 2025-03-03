@@ -5,14 +5,16 @@ import { boardService as remote } from './board.service.remote'
 import { makeId } from '../util.service'
 import { store } from '../../store/store'
 
-const user = store.getState().userModule.user
+function getUser() {
+    return store.getState().userModule.user
+}
 
 function getEmptyBoard(type = 'Task') {
     const board = {
         title: 'New Board',
         isStarred: false,
         archivedAt: null,
-        createdBy: user,
+        createdBy: getUser(),
         folder: '',
         style: {},
         status: [
@@ -189,7 +191,7 @@ function getEmptyBoard(type = 'Task') {
     } else if (type === 'Item') {
         cmpsOrder = ['NumberInput', 'TextInput', 'PriorityPicker', 'FilesPicker'];
     }
-    
+
     board.cmpsOrder = cmpsOrder
     return board
 }
@@ -203,9 +205,15 @@ function getDefaultFilter() {
     }
 }
 
+function getDefaultBoardsFilter() {
+    return {
+        txt: ''
+    }
+}
+
 
 const service = VITE_LOCAL === 'true' ? local : remote
-export const boardService = { getEmptyBoard, getDefaultFilter, ...service }
+export const boardService = { getEmptyBoard, getDefaultFilter, getDefaultBoardsFilter, ...service }
 
 // Easy access to this service from the dev tools console
 // when using script - dev / dev:local

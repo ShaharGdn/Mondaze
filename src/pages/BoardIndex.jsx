@@ -13,13 +13,17 @@ export function BoardIndex() {
     const boards = useSelector(storeState => storeState.boardModule.boards)
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const isLoading = useSelector(storeState => storeState.systemModule.isLoading)
+    const filterBy = useSelector(storeState => storeState.boardModule.filterBy)
 
     // const navigate = useNavigate()
 
     useEffect(() => {
         loadUser()
-        loadBoards()
     }, [])
+    
+    useEffect(() => {
+        loadBoards()
+    }, [filterBy])
 
     return (
         <main>
